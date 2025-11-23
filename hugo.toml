@@ -20,3 +20,7 @@ defaultContentLanguage = 'en'
 [params]
     BookRepo = 'https://github.com/alex-shpak/hugo-book'
     fancybox = true
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
