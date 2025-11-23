@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工业生产规划调度阅读笔记 on ZCHENG LI</title>
+    <link>http://localhost:1313/zh-cn/docs/example/my-blog/pns/</link>
+    <description>Recent content in 工业生产规划调度阅读笔记 on ZCHENG LI</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://localhost:1313/zh-cn/docs/example/my-blog/pns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CH1.规划调度: 角色与影响</title>
+      <link>http://localhost:1313/zh-cn/docs/example/my-blog/pns/pns_ch1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh-cn/docs/example/my-blog/pns/pns_ch1/</guid>
+      <description>&lt;h2 id=&#34;11-planning-and-scheduling-role-and-impact&#34;&gt;&#xA;  1.1 Planning and Scheduling: Role and Impact&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#11-planning-and-scheduling-role-and-impact&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;规划&lt;/strong&gt; 与 &lt;strong&gt;调度&lt;/strong&gt; 是 &lt;strong&gt;决策制定&lt;/strong&gt; (decision-making) 一种形式.&lt;/p&gt;&#xA;&lt;p&gt;决策制定 在制造服务产业中 可以用来&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;采购与生产 (procurement and production)&lt;/li&gt;&#xA;&lt;li&gt;运输与分发 (transportation and distribution)&lt;/li&gt;&#xA;&lt;li&gt;信息处理与通讯 (information processing and communication)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;等等.&lt;/p&gt;&#xA;&lt;p&gt;我们希望我们的规划与调度算法可以做到:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;allocate limited &lt;strong&gt;resources&lt;/strong&gt; to the &lt;strong&gt;activities&lt;/strong&gt; to be done so that the company can optimize its &lt;strong&gt;objectives&lt;/strong&gt; and achieve its goals.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;这里的 资源 (resources) 一般可以是:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;车间里的机器 (machines in a workshop)&lt;/li&gt;&#xA;&lt;li&gt;飞机场的跑道 (runways at an airport)&lt;/li&gt;&#xA;&lt;li&gt;工地的员工 (crews at a construction site)&lt;/li&gt;&#xA;&lt;li&gt;计算机的处理单元 (processing units in a computing environment)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;行动 (activities) 一般可以是:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CH2.工业生产模型</title>
+      <link>http://localhost:1313/zh-cn/docs/example/my-blog/pns/pns_ch2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh-cn/docs/example/my-blog/pns/pns_ch2/</guid>
+      <description>&lt;h1 id=&#34;chapter-2-manufacturing-models&#34;&gt;&#xA;  Chapter 2 Manufacturing Models&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#chapter-2-manufacturing-models&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;21-introduction&#34;&gt;&#xA;  2.1 Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#21-introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;22-jobs-machines-and-facilities&#34;&gt;&#xA;  2.2 Jobs, Machines, and Facilities&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#22-jobs-machines-and-facilities&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一些基本概念:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The number of jobs is denoted by n and the number of machines by m. The subscripts j and k refer to jobs j and k. The subscripts h and i refer to machines h and i. The following data pertain to job j.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;也就是:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;job 数: n.&lt;/li&gt;&#xA;&lt;li&gt;机器数: m.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;除此外, 还有:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CH4.项目的规划调度</title>
+      <link>http://localhost:1313/zh-cn/docs/example/my-blog/pns/pns_ch4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh-cn/docs/example/my-blog/pns/pns_ch4/</guid>
+      <description>&lt;h1 id=&#34;chapter-4-project-planning-and-scheduling&#34;&gt;&#xA;  Chapter 4 Project Planning and Scheduling&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#chapter-4-project-planning-and-scheduling&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;41-introduction&#34;&gt;&#xA;  4.1 Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#41-introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;42-critical-path-method-cpm&#34;&gt;&#xA;  4.2 Critical Path Method (CPM)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#42-critical-path-method-cpm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;43-program-evaluation-and-review-technique-pert&#34;&gt;&#xA;  4.3 Program Evaluation and Review Technique (PERT)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#43-program-evaluation-and-review-technique-pert&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;44-timecost-trade-oﬀs-linear-costs&#34;&gt;&#xA;  4.4 Time/Cost Trade-Oﬀs: Linear Costs&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#44-timecost-trade-o%ef%ac%80s-linear-costs&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;45-timecost-trade-oﬀs-nonlinear-costs&#34;&gt;&#xA;  4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#45-timecost-trade-o%ef%ac%80s-nonlinear-costs&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;46-project-scheduling-with-workforce-constraints&#34;&gt;&#xA;  4.6 Project Scheduling with Workforce Constraints&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#46-project-scheduling-with-workforce-constraints&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;47-roman-a-project-scheduling-system-for-the-nuclear-power-industry&#34;&gt;&#xA;  4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;48-discussion&#34;&gt;&#xA;  4.8 Discussion&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#48-discussion&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;</description>
+    </item>
+  </channel>
+</rss>

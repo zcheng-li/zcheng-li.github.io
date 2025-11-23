@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Chapter 4 Project Planning and Scheduling
+  #
+
+
+  4.1 Introduction
+  #
+
+
+  4.2 Critical Path Method (CPM)
+  #
+
+
+  4.3 Program Evaluation and Review Technique (PERT)
+  #
+
+
+  4.4 Time/Cost Trade-Oﬀs: Linear Costs
+  #
+
+
+  4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs
+  #
+
+
+  4.6 Project Scheduling with Workforce Constraints
+  #
+
+
+  4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry
+  #
+
+
+  4.8 Discussion
+  #
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/pns/pns_ch4/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="CH4.项目的规划调度">
+  <meta property="og:description" content="Chapter 4 Project Planning and Scheduling # 4.1 Introduction # 4.2 Critical Path Method (CPM) # 4.3 Program Evaluation and Review Technique (PERT) # 4.4 Time/Cost Trade-Oﬀs: Linear Costs # 4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs # 4.6 Project Scheduling with Workforce Constraints # 4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry # 4.8 Discussion #">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>CH4.项目的规划调度 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch4/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.9a89ab54b8877d51e2497a32e51783d62fead7d112ed930e190a927b5233aae2.js" integrity="sha256-momrVLiHfVHiSXoy5ReD1i/q19ES7ZMOGQqSe1IzquI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle" checked />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class="">工业生产规划调度阅读笔记</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class="">CH2.工业生产模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="active">CH4.项目的规划调度</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CH4.项目的规划调度</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#41-introduction">4.1 Introduction</a></li>
+    <li><a href="#42-critical-path-method-cpm">4.2 Critical Path Method (CPM)</a></li>
+    <li><a href="#43-program-evaluation-and-review-technique-pert">4.3 Program Evaluation and Review Technique (PERT)</a></li>
+    <li><a href="#44-timecost-trade-oﬀs-linear-costs">4.4 Time/Cost Trade-Oﬀs: Linear Costs</a></li>
+    <li><a href="#45-timecost-trade-oﬀs-nonlinear-costs">4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs</a></li>
+    <li><a href="#46-project-scheduling-with-workforce-constraints">4.6 Project Scheduling with Workforce Constraints</a></li>
+    <li><a href="#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry</a></li>
+    <li><a href="#48-discussion">4.8 Discussion</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="chapter-4-project-planning-and-scheduling">
+  Chapter 4 Project Planning and Scheduling
+  <a class="anchor" href="#chapter-4-project-planning-and-scheduling">#</a>
+</h1>
+<h2 id="41-introduction">
+  4.1 Introduction
+  <a class="anchor" href="#41-introduction">#</a>
+</h2>
+<h2 id="42-critical-path-method-cpm">
+  4.2 Critical Path Method (CPM)
+  <a class="anchor" href="#42-critical-path-method-cpm">#</a>
+</h2>
+<h2 id="43-program-evaluation-and-review-technique-pert">
+  4.3 Program Evaluation and Review Technique (PERT)
+  <a class="anchor" href="#43-program-evaluation-and-review-technique-pert">#</a>
+</h2>
+<h2 id="44-timecost-trade-oﬀs-linear-costs">
+  4.4 Time/Cost Trade-Oﬀs: Linear Costs
+  <a class="anchor" href="#44-timecost-trade-o%ef%ac%80s-linear-costs">#</a>
+</h2>
+<h2 id="45-timecost-trade-oﬀs-nonlinear-costs">
+  4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs
+  <a class="anchor" href="#45-timecost-trade-o%ef%ac%80s-nonlinear-costs">#</a>
+</h2>
+<h2 id="46-project-scheduling-with-workforce-constraints">
+  4.6 Project Scheduling with Workforce Constraints
+  <a class="anchor" href="#46-project-scheduling-with-workforce-constraints">#</a>
+</h2>
+<h2 id="47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">
+  4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry
+  <a class="anchor" href="#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">#</a>
+</h2>
+<h2 id="48-discussion">
+  4.8 Discussion
+  <a class="anchor" href="#48-discussion">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#41-introduction">4.1 Introduction</a></li>
+    <li><a href="#42-critical-path-method-cpm">4.2 Critical Path Method (CPM)</a></li>
+    <li><a href="#43-program-evaluation-and-review-technique-pert">4.3 Program Evaluation and Review Technique (PERT)</a></li>
+    <li><a href="#44-timecost-trade-oﬀs-linear-costs">4.4 Time/Cost Trade-Oﬀs: Linear Costs</a></li>
+    <li><a href="#45-timecost-trade-oﬀs-nonlinear-costs">4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs</a></li>
+    <li><a href="#46-project-scheduling-with-workforce-constraints">4.6 Project Scheduling with Workforce Constraints</a></li>
+    <li><a href="#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry</a></li>
+    <li><a href="#48-discussion">4.8 Discussion</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

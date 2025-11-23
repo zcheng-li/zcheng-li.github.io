@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Chapter 2 Manufacturing Models
+  #
+
+
+  2.1 Introduction
+  #
+
+
+  2.2 Jobs, Machines, and Facilities
+  #
+
+一些基本概念:
+
+The number of jobs is denoted by n and the number of machines by m. The subscripts j and k refer to jobs j and k. The subscripts h and i refer to machines h and i. The following data pertain to job j.
+也就是:
+
+job 数: n.
+机器数: m.
+
+除此外, 还有:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/pns/pns_ch2/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="CH2.工业生产模型">
+  <meta property="og:description" content="Chapter 2 Manufacturing Models # 2.1 Introduction # 2.2 Jobs, Machines, and Facilities # 一些基本概念:
+The number of jobs is denoted by n and the number of machines by m. The subscripts j and k refer to jobs j and k. The subscripts h and i refer to machines h and i. The following data pertain to job j.
+也就是:
+job 数: n. 机器数: m. 除此外, 还有:">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>CH2.工业生产模型 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch2/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.9a89ab54b8877d51e2497a32e51783d62fead7d112ed930e190a927b5233aae2.js" integrity="sha256-momrVLiHfVHiSXoy5ReD1i/q19ES7ZMOGQqSe1IzquI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle" checked />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class="">工业生产规划调度阅读笔记</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class="active">CH2.工业生产模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CH2.工业生产模型</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-introduction">2.1 Introduction</a></li>
+    <li><a href="#22-jobs-machines-and-facilities">2.2 Jobs, Machines, and Facilities</a></li>
+    <li><a href="#23-processing-characteristics-and-constraints">2.3 Processing Characteristics and Constraints</a></li>
+    <li><a href="#24-performance-measures-and-objectives">2.4 Performance Measures and Objectives</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="chapter-2-manufacturing-models">
+  Chapter 2 Manufacturing Models
+  <a class="anchor" href="#chapter-2-manufacturing-models">#</a>
+</h1>
+<h2 id="21-introduction">
+  2.1 Introduction
+  <a class="anchor" href="#21-introduction">#</a>
+</h2>
+<h2 id="22-jobs-machines-and-facilities">
+  2.2 Jobs, Machines, and Facilities
+  <a class="anchor" href="#22-jobs-machines-and-facilities">#</a>
+</h2>
+<p>一些基本概念:</p>
+<blockquote>
+<p>The number of jobs is denoted by n and the number of machines by m. The subscripts j and k refer to jobs j and k. The subscripts h and i refer to machines h and i. The following data pertain to job j.</p></blockquote>
+<p>也就是:</p>
+<ul>
+<li>job 数: n.</li>
+<li>机器数: m.</li>
+</ul>
+<p>除此外, 还有:</p>
+<ul>
+<li>处理时间: ($p_{ij}$): represents the time job j has to spend on machine i.</li>
+<li>截止日期 ($d_{j}$).</li>
+<li>权重 ($w_j$). job 的优先级</li>
+</ul>
+<blockquote>
+<p>It may represent the cost of keeping job j in the system for one time unit. The weight can be a holding or inventory cost, or it can be the amount of value already added to the job.</p></blockquote>
+<p>以上 4 个数据并称为 <strong>静态数据</strong> (static data). 因为它们不依赖于调度算法. 相反, 那些不能提前确定并且依赖于调度算法的数据称之为 <strong>动态数据</strong> (dynamic data). 比较重要的动态数据如下:</p>
+<ul>
+<li>Starting time $S_{ij}$: job j 开始在 机器i 上处理的时间点.</li>
+<li>Completion time $C_{ij}$: 完成时间.</li>
+</ul>
+<p>调度模型的一个重要特征是它的 <strong>机器配置</strong> (machine configuration), 如下:</p>
+<ul>
+<li>Single Machine Models: job 只能去一个地方处理</li>
+<li>Parallel Machine Models: job 可以选择多台机器中的其中一个</li>
+<li>Flow Shop Models: 所有的 job 都会经过相同的处理</li>
+<li>Job Shop Models: job 通常有不同的处理</li>
+<li>Supply Chain Models</li>
+</ul>
+<blockquote>
+<p>a flow shop is a job shop in which each and every job
+has the same route</p></blockquote>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/pns/fig2_1.png"><figure>
+          <img src="/img/pns/fig2_1.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/pns/fig2_2.png"><figure>
+          <img src="/img/pns/fig2_2.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h2 id="23-processing-characteristics-and-constraints">
+  2.3 Processing Characteristics and Constraints
+  <a class="anchor" href="#23-processing-characteristics-and-constraints">#</a>
+</h2>
+<p>job 的处理也有特征和对应的限制.</p>
+<ul>
+<li>Precedence Constraints: 前后限制, 一个 job 必须完成一个处理个再进行下一个处理.</li>
+<li>Machine Eligibility Constraints: 当机器不完全一样时, 有些机器可能没有资格完成对特点 job 的处理.</li>
+<li>Workforce Constraints.</li>
+<li>Routing Constraints.</li>
+<li>Material Handling Constraints.</li>
+<li>Sequence Dependent Setup Times and Costs.</li>
+<li>Storage Space and Waiting Time Constraints.</li>
+<li>Make-to-Stockand Make-to-Order.</li>
+<li>Preemptions.</li>
+<li>Transportation Constraints.</li>
+</ul>
+<h2 id="24-performance-measures-and-objectives">
+  2.4 Performance Measures and Objectives
+  <a class="anchor" href="#24-performance-measures-and-objectives">#</a>
+</h2>
+<p>一些关键的描述性能的 测量值 和 目标:</p>
+<ul>
+<li>Throughput and Makespan Objectives.
+Throughput = output rate
+Makespan = 所有工作全部完成所需的总时间
+Cmax = max(C1,&hellip;,Cn)</li>
+<li>Due Date Related Objectives.
+<ul>
+<li>one objective: minimizing the maximum lateness
+Lateness: Lj= Cj−dj
+Lmax = max(L1,&hellip;,Ln).</li>
+<li>anather objective: minimizing number of tardy jobs
+tardiness of job j: Tj = max(Cj−dj,0)
+$\sum^n_{j=1}\omega_jT_j$</li>
+</ul>
+</li>
+<li>Setup Costs.</li>
+<li>Work-In-Process Inventory Costs. (WIP)</li>
+<li>Finished Goods Inventory Costs.</li>
+<li>Transportation Costs.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-introduction">2.1 Introduction</a></li>
+    <li><a href="#22-jobs-machines-and-facilities">2.2 Jobs, Machines, and Facilities</a></li>
+    <li><a href="#23-processing-characteristics-and-constraints">2.3 Processing Characteristics and Constraints</a></li>
+    <li><a href="#24-performance-measures-and-objectives">2.4 Performance Measures and Objectives</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

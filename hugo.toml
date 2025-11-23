@@ -1,21 +1,20 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://zcheng-li.github.io'
 languageCode = 'en-us'
 title = 'ZCHENG LI'
 theme = "hugo-book"
 markup.goldmark.renderer.unsafe=true
 
 # Multilingual
-defaultContentLanguage = 'en'
-[languages]
+defaultContentLanguage = 'zh-CN'
+  [languages]
+    [languages.zh-cn]
+      weight = 1
+      languageCode = "zh-CN"
+      languageName = "简体中文"
   [languages.en]
     weight = 2
     languageCode = "en"
     languageName = "English"
-
-  [languages.zh-cn]
-    weight = 3
-    languageCode = "zh-CN"
-    languageName = "简体中文"
 
 [params]
     BookRepo = 'https://github.com/alex-shpak/hugo-book'

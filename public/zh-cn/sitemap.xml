@@ -2,76 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/zh-cn/docs/example/my-blog/qam/</loc>
+    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch1/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/example/my-blog/qam/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch2/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch4/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/example/my-blog/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/example/my-blog/pns/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/docs/example/my-blog/qam/"
+                href="http://localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh-cn/docs/example/my-blog/qam/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/docs/example/my-blog/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/docs/example/my-blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh-cn/docs/example/my-blog/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="http://localhost:1313/categories/"
                 />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh-cn/categories/"
-                />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/docs/</loc>
+    <loc>http://localhost:1313/docs/</loc>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/docs/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh-cn/docs/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="http://localhost:1313/"
                 />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh-cn/"
-                />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/tags/"
+                href="http://localhost:1313/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh-cn/tags/"
+                href="http://localhost:1313/tags/"
                 />
   </url>
 </urlset>
