@@ -34,9 +34,10 @@ A message of your choice, comprising more than 2048 bits, converted from a “ST
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/docs/example/my-blog/qam/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/qam/" title="Dynamic QAM">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.9a89ab54b8877d51e2497a32e51783d62fead7d112ed930e190a927b5233aae2.js" integrity="sha256-momrVLiHfVHiSXoy5ReD1i/q19ES7ZMOGQqSe1IzquI=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.fb2a5706f2eab57f41606cf2ead84d4ad05d668d4c9f45b2b8d024e9eb4ecac4.js" integrity="sha256-&#43;ypXBvLqtX9BYGzy6thNStBdZo1Mn0WyuNAk6etOysQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -75,6 +76,8 @@ https://github.com/alex-shpak/hugo-book
   
 
 
+  
+
 
 <ul class="book-languages">
   <li>
@@ -89,7 +92,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="/en/">
+        <a href="/en/docs/example/my-blog/qam/">
           English
         </a>
       </li>
@@ -429,10 +432,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
 </span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
 <p>那么为什么要计算信号功率呢? 由信噪比公式:</p>
-
-<link rel="stylesheet" href="/katex/katex.min.css" />
-<script defer src="/katex/katex.min.js"></script>
-<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+<span>
   \[
 
 \mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)

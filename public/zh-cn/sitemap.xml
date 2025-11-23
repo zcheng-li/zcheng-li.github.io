@@ -5,14 +5,44 @@
     <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch1/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/qam/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/docs/example/my-blog/qam/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/docs/example/my-blog/qam/"
+                />
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch2/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch4/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/docs/example/my-blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/docs/example/my-blog/"
+                />
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/pns/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/docs/example/my-blog/pns/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/docs/example/my-blog/pns/"
+                />
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <xhtml:link
@@ -27,6 +57,16 @@
                 />
   </url><url>
     <loc>http://localhost:1313/docs/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/docs/"
+                />
   </url><url>
     <loc>http://localhost:1313/</loc>
     <xhtml:link
