@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on ZCHENG LI</title>
+    <link>http://localhost:1313/zh-cn/</link>
+    <description>Recent content in Introduction on ZCHENG LI</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://localhost:1313/zh-cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>动态QAM调制解调python实现</title>
+      <link>http://localhost:1313/zh-cn/docs/example/my-blog/qam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh-cn/docs/example/my-blog/qam/</guid>
+      <description>&lt;h2 id=&#34;引入&#34;&gt;&#xA;  引入&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%95%e5%85%a5&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:&lt;/p&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;This should include at minimum:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.&lt;/li&gt;&#xA;&lt;li&gt;Using your modulation format of choice, modulate a carrier to encode this information.&lt;/li&gt;&#xA;&lt;li&gt;The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.&lt;/li&gt;&#xA;&lt;li&gt;An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.&lt;/li&gt;&#xA;&lt;li&gt;Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.&lt;/li&gt;&#xA;&lt;li&gt;Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

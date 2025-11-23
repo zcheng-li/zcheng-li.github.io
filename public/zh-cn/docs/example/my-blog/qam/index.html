@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  引入
+  #
+
+题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
+
+This should include at minimum:
+
+A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.
+Using your modulation format of choice, modulate a carrier to encode this information.
+The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.
+An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.
+Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.
+Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.
+
+Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh-cn/docs/example/my-blog/qam/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="动态QAM调制解调python实现">
+  <meta property="og:description" content="引入 # 题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
+This should include at minimum:
+A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”. Using your modulation format of choice, modulate a carrier to encode this information. The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN. An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency. Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel. Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth. Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>动态QAM调制解调python实现 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/zh-cn/docs/example/my-blog/qam/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/example/my-blog/qam/" title="Dynamic QAM">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.9a444fe8dbce580338a1e3193781a219b7b45fceb111e1d5fae580a4fc65245e.js" integrity="sha256-mkRP6NvOWAM4oeMZN4GiGbe0X86xEeHV&#43;uWApPxlJF4=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-cn/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/docs/example/my-blog/qam/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-cn/docs/example/my-blog/qam/" class="active">动态QAM调制解调python实现</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>动态QAM调制解调python实现</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#引入">引入</a></li>
+    <li><a href="#库">库</a></li>
+    <li><a href="#string-与-binary-的转换">String 与 Binary 的转换</a></li>
+    <li><a href="#awgn-噪音">AWGN 噪音</a></li>
+    <li><a href="#qam-调制">QAM 调制</a>
+      <ul>
+        <li><a href="#qam-是什么">QAM 是什么?</a></li>
+        <li><a href="#qam-原理">QAM 原理</a></li>
+        <li><a href="#qam-代码实现">QAM 代码实现</a></li>
+        <li><a href="#qam-星座图">QAM 星座图</a></li>
+      </ul>
+    </li>
+    <li><a href="#路径损失模拟-hata-model">路径损失模拟 Hata Model</a></li>
+    <li><a href="#qam-解调">QAM 解调</a></li>
+    <li><a href="#误码率">误码率</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="引入">
+  引入
+  <a class="anchor" href="#%e5%bc%95%e5%85%a5">#</a>
+</h2>
+<p>题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:</p>
+<blockquote class="book-hint info">
+<p>This should include at minimum:</p>
+<ul>
+<li>A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.</li>
+<li>Using your modulation format of choice, modulate a carrier to encode this information.</li>
+<li>The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.</li>
+<li>An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.</li>
+<li>Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.</li>
+<li>Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.</li>
+</ul>
+<p>Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:</p>
+<ul>
+<li>Simulate fading conditions associated with an urban environment. Implementation of Hamming coding or other error correction technique.</li>
+<li>Transmission of video, audio or other time varying signal over the channel.</li>
+<li>Dynamic modulation, based on measured system performance.</li>
+<li>Automatic resending of errored signals.</li>
+<li>Or anything else you think would be a cool addition!</li>
+</ul>
+</blockquote>
+<p>:-(</p>
+<p>归纳一下差不多如下:</p>
+<ol>
+<li>将 String 的输入转化为由 0 和 1 组成的二进制编码.</li>
+<li>用 Hamming code 编码.</li>
+<li>加入噪音.</li>
+<li>选一个喜欢的办法调制.</li>
+<li>再解调.</li>
+<li>计算误码率等其他玩意儿.</li>
+</ol>
+<p>我的项目做了下面的步骤:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_flow.png"><figure>
+          <img src="/img/QAM/QAM_flow.png" alt="QAM 流程图" title="图1: 实现流程图"/>
+          <figcaption>图1: 实现流程图</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>不要慌, 我们一步步看👀.</p>
+<hr>
+<h2 id="库">
+  库
+  <a class="anchor" href="#%e5%ba%93">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> log2, arange, sqrt, flip, concatenate, zeros, array, floor, sqrt, array, bitwise_xor
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy.random <span style="color:#f92672">import</span> randint
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> ceil
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> signal 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> hamming <span style="color:#f92672">import</span> encode, decode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bitarray <span style="color:#f92672">import</span> bitarray
+</span></span></code></pre></div><hr>
+<h2 id="string-与-binary-的转换">
+  String 与 Binary 的转换
+  <a class="anchor" href="#string-%e4%b8%8e-binary-%e7%9a%84%e8%bd%ac%e6%8d%a2">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string2bits</span>(s<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([bin(ord(x))[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>zfill(<span style="color:#ae81ff">8</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> s])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [int(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> list(out)]
+</span></span></code></pre></div><p>好多奇奇怪怪的函数, 慢慢查吧😩.</p>
+<ul>
+<li>
+<p><code>ord(x)</code>: 返回代表字符 <code>x</code> 的 unicode 编码 (<code>int</code>), 比方说: <code>‘a’</code> 的 unicode 编码是 97, <code>‘?’</code> 的是 63.</p>
+</li>
+<li>
+<p><code>bin(ord(x))</code>: 返回x的unicode编码的二进制字符串 (<code>string</code>), 注意:<code>ord()</code>的输出是十进制的呀. 比如:</p>
+<p><code>'a'</code> -&gt; 97 -&gt; <code>&quot;0b1100001&quot;</code></p>
+<p><code>'?'</code> -&gt; 63 -&gt; <code>&quot;0b111111&quot;</code></p>
+</li>
+</ul>
+<p>注意到这里的字符串前面带了 <code>0b</code>, 因此我们需要:</p>
+<ul>
+<li>
+<p><code>bin(ord(x))[2:]</code>: 去掉 <code>0b</code></p>
+<p><code>'a'</code> -&gt; 97 -&gt; <code>&quot;0b1100001&quot;</code> -&gt; <code>&quot;1100001&quot;</code></p>
+<p><code>'?'</code> -&gt; 63 -&gt; <code>&quot;0b111111&quot;</code> -&gt; <code>&quot;111111&quot;</code></p>
+</li>
+</ul>
+<p>又注意到每个字符串长度不一样, 这可能会让我们在解码的时候出现问题, 因此我们需要:</p>
+<ul>
+<li>
+<p><code>bin(ord(x))[2:].zfill(8)</code>: 补齐字符串到8位</p>
+<p><code>'a'</code> -&gt; 97 -&gt; <code>&quot;0b1100001&quot;</code> -&gt; <code>&quot;1100001&quot;</code> -&gt; <code>&quot;01100001&quot;</code></p>
+<p><code>'?'</code> -&gt; 63 -&gt; <code>&quot;0b111111&quot;</code>-&gt; <code>&quot;111111&quot;</code> -&gt; <code>&quot;00111111&quot;</code></p>
+</li>
+<li>
+<p><code>out = ''.join([bin(ord(x))[2:].zfill(8) for x in s])</code>: 将所有字符转换后的 8 位二进制拼接成一个长字符串.</p>
+<p><code>'a?'</code> -&gt; <code>&quot;0110000100111111&quot;</code></p>
+</li>
+</ul>
+<p>但是因为整形(<code>int</code>)要更好处理一些, 我们最后再换一换:</p>
+<ul>
+<li>
+<p><code>return [int(x) for x in list(out)]</code>: 遍历每一个字符 (<code>char</code>), 将其换成整形 (<code>int</code>):</p>
+<p><code>'a?'</code> -&gt; <code>&quot;0110000100111111&quot;</code> -&gt; <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code></p>
+</li>
+</ul>
+<p>当当~~</p>
+<p>既然都把这么乱七八糟的转换搞懂了, 那就不妨再看看怎么把它变回去. (Binary -&gt; String)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bits2string</span>(b<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([chr(int(x, <span style="color:#ae81ff">2</span>)) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> b])
+</span></span></code></pre></div><p>道理也大差不差, <code>[... for x in b]</code> 用来遍历Binary数组中的每一个元素, <code>int(x, 2)</code> 将二进制的输入变成 10 进制, <code>chr()</code> 再把它变成字符, 最后再用 <code>''.join()</code> 合并在一起.</p>
+<hr>
+<h2 id="awgn-噪音">
+  AWGN 噪音
+  <a class="anchor" href="#awgn-%e5%99%aa%e9%9f%b3">#</a>
+</h2>
+<p>咱先跳过 Hamming Code, 看看怎么加 AWGN 噪音:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">awgn</span>(signal, snr, seed<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Additive White Gaussian Noise (AWGN) function.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> seed:
+</span></span><span style="display:flex;"><span>        np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate the signal power as the average of the squared magnitudes of the signal</span>
+</span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sum([math<span style="color:#f92672">.</span>pow(abs(signal[A_I]), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">for</span> A_I <span style="color:#f92672">in</span> range(len(signal))])
+</span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate the noise power based on the SNR</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># SNR (in linear scale) = Signal Power / Noise Power</span>
+</span></span><span style="display:flex;"><span>    noisepower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> (math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">10</span>, snr<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generate Gaussian noise with mean 0 and standard deviation based on noise power</span>
+</span></span><span style="display:flex;"><span>    noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, np<span style="color:#f92672">.</span>sqrt(noisepower), len(signal))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array([noise])
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><p>其中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sum([math<span style="color:#f92672">.</span>pow(abs(signal[A_I]), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">for</span> A_I <span style="color:#f92672">in</span> range(len(signal))])
+</span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
+</span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
+<p>那么为什么要计算信号功率呢? 由信噪比公式:</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[
+
+\mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)
+
+\]
+</span>
+
+<p>其中:</p>
+<ul>
+<li><span>
+  \( \mathrm{SNR}_{\text{dB}} \)
+</span>
+ : 信噪比（分贝表示）</li>
+<li><span>
+  \( P_{\text{signal}} \)
+</span>
+ : 信号功率</li>
+<li><span>
+  \( P_{\text{noise}}： \)
+</span>
+ : 噪声功率</li>
+</ul>
+<p>因此, 通过给定的信噪比 SNR, 我们可以通过信号功率反推出应该加入的<strong>噪声功率</strong>. 也就是这一步:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    noisepower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> (math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">10</span>, snr<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>))
+</span></span></code></pre></div><p>然后再通过这一噪声功率计算出 AWGN (也就是这个函数的输出), 最后和原本的信号做个加法就行啦~</p>
+<p><code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code></p>
+<p>SNR=24:</p>
+<pre tabindex="0"><code>array([[-0.03305892,  0.93648725,  1.07229167,  0.03032389, -0.08373429,
+        -0.04651428, -0.02556458,  1.04447924, -0.04254978, -0.01583561,
+         1.01729117,  0.98901276,  1.01125261,  0.97203918,  1.07735198,
+         1.03366213]])
+</code></pre><p>SNR=6:</p>
+<pre tabindex="0"><code>array([[ 0.15621611,  0.5966272 ,  0.40825385, -0.03236429,  0.80902723,
+         0.67793688,  0.05471882,  1.1841027 , -0.48631011, -0.56585869,
+         1.15182751,  0.44881134,  0.74662291,  0.95341178,  0.9046891 ,
+         0.71363364]])
+</code></pre><p>可以明显发现信噪比 SNR 越大(如 SNR=24), 噪音对信号的影响越小, 反之, 信噪比 SNR 越小(如 SNR=6), 信号就变得更加乱七八糟.</p>
+<hr>
+<h2 id="qam-调制">
+  QAM 调制
+  <a class="anchor" href="#qam-%e8%b0%83%e5%88%b6">#</a>
+</h2>
+<p>(话说是不是应该先讲一讲 QAM 是什么?)</p>
+<h3 id="qam-是什么">
+  QAM 是什么?
+  <a class="anchor" href="#qam-%e6%98%af%e4%bb%80%e4%b9%88">#</a>
+</h3>
+<p>根据维基百科:</p>
+<blockquote class="book-hint info">
+<p>Quadrature amplitude modulation (QAM) is the name of a family of digital modulation methods and a related family of analog modulation methods widely used in modern telecommunications to transmit information. It conveys two analog message signals, or two digital bit streams, by changing (modulating) the amplitudes of two carrier waves, using the amplitude-shift keying (ASK) digital modulation scheme or amplitude modulation (AM) analog modulation scheme. The two carrier waves are of the same frequency and are out of phase with each other by 90°, a condition known as orthogonality or quadrature. The transmitted signal is created by adding the two carrier waves together. At the receiver, the two waves can be coherently separated (demodulated) because of their orthogonality.</p>
+</blockquote>
+<p>(啊, 好长&hellip;)</p>
+<p>一句话, QAM 的传输效率更高.</p>
+<p>比如 QAM16 一次可以传递 4 bit, 而 AM 一次只能传 1 bit.</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_capacity_compare.png"><figure>
+          <img src="/img/QAM/QAM_capacity_compare.png" alt="各种调制方法通道容量比较" title="图2: 各种调制方法通道容量比较"/>
+          <figcaption>图2: 各种调制方法通道容量比较</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>对于本文中的 QAM 的实现, 简单来说, 就是三步: 1. 先把输入数组均分成两份, 2. 再通过幅移键控 (ASK) 编码, 3. 然后乘上各自的载波就OK了. 可以看看示意图:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_flow_mod.png"><figure>
+          <img src="/img/QAM/QAM_flow_mod.png" alt="QAM 调制" title="图3: QAM调制示意图"/>
+          <figcaption>图3: QAM调制示意图</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="qam-原理">
+  QAM 原理
+  <a class="anchor" href="#qam-%e5%8e%9f%e7%90%86">#</a>
+</h3>
+<p>至于它为什么能够成功编码解码, 用公式要更好理解一点.</p>
+<p>首先将输入均分为两半, 然后分别计算得到各自的 ASK 编码: <span>
+  \( A_I(t) \)
+</span>
+和<span>
+  \( A_Q(t) \)
+</span>
+.</p>
+<span>
+  \[
+
+I(t) = A_I(t) cos(2\pi f t) \\
+
+Q(t) = A_Q(t) sin(2\pi f t)
+
+\]
+</span>
+
+<p>其中, <span>
+  \( f \)
+</span>
+ 是载波的频率. 然后将<span>
+  \( I(t) \)
+</span>
+和<span>
+  \( Q(t) \)
+</span>
+叠加, 得到:</p>
+<span>
+  \[
+
+I(t) + Q(t) = A_I(t) cos(2\pi f t) + A_Q(t) sin(2\pi f t)
+
+\]
+</span>
+
+<p>在解码的时候, 先分别乘上各自的载波:</p>
+<span>
+  \[
+
+(I(t) + Q(t)) cos(2\pi f t) = \frac{1}{2} (A_I(t) + A_I(t)cos(4\pi f t) + A_Q(t)sin(4\pi f t))
+
+\]
+</span>
+
+<span>
+  \[
+
+(I(t) + Q(t)) sin(2\pi f t) = \frac{1}{2} (A_Q(t) + A_I(t)cos(4\pi f t) - A_Q(t)sin(4\pi f t)) 
+
+\]
+</span>
+
+<p>在过滤掉高频分量后:</p>
+<span>
+  \[
+
+Filter((I(t) + Q(t)) cos(2\pi f t)) \approx \frac{1}{2} A_I(t)
+
+\]
+</span>
+
+<span>
+  \[
+
+Filter((I(t) + Q(t)) sin(2\pi f t)) \approx \frac{1}{2} A_Q(t)
+
+\]
+</span>
+
+<p>就可以成功得到<span>
+  \( A_I(t) \)
+</span>
+和<span>
+  \( A_Q(t) \)
+</span>
+啦 🎉.</p>
+<h3 id="qam-代码实现">
+  QAM 代码实现
+  <a class="anchor" href="#qam-%e4%bb%a3%e7%a0%81%e5%ae%9e%e7%8e%b0">#</a>
+</h3>
+<p>为了让图更好看, 我们改一下初始输入字符串和信噪比:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Signal-to-Noise Ratio (SNR) in dB for the simulation</span>
+</span></span><span style="display:flex;"><span>snr <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Input string to be transmitted. </span>
+</span></span><span style="display:flex;"><span>input_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Communications Systems Communication Channel Simulation and Report. In this project, you will complete a simulation of a wireless communication system. This builds on the tasks in Lab 1 and the lectures cover all the background theory for each part of the task.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># input_string = &#34;a?&#34;</span>
+</span></span></code></pre></div><p>为了实现动态QAM, 我们希望对于不同的信噪比选择不同的QAM模型(QAM4, QAM16 或是 QAM64). 此处, 对应于上述 <code>snr = 24</code>, 其本会动态选择 QAM64, 但出于展示目的, 我们将其<strong>手动调整为 QAM16</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Dynamically adjust the modulation order based on the Signal-to-Noise Ratio (SNR)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> snr <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">28</span>: 
+</span></span><span style="display:flex;"><span>    M <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>  <span style="color:#75715e"># Use 64-QAM for high SNR, allowing more symbols (6 bits per symbol) for higher data rates</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> snr <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">20</span>: 
+</span></span><span style="display:flex;"><span>    M <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>  <span style="color:#75715e"># Use 16-QAM for moderate SNR, balancing data rate and noise resilience</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>: 
+</span></span><span style="display:flex;"><span>    M <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>  <span style="color:#75715e"># Use 4-QAM (QPSK) for low SNR, prioritizing robustness over data rate</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if you do NOT want to use dynamic modulation you can use the following instruction.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Default modulation order for QAM (16-QAM) indicating 16 different symbols</span>
+</span></span><span style="display:flex;"><span>M <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>M
+</span></span></code></pre></div><p>一些其它的衍生量, 为了方便后面的计算.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sqrt_M <span style="color:#f92672">=</span> int(sqrt(M))
+</span></span><span style="display:flex;"><span>size_symbol <span style="color:#f92672">=</span> int(log2(M))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n_symbol <span style="color:#f92672">=</span> int(len(input_string) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">8</span> <span style="color:#f92672">/</span> size_symbol)) <span style="color:#75715e"># number of QAM symbols to create</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>size_symbol, n_symbol
+</span></span></code></pre></div><p>对于 QAM16 和 指定的发送信息, <code>size_symbol = 4</code>, <code>n_symbol = 522</code>. 前者表示其”一口气“最多可以传4bit, 也就是一个 symbol, 后者表示对于给定的信息, 它需要传 522 symbol.</p>
+<p>然后是两个载波:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Define carrier signal parameters</span>
+</span></span><span style="display:flex;"><span>f_s <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span> <span style="color:#75715e"># Sampling frequency in MHz</span>
+</span></span><span style="display:flex;"><span>rep_symbol <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span> <span style="color:#75715e"># Number of samples used to represent a single QAM symbol</span>
+</span></span><span style="display:flex;"><span>max_t <span style="color:#f92672">=</span> rep_symbol <span style="color:#f92672">*</span> n_symbol <span style="color:#f92672">/</span> f_s <span style="color:#75715e"># Total time duration of the signal</span>
+</span></span><span style="display:flex;"><span>print(max_t)
+</span></span><span style="display:flex;"><span>t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, max_t, int(f_s <span style="color:#f92672">*</span> max_t)) <span style="color:#75715e"># Generate the time vector for the signal</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f_c <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#75715e"># Carrier frequency in MHz</span>
+</span></span><span style="display:flex;"><span>A_c <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e"># Amplitude of the carrier</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate the in-phase (I) and quadrature (Q) carrier signals</span>
+</span></span><span style="display:flex;"><span>carrier_I <span style="color:#f92672">=</span> A_c<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>pi<span style="color:#f92672">*</span>f_c<span style="color:#f92672">*</span>t)
+</span></span><span style="display:flex;"><span>carrier_Q <span style="color:#f92672">=</span> A_c<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>sin(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>pi<span style="color:#f92672">*</span>f_c<span style="color:#f92672">*</span>t)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, carrier_I)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlim(left<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, right<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>输出:</p>
+<p><code>26.3</code></p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_carrier.png"><figure>
+          <img src="/img/QAM/QAM_carrier.png" alt="QAM 载波" title="图4: QAM 载波"/>
+          <figcaption>图4: QAM 载波</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>代码中我们可以发现一个变量 <code>rep_symbol</code>, 它在下列的代码中被用来“重复”输入数组, 已将其扩展为时间序列, 以此方便后面画图时更准确的采样. 而<code>f_s</code> 正是在话这个图是的采样频率.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Reshape the noisy input into blocks corresponding to QAM symbols</span>
+</span></span><span style="display:flex;"><span>input_QAM <span style="color:#f92672">=</span> input_b_noise<span style="color:#f92672">.</span>reshape((<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,size_symbol))
+</span></span><span style="display:flex;"><span>print(input_QAM<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize arrays for amplitude components of in-phase (I) and quadrature (Q)</span>
+</span></span><span style="display:flex;"><span>A_I <span style="color:#f92672">=</span> zeros((input_QAM<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>],))
+</span></span><span style="display:flex;"><span>A_Q <span style="color:#f92672">=</span> zeros((input_QAM<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>],))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Amplitude modulation: Calculate the amplitudes for I and Q components</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> range(int(size_symbol <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)):
+</span></span><span style="display:flex;"><span>    A_I <span style="color:#f92672">=</span> A_I <span style="color:#f92672">+</span> input_QAM[:,n] <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> (int(size_symbol <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> n)
+</span></span><span style="display:flex;"><span>    A_Q <span style="color:#f92672">=</span> A_Q <span style="color:#f92672">+</span> input_QAM[:,n <span style="color:#f92672">+</span> int(size_symbol <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)] <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> (int(size_symbol <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> n)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># QAM</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(A_I)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(A_Q)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate repeated in-phase amplitude signal to match the time resolution</span>
+</span></span><span style="display:flex;"><span>s_I <span style="color:#f92672">=</span> A_I<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>repeat(rep_symbol, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Modulate the in-phase component with the cosine carrier</span>
+</span></span><span style="display:flex;"><span>s_I_mod <span style="color:#f92672">=</span> s_I <span style="color:#f92672">*</span> carrier_I
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(s_I)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate repeated quadrature amplitude signal to match the time resolution</span>
+</span></span><span style="display:flex;"><span>s_Q <span style="color:#f92672">=</span> A_Q<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>repeat(rep_symbol, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Modulate the quadrature component with the sine carrier</span>
+</span></span><span style="display:flex;"><span>s_Q_mod <span style="color:#f92672">=</span> s_Q <span style="color:#f92672">*</span> carrier_Q
+</span></span></code></pre></div><p>然后把调制后的信号画出来:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_I_mod)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_I, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#34;modulated I&#34;</span>, <span style="color:#e6db74">&#34;I&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlim(left<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, right<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_Q_mod)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_Q, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#34;modulated Q&#34;</span>, <span style="color:#e6db74">&#34;Q&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlim(left<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, right<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>s_mod <span style="color:#f92672">=</span> s_I_mod <span style="color:#f92672">+</span> s_Q_mod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_mod, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlim(left<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, right<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># plt.legend([&#34;modulated s&#34;, &#34;s&#34;])</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid()
+</span></span></code></pre></div><p>输出:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_I_mod.png"><figure>
+          <img src="/img/QAM/QAM_I_mod.png" alt="QAM 调制后的 I 分量信号" title="图5: QAM 调制后的 I 分量信号"/>
+          <figcaption>图5: QAM 调制后的 I 分量信号</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_Q_mod.png"><figure>
+          <img src="/img/QAM/QAM_Q_mod.png" alt="QAM 调制后的 Q 分量信号" title="图6: QAM 调制后的 Q 分量信号"/>
+          <figcaption>图6: QAM 调制后的 Q 分量信号</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_I&#43;Q_mod.png"><figure>
+          <img src="/img/QAM/QAM_I&#43;Q_mod.png" alt="QAM 调制后的总信号" title="图7: QAM 调制后的总信号"/>
+          <figcaption>图7: QAM 调制后的总信号</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="qam-星座图">
+  QAM 星座图
+  <a class="anchor" href="#qam-%e6%98%9f%e5%ba%a7%e5%9b%be">#</a>
+</h3>
+<p>为了绘制星座图, 我们有如下变量和函数:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Generate a normalized QAM constellation by representing points in binary format</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For example, QAM16: 00, 01, 10, 11</span>
+</span></span><span style="display:flex;"><span>norm_constallation <span style="color:#f92672">=</span> [bin(x)[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>zfill(size_symbol <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> arange(sqrt_M)]
+</span></span><span style="display:flex;"><span>norm_constallation
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_constellation</span>(S, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;blue&#34;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Plots the QAM constellation diagram, showing signal points and the grid of possible symbols.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Separate the real and imaginary parts of the symbols for plotting</span>
+</span></span><span style="display:flex;"><span>        sx,sy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>real(S), np<span style="color:#f92672">.</span>imag(S)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Map to constellation coord</span>
+</span></span><span style="display:flex;"><span>        k <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>(sqrt_M <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        sx <span style="color:#f92672">=</span> [k <span style="color:#f92672">*</span> x <span style="color:#f92672">+</span> b <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> sx]
+</span></span><span style="display:flex;"><span>        sy <span style="color:#f92672">=</span> [k <span style="color:#f92672">*</span> y <span style="color:#f92672">+</span> b <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> sy]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Plot the symbols as scatter points</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> label:
+</span></span><span style="display:flex;"><span>            plt<span style="color:#f92672">.</span>scatter(sx,sy,s<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>, c<span style="color:#f92672">=</span>color, label<span style="color:#f92672">=</span>label)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            plt<span style="color:#f92672">.</span>scatter(sx,sy,s<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>, c<span style="color:#f92672">=</span>color)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Overlay the QAM grid points and annotate them with their binary representations</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(range(<span style="color:#f92672">-</span>sqrt_M <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, sqrt_M, <span style="color:#ae81ff">2</span>)):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> j, y <span style="color:#f92672">in</span> enumerate(range(<span style="color:#f92672">-</span>sqrt_M <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, sqrt_M, <span style="color:#ae81ff">2</span>)):
+</span></span><span style="display:flex;"><span>                plt<span style="color:#f92672">.</span>scatter(x, y, s<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>                plt<span style="color:#f92672">.</span>annotate(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>norm_constallation[i]<span style="color:#e6db74">}{</span>norm_constallation[j]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, xy<span style="color:#f92672">=</span>(x<span style="color:#f92672">-</span><span style="color:#ae81ff">0.25</span>, y<span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>))
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>        axis_limit <span style="color:#f92672">=</span> sqrt_M
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>axis([<span style="color:#f92672">-</span>axis_limit,axis_limit,<span style="color:#f92672">-</span>axis_limit,axis_limit])
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>axhline(<span style="color:#ae81ff">0</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>axvline(<span style="color:#ae81ff">0</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># draw constellation</span>
+</span></span><span style="display:flex;"><span>S <span style="color:#f92672">=</span> A_I <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>j <span style="color:#f92672">*</span> A_Q
+</span></span><span style="display:flex;"><span>print(S[:<span style="color:#ae81ff">10</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plot_constellation(S)
+</span></span></code></pre></div><p>输出:</p>
+<p><code>[1.88111148+2.08807572j 3.01975263+0.01366766j 2.05328757+1.12644641j 1.83682459+3.0908774j  2.00044805+2.97572787j 2.9585253 +0.84307519j 1.92937708+3.06050133j 1.07733372+1.0006585j  2.98315354+0.84013525j 2.08884394+1.86715759j]</code></p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM16_cons_b.png"><figure>
+          <img src="/img/QAM/QAM16_cons_b.png" alt="QAM16 星座图(发送前)" title="图8: QAM16 星座图(发送前)"/>
+          <figcaption>图8: QAM16 星座图(发送前)</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<hr>
+<h2 id="路径损失模拟-hata-model">
+  路径损失模拟 Hata Model
+  <a class="anchor" href="#%e8%b7%af%e5%be%84%e6%8d%9f%e5%a4%b1%e6%a8%a1%e6%8b%9f-hata-model">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Hata Model for small or medium-sized city.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#f_c: in MHz</span>
+</span></span><span style="display:flex;"><span>h_b <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span> <span style="color:#75715e"># height of BS antenna in metres</span>
+</span></span><span style="display:flex;"><span>h_m <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># height of mobile antenna in matres</span>
+</span></span><span style="display:flex;"><span>distance <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]);  <span style="color:#75715e">#in km</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C_H <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.8</span> <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1.1</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(f_c) <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.7</span>) <span style="color:#f92672">*</span> h_m <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.56</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(f_c)
+</span></span><span style="display:flex;"><span>L_U <span style="color:#f92672">=</span> <span style="color:#ae81ff">69.55</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">26.16</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(f_c) <span style="color:#f92672">-</span> <span style="color:#ae81ff">13.82</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(h_b) <span style="color:#f92672">-</span> C_H <span style="color:#f92672">+</span> (<span style="color:#ae81ff">44.9</span><span style="color:#f92672">-</span><span style="color:#ae81ff">6.55</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>log10(h_b))<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>log10(distance)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(distance, L_U)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Distance from transmitter(in km)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Path loss (in dB)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid()
+</span></span></code></pre></div><p>output:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/Hata_model.png"><figure>
+          <img src="/img/QAM/Hata_model.png" alt="Hata model" title="图9: Hata model"/>
+          <figcaption>图9: Hata model</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>可以发现, 距离越远, 损失越多.</p>
+<hr>
+<h2 id="qam-解调">
+  QAM 解调
+  <a class="anchor" href="#qam-%e8%a7%a3%e8%b0%83">#</a>
+</h2>
+<p>为了方便解调, 我们先写一个滤波器出来:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">butter_lowpass_filter</span>(data, cutoff, fs, order):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Applies a Butterworth lowpass filter to the given data. 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate the Nyquist frequency (half the sampling frequency)</span>
+</span></span><span style="display:flex;"><span>    nyq <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> fs
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Normalize the cutoff frequency to the Nyquist frequency</span>
+</span></span><span style="display:flex;"><span>    normal_cutoff <span style="color:#f92672">=</span> cutoff <span style="color:#f92672">/</span> nyq
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># b, a are the filter coefficients</span>
+</span></span><span style="display:flex;"><span>    b, a <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>butter(order, normal_cutoff, btype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;low&#39;</span>, analog<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Apply the filter to the data using forward-backward filtering</span>
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>filtfilt(b, a, data)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> y
+</span></span></code></pre></div><p>QAM 解调以及对应的波形:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Demodulate the in-phase (I) component</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Multiply the received signal by the in-phase carrier and scale by 2 to isolate the I component</span>
+</span></span><span style="display:flex;"><span>s_I_demod <span style="color:#f92672">=</span> s_mod <span style="color:#f92672">*</span> carrier_I <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Apply the Butterworth lowpass filter to remove high-frequency components</span>
+</span></span><span style="display:flex;"><span>s_I_demod <span style="color:#f92672">=</span> butter_lowpass_filter(s_I_demod, <span style="color:#ae81ff">50</span>, f_s, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Demodulate the quadrature (Q) component</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Multiply the received signal by the quadrature carrier and scale by 2 to isolate the Q component</span>
+</span></span><span style="display:flex;"><span>s_Q_demod <span style="color:#f92672">=</span> s_mod <span style="color:#f92672">*</span> carrier_Q <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Apply the Butterworth lowpass filter to remove high-frequency components</span>
+</span></span><span style="display:flex;"><span>s_Q_demod <span style="color:#f92672">=</span> butter_lowpass_filter(s_Q_demod, <span style="color:#ae81ff">50</span>, f_s, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plot the modulated and demodulated in-phase components</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_I_mod)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_I_demod)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlim(left<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, right<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#34;modulated I&#34;</span>, <span style="color:#e6db74">&#34;demodulated I&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plot the modulated and demodulated quadrature components</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_Q_mod)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(t, s_Q_demod)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlim(left<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, right<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#34;modulated Q&#34;</span>, <span style="color:#e6db74">&#34;demodulated Q&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid()
+</span></span></code></pre></div><p>output:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_I_demod.png"><figure>
+          <img src="/img/QAM/QAM_I_demod.png" alt="QAM 解调后的 I 分量信号" title="图10: QAM 解调后的 I 分量信号"/>
+          <figcaption>图10: QAM 解调后的 I 分量信号</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM_Q_demod.png"><figure>
+          <img src="/img/QAM/QAM_Q_demod.png" alt="QAM 解调后的 Q 分量信号" title="图11: QAM 解调后的 Q 分量信号"/>
+          <figcaption>图11: QAM 解调后的 Q 分量信号</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>对应的星座图:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Reshape the demodulated signal into blocks of size `rep_symbol` and calculate the average for each block</span>
+</span></span><span style="display:flex;"><span>A_I_demod <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>average(s_I_demod<span style="color:#f92672">.</span>reshape((<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, rep_symbol)), <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>A_Q_demod <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>average(s_Q_demod<span style="color:#f92672">.</span>reshape((<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, rep_symbol)), <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(s_I_demod<span style="color:#f92672">.</span>reshape((rep_symbol, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>print(A_I_demod<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># To draw constrllation</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Combined in-phase and quadrature components to form complex symbols</span>
+</span></span><span style="display:flex;"><span>S_demod <span style="color:#f92672">=</span> A_I_demod <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>j <span style="color:#f92672">*</span> A_Q_demod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plot the constellation</span>
+</span></span><span style="display:flex;"><span>plot_constellation(S, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Transmitted&#34;</span>)
+</span></span><span style="display:flex;"><span>plot_constellation(S_demod, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;green&#34;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Received&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span></code></pre></div><p>output:</p>
+<pre tabindex="0"><code>(500, 526)
+(526,)
+</code></pre><p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/QAM/QAM16_cons_a.png"><figure>
+          <img src="/img/QAM/QAM16_cons_a.png" alt="QAM16 星座图(解调后)" title="图12: QAM16 星座图(解调后)"/>
+          <figcaption>图12: QAM16 星座图(解调后)</figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Round the demodulated signal&#39;s amplitudes to the nearest integers</span>
+</span></span><span style="display:flex;"><span>A_I_demod <span style="color:#f92672">=</span> [int(round(x)) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> A_I_demod]
+</span></span><span style="display:flex;"><span>A_Q_demod <span style="color:#f92672">=</span> [int(round(x)) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> A_Q_demod]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Map the rounded amplitudes to their corresponding binary strings in the normalized constellation</span>
+</span></span><span style="display:flex;"><span>output_b <span style="color:#f92672">=</span> [norm_constallation[min(len(norm_constallation) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, int(x))] <span style="color:#f92672">+</span> norm_constallation[min(len(norm_constallation) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, int(y))] <span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> zip(A_I_demod, A_Q_demod)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Concatenate all binary strings into a single bitstream</span>
+</span></span><span style="display:flex;"><span>output_b <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(output_b)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Decode the bitstream using a Hamming decode function</span>
+</span></span><span style="display:flex;"><span>output_b <span style="color:#f92672">=</span> list(decode(bitarray(output_b)))
+</span></span><span style="display:flex;"><span>output_b_int_list <span style="color:#f92672">=</span> output_b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert each binary value in the list to a string for easier manipulation</span>
+</span></span><span style="display:flex;"><span>output_b <span style="color:#f92672">=</span> [str(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> output_b]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Group the binary strings into bytes (8 bits each) for interpretation</span>
+</span></span><span style="display:flex;"><span>output_b <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(output_b[<span style="color:#ae81ff">8</span><span style="color:#f92672">*</span>i : <span style="color:#ae81ff">8</span><span style="color:#f92672">*</span>i <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>]) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(output_b) <span style="color:#f92672">//</span> <span style="color:#ae81ff">8</span>)]
+</span></span><span style="display:flex;"><span>print(output_b[:<span style="color:#ae81ff">10</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert the grouped binary values back into the original string</span>
+</span></span><span style="display:flex;"><span>output_string <span style="color:#f92672">=</span> bits2string(output_b)
+</span></span><span style="display:flex;"><span>print(output_string)
+</span></span></code></pre></div><p>output:</p>
+<pre tabindex="0"><code>[&#39;01000011&#39;, &#39;01101111&#39;, &#39;01101101&#39;, &#39;01101101&#39;, &#39;01110101&#39;, &#39;01101110&#39;, &#39;01101001&#39;, &#39;01100011&#39;, &#39;01100001&#39;, &#39;01110100&#39;]
+Communications Systems Communication Channel Simulation and Report. In this project, you will complete a simulation of a wireless communication system. This builds on the tasks in Lab 1 and the lectures cover all the background theory for each part of the task.
+</code></pre><h2 id="误码率">
+  误码率
+  <a class="anchor" href="#%e8%af%af%e7%a0%81%e7%8e%87">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(output_b_int_list[:<span style="color:#ae81ff">24</span>])
+</span></span><span style="display:flex;"><span>print(input_b_int_list[:<span style="color:#ae81ff">24</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize the Bit Error Rate (BER) counter</span>
+</span></span><span style="display:flex;"><span>BER <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize a list to store the indices of errors</span>
+</span></span><span style="display:flex;"><span>error_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Iterate through pairs of input and output bits (or values) for comparison</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, (input, output) <span style="color:#f92672">in</span> enumerate(zip(input_b_int_list, output_b_int_list)):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input <span style="color:#f92672">!=</span> output: 
+</span></span><span style="display:flex;"><span>        BER <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        error_list <span style="color:#f92672">+=</span> [i]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate the BER by dividing the total errors by the length of the output</span>
+</span></span><span style="display:flex;"><span>BER <span style="color:#f92672">/=</span> len(output_b_int_list)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;BER is </span><span style="color:#e6db74">{</span>BER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;find error at </span><span style="color:#e6db74">{</span>error_list<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>output:</p>
+<pre tabindex="0"><code>[0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1]
+[0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1]
+BER is 0.0
+find error at []
+</code></pre><p>十分完美!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#引入">引入</a></li>
+    <li><a href="#库">库</a></li>
+    <li><a href="#string-与-binary-的转换">String 与 Binary 的转换</a></li>
+    <li><a href="#awgn-噪音">AWGN 噪音</a></li>
+    <li><a href="#qam-调制">QAM 调制</a>
+      <ul>
+        <li><a href="#qam-是什么">QAM 是什么?</a></li>
+        <li><a href="#qam-原理">QAM 原理</a></li>
+        <li><a href="#qam-代码实现">QAM 代码实现</a></li>
+        <li><a href="#qam-星座图">QAM 星座图</a></li>
+      </ul>
+    </li>
+    <li><a href="#路径损失模拟-hata-model">路径损失模拟 Hata Model</a></li>
+    <li><a href="#qam-解调">QAM 解调</a></li>
+    <li><a href="#误码率">误码率</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

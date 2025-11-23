@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  👀
+  #
+
+题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
+
+This should include at minimum:
+
+A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.
+Using your modulation format of choice, modulate a carrier to encode this information.
+The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.
+An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.
+Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.
+Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.
+
+Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh-cn/docs/example/my-blog/test/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="动态QAM调制python实现">
+  <meta property="og:description" content="👀 # 题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
+This should include at minimum:
+A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”. Using your modulation format of choice, modulate a carrier to encode this information. The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN. An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency. Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel. Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth. Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>动态QAM调制python实现 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/zh-cn/docs/example/my-blog/test/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.90a2765402c5c3b9104e23ac65ee2b50a5ae98ca9b274b0f994eb574240752fa.js" integrity="sha256-kKJ2VALFw7kQTiOsZe4rUKWumMqbJ0sPmU61dCQHUvo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh-cn/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh-cn/docs/example/my-blog/test/" class="active">动态QAM调制python实现</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>动态QAM调制python实现</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">👀</a></li>
+    <li><a href="#导入所需的库">导入所需的库~</a></li>
+    <li><a href="#string-与-binary-的转换">String 与 Binary 的转换</a></li>
+    <li><a href="#加噪音">加噪音</a></li>
+    <li><a href="#qam-调制">QAM 调制</a>
+      <ul>
+        <li><a href="#qam-是什么">QAM 是什么?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="heading">
+  👀
+  <a class="anchor" href="#heading">#</a>
+</h2>
+<p>题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:</p>
+<blockquote class="book-hint info">
+<p>This should include at minimum:</p>
+<ul>
+<li>A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.</li>
+<li>Using your modulation format of choice, modulate a carrier to encode this information.</li>
+<li>The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.</li>
+<li>An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.</li>
+<li>Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.</li>
+<li>Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.</li>
+</ul>
+<p>Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:</p>
+<ul>
+<li>Simulate fading conditions associated with an urban environment. Implementation of Hamming coding or other error correction technique.</li>
+<li>Transmission of video, audio or other time varying signal over the channel.</li>
+<li>Dynamic modulation, based on measured system performance.</li>
+<li>Automatic resending of errored signals.</li>
+<li>Or anything else you think would be a cool addition!</li>
+</ul>
+</blockquote>
+<p>:-(</p>
+<p>归纳一下差不多如下:</p>
+<ol>
+<li>将 String 的输入转化为由 0 和 1 组成的二进制编码.</li>
+<li>用 Hamming code 编码.</li>
+<li>加入噪音.</li>
+<li>选一个喜欢的办法调制.</li>
+<li>再解调.</li>
+<li>计算误码率等其他玩意儿.</li>
+</ol>
+<p>我的项目做了下面的步骤:</p>
+<p><img src="/img/wechat.png" alt="" /></p>
+<p>那就一步步看👀.</p>
+<hr>
+<h2 id="导入所需的库">
+  导入所需的库~
+  <a class="anchor" href="#%e5%af%bc%e5%85%a5%e6%89%80%e9%9c%80%e7%9a%84%e5%ba%93">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> log2, arange, sqrt, flip, concatenate, zeros, array, floor, sqrt, array, bitwise_xor
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy.random <span style="color:#f92672">import</span> randint
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> ceil
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> signal 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> hamming <span style="color:#f92672">import</span> encode, decode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bitarray <span style="color:#f92672">import</span> bitarray
+</span></span></code></pre></div><hr>
+<h2 id="string-与-binary-的转换">
+  String 与 Binary 的转换
+  <a class="anchor" href="#string-%e4%b8%8e-binary-%e7%9a%84%e8%bd%ac%e6%8d%a2">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string2bits</span>(s<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([bin(ord(x))[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>zfill(<span style="color:#ae81ff">8</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> s])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [int(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> list(out)]
+</span></span></code></pre></div><p>好多奇奇怪怪的函数, 慢慢查吧😩.</p>
+<ul>
+<li>
+<p><code>ord(x)</code>: 返回代表字符 <code>x</code> 的 unicode 编码 (<code>int</code>), 比方说: <code>‘a’</code> 的 unicode 编码是 97, <code>‘?’</code> 的是 63.</p>
+</li>
+<li>
+<p><code>bin(ord(x))</code>: 返回x的unicode编码的二进制字符串 (<code>string</code>), 注意:<code>ord()</code>的输出是十进制的呀. 比如:</p>
+<p><code>'a'</code> -&gt; 97 -&gt; <code>&quot;0b1100001&quot;</code></p>
+<p><code>'?'</code> -&gt; 63 -&gt; <code>&quot;0b111111&quot;</code></p>
+</li>
+</ul>
+<p>注意到这里的字符串前面带了 <code>0b</code>, 因此我们需要:</p>
+<ul>
+<li>
+<p><code>bin(ord(x))[2:]</code>: 去掉 <code>0b</code></p>
+<p><code>'a'</code> -&gt; 97 -&gt; <code>&quot;0b1100001&quot;</code> -&gt; <code>&quot;1100001&quot;</code></p>
+<p><code>'?'</code> -&gt; 63 -&gt; <code>&quot;0b111111&quot;</code> -&gt; <code>&quot;111111&quot;</code></p>
+</li>
+</ul>
+<p>又注意到每个字符串长度不一样, 这可能会让我们在解码的时候出现问题, 因此我们需要:</p>
+<ul>
+<li>
+<p><code>bin(ord(x))[2:].zfill(8)</code>: 补齐字符串到8位</p>
+<p><code>'a'</code> -&gt; 97 -&gt; <code>&quot;0b1100001&quot;</code> -&gt; <code>&quot;1100001&quot;</code> -&gt; <code>&quot;01100001&quot;</code></p>
+<p><code>'?'</code> -&gt; 63 -&gt; <code>&quot;0b111111&quot;</code>-&gt; <code>&quot;111111&quot;</code> -&gt; <code>&quot;00111111&quot;</code></p>
+</li>
+<li>
+<p><code>out = ''.join([bin(ord(x))[2:].zfill(8) for x in s])</code>: 将所有字符转换后的 8 位二进制拼接成一个长字符串.</p>
+<p><code>'a?'</code> -&gt; <code>&quot;0110000100111111&quot;</code></p>
+</li>
+</ul>
+<p>但是因为整形(<code>int</code>)要更好处理一些, 我们最后再换一换:</p>
+<ul>
+<li>
+<p><code>return [int(x) for x in list(out)]</code>: 遍历每一个字符 (<code>char</code>), 将其换成整形 (<code>int</code>):</p>
+<p><code>'a?'</code> -&gt; <code>&quot;0110000100111111&quot;</code> -&gt; <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code></p>
+</li>
+</ul>
+<p>当当~~</p>
+<p>既然都把这么乱七八糟的转换搞懂了, 那就不妨再看看怎么把它变回去. (Binary -&gt; String)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bits2string</span>(b<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([chr(int(x, <span style="color:#ae81ff">2</span>)) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> b])
+</span></span></code></pre></div><p>道理也大差不差, <code>[... for x in b]</code> 用来遍历Binary数组中的每一个元素, <code>int(x, 2)</code> 将二进制的输入变成 10 进制, <code>chr()</code> 再把它变成字符, 最后再用 <code>''.join()</code> 合并在一起.</p>
+<hr>
+<h2 id="加噪音">
+  加噪音
+  <a class="anchor" href="#%e5%8a%a0%e5%99%aa%e9%9f%b3">#</a>
+</h2>
+<p>咱先跳过 Hamming Code, 看看怎么加 AWGN 噪音:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">awgn</span>(signal, snr, seed<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Additive White Gaussian Noise (AWGN) function.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> seed:
+</span></span><span style="display:flex;"><span>        np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate the signal power as the average of the squared magnitudes of the signal</span>
+</span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sum([math<span style="color:#f92672">.</span>pow(abs(signal[A_I]), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">for</span> A_I <span style="color:#f92672">in</span> range(len(signal))])
+</span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate the noise power based on the SNR</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># SNR (in linear scale) = Signal Power / Noise Power</span>
+</span></span><span style="display:flex;"><span>    noisepower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> (math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">10</span>, snr<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generate Gaussian noise with mean 0 and standard deviation based on noise power</span>
+</span></span><span style="display:flex;"><span>    noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, np<span style="color:#f92672">.</span>sqrt(noisepower), len(signal))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array([noise])
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><p>其中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sum([math<span style="color:#f92672">.</span>pow(abs(signal[A_I]), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">for</span> A_I <span style="color:#f92672">in</span> range(len(signal))])
+</span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
+</span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
+<p>那么为什么要计算平均功率呢?</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[
+
+\mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)
+\]
+</span>
+
+<p>其中:</p>
+<ul>
+<li><span>
+  \( \mathrm{SNR}_{\text{dB}} \)
+</span>
+ : 信噪比（分贝表示）</li>
+<li><span>
+  \( P_{\text{signal}} \)
+</span>
+ : 信号功率</li>
+<li><span>
+  \( P_{\text{noise}}： \)
+</span>
+ : 噪声功率</li>
+</ul>
+<p>因此, 通过给定的信噪比 SNR, 我们可以通过信号功率反推出应该加入的噪声功率. 也就是这一步:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    noisepower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> (math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">10</span>, snr<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>))
+</span></span></code></pre></div><p>最后再通过这一噪声功率加入随机数就行啦~</p>
+<p><code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code></p>
+<p>SNR=24:</p>
+<pre tabindex="0"><code>array([[-0.03305892,  0.93648725,  1.07229167,  0.03032389, -0.08373429,
+        -0.04651428, -0.02556458,  1.04447924, -0.04254978, -0.01583561,
+         1.01729117,  0.98901276,  1.01125261,  0.97203918,  1.07735198,
+         1.03366213]])
+</code></pre><p>SNR=6:</p>
+<pre tabindex="0"><code>array([[ 0.15621611,  0.5966272 ,  0.40825385, -0.03236429,  0.80902723,
+         0.67793688,  0.05471882,  1.1841027 , -0.48631011, -0.56585869,
+         1.15182751,  0.44881134,  0.74662291,  0.95341178,  0.9046891 ,
+         0.71363364]])
+</code></pre><p>可以明显发现信噪比 SNR 越大(如 SNR=24), 噪音对信号的影响越小, 反之, 信噪比 SNR 越小(如 SNR=6), 信号就变得更加乱七八糟.</p>
+<h2 id="qam-调制">
+  QAM 调制
+  <a class="anchor" href="#qam-%e8%b0%83%e5%88%b6">#</a>
+</h2>
+<p>话说是不是应该先讲一讲 QAM 是什么?</p>
+<h3 id="qam-是什么">
+  QAM 是什么?
+  <a class="anchor" href="#qam-%e6%98%af%e4%bb%80%e4%b9%88">#</a>
+</h3>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">👀</a></li>
+    <li><a href="#导入所需的库">导入所需的库~</a></li>
+    <li><a href="#string-与-binary-的转换">String 与 Binary 的转换</a></li>
+    <li><a href="#加噪音">加噪音</a></li>
+    <li><a href="#qam-调制">QAM 调制</a>
+      <ul>
+        <li><a href="#qam-是什么">QAM 是什么?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
