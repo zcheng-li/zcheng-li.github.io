@@ -47,10 +47,10 @@ job 先后顺序表示的两种方式:
 也就是说, 一个一个按顺序做.
 
 但是为了更加正式的描述这个算法, 我们需要引入以下符号:
-* $C^'_j$: job j 的最早可能完成时间.
-* $S^'_j$: job j 的最早可能开始时间.
-* $p_j$: job j 所需要的处理时间.
-* {all k -> j}: 其余全部的 job 都是 j 的 前置.
+* $$C'_j$$: job j 的最早可能完成时间.
+* $$S'_j$$: job j 的最早可能开始时间.
+* $$p_j$$: job j 所需要的处理时间.
+* {all k -> j}: job j 的全部前置.
   
 因此, 我们可以拥有以下伪代码:
 
@@ -59,11 +59,19 @@ job 先后顺序表示的两种方式:
 这个方法, 我们称之为 **Forward Procedure**. 然而, 它虽然简单易懂, 但是它并不一定能带来最优的效率. 因为它有可能延迟某些 job 的开始. 
 
 因此, 我们接下来要介绍另一个 CPM 算法: **Backward Procedure**. 这个算法利用了 Forward Procedure 的输出 $C_max$ 作为输入, 然后其它需要定义的符号如下:
-* $C^{′′}_j$: job j 最晚可能完成时间. 
-* $S^{′′}_j$: job j 最晚可能开始时间.
-* ${j -> all k}$: job j 是所有其余 job 的前置.
+* $$C^{\prime\prime}_j$$: job j 最晚可能完成时间. 
+* $$S^{\prime\prime}_j$$: job j 最晚可能开始时间.
+* {j -> all k}: job j 的全部后置.
 
 ![alt text](/img/pns/a4_2_2.png)
+
+> So the forward procedure determines the earliest possible starting time and completion times as well as the minimum makespan.
+
+后面又补充了几个概念:
+* The diﬀerence between a job’s latest possible starting time and earliest possible starting time is the amount of slack, also referred to as **float**.
+* A job of which the earliest starting time is equal to the latest starting time is referred to as a **critical job**.
+* The set of critical jobs forms one or more **critical paths**. A critical path is a chain of non-slack jobs.
+
 
 ## 4.3 Program Evaluation and Review Technique (PERT)
 

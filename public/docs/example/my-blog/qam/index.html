@@ -37,7 +37,7 @@ A message of your choice, comprising more than 2048 bits, converted from a “ST
   <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/qam/" title="Dynamic QAM">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.fb2a5706f2eab57f41606cf2ead84d4ad05d668d4c9f45b2b8d024e9eb4ecac4.js" integrity="sha256-&#43;ypXBvLqtX9BYGzy6thNStBdZo1Mn0WyuNAk6etOysQ=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.187c09cf011d5a34d6977cfa91467374e242f1430c2321a05488d4eb2b108285.js" integrity="sha256-GHwJzwEdWjTWl3z6kUZzdOJC8UMMIyGgVIjU6ysQgoU=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -291,7 +291,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#%e5%bc%95%e5%85%a5">#</a>
 </h2>
 <p>题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:</p>
-<blockquote class="book-hint info">
+<!-- raw HTML omitted -->
 <p>This should include at minimum:</p>
 <ul>
 <li>A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.</li>
@@ -309,7 +309,7 @@ https://github.com/alex-shpak/hugo-book
 <li>Automatic resending of errored signals.</li>
 <li>Or anything else you think would be a cool addition!</li>
 </ul>
-</blockquote>
+<!-- raw HTML omitted -->
 <p>:-(</p>
 <p>归纳一下差不多如下:</p>
 <ol>
@@ -432,7 +432,10 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
 </span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
 <p>那么为什么要计算信号功率呢? 由信噪比公式:</p>
-<span>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
   \[
 
 \mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)
@@ -481,9 +484,9 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#qam-%e6%98%af%e4%bb%80%e4%b9%88">#</a>
 </h3>
 <p>根据维基百科:</p>
-<blockquote class="book-hint info">
+<!-- raw HTML omitted -->
 <p>Quadrature amplitude modulation (QAM) is the name of a family of digital modulation methods and a related family of analog modulation methods widely used in modern telecommunications to transmit information. It conveys two analog message signals, or two digital bit streams, by changing (modulating) the amplitudes of two carrier waves, using the amplitude-shift keying (ASK) digital modulation scheme or amplitude modulation (AM) analog modulation scheme. The two carrier waves are of the same frequency and are out of phase with each other by 90°, a condition known as orthogonality or quadrature. The transmitted signal is created by adding the two carrier waves together. At the receiver, the two waves can be coherently separated (demodulated) because of their orthogonality.</p>
-</blockquote>
+<!-- raw HTML omitted -->
 <p>(啊, 好长&hellip;)</p>
 <p>一句话, QAM 的传输效率更高.</p>
 <p>比如 QAM16 一次可以传递 4 bit, 而 AM 一次只能传 1 bit.</p>

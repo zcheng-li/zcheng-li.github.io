@@ -54,7 +54,7 @@ precedence constraints: 每个 job 的开始需要等待上一个 job 的完成.
 <link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch4/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.fb2a5706f2eab57f41606cf2ead84d4ad05d668d4c9f45b2b8d024e9eb4ecac4.js" integrity="sha256-&#43;ypXBvLqtX9BYGzy6thNStBdZo1Mn0WyuNAk6etOysQ=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.187c09cf011d5a34d6977cfa91467374e242f1430c2321a05488d4eb2b108285.js" integrity="sha256-GHwJzwEdWjTWl3z6kUZzdOJC8UMMIyGgVIjU6ysQgoU=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -345,10 +345,16 @@ environment with an unlimited number of machines.</p></blockquote>
 <p>也就是说, 一个一个按顺序做.</p>
 <p>但是为了更加正式的描述这个算法, 我们需要引入以下符号:</p>
 <ul>
-<li>$C^&rsquo;_j$: job j 的最早可能完成时间.</li>
-<li>$S^&rsquo;_j$: job j 的最早可能开始时间.</li>
-<li>$p_j$: job j 所需要的处理时间.</li>
-<li>{all k -&gt; j}: 其余全部的 job 都是 j 的 前置.</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>j</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msubsup></mrow><annotation encoding="application/x-tex">C&#x27;_j</annotation></semantics></math></span>
+: job j 的最早可能完成时间.</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>j</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msubsup></mrow><annotation encoding="application/x-tex">S&#x27;_j</annotation></semantics></math></span>
+: job j 的最早可能开始时间.</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_j</annotation></semantics></math></span>
+: job j 所需要的处理时间.</li>
+<li>{all k -&gt; j}: job j 的全部前置.</li>
 </ul>
 <p>因此, 我们可以拥有以下伪代码:</p>
 <p>
@@ -365,9 +371,13 @@ environment with an unlimited number of machines.</p></blockquote>
 <p>这个方法, 我们称之为 <strong>Forward Procedure</strong>. 然而, 它虽然简单易懂, 但是它并不一定能带来最优的效率. 因为它有可能延迟某些 job 的开始.</p>
 <p>因此, 我们接下来要介绍另一个 CPM 算法: <strong>Backward Procedure</strong>. 这个算法利用了 Forward Procedure 的输出 $C_max$ 作为输入, 然后其它需要定义的符号如下:</p>
 <ul>
-<li>$C^{′′}_j$: job j 最晚可能完成时间.</li>
-<li>$S^{′′}_j$: job j 最晚可能开始时间.</li>
-<li>${j -&gt; all k}$: job j 是所有其余 job 的前置.</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>j</mi><mrow><mo mathvariant="normal">′</mo><mo mathvariant="normal">′</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">C^{\prime\prime}_j</annotation></semantics></math></span>
+: job j 最晚可能完成时间.</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>j</mi><mrow><mo mathvariant="normal">′</mo><mo mathvariant="normal">′</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">S^{\prime\prime}_j</annotation></semantics></math></span>
+: job j 最晚可能开始时间.</li>
+<li>{j -&gt; all k}: job j 的全部后置.</li>
 </ul>
 <p>
   <div class="post-img-view">
@@ -380,6 +390,14 @@ environment with an unlimited number of machines.</p></blockquote>
       </figure></a>
   </div>
 </p>
+<blockquote>
+<p>So the forward procedure determines the earliest possible starting time and completion times as well as the minimum makespan.</p></blockquote>
+<p>后面又补充了几个概念:</p>
+<ul>
+<li>The diﬀerence between a job’s latest possible starting time and earliest possible starting time is the amount of slack, also referred to as <strong>float</strong>.</li>
+<li>A job of which the earliest starting time is equal to the latest starting time is referred to as a <strong>critical job</strong>.</li>
+<li>The set of critical jobs forms one or more <strong>critical paths</strong>. A critical path is a chain of non-slack jobs.</li>
+</ul>
 <h2 id="43-program-evaluation-and-review-technique-pert">
   4.3 Program Evaluation and Review Technique (PERT)
   <a class="anchor" href="#43-program-evaluation-and-review-technique-pert">#</a>

@@ -2,7 +2,7 @@ baseURL = 'https://zcheng-li.github.io'
 languageCode = 'en-us'
 title = 'ZCHENG LI'
 theme = "hugo-book"
-markup.goldmark.renderer.unsafe=true
+# markup.goldmark.renderer.unsafe=true
 
 # Multilingual
 defaultContentLanguage = 'zh-CN'
@@ -23,3 +23,15 @@ defaultContentLanguage = 'zh-CN'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+  [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true

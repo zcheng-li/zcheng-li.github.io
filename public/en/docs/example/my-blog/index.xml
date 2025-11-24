@@ -12,7 +12,7 @@
       <link>http://localhost:1313/en/docs/example/my-blog/qam/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/en/docs/example/my-blog/qam/</guid>
-      <description></description>
+      <description>&lt;h1 id=&#34;qam&#34;&gt;&#xA;  QAM&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#qam&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
     </item>
   </channel>
 </rss>
