@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="zh-CN" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  QAM
+  6 Stability
   #
-">
+
+
+  6.1 Asymptotic stability
+  #
+
+
+A system is asymptotically stable if its steady-state (i.e. at infinite time) response to any initial condition decays to zero.
+
+  
+  y(∞)=0,∀y(0)y(\infty)=0, \forall y(0)">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/en/docs/example/my-blog/qam/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/digital_control/dc_ch6/">
   <meta property="og:site_name" content="ZCHENG LI">
-  <meta property="og:title" content="Dynamic QAM">
-  <meta property="og:description" content="QAM #">
-  <meta property="og:locale" content="en">
+  <meta property="og:title" content="CH6.稳定性">
+  <meta property="og:description" content="6 Stability # 6.1 Asymptotic stability # A system is asymptotically stable if its steady-state (i.e. at infinite time) response to any initial condition decays to zero.
+y(∞)=0,∀y(0)y(\infty)=0, \forall y(0)">
+  <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Dynamic QAM | ZCHENG LI</title>
+<title>CH6.稳定性 | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/en/docs/example/my-blog/qam/">
-  <link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/docs/example/my-blog/qam/" title="动态QAM调制解调python实现">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/digital_control/dc_ch6/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.aad5a8f283f8e9eab0a8a8af2e009772f992bcfb3a898f9ecbdedd224640f133.js" integrity="sha256-qtWo8oP46eqwqKivLgCXcvmSvPs6iY&#43;ey97dIkZA8TM=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.e097f4532fc6e518a709da41a8080d59deea7b733397ca0837de697ed32967ba.js" integrity="sha256-4Jf0Uy/G5RinCdpBqAgNWd7qe3Mzl8oIN95pftMpZ7o=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -39,13 +48,13 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/en/"><span>ZCHENG LI</span>
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
   </a>
 </h2>
 
 
 <div class="book-search hidden">
-  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -62,8 +71,6 @@ https://github.com/alex-shpak/hugo-book
   
 
 
-  
-
 
 <ul class="book-languages">
   <li>
@@ -71,15 +78,15 @@ https://github.com/alex-shpak/hugo-book
     <label for="languages" class="flex justify-between">
       <a role="button" class="flex align-center">
         <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
-        English
+        简体中文
       </a>
     </label>
 
     <ul>
       
       <li>
-        <a href="/docs/example/my-blog/qam/">
-          简体中文
+        <a href="/en/">
+          English
         </a>
       </li>
       
@@ -110,7 +117,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>My Blogs</span>
+    <span>博客</span>
   
 
           
@@ -123,7 +130,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/my-blog/qam/" class="active">Dynamic QAM</a>
+    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
   
 
         </li>
@@ -136,14 +143,53 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-316eed7585ddf2826093144a1ab46376" class="toggle"  />
-    <label for="section-316eed7585ddf2826093144a1ab46376" class="flex justify-between">
-      <a role="button" class="">RN Planning and Scheduling</a>
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle"  />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class="">工业生产规划调度阅读笔记</a>
     </label>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class="">CH2.工业生产模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -157,14 +203,27 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-fbc47f5ae492058ede5d4ee4cb857a4d" class="toggle"  />
-    <label for="section-fbc47f5ae492058ede5d4ee4cb857a4d" class="flex justify-between">
-      <a role="button" class="">Digital Control</a>
+    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle" checked />
+    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
+      <a role="button" class="">数字控制</a>
     </label>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="active">CH6.稳定性</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -178,14 +237,40 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6c70eadb0aa09b0724af1b0ec9953205" class="toggle"  />
-    <label for="section-6c70eadb0aa09b0724af1b0ec9953205" class="flex justify-between">
-      <a role="button" class="">Navigation</a>
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle"  />
+    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
+      <a role="button" class="">导航</a>
     </label>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l2/" class="">L2.导航数学基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -232,7 +317,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Dynamic QAM</h3>
+  <h3>CH6.稳定性</h3>
 
   <label for="toc-control">
     
@@ -246,7 +331,11 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#61-asymptotic-stability">6.1 Asymptotic stability</a></li>
+  </ul>
+</nav>
 
 
 
@@ -257,10 +346,19 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="qam">
-  QAM
-  <a class="anchor" href="#qam">#</a>
+  <article class="markdown book-article"><h1 id="6-stability">
+  6 Stability
+  <a class="anchor" href="#6-stability">#</a>
 </h1>
+<h2 id="61-asymptotic-stability">
+  6.1 Asymptotic stability
+  <a class="anchor" href="#61-asymptotic-stability">#</a>
+</h2>
+<blockquote>
+<p>A system is asymptotically stable if its steady-state (i.e. at infinite time) response to any initial condition decays to zero.</p></blockquote>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mi mathvariant="normal">∀</mi><mi>y</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y(\infty)=0, \forall y(0)</annotation></semantics></math></span>
 </article>
  
       
@@ -305,7 +403,11 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#61-asymptotic-stability">6.1 Asymptotic stability</a></li>
+  </ul>
+</nav>
 
 
  

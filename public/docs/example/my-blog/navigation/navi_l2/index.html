@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  The Mathematics of Navigation
+  #
+
+
+  Coordinate Systems
+  #
+
+为了实现 navigation position fix, 我们需要先确定一个参考系 (frame-of-reference), 
+  F\mathscr{F}
+.
+一个直角坐标系 (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 
+  (x,y,z)(x, y, z)
+.
+例如:
+
+  
+  
+          
+          
+           
+      
+  
+
+这个图中, 
+  pp
+ 在坐标系 
+  Fβ\mathscr{F^{\beta}}
+ 中, 因此我们可以把其记作 
+  pβ‾\underline{p^{\beta}}
+.
+其中, 下划线表示其是一个矢量, 上标 
+  β\beta
+ 表示其是在 
+  Fβ\mathscr{F^{\beta}}
+ 进行的测量.
+
+  Navigation Frames
+  #
+
+接下来, 我们需要定义几个常用的参考系用于导航.
+
+  Earth Centred Inertial
+  #
+
+地心惯性坐标系 (Earth-Centered Inertial), 简称 ECI, 常用 
+  ii
+表示.
+
+An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/navigation/navi_l2/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="L2.导航数学基础">
+  <meta property="og:description" content="The Mathematics of Navigation # Coordinate Systems # 为了实现 navigation position fix, 我们需要先确定一个参考系 (frame-of-reference), F\mathscr{F} .
+一个直角坐标系 (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 (x,y,z)(x, y, z) .
+例如:
+这个图中, pp 在坐标系 Fβ\mathscr{F^{\beta}} 中, 因此我们可以把其记作 pβ‾\underline{p^{\beta}} .
+其中, 下划线表示其是一个矢量, 上标 β\beta 表示其是在 Fβ\mathscr{F^{\beta}} 进行的测量.
+Navigation Frames # 接下来, 我们需要定义几个常用的参考系用于导航.
+Earth Centred Inertial # 地心惯性坐标系 (Earth-Centered Inertial), 简称 ECI, 常用 ii 表示.
+An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>L2.导航数学基础 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/navigation/navi_l2/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.e097f4532fc6e518a709da41a8080d59deea7b733397ca0837de697ed32967ba.js" integrity="sha256-4Jf0Uy/G5RinCdpBqAgNWd7qe3Mzl8oIN95pftMpZ7o=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle"  />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class="">工业生产规划调度阅读笔记</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class="">CH2.工业生产模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle"  />
+    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
+      <a role="button" class="">数字控制</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="">CH6.稳定性</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle" checked />
+    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
+      <a role="button" class="">导航</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l2/" class="active">L2.导航数学基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>L2.导航数学基础</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#coordinate-systems">Coordinate Systems</a></li>
+    <li><a href="#navigation-frames">Navigation Frames</a>
+      <ul>
+        <li><a href="#earth-centred-inertial">Earth Centred Inertial</a></li>
+        <li><a href="#earth-centred---earth-fixed">Earth Centred - Earth Fixed</a></li>
+        <li><a href="#local-navigation-frame">Local Navigation Frame</a></li>
+        <li><a href="#vehicle-body-frame">Vehicle (body) Frame</a></li>
+      </ul>
+    </li>
+    <li><a href="#mathematical-notation">Mathematical Notation</a></li>
+    <li><a href="#transforming-between-coordinate-frames">Transforming Between Coordinate Frames</a>
+      <ul>
+        <li><a href="#coordinate-transformation-matrix">Coordinate Transformation Matrix</a></li>
+        <li><a href="#euler-angles">Euler Angles</a></li>
+      </ul>
+    </li>
+    <li><a href="#cartesian-coordinates">Cartesian Coordinates</a>
+      <ul>
+        <li><a href="#velocity">Velocity</a></li>
+        <li><a href="#angular-velocity">Angular Velocity</a></li>
+        <li><a href="#acceleration">Acceleration</a></li>
+      </ul>
+    </li>
+    <li><a href="#earth-surface-and-gravity-models">Earth Surface and Gravity Models</a></li>
+    <li><a href="#navigation-frames-and-transposition">Navigation Frames and Transposition</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="the-mathematics-of-navigation">
+  The Mathematics of Navigation
+  <a class="anchor" href="#the-mathematics-of-navigation">#</a>
+</h1>
+<h2 id="coordinate-systems">
+  Coordinate Systems
+  <a class="anchor" href="#coordinate-systems">#</a>
+</h2>
+<p>为了实现 navigation position fix, 我们需要先确定一个<strong>参考系</strong> (frame-of-reference), 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathscr{F}</annotation></semantics></math></span>
+.</p>
+<p>一个<strong>直角坐标系</strong> (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, y, z)</annotation></semantics></math></span>
+.</p>
+<p>例如:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p3.png"><figure>
+          <img src="/img/navi/L2_p3.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>这个图中, 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span>
+ 在坐标系 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi mathvariant="script">β</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F^{\beta}}</annotation></semantics></math></span>
+ 中, 因此我们可以把其记作 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder accentunder="true"><msup><mi>p</mi><mi>β</mi></msup><mo stretchy="true">‾</mo></munder></mrow><annotation encoding="application/x-tex">\underline{p^{\beta}}</annotation></semantics></math></span>
+.</p>
+<p>其中, 下划线表示其是一个矢量, 上标 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span>
+ 表示其是在 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi mathvariant="script">β</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F^{\beta}}</annotation></semantics></math></span>
+ 进行的测量.</p>
+<h2 id="navigation-frames">
+  Navigation Frames
+  <a class="anchor" href="#navigation-frames">#</a>
+</h2>
+<p>接下来, 我们需要定义几个常用的参考系用于导航.</p>
+<h3 id="earth-centred-inertial">
+  Earth Centred Inertial
+  <a class="anchor" href="#earth-centred-inertial">#</a>
+</h3>
+<p><strong>地心惯性坐标系</strong> (Earth-Centered Inertial), 简称 ECI, 常用 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span>
+表示.</p>
+<blockquote>
+<p>An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.</p></blockquote>
+<p>ECI 坐标系 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi mathvariant="script">i</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F^i}</annotation></semantics></math></span>
+ 的原点处于地球球心 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">O_e</annotation></semantics></math></span>
+. 其 z 轴指向北极, x, y轴 处于赤道平面, 但是不和地球一起旋转. 其中, x 轴在<strong>春分时</strong>正好指向太阳, y 轴负责满足 RHS (right-handed set).</p>
+<h3 id="earth-centred---earth-fixed">
+  Earth Centred - Earth Fixed
+  <a class="anchor" href="#earth-centred---earth-fixed">#</a>
+</h3>
+<p><strong>地心固定坐标系</strong> (Earth Centred, Earth Fixed), 简称 ECEF, 常用 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span>
+ 表示.</p>
+<p>ECEF 坐标系 (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi mathvariant="script">e</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F^e}</annotation></semantics></math></span>
+) 也是以地球球心为原点, 但是它的轴是固定在地球上的. 具体来说, z 轴指向北极, x 轴指向<strong>格林威治子午线</strong> (Greenwich merdian) 与赤道平面的交点, y 轴负责满足 RHS.</p>
+<p>ECEF 坐标系相对于 ECI 这个惯性系 以 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mi>i</mi><mi>e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\Omega_{ie}</annotation></semantics></math></span>
+ 绕着 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><msup><mi>z</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">Oz^i</annotation></semantics></math></span>
+ 轴旋转.</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p9.png"><figure>
+          <img src="/img/navi/L2_p9.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="local-navigation-frame">
+  Local Navigation Frame
+  <a class="anchor" href="#local-navigation-frame">#</a>
+</h3>
+<p><strong>本地导航坐标系</strong> (Local Navigation Frame), 简称 NED, 记作 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span>
+ (native ??), i.e. 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi mathvariant="script">n</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F^n}</annotation></semantics></math></span>
+.</p>
+<p>其原点固定在需要的地方, x 轴朝北 (N), y 轴朝东 (E), z 轴朝下 (Down). 所以叫它 NED.</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p11.png"><figure>
+          <img src="/img/navi/L2_p11.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="vehicle-body-frame">
+  Vehicle (body) Frame
+  <a class="anchor" href="#vehicle-body-frame">#</a>
+</h3>
+<p>对象参考系, 和 NED 参考系很相似, 但是这个参考系的<strong>姿态</strong> (attitude) 会随着时间变换.</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p12.png"><figure>
+          <img src="/img/navi/L2_p12.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h2 id="mathematical-notation">
+  Mathematical Notation
+  <a class="anchor" href="#mathematical-notation">#</a>
+</h2>
+<p>现在, 我们需要更详细的定义一下坐标系:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>x</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{x}^{\gamma}_{\beta\alpha}</annotation></semantics></math></span>
+<p>其中:</p>
+<ul>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span>
+ 是 <strong>对象系</strong> (object frame)</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span>
+ 是 <strong>参考系</strong> (reference frame)</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span>
+ 是 <strong>解析系</strong> (resolving frame)</li>
+</ul>
+<p>例如:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p15.png"><figure>
+          <img src="/img/navi/L2_p15.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<blockquote>
+<p>The red vector shows the position of 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>α</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\alpha}</annotation></semantics></math></span>
+ wrt 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\beta}</annotation></semantics></math></span>
+. The black dotted lines show the coordinates of 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>β</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{r}^{\beta}_{\beta\alpha}</annotation></semantics></math></span>
+ and the blue dotted lines 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>α</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{r}^{\alpha}_{\beta\alpha}</annotation></semantics></math></span>
+.</p></blockquote>
+<h2 id="transforming-between-coordinate-frames">
+  Transforming Between Coordinate Frames
+  <a class="anchor" href="#transforming-between-coordinate-frames">#</a>
+</h2>
+<h3 id="coordinate-transformation-matrix">
+  Coordinate Transformation Matrix
+  <a class="anchor" href="#coordinate-transformation-matrix">#</a>
+</h3>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p19.png"><figure>
+          <img src="/img/navi/L2_p19.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>这里的矩阵称之为 <strong>方向余弦矩阵</strong> (Direction Cosine), 其是围绕着 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">z^{\beta}</annotation></semantics></math></span>
+ 轴进行的旋转.</p>
+<p>这样的旋转矩阵是坐标变换矩阵的一种, 记作 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>β</mi><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">C^{\gamma}_{\beta}</annotation></semantics></math></span>
+. 下标 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span>
+ 表示 from, 上标 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span>
+ 表示 to. 这点与前面的标记不太一致.</p>
+<p>我们可以这样使用这个矩阵:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>x</mi><mo stretchy="true">‾</mo></munder><mrow><mi>δ</mi><mi>γ</mi></mrow><mi>α</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mi>β</mi><mi>α</mi></msubsup><msubsup><munder accentunder="true"><mi>x</mi><mo stretchy="true">‾</mo></munder><mrow><mi>δ</mi><mi>γ</mi></mrow><mi>β</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{x}^{\alpha}_{\delta\gamma} = C^{\alpha}_{\beta}\underline{x}^{\beta}_{\delta\gamma}</annotation></semantics></math></span>
+<p>这个方向余弦矩阵有以下性质:</p>
+<ul>
+<li>正交 (orthogonal)</li>
+</ul>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>C</mi><mi>β</mi><mi>α</mi></msubsup><mo>=</mo><mo stretchy="false">(</mo><msubsup><mi>C</mi><mi>α</mi><mi>β</mi></msubsup><msup><mo stretchy="false">)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mo stretchy="false">(</mo><msubsup><mi>C</mi><mi>α</mi><mi>β</mi></msubsup><msup><mo stretchy="false">)</mo><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">C^{\alpha}_{\beta} = (C^{\beta}_{\alpha})^{-1} = (C^{\beta}_{\alpha})^T</annotation></semantics></math></span>
+<ul>
+<li>可相乘</li>
+</ul>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>C</mi><mi>β</mi><mi>γ</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mi>α</mi><mi>γ</mi></msubsup><msubsup><mi>C</mi><mi>β</mi><mi>α</mi></msubsup></mrow><annotation encoding="application/x-tex">C^{\gamma}_{\beta} = C^{\gamma}_{\alpha}C^{\alpha}_{\beta}</annotation></semantics></math></span>
+<h3 id="euler-angles">
+  Euler Angles
+  <a class="anchor" href="#euler-angles">#</a>
+</h3>
+<p>为了定义<strong>绝对</strong>的姿态, 我们需要<strong>欧拉角</strong> (Euler angle).</p>
+<p>然后, 整个完整的坐标系变换可以分成以下三个部分:</p>
+<ul>
+<li>YAW (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi></mrow><annotation encoding="application/x-tex">\psi</annotation></semantics></math></span>
+), 围绕初始的 z 轴旋转.</li>
+<li>PITCH (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span>
+), 围绕第一步旋转完成后的 y 轴旋转.</li>
+<li>ROLL (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span>
+), 围绕第二步旋转完成后的 x 轴旋转</li>
+</ul>
+<p>以及每一步对应的变换矩阵:
+
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p24.png"><figure>
+          <img src="/img/navi/L2_p24.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>最终的 Euler Direction Cosine matrix (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>β</mi><mi>α</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mrow><mo mathvariant="normal">′</mo><mo mathvariant="normal">′</mo></mrow><mi>α</mi></msubsup><msubsup><mi>C</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo><mrow><mo mathvariant="normal">′</mo><mo mathvariant="normal">′</mo></mrow></msubsup><msubsup><mi>C</mi><mi>β</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msubsup></mrow><annotation encoding="application/x-tex">C^{\alpha}_{\beta} = C^{\alpha}_{\prime\prime}C^{\prime\prime}_{\prime}C^{\prime}_{\beta}</annotation></semantics></math></span>
+):</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p24b.png"><figure>
+          <img src="/img/navi/L2_p24b.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h2 id="cartesian-coordinates">
+  Cartesian Coordinates
+  <a class="anchor" href="#cartesian-coordinates">#</a>
+</h2>
+<h3 id="velocity">
+  Velocity
+  <a class="anchor" href="#velocity">#</a>
+</h3>
+<p>参考系
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>α</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\alpha}</annotation></semantics></math></span>
+ 对于 参考系
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\beta}</annotation></semantics></math></span>
+ 的速度, 在 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>γ</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\gamma}</annotation></semantics></math></span>
+ 下的解析解是:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>v</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mi>β</mi><mi>γ</mi></msubsup><msubsup><mover accent="true"><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mo>˙</mo></mover><mrow><mi>β</mi><mi>α</mi></mrow><mi>β</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{v}^{\gamma}_{\beta\alpha} = C^{\gamma}_{\beta}\dot{\underline{r}}^{\beta}_{\beta\alpha}</annotation></semantics></math></span>
+<p>注意: 这个和直接对 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{r}^{\gamma}_{\beta\alpha}</annotation></semantics></math></span>
+ 关于时间求导的结果<strong>不一样</strong>. 这是因为, 当存在坐标系之间的旋转时, 我们有:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mover accent="true"><mi>r</mi><mo>˙</mo></mover><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup><mo>=</mo><msubsup><mover accent="true"><mi>C</mi><mo>˙</mo></mover><mi>β</mi><mi>γ</mi></msubsup><msubsup><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>β</mi></msubsup><mo>+</mo><msubsup><mi>C</mi><mi>β</mi><mi>γ</mi></msubsup><msubsup><munder accentunder="true"><mover accent="true"><mi>r</mi><mo>˙</mo></mover><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>β</mi></msubsup><mo>=</mo><msubsup><mover accent="true"><mi>C</mi><mo>˙</mo></mover><mi>β</mi><mi>γ</mi></msubsup><msubsup><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>β</mi></msubsup><mo>+</mo><msubsup><munder accentunder="true"><mi>v</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{\dot{r}}^{\gamma}_{\beta\alpha} 
+= \dot{C}^{\gamma}_{\beta}\underline{r}^{\beta}_{\beta\alpha} + C^{\gamma}_{\beta}\underline{\dot{r}}^{\beta}_{\beta\alpha}
+= \dot{C}^{\gamma}_{\beta}\underline{r}^{\beta}_{\beta\alpha} + \underline{v}^{\gamma}_{\beta\alpha}</annotation></semantics></math></span>
+<h3 id="angular-velocity">
+  Angular Velocity
+  <a class="anchor" href="#angular-velocity">#</a>
+</h3>
+<p>角速度 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>ω</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{\omega}^{\gamma}_{\beta\alpha}</annotation></semantics></math></span>
+ 是 参考系 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>α</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\alpha}</annotation></semantics></math></span>
+ 相对于坐标系 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\beta}</annotation></semantics></math></span>
+ 的旋转速度, 在坐标系 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>γ</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^{\gamma}</annotation></semantics></math></span>
+ 下解析.</p>
+<p>其可表示为:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>ω</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup><mo>=</mo><mo stretchy="false">(</mo><msubsup><mi>p</mi><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup><mo separator="true">,</mo><msubsup><mi>q</mi><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup><mo separator="true">,</mo><msubsup><mi>r</mi><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\underline{\omega}^{\gamma}_{\beta\alpha} = (p^{\gamma}_{\beta\alpha}, q^{\gamma}_{\beta\alpha}, r^{\gamma}_{\beta\alpha})</annotation></semantics></math></span>
+<p>另一个常见的表达形式是<strong>反对称矩阵</strong> (skew-symmetric matrix):</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p30.png"><figure>
+          <img src="/img/navi/L2_p30.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>与这个矩阵相乘, 等效于与 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>ω</mi><mo stretchy="true">‾</mo></munder><mrow><mi>β</mi><mi>α</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{\omega}^{\gamma}_{\beta\alpha}</annotation></semantics></math></span>
+ 做叉乘.</p>
+<h4 id="transformation-of-matrix">
+  Transformation of Matrix
+  <a class="anchor" href="#transformation-of-matrix">#</a>
+</h4>
+<p>那么, 结下来我们可以来思考一下如何变换 变换矩阵 的解析系 (好像有点点绕&hellip;).</p>
+<p>由于这里变换的是矩阵, 这点与前面的向量不太一样, 所以我们需要重新推导:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p31.png"><figure>
+          <img src="/img/navi/L2_p31.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p32.png"><figure>
+          <img src="/img/navi/L2_p32.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h4 id="strapdown-equation">
+  Strapdown Equation
+  <a class="anchor" href="#strapdown-equation">#</a>
+</h4>
+<p>在我们定义了角速度后, 现在我们可以开始定义 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><mi>C</mi><mo>˙</mo></mover><mi>β</mi><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\dot{C}^{\gamma}_{\beta}</annotation></semantics></math></span>
+.</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p33.png"><figure>
+          <img src="/img/navi/L2_p33.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p34.png"><figure>
+          <img src="/img/navi/L2_p34.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p35.png"><figure>
+          <img src="/img/navi/L2_p35.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>因此, 我们可以得到 <strong>捷联方程</strong> (Strapdown Equation):</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mover accent="true"><mi>C</mi><mo>˙</mo></mover><mi>β</mi><mi>γ</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><msubsup><mi mathvariant="normal">Ω</mi><mrow><mi>β</mi><mi>γ</mi></mrow><mi>γ</mi></msubsup><msubsup><mi>C</mi><mi>β</mi><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\dot{C}^{\gamma}_{\beta}(t) = - \Omega^{\gamma}_{\beta\gamma}C^{\gamma}_{\beta}</annotation></semantics></math></span>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mover accent="true"><mi>C</mi><mo>˙</mo></mover><mi>γ</mi><mi>β</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mi>C</mi><mi>γ</mi><mi>β</mi></msubsup><msubsup><mi mathvariant="normal">Ω</mi><mrow><mi>β</mi><mi>γ</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\dot{C}^{\beta}_{\gamma}(t) = C^{\beta}_{\gamma}\Omega^{\gamma}_{\beta\gamma}</annotation></semantics></math></span>
+<p>其他的几种形式:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p36.png"><figure>
+          <img src="/img/navi/L2_p36.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="acceleration">
+  Acceleration
+  <a class="anchor" href="#acceleration">#</a>
+</h3>
+<p><strong>加速度</strong>的定义就是对于位置的二阶导.</p>
+<p>当然, 在变换加速的解析系时, 我们也会遇到相同的难题:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p42.png"><figure>
+          <img src="/img/navi/L2_p42.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>其中,</p>
+<ul>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><msubsup><mi>C</mi><mi>β</mi><mi>γ</mi></msubsup><mo>¨</mo></mover></mrow><annotation encoding="application/x-tex">\ddot{C^{\gamma}_{\beta}}</annotation></semantics></math></span>
+</li>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><munder accentunder="true"><mi>r</mi><mo stretchy="true">‾</mo></munder><mo>˙</mo></mover><mrow><mi>β</mi><mi>α</mi></mrow><mi>β</mi></msubsup></mrow><annotation encoding="application/x-tex">\dot{\underline{r}}^{\beta}_{\beta\alpha}</annotation></semantics></math></span>
+</li>
+</ul>
+<p>都是待续解决的问题.</p>
+<p>对于第一个:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p43.png"><figure>
+          <img src="/img/navi/L2_p43.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>对于第二个:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p44.png"><figure>
+          <img src="/img/navi/L2_p44.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>代入后可以得到:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L2_p45.png"><figure>
+          <img src="/img/navi/L2_p45.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h2 id="earth-surface-and-gravity-models">
+  Earth Surface and Gravity Models
+  <a class="anchor" href="#earth-surface-and-gravity-models">#</a>
+</h2>
+<h2 id="navigation-frames-and-transposition">
+  Navigation Frames and Transposition
+  <a class="anchor" href="#navigation-frames-and-transposition">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#coordinate-systems">Coordinate Systems</a></li>
+    <li><a href="#navigation-frames">Navigation Frames</a>
+      <ul>
+        <li><a href="#earth-centred-inertial">Earth Centred Inertial</a></li>
+        <li><a href="#earth-centred---earth-fixed">Earth Centred - Earth Fixed</a></li>
+        <li><a href="#local-navigation-frame">Local Navigation Frame</a></li>
+        <li><a href="#vehicle-body-frame">Vehicle (body) Frame</a></li>
+      </ul>
+    </li>
+    <li><a href="#mathematical-notation">Mathematical Notation</a></li>
+    <li><a href="#transforming-between-coordinate-frames">Transforming Between Coordinate Frames</a>
+      <ul>
+        <li><a href="#coordinate-transformation-matrix">Coordinate Transformation Matrix</a></li>
+        <li><a href="#euler-angles">Euler Angles</a></li>
+      </ul>
+    </li>
+    <li><a href="#cartesian-coordinates">Cartesian Coordinates</a>
+      <ul>
+        <li><a href="#velocity">Velocity</a></li>
+        <li><a href="#angular-velocity">Angular Velocity</a></li>
+        <li><a href="#acceleration">Acceleration</a></li>
+      </ul>
+    </li>
+    <li><a href="#earth-surface-and-gravity-models">Earth Surface and Gravity Models</a></li>
+    <li><a href="#navigation-frames-and-transposition">Navigation Frames and Transposition</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

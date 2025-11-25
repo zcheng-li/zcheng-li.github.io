@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN" dir="ltr">
-<head>
-	<meta name="generator" content="Hugo 0.143.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  你好 : )
+  Inertial Navigation
+  #
+
+
+  Mechanisation of Inertial Navigation Systems
+  #
+
+
+  Inertial Platform
+  #
+
+
+  Strapdown System
+  #
+
+
+  The Navigation Equations
+  #
+
+
+  Earth-Frame Navigation Equations
+  #
+
+
+  Local Navigation Frame Equations
+  #
+
+
+  Inertial Sensors
+  #
+
+
+  Accelerometers
+  #
+
+
+  Gyroscopes
+  #
+
+
+  Sensor Error Characteristics
   #
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/navigation/navi_l3/">
   <meta property="og:site_name" content="ZCHENG LI">
-  <meta property="og:title" content="Introduction">
-  <meta property="og:description" content="你好 : ) #">
+  <meta property="og:title" content="L3.惯性导航">
+  <meta property="og:description" content="Inertial Navigation # Mechanisation of Inertial Navigation Systems # Inertial Platform # Strapdown System # The Navigation Equations # Earth-Frame Navigation Equations # Local Navigation Frame Equations # Inertial Sensors # Accelerometers # Gyroscopes # Sensor Error Characteristics #">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
-<title>Introduction | ZCHENG LI</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>L3.惯性导航 | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/">
-  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/" title="Introduction">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/navigation/navi_l3/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/zh-cn.search.min.e097f4532fc6e518a709da41a8080d59deea7b733397ca0837de697ed32967ba.js" integrity="sha256-4Jf0Uy/G5RinCdpBqAgNWd7qe3Mzl8oIN95pftMpZ7o=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="ZCHENG LI" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -62,8 +100,6 @@ https://github.com/alex-shpak/hugo-book
     
   
 
-
-  
 
 
 <ul class="book-languages">
@@ -231,7 +267,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle"  />
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle" checked />
     <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
       <a role="button" class="">导航</a>
     </label>
@@ -260,7 +296,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class="active">L3.惯性导航</a>
   
 
         </li>
@@ -311,7 +347,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Introduction</h3>
+  <h3>L3.惯性导航</h3>
 
   <label for="toc-control">
     
@@ -325,7 +361,29 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#mechanisation-of-inertial-navigation-systems">Mechanisation of Inertial Navigation Systems</a>
+      <ul>
+        <li><a href="#inertial-platform">Inertial Platform</a></li>
+        <li><a href="#strapdown-system">Strapdown System</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-navigation-equations">The Navigation Equations</a>
+      <ul>
+        <li><a href="#earth-frame-navigation-equations">Earth-Frame Navigation Equations</a></li>
+        <li><a href="#local-navigation-frame-equations">Local Navigation Frame Equations</a></li>
+      </ul>
+    </li>
+    <li><a href="#inertial-sensors">Inertial Sensors</a>
+      <ul>
+        <li><a href="#accelerometers">Accelerometers</a></li>
+        <li><a href="#gyroscopes">Gyroscopes</a></li>
+      </ul>
+    </li>
+    <li><a href="#sensor-error-characteristics">Sensor Error Characteristics</a></li>
+  </ul>
+</nav>
 
 
 
@@ -336,10 +394,50 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="你好--">
-  <strong>你好 : )</strong>
-  <a class="anchor" href="#%e4%bd%a0%e5%a5%bd--">#</a>
+  <article class="markdown book-article"><h1 id="inertial-navigation">
+  Inertial Navigation
+  <a class="anchor" href="#inertial-navigation">#</a>
 </h1>
+<h2 id="mechanisation-of-inertial-navigation-systems">
+  Mechanisation of Inertial Navigation Systems
+  <a class="anchor" href="#mechanisation-of-inertial-navigation-systems">#</a>
+</h2>
+<h3 id="inertial-platform">
+  Inertial Platform
+  <a class="anchor" href="#inertial-platform">#</a>
+</h3>
+<h3 id="strapdown-system">
+  Strapdown System
+  <a class="anchor" href="#strapdown-system">#</a>
+</h3>
+<h2 id="the-navigation-equations">
+  The Navigation Equations
+  <a class="anchor" href="#the-navigation-equations">#</a>
+</h2>
+<h3 id="earth-frame-navigation-equations">
+  Earth-Frame Navigation Equations
+  <a class="anchor" href="#earth-frame-navigation-equations">#</a>
+</h3>
+<h3 id="local-navigation-frame-equations">
+  Local Navigation Frame Equations
+  <a class="anchor" href="#local-navigation-frame-equations">#</a>
+</h3>
+<h2 id="inertial-sensors">
+  Inertial Sensors
+  <a class="anchor" href="#inertial-sensors">#</a>
+</h2>
+<h3 id="accelerometers">
+  Accelerometers
+  <a class="anchor" href="#accelerometers">#</a>
+</h3>
+<h3 id="gyroscopes">
+  Gyroscopes
+  <a class="anchor" href="#gyroscopes">#</a>
+</h3>
+<h2 id="sensor-error-characteristics">
+  Sensor Error Characteristics
+  <a class="anchor" href="#sensor-error-characteristics">#</a>
+</h2>
 </article>
  
       
@@ -384,7 +482,29 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#mechanisation-of-inertial-navigation-systems">Mechanisation of Inertial Navigation Systems</a>
+      <ul>
+        <li><a href="#inertial-platform">Inertial Platform</a></li>
+        <li><a href="#strapdown-system">Strapdown System</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-navigation-equations">The Navigation Equations</a>
+      <ul>
+        <li><a href="#earth-frame-navigation-equations">Earth-Frame Navigation Equations</a></li>
+        <li><a href="#local-navigation-frame-equations">Local Navigation Frame Equations</a></li>
+      </ul>
+    </li>
+    <li><a href="#inertial-sensors">Inertial Sensors</a>
+      <ul>
+        <li><a href="#accelerometers">Accelerometers</a></li>
+        <li><a href="#gyroscopes">Gyroscopes</a></li>
+      </ul>
+    </li>
+    <li><a href="#sensor-error-characteristics">Sensor Error Characteristics</a></li>
+  </ul>
+</nav>
 
 
  

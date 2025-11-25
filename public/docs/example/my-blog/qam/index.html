@@ -7,7 +7,7 @@
   引入
   #
 
-题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
+题目基于 University of Glasgow 课程 ENG3014 Communications Systems 3 的大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
 
 This should include at minimum:
 
@@ -24,7 +24,7 @@ Up to 30% of the marks allocated will be included for creative additions (10% ea
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/qam/">
   <meta property="og:site_name" content="ZCHENG LI">
   <meta property="og:title" content="动态QAM调制解调python实现">
-  <meta property="og:description" content="引入 # 题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
+  <meta property="og:description" content="引入 # 题目基于 University of Glasgow 课程 ENG3014 Communications Systems 3 的大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:
 This should include at minimum:
 A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”. Using your modulation format of choice, modulate a carrier to encode this information. The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN. An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency. Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel. Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth. Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:">
   <meta property="og:locale" content="zh_CN">
@@ -37,7 +37,7 @@ A message of your choice, comprising more than 2048 bits, converted from a “ST
   <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/qam/" title="Dynamic QAM">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.187c09cf011d5a34d6977cfa91467374e242f1430c2321a05488d4eb2b108285.js" integrity="sha256-GHwJzwEdWjTWl3z6kUZzdOJC8UMMIyGgVIjU6ysQgoU=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.e097f4532fc6e518a709da41a8080d59deea7b733397ca0837de697ed32967ba.js" integrity="sha256-4Jf0Uy/G5RinCdpBqAgNWd7qe3Mzl8oIN95pftMpZ7o=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -203,6 +203,87 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle"  />
+    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
+      <a role="button" class="">数字控制</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="">CH6.稳定性</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle"  />
+    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
+      <a role="button" class="">导航</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l2/" class="">L2.导航数学基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -290,7 +371,7 @@ https://github.com/alex-shpak/hugo-book
   引入
   <a class="anchor" href="#%e5%bc%95%e5%85%a5">#</a>
 </h2>
-<p>题目基于 University of Glasgow 大三课程 ENG3014 Communications Systems 3 的课程大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:</p>
+<p>题目基于 University of Glasgow 课程 ENG3014 Communications Systems 3 的大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:</p>
 <!-- raw HTML omitted -->
 <p>This should include at minimum:</p>
 <ul>
@@ -318,7 +399,7 @@ https://github.com/alex-shpak/hugo-book
 <li>加入噪音.</li>
 <li>选一个喜欢的办法调制.</li>
 <li>再解调.</li>
-<li>计算误码率等其他玩意儿.</li>
+<li>计算误码率等其它指标.</li>
 </ol>
 <p>我的项目做了下面的步骤:</p>
 <p>
@@ -357,7 +438,7 @@ https://github.com/alex-shpak/hugo-book
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string2bits</span>(s<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
 </span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([bin(ord(x))[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>zfill(<span style="color:#ae81ff">8</span>) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> s])
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [int(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> list(out)]
-</span></span></code></pre></div><p>好多奇奇怪怪的函数, 慢慢查吧😩.</p>
+</span></span></code></pre></div><p>好多奇奇怪怪的函数😩.</p>
 <ul>
 <li>
 <p><code>ord(x)</code>: 返回代表字符 <code>x</code> 的 unicode 编码 (<code>int</code>), 比方说: <code>‘a’</code> 的 unicode 编码是 97, <code>‘?’</code> 的是 63.</p>
@@ -432,10 +513,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
 </span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
 <p>那么为什么要计算信号功率呢? 由信噪比公式:</p>
-
-<link rel="stylesheet" href="/katex/katex.min.css" />
-<script defer src="/katex/katex.min.js"></script>
-<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+<span>
   \[
 
 \mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)
