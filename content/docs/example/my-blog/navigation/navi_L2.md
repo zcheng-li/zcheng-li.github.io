@@ -132,6 +132,8 @@ ECEF 坐标系相对于 ECI 这个惯性系 以 \(\Omega_{ie}\) 绕着 \(Oz^i\) 
 = \dot{C}^{\gamma}_{\beta}\underline{r}^{\beta}_{\beta\alpha} + C^{\gamma}_{\beta}\underline{\dot{r}}^{\beta}_{\beta\alpha}
 = \dot{C}^{\gamma}_{\beta}\underline{r}^{\beta}_{\beta\alpha} + \underline{v}^{\gamma}_{\beta\alpha}\]
 
+一个重要结论: 如果 解析系 和 参考系 有旋转, 那么对 时间求导 不能直接等于速度/加速度.
+
 ### Angular Velocity
 
 角速度 \(\underline{\omega}^{\gamma}_{\beta\alpha}\) 是 参考系 \(\mathscr{F}^{\alpha}\) 相对于坐标系 \(\mathscr{F}^{\beta}\) 的旋转速度, 在坐标系 \(\mathscr{F}^{\gamma}\) 下解析.
@@ -206,6 +208,48 @@ rotating-to-fixed:
 ![alt text](/img/navi/L2_p45.png)
 
 ## Earth Surface and Gravity Models
+
+### Earth Surface Model
+
+![alt text](/img/navi/L2_p51.png)
+
+![alt text](/img/navi/L2_p53.png)
+
+![alt text](/img/navi/L2_p61.png)
+
+### Gravity Models
+
+**重力模型** (Gravity Models) 有两个关键的分量:
+* 比力 (Specific Force) \(\underline{f}^{\gamma}_{ib}\): 单位质量受到的非万有引力的力.
+* 万有引力 (Gravitation) \(\underline{\gamma}^{\gamma}_{ib}\): 对于单位质量的万有引力.
+
+ps: Gravitation 指的是纯粹的万有引力，不包含由于地球自转产生的向心加速度。
+
+因此我们有:
+
+\[ \underline{f}^{\gamma}_{ib} = \underline{a}^{\gamma}_{ib} - \underline{\gamma}^{\gamma}_{ib}\]
+
+在实际使用这个方程时, 我们会发现, 由于传感器是固定在 body 上的, 所以我们测量的比力是 \(\underline{f}^{b}_{ib}\). 
+
+再有,
+
+\[\underline{a}^{e}_{ib} = \underline{\Omega}^{e}_{ib}\underline{\Omega}^{e}_{ib}\underline{r}^{e}_{ib} + 2\underline{\Omega}^{e}_{ib}\underline{v}^{e}_{ib} + \underline{a}^{e}_{ib}\]
+
+ps: 我们不考虑地球的自转加速度.
+
+当物体在地球上静止不动时, 我们有:
+
+\[\underline{a}^{e}_{ib} = \underline{\Omega}^{e}_{ib}\underline{\Omega}^{e}_{ib}\underline{r}^{e}_{ib}\]
+
+代入可得:
+
+\[ \underline{f}^{\gamma}_{ib} = \underline{\Omega}^{e}_{ib}\underline{\Omega}^{e}_{ib}\underline{r}^{e}_{ib} - \underline{\gamma}^{\gamma}_{ib}\]
+
+由于我们认为在 ECEF 系中, 该物体只受到 重力 (Gravity) 和 非重力外力, 我们有:
+
+\[ \underline{g}^{e}_{b} = -\underline{f}^{e}_{ib} = \underline{\gamma}^{\gamma}_{ib} - \underline{\Omega}^{e}_{ib}\underline{\Omega}^{e}_{ib}\underline{r}^{e}_{ib}\]
+
+我们因此得到了重力.
 
 ## Navigation Frames and Transposition
 

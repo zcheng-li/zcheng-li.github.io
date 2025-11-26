@@ -11,48 +11,50 @@
   Mechanisation of Inertial Navigation Systems
   #
 
+惯性导航是一种航位推测法 (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.
+不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.
+在过去, 由于算力有限, 人们需要使用 Stabilised Inertial Platform.
+而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 Strapdown INS configuration.
 
-  Inertial Platform
+  Stabilised Inertial Platform
   #
+
+稳定惯性平台 (Stabilised Inertial Platform) 大致如下:
+
+  
+  
+          
+          
+           
+      
+  
+
+里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.
+然而, 它有如下缺点:
+
+mechanically complex
+costly to manufacture/maintain
+larger volume/weight
+cannot be used directly for airframe stabilisation
 
 
   Strapdown System
   #
 
-
-  The Navigation Equations
-  #
-
-
-  Earth-Frame Navigation Equations
-  #
-
-
-  Local Navigation Frame Equations
-  #
-
-
-  Inertial Sensors
-  #
-
-
-  Accelerometers
-  #
-
-
-  Gyroscopes
-  #
-
-
-  Sensor Error Characteristics
-  #
-">
+因此, 对于新的 INS 系统, 人们通常喜欢使用 Strapdown Configuration.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/navigation/navi_l3/">
   <meta property="og:site_name" content="ZCHENG LI">
   <meta property="og:title" content="L3.惯性导航">
-  <meta property="og:description" content="Inertial Navigation # Mechanisation of Inertial Navigation Systems # Inertial Platform # Strapdown System # The Navigation Equations # Earth-Frame Navigation Equations # Local Navigation Frame Equations # Inertial Sensors # Accelerometers # Gyroscopes # Sensor Error Characteristics #">
+  <meta property="og:description" content="Inertial Navigation # Mechanisation of Inertial Navigation Systems # 惯性导航是一种航位推测法 (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.
+不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.
+在过去, 由于算力有限, 人们需要使用 Stabilised Inertial Platform.
+而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 Strapdown INS configuration.
+Stabilised Inertial Platform # 稳定惯性平台 (Stabilised Inertial Platform) 大致如下:
+里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.
+然而, 它有如下缺点:
+mechanically complex costly to manufacture/maintain larger volume/weight cannot be used directly for airframe stabilisation Strapdown System # 因此, 对于新的 INS 系统, 人们通常喜欢使用 Strapdown Configuration.">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -365,7 +367,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#mechanisation-of-inertial-navigation-systems">Mechanisation of Inertial Navigation Systems</a>
       <ul>
-        <li><a href="#inertial-platform">Inertial Platform</a></li>
+        <li><a href="#stabilised-inertial-platform">Stabilised Inertial Platform</a></li>
         <li><a href="#strapdown-system">Strapdown System</a></li>
       </ul>
     </li>
@@ -373,6 +375,7 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#earth-frame-navigation-equations">Earth-Frame Navigation Equations</a></li>
         <li><a href="#local-navigation-frame-equations">Local Navigation Frame Equations</a></li>
+        <li><a href="#ins-update-steps">INS Update Steps</a></li>
       </ul>
     </li>
     <li><a href="#inertial-sensors">Inertial Sensors</a>
@@ -381,7 +384,15 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#gyroscopes">Gyroscopes</a></li>
       </ul>
     </li>
-    <li><a href="#sensor-error-characteristics">Sensor Error Characteristics</a></li>
+    <li><a href="#sensor-error-characteristics">Sensor Error Characteristics</a>
+      <ul>
+        <li><a href="#bias-error">Bias Error</a></li>
+        <li><a href="#scale-factor-errors">Scale Factor Errors</a></li>
+        <li><a href="#cross-coupling-errors">Cross-Coupling Errors</a></li>
+        <li><a href="#random-noise">Random Noise</a></li>
+        <li><a href="#error-models">Error Models</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -402,26 +413,259 @@ https://github.com/alex-shpak/hugo-book
   Mechanisation of Inertial Navigation Systems
   <a class="anchor" href="#mechanisation-of-inertial-navigation-systems">#</a>
 </h2>
-<h3 id="inertial-platform">
-  Inertial Platform
-  <a class="anchor" href="#inertial-platform">#</a>
+<p>惯性导航是一种<strong>航位推测法</strong> (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.</p>
+<p>不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.</p>
+<p>在过去, 由于算力有限, 人们需要使用 <strong>Stabilised Inertial Platform</strong>.</p>
+<p>而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 <strong>Strapdown INS configuration</strong>.</p>
+<h3 id="stabilised-inertial-platform">
+  Stabilised Inertial Platform
+  <a class="anchor" href="#stabilised-inertial-platform">#</a>
 </h3>
+<p><strong>稳定惯性平台</strong> (Stabilised Inertial Platform) 大致如下:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p3.png"><figure>
+          <img src="/img/navi/L3_p3.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.</p>
+<p>然而, 它有如下缺点:</p>
+<ul>
+<li>mechanically complex</li>
+<li>costly to manufacture/maintain</li>
+<li>larger volume/weight</li>
+<li>cannot be used directly for airframe stabilisation</li>
+</ul>
 <h3 id="strapdown-system">
   Strapdown System
   <a class="anchor" href="#strapdown-system">#</a>
 </h3>
+<p>因此, 对于新的 INS 系统, 人们通常喜欢使用 <strong>Strapdown Configuration</strong>.</p>
+<p>与 Stablised Inertial Platform 不一样, 它的 gyro 是直接固定在测量对象上的. 也就是说, 我们需要花费一定的算力, 去将 gyro 的测量信号从 body 系转换到所需的系中.</p>
 <h2 id="the-navigation-equations">
   The Navigation Equations
   <a class="anchor" href="#the-navigation-equations">#</a>
 </h2>
+<blockquote>
+<p>The Navigation Equations form the core of all strapdown inertial navigation systems.</p></blockquote>
+<p>对于<strong>导航方程</strong>我们有如下更 general 的表达形式:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>a</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>γ</mi></msubsup><mo>=</mo><msubsup><munder accentunder="true"><mi>f</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>γ</mi></msubsup><mo>+</mo><msubsup><munder accentunder="true"><mi>γ</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{a}^{\gamma}_{ib} = \underline{f}^{\gamma}_{ib} + \underline{\gamma}^{\gamma}_{ib}</annotation></semantics></math></span>
+<p>接下来, 我们要求解两个不同的导航方程.</p>
 <h3 id="earth-frame-navigation-equations">
   Earth-Frame Navigation Equations
   <a class="anchor" href="#earth-frame-navigation-equations">#</a>
 </h3>
+<p>ECEF 系通常被卫星系统 (i.e. GNSS) 用于参考系和解析系. 因此, 我们也希望我们车子的导航可以在相同的系下进行解析.</p>
+<p>我们可以重写 Navigation Equation 在 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="script">F</mi><mi>e</mi></msup></mrow><annotation encoding="application/x-tex">\mathscr{F}^e</annotation></semantics></math></span>
+:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>a</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>e</mi></msubsup><mo>=</mo><msubsup><munder accentunder="true"><mi>f</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>e</mi></msubsup><mo>+</mo><msubsup><munder accentunder="true"><mi>e</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{a}^{e}_{ib} = \underline{f}^{e}_{ib} + \underline{e}^{\gamma}_{ib}</annotation></semantics></math></span>
+<p>在实际使用这个方程时, 我们会发现, 由于传感器是固定在 body 上的, 所以我们测量的比力是 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>f</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{f}^{b}_{ib}</annotation></semantics></math></span>
+.</p>
+<p>因此:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><munder accentunder="true"><mi>a</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>e</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mi>b</mi><mi>e</mi></msubsup><msubsup><munder accentunder="true"><mi>f</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>b</mi></msubsup><mo>+</mo><msubsup><munder accentunder="true"><mi>e</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>γ</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{a}^{e}_{ib} = C^{e}_{b}\underline{f}^{b}_{ib} + \underline{e}^{\gamma}_{ib}</annotation></semantics></math></span>
+<p>那么, 我们要如何从这个式子里求解出我们感兴趣的 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>v</mi><mo stretchy="true">‾</mo></munder><mrow><mi>e</mi><mi>b</mi></mrow><mi>e</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{v}^{e}_{eb}</annotation></semantics></math></span>
+? (其参考系是 ECEF)</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p8.png"><figure>
+          <img src="/img/navi/L3_p8.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p9.png"><figure>
+          <img src="/img/navi/L3_p9.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p10.png"><figure>
+          <img src="/img/navi/L3_p10.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p11.png"><figure>
+          <img src="/img/navi/L3_p11.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>然而, 这还没有结束. 在实际使用过程中, 我们需要实时更新 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>b</mi><mi>e</mi></msubsup></mrow><annotation encoding="application/x-tex">C^e_b</annotation></semantics></math></span>
+, 通过下面公式:</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><msubsup><mi>C</mi><mi>b</mi><mi>e</mi></msubsup><mo>˙</mo></mover><mo>=</mo><msubsup><mi>C</mi><mi>b</mi><mi>e</mi></msubsup><msubsup><mi mathvariant="normal">Ω</mi><mrow><mi>e</mi><mi>b</mi></mrow><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">\dot{C^e_b} = C^e_b\Omega^b_{eb}</annotation></semantics></math></span>
+<p>然而, 我们无法得到 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="normal">Ω</mi><mrow><mi>e</mi><mi>b</mi></mrow><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">\Omega^b_{eb}</annotation></semantics></math></span>
+, 因为我们的 gyro 只能测量惯性系的量, 也就是 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>ω</mi><mo stretchy="true">‾</mo></munder><mrow><mi>i</mi><mi>b</mi></mrow><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{\omega}^b_{ib}</annotation></semantics></math></span>
+.</p>
+<p>因此, 我们需要通过一下方法得到:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p12.png"><figure>
+          <img src="/img/navi/L3_p12.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>然而, 问题依旧没有结束!!!!</p>
+<p>因为它还是用到了在 body 系解析的地球的转动速度 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="normal">Ω</mi><mi>i</mi><mi>b</mi></msubsup><mi>e</mi></mrow><annotation encoding="application/x-tex">\Omega^b_ie</annotation></semantics></math></span>
+, 然而我们实际知道的是 ECEF 系解析的转动速度 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="normal">Ω</mi><mi>i</mi><mi>e</mi></msubsup><mi>e</mi></mrow><annotation encoding="application/x-tex">\Omega^e_ie</annotation></semantics></math></span>
+.所以, 我们还得这样:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p13.png"><figure>
+          <img src="/img/navi/L3_p13.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>终于, 我们可以开心地更新这个坐标变换矩阵了!!!!</p>
+<p>其总的流程如下图所示:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p14.png"><figure>
+          <img src="/img/navi/L3_p14.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
 <h3 id="local-navigation-frame-equations">
   Local Navigation Frame Equations
   <a class="anchor" href="#local-navigation-frame-equations">#</a>
 </h3>
+<p>在这个解析系下, 求解
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>v</mi><mo stretchy="true">‾</mo></munder><mrow><mi>e</mi><mi>b</mi></mrow><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">\underline{v}^{n}_{eb}</annotation></semantics></math></span>
+过程如下:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p19.png"><figure>
+          <img src="/img/navi/L3_p19.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p20.png"><figure>
+          <img src="/img/navi/L3_p20.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>在更新姿态时, 也有一些不同:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p16.png"><figure>
+          <img src="/img/navi/L3_p16.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>可以发现, 上述式子中有三个
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span>
+, 其中, 第一个是 gyro 测量的.</p>
+<p>第二个与地球的自转有关:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p17.png"><figure>
+          <img src="/img/navi/L3_p17.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>第三个被称作 Transport Rate, 也就是和 NED 系相对于 ECEF 系的旋转有关.</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p18.png"><figure>
+          <img src="/img/navi/L3_p18.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>总的流程如下:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p21.png"><figure>
+          <img src="/img/navi/L3_p21.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="ins-update-steps">
+  INS Update Steps
+  <a class="anchor" href="#ins-update-steps">#</a>
+</h3>
+<ul>
+<li>Update attitude</li>
+<li>Transform specific force frame</li>
+<li>Update velocity</li>
+<li>Update position</li>
+</ul>
 <h2 id="inertial-sensors">
   Inertial Sensors
   <a class="anchor" href="#inertial-sensors">#</a>
@@ -430,14 +674,155 @@ https://github.com/alex-shpak/hugo-book
   Accelerometers
   <a class="anchor" href="#accelerometers">#</a>
 </h3>
+<p><strong>加速度仪</strong>主要有以下两种类别:</p>
+<ul>
+<li>conventional mechanical</li>
+<li>MEMS (Micro-Electro Mechanical Machines).
+<ul>
+<li>piezoelectric devices (更精确, 但也带来了更多的 size/weight/volume/unit cost)</li>
+<li>capacitive devices (most common)</li>
+</ul>
+</li>
+</ul>
+<h4 id="conventional-mechanical">
+  conventional mechanical
+  <a class="anchor" href="#conventional-mechanical">#</a>
+</h4>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p28.png"><figure>
+          <img src="/img/navi/L3_p28.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h4 id="mems-capacitive-accelerometer">
+  MEMS Capacitive Accelerometer
+  <a class="anchor" href="#mems-capacitive-accelerometer">#</a>
+</h4>
 <h3 id="gyroscopes">
   Gyroscopes
   <a class="anchor" href="#gyroscopes">#</a>
 </h3>
+<p>gyro 可以分成如下几类:</p>
+<ul>
+<li>Mechanical rate gyroscopes: use the <strong>conservation of angular momentum</strong> to measure angular rate</li>
+<li>MEMS gyroscopes: use the <strong>Coriolis effect</strong> to measure angular rate</li>
+<li>Optical gyroscopes: use the <strong>Sagnac effect</strong> to achieve the same measurement.</li>
+</ul>
+<h4 id="mechanical-gyroscopes">
+  Mechanical Gyroscopes
+  <a class="anchor" href="#mechanical-gyroscopes">#</a>
+</h4>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p40.png"><figure>
+          <img src="/img/navi/L3_p40.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h4 id="vibrating-structure-gyroscopes-vsg">
+  Vibrating Structure Gyroscopes (VSG)
+  <a class="anchor" href="#vibrating-structure-gyroscopes-vsg">#</a>
+</h4>
+<h4 id="laser-gyroscopes">
+  Laser Gyroscopes
+  <a class="anchor" href="#laser-gyroscopes">#</a>
+</h4>
 <h2 id="sensor-error-characteristics">
   Sensor Error Characteristics
   <a class="anchor" href="#sensor-error-characteristics">#</a>
 </h2>
+<h3 id="bias-error">
+  Bias Error
+  <a class="anchor" href="#bias-error">#</a>
+</h3>
+<p>acc 和 gyro 都有.</p>
+<p>Bias 会变, 这一性质被称为 bias instability. 一般 MEMS 的 BS 要比机械的高.</p>
+<h3 id="scale-factor-errors">
+  Scale Factor Errors
+  <a class="anchor" href="#scale-factor-errors">#</a>
+</h3>
+<p>一般传感器的输入输出会有一个比值, 我们称之为 scale factor (SF).</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p65.png"><figure>
+          <img src="/img/navi/L3_p65.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="cross-coupling-errors">
+  Cross-Coupling Errors
+  <a class="anchor" href="#cross-coupling-errors">#</a>
+</h3>
+<p>其经常与 SF error 一起用如下矩阵描述:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p66.png"><figure>
+          <img src="/img/navi/L3_p66.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h3 id="random-noise">
+  Random Noise
+  <a class="anchor" href="#random-noise">#</a>
+</h3>
+<p>Thermo-Mechanical White Noise</p>
+<h3 id="error-models">
+  Error Models
+  <a class="anchor" href="#error-models">#</a>
+</h3>
+<p>最后, 几个误差全部包含进来后, 总的输出是:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p70.png"><figure>
+          <img src="/img/navi/L3_p70.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>对应的误差也可以得到:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p70b.png"><figure>
+          <img src="/img/navi/L3_p70b.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>这些误差也可以被修正:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L3_p71.png"><figure>
+          <img src="/img/navi/L3_p71.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
 </article>
  
       
@@ -486,7 +871,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#mechanisation-of-inertial-navigation-systems">Mechanisation of Inertial Navigation Systems</a>
       <ul>
-        <li><a href="#inertial-platform">Inertial Platform</a></li>
+        <li><a href="#stabilised-inertial-platform">Stabilised Inertial Platform</a></li>
         <li><a href="#strapdown-system">Strapdown System</a></li>
       </ul>
     </li>
@@ -494,6 +879,7 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#earth-frame-navigation-equations">Earth-Frame Navigation Equations</a></li>
         <li><a href="#local-navigation-frame-equations">Local Navigation Frame Equations</a></li>
+        <li><a href="#ins-update-steps">INS Update Steps</a></li>
       </ul>
     </li>
     <li><a href="#inertial-sensors">Inertial Sensors</a>
@@ -502,7 +888,15 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#gyroscopes">Gyroscopes</a></li>
       </ul>
     </li>
-    <li><a href="#sensor-error-characteristics">Sensor Error Characteristics</a></li>
+    <li><a href="#sensor-error-characteristics">Sensor Error Characteristics</a>
+      <ul>
+        <li><a href="#bias-error">Bias Error</a></li>
+        <li><a href="#scale-factor-errors">Scale Factor Errors</a></li>
+        <li><a href="#cross-coupling-errors">Cross-Coupling Errors</a></li>
+        <li><a href="#random-noise">Random Noise</a></li>
+        <li><a href="#error-models">Error Models</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
