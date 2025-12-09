@@ -37,7 +37,7 @@ A message of your choice, comprising more than 2048 bits, converted from a “ST
   <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/qam/" title="Dynamic QAM">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.e097f4532fc6e518a709da41a8080d59deea7b733397ca0837de697ed32967ba.js" integrity="sha256-4Jf0Uy/G5RinCdpBqAgNWd7qe3Mzl8oIN95pftMpZ7o=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.a9095f1e9f59fc1f4e5d559a49d55559e772ccbe1ed358122caa58d00f8a8936.js" integrity="sha256-qQlfHp9Z/B9OXVWaSdVVWedyzL4e01gSLKpY0A&#43;KiTY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -279,6 +279,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l4/" class="">L4.卫星导航</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l5/" class="">L5.集成导航</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -513,7 +539,10 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
 </span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
 <p>那么为什么要计算信号功率呢? 由信噪比公式:</p>
-<span>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
   \[
 
 \mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)

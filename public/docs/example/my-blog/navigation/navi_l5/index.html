@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Integrated Navigation
+  #
+
+
+  Principles of Sensor Fusion
+  #
+
+引入了一个小的知识点:
+
+to fuse the information from two pdfs we can multiply them together
+
+  The Kalman Filter
+  #
+
+卡尔曼滤波 (Kalman Filter) 的工作步骤:
+
+A Prediction Step and
+A Measurement Update Step
+
+
+  Filter Equations
+  #
+
+
+  
+  
+          
+          
+           
+      
+  
+
+
+  
+  
+          
+          
+           
+      
+  
+
+
+We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/navigation/navi_l5/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="L5.集成导航">
+  <meta property="og:description" content="Integrated Navigation # Principles of Sensor Fusion # 引入了一个小的知识点:
+to fuse the information from two pdfs we can multiply them together
+The Kalman Filter # 卡尔曼滤波 (Kalman Filter) 的工作步骤:
+A Prediction Step and A Measurement Update Step Filter Equations # We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>L5.集成导航 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/navigation/navi_l5/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.a9095f1e9f59fc1f4e5d559a49d55559e772ccbe1ed358122caa58d00f8a8936.js" integrity="sha256-qQlfHp9Z/B9OXVWaSdVVWedyzL4e01gSLKpY0A&#43;KiTY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle"  />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class="">工业生产规划调度阅读笔记</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class="">CH2.工业生产模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle"  />
+    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
+      <a role="button" class="">数字控制</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="">CH6.稳定性</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle" checked />
+    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
+      <a role="button" class="">导航</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l2/" class="">L2.导航数学基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l4/" class="">L4.卫星导航</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l5/" class="active">L5.集成导航</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>L5.集成导航</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#principles-of-sensor-fusion">Principles of Sensor Fusion</a></li>
+    <li><a href="#the-kalman-filter">The Kalman Filter</a>
+      <ul>
+        <li><a href="#filter-equations">Filter Equations</a></li>
+        <li><a href="#analysis-of-filter">Analysis of Filter</a></li>
+        <li><a href="#2d-navigation-example">2D Navigation Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#integrated-insgnss-navigation">Integrated INS/GNSS Navigation</a>
+      <ul>
+        <li><a href="#integration-architecture">Integration Architecture</a></li>
+        <li><a href="#insgnss-kalman-filter">INS/GNSS Kalman Filter</a></li>
+        <li><a href="#integrated-navigation-example">Integrated Navigation Example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="integrated-navigation">
+  Integrated Navigation
+  <a class="anchor" href="#integrated-navigation">#</a>
+</h1>
+<h2 id="principles-of-sensor-fusion">
+  Principles of Sensor Fusion
+  <a class="anchor" href="#principles-of-sensor-fusion">#</a>
+</h2>
+<p>引入了一个小的知识点:</p>
+<blockquote>
+<p>to fuse the information from two pdfs we can multiply them together</p></blockquote>
+<h2 id="the-kalman-filter">
+  The Kalman Filter
+  <a class="anchor" href="#the-kalman-filter">#</a>
+</h2>
+<p><strong>卡尔曼滤波</strong> (Kalman Filter) 的工作步骤:</p>
+<ul>
+<li>A Prediction Step and</li>
+<li>A Measurement Update Step</li>
+</ul>
+<h3 id="filter-equations">
+  Filter Equations
+  <a class="anchor" href="#filter-equations">#</a>
+</h3>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L5_p14.png"><figure>
+          <img src="/img/navi/L5_p14.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L5_p15.png"><figure>
+          <img src="/img/navi/L5_p15.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<blockquote>
+<p>We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)</p></blockquote>
+<ul>
+<li>a priori estimate（先验估计 / 预测估计）</li>
+<li>a posteriori estimate（后验估计 / 更新后的估计）</li>
+</ul>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L5_p16.png"><figure>
+          <img src="/img/navi/L5_p16.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L5_p22.png"><figure>
+          <img src="/img/navi/L5_p22.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>这张图展示的是 标准离散卡尔曼滤波器的预测（Time Update）和更新（Measurement Update）方程。</p>
+<p>⸻</p>
+<p>🟥 Time Update（预测 / 先验）</p>
+<ol>
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup></mrow><annotation encoding="application/x-tex">\hat{x}_k^{-}</annotation></semantics></math></span>
+</li>
+</ol>
+<p>先验状态估计（prediction）
+即：根据系统模型预测得到的状态，但还没有用测量修正。</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mover accent="true"><mi>x</mi><mo>^</mo></mover><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\hat{x}_k^{-} = \Phi_{k-1} \hat{x}_{k-1}</annotation></semantics></math></span>
+<p>⸻</p>
+<ol start="2">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\Phi_{k-1}</annotation></semantics></math></span>
+</li>
+</ol>
+<p>状态转移矩阵（State Transition Matrix）</p>
+<p>它描述系统状态在离散时间步之间是如何演化的。</p>
+<p>例如位置速度系统：</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>v</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">x_k = x_{k-1} + v_{k-1} dt</annotation></semantics></math></span>
+<p>—</p>
+<ol start="3">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>P</mi><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup></mrow><annotation encoding="application/x-tex">P_k^{-}</annotation></semantics></math></span>
+</li>
+</ol>
+<p>先验协方差矩阵（prediction covariance）
+代表状态预测的不确定性。</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>P</mi><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi>P</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><msubsup><mi mathvariant="normal">Φ</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mi>T</mi></msubsup><mo>+</mo><msub><mi>Q</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">P_k^{-} = \Phi_{k-1} P_{k-1} \Phi_{k-1}^T + Q_k</annotation></semantics></math></span>
+<p>⸻</p>
+<ol start="4">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">Q_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>过程噪声协方差（Process noise covariance）</p>
+<p>代表系统模型的不确定性，例如：</p>
+<ul>
+<li>加速度模型不准</li>
+<li>外界干扰</li>
+<li>IMU 噪声</li>
+</ul>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>Q</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">Q_k</annotation></semantics></math></span>
+<p>会 使预测的不确定性变大。</p>
+<p>⸻</p>
+<p>🟩 Measurement Update（修正 / 后验）</p>
+<ol start="5">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">K_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>卡尔曼增益（Kalman Gain）</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>K</mi><mi>k</mi></msub><mo>=</mo><msubsup><mi>P</mi><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup><msubsup><mi>H</mi><mi>k</mi><mi>T</mi></msubsup><mo stretchy="false">(</mo><msub><mi>H</mi><mi>k</mi></msub><msubsup><mi>P</mi><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup><msubsup><mi>H</mi><mi>k</mi><mi>T</mi></msubsup><mo>+</mo><msub><mi>R</mi><mi>k</mi></msub><msup><mo stretchy="false">)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">K_k = P_k^{-} H_k^T (H_k P_k^{-} H_k^T + R_k)^{-1}</annotation></semantics></math></span>
+<p>直观意义：</p>
+<p>决定信任测量多少 vs 信任预测多少</p>
+<ul>
+<li>若 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">R_k</annotation></semantics></math></span>
+（测量噪声）大 → 信预测</li>
+<li>若 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>P</mi><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup></mrow><annotation encoding="application/x-tex">P_k⁻</annotation></semantics></math></span>
+（模型不确定）大 → 信测量</li>
+</ul>
+<p>⸻</p>
+<ol start="6">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">z_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>测量向量（Measurement）</p>
+<p>来自传感器的实际测量值
+如 GPS 位置、速度计读数、IMU 测量等。</p>
+<p>⸻</p>
+<ol start="7">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">H_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>测量矩阵（Measurement Matrix）</p>
+<p>描述状态如何映射到测量：</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>z</mi><mi>k</mi></msub><mo>=</mo><msub><mi>H</mi><mi>k</mi></msub><msub><mi>x</mi><mi>k</mi></msub><mo>+</mo><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">z_k = H_k x_k + v_k</annotation></semantics></math></span>
+<p>例子：
+若测量只观测到位置：</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>H</mi><mi>k</mi></msub><mo>=</mo><mo stretchy="false">[</mo><mn>1</mn><mtext>  </mtext><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">H_k = [1 \; 0]</annotation></semantics></math></span>
+<p>⸻</p>
+<ol start="8">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\hat{x}_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>后验状态估计（修正后的状态）</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi></msub><mo>=</mo><msubsup><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup><mo>+</mo><msub><mi>K</mi><mi>k</mi></msub><mo stretchy="false">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo>−</mo><msub><mi>H</mi><mi>k</mi></msub><msubsup><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\hat{x}_k = \hat{x}_k^{-} + K_k(z_k - H_k\hat{x}_k^{-})</annotation></semantics></math></span>
+<p>括号里的项叫 innovation（创新 / 残差）</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>z</mi><mi>k</mi></msub><mo>−</mo><msub><mi>H</mi><mi>k</mi></msub><msubsup><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup></mrow><annotation encoding="application/x-tex">z_k - H_k \hat{x}_k^{-}</annotation></semantics></math></span>
+<p>表示测量与预测之间的差值。</p>
+<p>⸻</p>
+<ol start="9">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">P_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>后验协方差（修正后的不确定性）</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>P</mi><mi>k</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mi>I</mi><mo>−</mo><msub><mi>K</mi><mi>k</mi></msub><msub><mi>H</mi><mi>k</mi></msub><mo stretchy="false">)</mo><msubsup><mi>P</mi><mi>k</mi><mo lspace="0em" rspace="0em">−</mo></msubsup></mrow><annotation encoding="application/x-tex">P_k = (I - K_k H_k) P_k^{-}</annotation></semantics></math></span>
+<ul>
+<li>后验不确定性会比先验小</li>
+<li>表示状态估计变得更精确</li>
+</ul>
+<p>⸻</p>
+<ol start="10">
+<li>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">R_k</annotation></semantics></math></span>
+</li>
+</ol>
+<p>测量噪声协方差（Measurement noise covariance）</p>
+<p>代表传感器噪声的大小。</p>
+<p>例如：</p>
+<ul>
+<li>GPS 噪声可能是 3 m，
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">R_k</annotation></semantics></math></span>
+ 较大</li>
+<li>激光雷达噪声可能是 0.1 m，
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">R_k</annotation></semantics></math></span>
+ 较小</li>
+</ul>
+<p>⸻</p>
+<h3 id="analysis-of-filter">
+  Analysis of Filter
+  <a class="anchor" href="#analysis-of-filter">#</a>
+</h3>
+<h3 id="2d-navigation-example">
+  2D Navigation Example
+  <a class="anchor" href="#2d-navigation-example">#</a>
+</h3>
+<h2 id="integrated-insgnss-navigation">
+  Integrated INS/GNSS Navigation
+  <a class="anchor" href="#integrated-insgnss-navigation">#</a>
+</h2>
+<h3 id="integration-architecture">
+  Integration Architecture
+  <a class="anchor" href="#integration-architecture">#</a>
+</h3>
+<h3 id="insgnss-kalman-filter">
+  INS/GNSS Kalman Filter
+  <a class="anchor" href="#insgnss-kalman-filter">#</a>
+</h3>
+<h3 id="integrated-navigation-example">
+  Integrated Navigation Example
+  <a class="anchor" href="#integrated-navigation-example">#</a>
+</h3>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#principles-of-sensor-fusion">Principles of Sensor Fusion</a></li>
+    <li><a href="#the-kalman-filter">The Kalman Filter</a>
+      <ul>
+        <li><a href="#filter-equations">Filter Equations</a></li>
+        <li><a href="#analysis-of-filter">Analysis of Filter</a></li>
+        <li><a href="#2d-navigation-example">2D Navigation Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#integrated-insgnss-navigation">Integrated INS/GNSS Navigation</a>
+      <ul>
+        <li><a href="#integration-architecture">Integration Architecture</a></li>
+        <li><a href="#insgnss-kalman-filter">INS/GNSS Kalman Filter</a></li>
+        <li><a href="#integrated-navigation-example">Integrated Navigation Example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Satellite Navigation
+  #
+
+
+  Radio Navigation and Trilateration
+  #
+
+雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.
+三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)
+它的计算步骤十分繁琐! 但是适合电脑. 流程如下:
+
+  
+  
+          
+          
+           
+      
+  
+
+其中, dr 是 true r - predicted r.
+还有, 里面提到的 H, 是雅各布矩阵 (Jacobian Matrix):
+
+  
+  
+          
+          
+           
+      
+  
+
+如果是 3 个 beacon 的话, 那么 
+  H−1H^{-1}
+ 需要通过Moore-Penrose pseudo inverse 的方法来实现:
+
+  
+  
+          
+          
+           
+      
+  
+
+
+  GNSS Architecture
+  #
+
+全球卫星导航系统 (Global Navigation Satellite System, GNSS), 一般包含三个部分:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/navigation/navi_l4/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="L4.卫星导航">
+  <meta property="og:description" content="Satellite Navigation # Radio Navigation and Trilateration # 雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.
+三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)
+它的计算步骤十分繁琐! 但是适合电脑. 流程如下:
+其中, dr 是 true r - predicted r.
+还有, 里面提到的 H, 是雅各布矩阵 (Jacobian Matrix):
+如果是 3 个 beacon 的话, 那么 H−1H^{-1} 需要通过Moore-Penrose pseudo inverse 的方法来实现:
+GNSS Architecture # 全球卫星导航系统 (Global Navigation Satellite System, GNSS), 一般包含三个部分:">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>L4.卫星导航 | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/navigation/navi_l4/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.a9095f1e9f59fc1f4e5d559a49d55559e772ccbe1ed358122caa58d00f8a8936.js" integrity="sha256-qQlfHp9Z/B9OXVWaSdVVWedyzL4e01gSLKpY0A&#43;KiTY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>博客</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle"  />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class="">工业生产规划调度阅读笔记</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class="">CH2.工业生产模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle"  />
+    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
+      <a role="button" class="">数字控制</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="">CH6.稳定性</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle" checked />
+    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
+      <a role="button" class="">导航</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l2/" class="">L2.导航数学基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l4/" class="active">L4.卫星导航</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l5/" class="">L5.集成导航</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>L4.卫星导航</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#radio-navigation-and-trilateration">Radio Navigation and Trilateration</a></li>
+    <li><a href="#gnss-architecture">GNSS Architecture</a>
+      <ul>
+        <li><a href="#space-segment">Space segment</a></li>
+        <li><a href="#ground-control-segment">Ground control segment</a></li>
+        <li><a href="#user-segment">User segment</a></li>
+      </ul>
+    </li>
+    <li><a href="#sources-of-error">Sources of Error</a>
+      <ul>
+        <li><a href="#geometric---dilution-of-precision">Geometric - Dilution of Precision</a></li>
+      </ul>
+    </li>
+    <li><a href="#single-point-navigation-solution">Single-Point Navigation Solution</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="satellite-navigation">
+  Satellite Navigation
+  <a class="anchor" href="#satellite-navigation">#</a>
+</h1>
+<h2 id="radio-navigation-and-trilateration">
+  Radio Navigation and Trilateration
+  <a class="anchor" href="#radio-navigation-and-trilateration">#</a>
+</h2>
+<p>雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.</p>
+<p>三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)</p>
+<p>它的计算步骤十分繁琐! 但是适合电脑. 流程如下:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L4_p12.png"><figure>
+          <img src="/img/navi/L4_p12.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>其中, dr 是 true r - predicted r.</p>
+<p>还有, 里面提到的 H, 是<strong>雅各布矩阵</strong> (Jacobian Matrix):</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L4_p11.png"><figure>
+          <img src="/img/navi/L4_p11.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>如果是 3 个 beacon 的话, 那么 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">H^{-1}</annotation></semantics></math></span>
+ 需要通过<strong>Moore-Penrose pseudo inverse</strong> 的方法来实现:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L4_p21.png"><figure>
+          <img src="/img/navi/L4_p21.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<h2 id="gnss-architecture">
+  GNSS Architecture
+  <a class="anchor" href="#gnss-architecture">#</a>
+</h2>
+<p><strong>全球卫星导航系统</strong> (Global Navigation Satellite System, GNSS), 一般包含三个部分:</p>
+<ul>
+<li>Space segment</li>
+<li>Ground control segment</li>
+<li>User segment</li>
+</ul>
+<h3 id="space-segment">
+  Space segment
+  <a class="anchor" href="#space-segment">#</a>
+</h3>
+<p>其中, 我们感兴趣的部分有:</p>
+<ul>
+<li>Directed antenna array pointed at the earth</li>
+<li>Atomic clock.</li>
+</ul>
+<blockquote>
+<p>The space segment consists of a constellation of <strong>24</strong> satellites.
+Each satellite broadcasts its <strong>position</strong> and a very accurate measurement of the <strong>broadcast time</strong> provided by an on-board caesium or rubidium <strong>atomic clock</strong>.
+There are two broadcast signals, each modulated by a binary phase shift keying digital process encoding a <strong>pseudo-random signal and a data signal</strong>.</p></blockquote>
+<h3 id="ground-control-segment">
+  Ground control segment
+  <a class="anchor" href="#ground-control-segment">#</a>
+</h3>
+<blockquote>
+<p>The control segment monitors the <strong>position and status</strong> of each satellite and issues <strong>course correction</strong> commands, <strong>clock adjustment</strong> commands, satellite almanac information and ionospheric correction factors.</p></blockquote>
+<h3 id="user-segment">
+  User segment
+  <a class="anchor" href="#user-segment">#</a>
+</h3>
+<blockquote>
+<p>The user segment consists of an <strong>antenna</strong> to receive the broadcast signal from each satellite in view, a <strong>receiver</strong> segment to <strong>demodulate</strong> each satellite signal and <strong>recover</strong> both the pseudorange measurement and data message and a <strong>processing</strong> segment to <strong>correct</strong> the pseudorange measurements and compute a position, velocity, time navigation solution using <strong>trilateration</strong>.</p></blockquote>
+<h2 id="sources-of-error">
+  Sources of Error
+  <a class="anchor" href="#sources-of-error">#</a>
+</h2>
+<blockquote>
+<p>8 principle sources of error in a GNSS system</p></blockquote>
+<ul>
+<li>Satellite clock errors:</li>
+<li>Receiver clock error:</li>
+<li>Ionospheric refraction: 离子层折射</li>
+<li>Tropospheric refraction: 对流层折射</li>
+<li>Satellite geometry: Dilution of precision.</li>
+<li>Relativity effects:Due to special and general relativity, the clocks on-board the satellites run faster than identical clocks on earth.</li>
+<li>Multipath errors: landscape surrounding the receiver.</li>
+<li>Receiver tracking errors: Thermal noise and interference eﬀects</li>
+</ul>
+<h3 id="geometric---dilution-of-precision">
+  Geometric - Dilution of Precision
+  <a class="anchor" href="#geometric---dilution-of-precision">#</a>
+</h3>
+<h2 id="single-point-navigation-solution">
+  Single-Point Navigation Solution
+  <a class="anchor" href="#single-point-navigation-solution">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#radio-navigation-and-trilateration">Radio Navigation and Trilateration</a></li>
+    <li><a href="#gnss-architecture">GNSS Architecture</a>
+      <ul>
+        <li><a href="#space-segment">Space segment</a></li>
+        <li><a href="#ground-control-segment">Ground control segment</a></li>
+        <li><a href="#user-segment">User segment</a></li>
+      </ul>
+    </li>
+    <li><a href="#sources-of-error">Sources of Error</a>
+      <ul>
+        <li><a href="#geometric---dilution-of-precision">Geometric - Dilution of Precision</a></li>
+      </ul>
+    </li>
+    <li><a href="#single-point-navigation-solution">Single-Point Navigation Solution</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
