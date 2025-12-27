@@ -34,6 +34,16 @@
       
   
 
+里面的 df / dx 可以用如下方式计算:
+
+  
+  
+          
+          
+           
+      
+  
+
 如果是 3 个 beacon 的话, 那么 
   H−1H^{-1}
  需要通过Moore-Penrose pseudo inverse 的方法来实现:
@@ -45,12 +55,7 @@
            
       
   
-
-
-  GNSS Architecture
-  #
-
-全球卫星导航系统 (Global Navigation Satellite System, GNSS), 一般包含三个部分:">
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/navigation/navi_l4/">
@@ -61,8 +66,8 @@
 它的计算步骤十分繁琐! 但是适合电脑. 流程如下:
 其中, dr 是 true r - predicted r.
 还有, 里面提到的 H, 是雅各布矩阵 (Jacobian Matrix):
-如果是 3 个 beacon 的话, 那么 H−1H^{-1} 需要通过Moore-Penrose pseudo inverse 的方法来实现:
-GNSS Architecture # 全球卫星导航系统 (Global Navigation Satellite System, GNSS), 一般包含三个部分:">
+里面的 df / dx 可以用如下方式计算:
+如果是 3 个 beacon 的话, 那么 H−1H^{-1} 需要通过Moore-Penrose pseudo inverse 的方法来实现:">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -72,7 +77,7 @@ GNSS Architecture # 全球卫星导航系统 (Global Navigation Satellite System
 <link rel="canonical" href="http://localhost:1313/docs/example/my-blog/navigation/navi_l4/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.a9095f1e9f59fc1f4e5d559a49d55559e772ccbe1ed358122caa58d00f8a8936.js" integrity="sha256-qQlfHp9Z/B9OXVWaSdVVWedyzL4e01gSLKpY0A&#43;KiTY=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.6d7137f751d331758cdd45cd7e8973101690d881b97da0a3066b0a1fd4f75a19.js" integrity="sha256-bXE391HTMXWM3UXNfolzEBaQ2IG5faCjBmsKH9T3Whk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -231,11 +236,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-  </ul>
-
-        </li>
-      
-    
       
         <li>
           
@@ -243,23 +243,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle"  />
-    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
-      <a role="button" class="">数字控制</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="">CH6.稳定性</a>
+    <a href="/docs/example/my-blog/pns/pns_ch5/" class="">CH5.机器和Job Shop的调度</a>
   
 
         </li>
@@ -453,6 +437,18 @@ https://github.com/alex-shpak/hugo-book
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/navi/L4_p11.png"><figure>
           <img src="/img/navi/L4_p11.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>里面的 df / dx 可以用如下方式计算:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/navi/L4_p10.png"><figure>
+          <img src="/img/navi/L4_p10.png" alt="alt text" />
           <figcaption></figcaption>
           <style> 
             .post-img-view{text-align:center} 

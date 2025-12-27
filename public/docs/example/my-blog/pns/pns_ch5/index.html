@@ -3,23 +3,54 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  Chapter 5 Machine Scheduling and Job Shop Scheduling
+  #
+
+
+  5.1 Introduction
+  #
+
+
+  5.2 Single Machine and Parallel Machine Models
+  #
+
+
+  5.3 Job Shops and Mathematical Programming
+  #
+
+
+  5.4 Job Shops and the Shifting Bottleneck Heuristic
+  #
+
+
+  5.5 Job Shops and Constraint Programming
+  #
+
+
+  5.6 LEKIN: A Generic Job Shop Scheduling System
+  #
+
+
+  5.7 Discussion
+  #
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/digital_control/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/pns/pns_ch5/">
   <meta property="og:site_name" content="ZCHENG LI">
-  <meta property="og:title" content="数字控制">
+  <meta property="og:title" content="CH5.机器和Job Shop的调度">
+  <meta property="og:description" content="Chapter 5 Machine Scheduling and Job Shop Scheduling # 5.1 Introduction # 5.2 Single Machine and Parallel Machine Models # 5.3 Job Shops and Mathematical Programming # 5.4 Job Shops and the Shifting Bottleneck Heuristic # 5.5 Job Shops and Constraint Programming # 5.6 LEKIN: A Generic Job Shop Scheduling System # 5.7 Discussion #">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
-<title>数字控制 | ZCHENG LI</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>CH5.机器和Job Shop的调度 | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/digital_control/">
-  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/digital_control/" title="Digital Control">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch5/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.12b88de302ed8c93e50c188d9ab08ade95900f1007b92cbeff9d2b8900164141.js" integrity="sha256-EriN4wLtjJPlDBiNmrCK3pWQDxAHuSy&#43;/50riQAWQUE=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/example/my-blog/digital_control/index.xml" title="ZCHENG LI" />
+  <script defer src="/zh-cn.search.min.6d7137f751d331758cdd45cd7e8973101690d881b97da0a3066b0a1fd4f75a19.js" integrity="sha256-bXE391HTMXWM3UXNfolzEBaQ2IG5faCjBmsKH9T3Whk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -58,8 +89,6 @@ https://github.com/alex-shpak/hugo-book
   
 
 
-  
-
 
 <ul class="book-languages">
   <li>
@@ -74,7 +103,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="/en/docs/example/my-blog/digital_control/">
+        <a href="/en/">
           English
         </a>
       </li>
@@ -132,7 +161,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle"  />
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle" checked />
     <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
       <a role="button" class="">工业生产规划调度阅读笔记</a>
     </label>
@@ -180,11 +209,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-  </ul>
-
-        </li>
-      
-    
       
         <li>
           
@@ -192,23 +216,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b0fe8f14d40f8befcef55ae817b0833b" class="toggle" checked />
-    <label for="section-b0fe8f14d40f8befcef55ae817b0833b" class="flex justify-between">
-      <a role="button" class="active">数字控制</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/digital_control/dc_ch6/" class="">CH6.稳定性</a>
+    <a href="/docs/example/my-blog/pns/pns_ch5/" class="active">CH5.机器和Job Shop的调度</a>
   
 
         </li>
@@ -332,7 +340,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>数字控制</h3>
+  <h3>CH5.机器和Job Shop的调度</h3>
 
   <label for="toc-control">
     
@@ -346,7 +354,17 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#51-introduction">5.1 Introduction</a></li>
+    <li><a href="#52-single-machine-and-parallel-machine-models">5.2 Single Machine and Parallel Machine Models</a></li>
+    <li><a href="#53-job-shops-and-mathematical-programming">5.3 Job Shops and Mathematical Programming</a></li>
+    <li><a href="#54-job-shops-and-the-shifting-bottleneck-heuristic">5.4 Job Shops and the Shifting Bottleneck Heuristic</a></li>
+    <li><a href="#55-job-shops-and-constraint-programming">5.5 Job Shops and Constraint Programming</a></li>
+    <li><a href="#56-lekin-a-generic-job-shop-scheduling-system">5.6 LEKIN: A Generic Job Shop Scheduling System</a></li>
+    <li><a href="#57-discussion">5.7 Discussion</a></li>
+  </ul>
+</nav>
 
 
 
@@ -357,7 +375,39 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="chapter-5-machine-scheduling-and-job-shop-scheduling">
+  Chapter 5 Machine Scheduling and Job Shop Scheduling
+  <a class="anchor" href="#chapter-5-machine-scheduling-and-job-shop-scheduling">#</a>
+</h1>
+<h2 id="51-introduction">
+  5.1 Introduction
+  <a class="anchor" href="#51-introduction">#</a>
+</h2>
+<h2 id="52-single-machine-and-parallel-machine-models">
+  5.2 Single Machine and Parallel Machine Models
+  <a class="anchor" href="#52-single-machine-and-parallel-machine-models">#</a>
+</h2>
+<h2 id="53-job-shops-and-mathematical-programming">
+  5.3 Job Shops and Mathematical Programming
+  <a class="anchor" href="#53-job-shops-and-mathematical-programming">#</a>
+</h2>
+<h2 id="54-job-shops-and-the-shifting-bottleneck-heuristic">
+  5.4 Job Shops and the Shifting Bottleneck Heuristic
+  <a class="anchor" href="#54-job-shops-and-the-shifting-bottleneck-heuristic">#</a>
+</h2>
+<h2 id="55-job-shops-and-constraint-programming">
+  5.5 Job Shops and Constraint Programming
+  <a class="anchor" href="#55-job-shops-and-constraint-programming">#</a>
+</h2>
+<h2 id="56-lekin-a-generic-job-shop-scheduling-system">
+  5.6 LEKIN: A Generic Job Shop Scheduling System
+  <a class="anchor" href="#56-lekin-a-generic-job-shop-scheduling-system">#</a>
+</h2>
+<h2 id="57-discussion">
+  5.7 Discussion
+  <a class="anchor" href="#57-discussion">#</a>
+</h2>
+</article>
  
       
 
@@ -387,6 +437,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -397,7 +451,17 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#51-introduction">5.1 Introduction</a></li>
+    <li><a href="#52-single-machine-and-parallel-machine-models">5.2 Single Machine and Parallel Machine Models</a></li>
+    <li><a href="#53-job-shops-and-mathematical-programming">5.3 Job Shops and Mathematical Programming</a></li>
+    <li><a href="#54-job-shops-and-the-shifting-bottleneck-heuristic">5.4 Job Shops and the Shifting Bottleneck Heuristic</a></li>
+    <li><a href="#55-job-shops-and-constraint-programming">5.5 Job Shops and Constraint Programming</a></li>
+    <li><a href="#56-lekin-a-generic-job-shop-scheduling-system">5.6 LEKIN: A Generic Job Shop Scheduling System</a></li>
+    <li><a href="#57-discussion">5.7 Discussion</a></li>
+  </ul>
+</nav>
 
 
  

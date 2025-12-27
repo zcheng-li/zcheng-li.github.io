@@ -36,7 +36,7 @@ job 先后顺序表示的两种方式:
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/pns/pns_ch4/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/pns/pns_ch4.zh-cn-copy/">
   <meta property="og:site_name" content="ZCHENG LI">
   <meta property="og:title" content="CH4.项目的规划调度">
   <meta property="og:description" content="Chapter 4 Project Planning and Scheduling # 4.1 Introduction # 本章的一些前提:
@@ -51,10 +51,10 @@ precedence constraints: 每个 job 的开始需要等待上一个 job 的完成.
 <title>CH4.项目的规划调度 | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch4/">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch4.zh-cn-copy/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.6d7137f751d331758cdd45cd7e8973101690d881b97da0a3066b0a1fd4f75a19.js" integrity="sha256-bXE391HTMXWM3UXNfolzEBaQ2IG5faCjBmsKH9T3Whk=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.12b88de302ed8c93e50c188d9ab08ade95900f1007b92cbeff9d2b8900164141.js" integrity="sha256-EriN4wLtjJPlDBiNmrCK3pWQDxAHuSy&#43;/50riQAWQUE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -207,7 +207,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/pns/pns_ch4/" class="active">CH4.项目的规划调度</a>
+    <a href="/docs/example/my-blog/pns/pns_ch4.zh-cn-copy/" class="active">CH4.项目的规划调度</a>
   
 
         </li>
@@ -220,7 +220,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/pns/pns_ch5/" class="">CH5.机器和Job Shop的调度</a>
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
   
 
         </li>
@@ -456,7 +456,7 @@ environment with an unlimited number of machines.</p></blockquote>
       </figure></a>
   </div>
 </p>
-<p>这个方法, 我们称之为 <strong>Forward Procedure</strong>. 然而, 它虽然简单易懂, 但是它并不一定能带来最优的效率. 有的时候我们也需要适当地延迟某些 job 的开始, 以缓解机器生产的压力和库存成本之类的东西.</p>
+<p>这个方法, 我们称之为 <strong>Forward Procedure</strong>. 然而, 它虽然简单易懂, 但是它并不一定能带来最优的效率. 因为它有可能延迟某些 job 的开始.</p>
 
   
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mi>m</mi></msub><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">C_max</annotation></semantics></math></span>
@@ -493,77 +493,10 @@ environment with an unlimited number of machines.</p></blockquote>
   4.3 Program Evaluation and Review Technique (PERT)
   <a class="anchor" href="#43-program-evaluation-and-review-technique-pert">#</a>
 </h2>
-<p>与之前的章节不同, 这一节里, 每个 job 的处理时间现在是变量了. 相对的, 这些量的 <strong>均值</strong> 
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">u_j</annotation></semantics></math></span>
-, 和 <strong>方差</strong> 
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math></span>
- 现在是已知的或者是可以被估计的. 而估计整的项目的 makespan, 我们可以用 <strong>Program Evaluation and Review Technique (PERT)</strong> 这一技术.</p>
-<p>接着, 我们定义以下量:</p>
-<p>
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup></mrow><annotation encoding="application/x-tex">p^a_j</annotation></semantics></math></span>
- = the optimistic processing time of job j,</p>
-<p>
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mi>m</mi></msubsup></mrow><annotation encoding="application/x-tex">p^m_j</annotation></semantics></math></span>
- = the most likely processing time of job j,</p>
-<p>
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">p^b_j</annotation></semantics></math></span>
- = the pessimistic processing time of job j.</p>
-<p>那么, 一个 job 的估计处理时间可以得到:</p>
-
-  
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>u</mi><mo>^</mo></mover><mi>j</mi></msub><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup><mo>+</mo><mn>4</mn><mo>∗</mo><msubsup><mi>p</mi><mi>j</mi><mi>m</mi></msubsup><mo>+</mo><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\hat{u}_j = \frac{p^a_j + 4 * p^m_j + p^b_j}{6}</annotation></semantics></math></span>
-<p>基于这个估计处理时间, 我们就可以使用前面一节提到的 CPM.</p>
-<p>而 方差 则是:</p>
-
-  
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mover accent="true"><mi>σ</mi><mo>^</mo></mover><mi>j</mi><mn>2</mn></msubsup><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup><mo>−</mo><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><mn>6</mn></mfrac><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\hat{\sigma}_j^2 = (\frac{p^a_j - p^b_j}{6})^2</annotation></semantics></math></span>
 <h2 id="44-timecost-trade-oﬀs-linear-costs">
   4.4 Time/Cost Trade-Oﬀs: Linear Costs
   <a class="anchor" href="#44-timecost-trade-o%ef%ac%80s-linear-costs">#</a>
 </h2>
-<p>在这一节里, 我们考虑成本的影响. 我们假设, 成本和处理时间有如下关系:</p>
-<p>
-  <div class="post-img-view">
-  <a data-fancybox="gallery" href="/img/pns/fig4_6.png"><figure>
-          <img src="/img/pns/fig4_6.png" alt="alt text" />
-          <figcaption></figcaption>
-          <style> 
-            .post-img-view{text-align:center} 
-          </style> 
-      </figure></a>
-  </div>
-</p>
-<p>在进一步探讨相关算法之前, 我们需要先对模型进行化简.</p>
-<blockquote>
-<p>The precedence graph can be extended by incorporating a <strong>source</strong> node (with zero processing time) that has an arc emanating to each node that represents a job without predecessors. In the same way each node that represents a job without successors has an arc emanating to a single <strong>sink</strong> node, which also has zero processing time. A <strong>critical path</strong> is a longest path from the source to the sink.</p></blockquote>
-<p>我们记 
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>c</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">G_{cp}</annotation></semantics></math></span>
- 为一条或多条 Critical Path.</p>
-<p>
-  <div class="post-img-view">
-  <a data-fancybox="gallery" href="/img/pns/fig4_7.png"><figure>
-          <img src="/img/pns/fig4_7.png" alt="alt text" />
-          <figcaption></figcaption>
-          <style> 
-            .post-img-view{text-align:center} 
-          </style> 
-      </figure></a>
-  </div>
-</p>
-<blockquote>
-<p>A <strong>cut set</strong> in this subgraph is a set of nodes whose removal from the subgraph disconnects the source from the sink. A cut set is said to be <strong>minimal</strong> if putting any node back in the graph reestablishes the connection between the source and the sink (see Figure 4.7).</p></blockquote>
-<p>根据如上的表示, 我们可以有如下的启发式算法:</p>
-<p>
-  <div class="post-img-view">
-  <a data-fancybox="gallery" href="/img/pns/a4_4_1.png"><figure>
-          <img src="/img/pns/a4_4_1.png" alt="alt text" />
-          <figcaption></figcaption>
-          <style> 
-            .post-img-view{text-align:center} 
-          </style> 
-      </figure></a>
-  </div>
-</p>
 <h2 id="45-timecost-trade-oﬀs-nonlinear-costs">
   4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs
   <a class="anchor" href="#45-timecost-trade-o%ef%ac%80s-nonlinear-costs">#</a>

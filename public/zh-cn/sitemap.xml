@@ -16,10 +16,6 @@
                 href="http://localhost:1313/docs/example/my-blog/qam/"
                 />
   </url><url>
-    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch2/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch4/</loc>
-  </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/</loc>
     <xhtml:link
                 rel="alternate"
@@ -31,6 +27,8 @@
                 hreflang="zh-CN"
                 href="http://localhost:1313/docs/example/my-blog/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch2/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/navigation/navi_l2/</loc>
   </url><url>
@@ -48,17 +46,7 @@
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/navigation/navi_l3/</loc>
   </url><url>
-    <loc>http://localhost:1313/docs/example/my-blog/digital_control/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/docs/example/my-blog/digital_control/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/docs/example/my-blog/digital_control/"
-                />
+    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch4/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/example/my-blog/navigation/navi_l4/</loc>
   </url><url>
@@ -74,9 +62,9 @@
                 href="http://localhost:1313/docs/example/my-blog/navigation/"
                 />
   </url><url>
-    <loc>http://localhost:1313/docs/example/my-blog/navigation/navi_l5/</loc>
+    <loc>http://localhost:1313/docs/example/my-blog/pns/pns_ch5/</loc>
   </url><url>
-    <loc>http://localhost:1313/docs/example/my-blog/digital_control/dc_ch6/</loc>
+    <loc>http://localhost:1313/docs/example/my-blog/navigation/navi_l5/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <xhtml:link

@@ -38,18 +38,6 @@
                 href="http://localhost:1313/en/docs/example/my-blog/pns/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/docs/example/my-blog/digital_control/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/docs/example/my-blog/digital_control/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/docs/example/my-blog/digital_control/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/docs/example/my-blog/navigation/</loc>
     <xhtml:link
                 rel="alternate"

@@ -27,6 +27,10 @@ bookToc: true
 
 ![alt text](/img/navi/L4_p11.png)
 
+里面的 df / dx 可以用如下方式计算:
+
+![alt text](/img/navi/L4_p10.png)
+
 如果是 3 个 beacon 的话, 那么 \(H^{-1}\) 需要通过**Moore-Penrose pseudo inverse** 的方法来实现:
 
 ![alt text](/img/navi/L4_p21.png)

@@ -1,6 +1,6 @@
 ---
 title: "CH2.工业生产模型"
-weight: 5
+weight: 20
 # bookFlatSection: false
 bookToc: true
 # bookHidden: false
