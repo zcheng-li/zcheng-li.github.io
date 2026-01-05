@@ -117,6 +117,12 @@ job 先后顺序表示的两种方式:
 
 ![alt text](/img/pns/a4_4_1.png)
 
+example 4.4.2: 
+
+![alt text](/img/pns/fig4_4.png)
+
+> ps: Those jobs of which the earliest possible completion times are equal to the latest possible completion times are critical and constitute the critical path.
+
 ## 4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs
 
 ## 4.6 Project Scheduling with Workforce Constraints

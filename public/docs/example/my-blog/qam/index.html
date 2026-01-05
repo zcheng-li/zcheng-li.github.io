@@ -34,10 +34,10 @@ A message of your choice, comprising more than 2048 bits, converted from a “ST
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/docs/example/my-blog/qam/">
-  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/qam/" title="Dynamic QAM">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/example/my-blog/qam/" title="Dynamic QAM Modulation &amp; Demodulation in Python">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.6d7137f751d331758cdd45cd7e8973101690d881b97da0a3066b0a1fd4f75a19.js" integrity="sha256-bXE391HTMXWM3UXNfolzEBaQ2IG5faCjBmsKH9T3Whk=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.88a9cb16db8eed81c410d16f076924dff78255a8039bb7b4c2f60e213f46cbf8.js" integrity="sha256-iKnLFtuO7YHEENFvB2kk3/eCVagDm7e0wvYOIT9Gy/g=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -518,10 +518,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    sigpower <span style="color:#f92672">=</span> sigpower <span style="color:#f92672">/</span> len(signal)
 </span></span></code></pre></div><p>遍历 <code>signal</code> (即之前提到的 <code>[0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]</code>)中的每一个元素, 将其平方相加, 然后再除以总长, 计算<strong>信号功率</strong>.</p>
 <p>那么为什么要计算信号功率呢? 由信噪比公式:</p>
-
-<link rel="stylesheet" href="/katex/katex.min.css" />
-<script defer src="/katex/katex.min.js"></script>
-<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+<span>
   \[
 
 \mathrm{SNR}_{\text{dB}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)

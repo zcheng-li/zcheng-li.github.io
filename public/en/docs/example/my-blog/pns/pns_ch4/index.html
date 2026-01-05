@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" dir="ltr">
+<html lang="en" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,50 +11,38 @@
   4.1 Introduction
   #
 
-本章的一些前提:
+Some basic assumptions for this chapter:
 
 This chapter focuses on the planning and scheduling of jobs that are subject
 to precedence constraints. The setting may be regarded as a parallel machine
 environment with an unlimited number of machines.
-我们的优化目标:
+Our optimization objective is:
 
-The objective is to minimize the makespan while adhering to the precedence constraints
-两个限制:
-
-precedence constraints: 每个 job 的开始需要等待上一个 job 的完成.
-workforce constraints: 操作员可能短缺 (忙不过来)
-
-job 先后顺序表示的两种方式:
-
-  
-  
-          
-          
-           
-      
-  
-">
+The objective is to minimize the makespan while adhering to the precedence constraints.
+Two main constraints are considered:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/pns/pns_ch4.zh-cn-copy/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch4/">
   <meta property="og:site_name" content="ZCHENG LI">
-  <meta property="og:title" content="CH4.项目的规划调度">
-  <meta property="og:description" content="Chapter 4 Project Planning and Scheduling # 4.1 Introduction # 本章的一些前提:
-This chapter focuses on the planning and scheduling of jobs that are subject to precedence constraints. The setting may be regarded as a parallel machine environment with an unlimited number of machines.
-我们的优化目标:
-The objective is to minimize the makespan while adhering to the precedence constraints
-两个限制:
-precedence constraints: 每个 job 的开始需要等待上一个 job 的完成. workforce constraints: 操作员可能短缺 (忙不过来) job 先后顺序表示的两种方式:">
-  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="CH4. Project Planning and Scheduling">
+  <meta property="og:description" content="Chapter 4 Project Planning and Scheduling # 4.1 Introduction # Some basic assumptions for this chapter:
+This chapter focuses on the planning and scheduling of jobs that are subject
+to precedence constraints. The setting may be regarded as a parallel machine
+environment with an unlimited number of machines.
+Our optimization objective is:
+The objective is to minimize the makespan while adhering to the precedence constraints.
+Two main constraints are considered:">
+  <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>CH4.项目的规划调度 | ZCHENG LI</title>
+<title>CH4. Project Planning and Scheduling | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch4.zh-cn-copy/">
+<link rel="canonical" href="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch4/">
+  <link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch4/" title="CH4.项目的规划调度">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.88a9cb16db8eed81c410d16f076924dff78255a8039bb7b4c2f60e213f46cbf8.js" integrity="sha256-iKnLFtuO7YHEENFvB2kk3/eCVagDm7e0wvYOIT9Gy/g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.aad5a8f283f8e9eab0a8a8af2e009772f992bcfb3a898f9ecbdedd224640f133.js" integrity="sha256-qtWo8oP46eqwqKivLgCXcvmSvPs6iY&#43;ey97dIkZA8TM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -70,13 +58,13 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  <a class="flex align-center" href="/en/"><span>ZCHENG LI</span>
   </a>
 </h2>
 
 
 <div class="book-search hidden">
-  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -93,6 +81,8 @@ https://github.com/alex-shpak/hugo-book
   
 
 
+  
+
 
 <ul class="book-languages">
   <li>
@@ -100,15 +90,15 @@ https://github.com/alex-shpak/hugo-book
     <label for="languages" class="flex justify-between">
       <a role="button" class="flex align-center">
         <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
-        简体中文
+        English
       </a>
     </label>
 
     <ul>
       
       <li>
-        <a href="/en/">
-          English
+        <a href="/docs/example/my-blog/pns/pns_ch4/">
+          简体中文
         </a>
       </li>
       
@@ -139,7 +129,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>博客</span>
+    <span>My Blogs</span>
   
 
           
@@ -152,7 +142,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/qam/" class="">动态QAM调制解调python实现</a>
+    <a href="/en/docs/example/my-blog/qam/" class="">Dynamic QAM Modulation &amp; Demodulation in Python</a>
   
 
         </li>
@@ -165,9 +155,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle" checked />
-    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
-      <a role="button" class="">工业生产规划调度阅读笔记</a>
+    <input type="checkbox" id="section-316eed7585ddf2826093144a1ab46376" class="toggle" checked />
+    <label for="section-316eed7585ddf2826093144a1ab46376" class="flex justify-between">
+      <a role="button" class="">RN Planning and Scheduling</a>
     </label>
   
 
@@ -181,7 +171,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/pns/pns_ch1/" class="">CH1.规划调度: 角色与影响</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch1/" class="">CH1. Planning and Scheduling: Roles and Impact</a>
   
 
         </li>
@@ -194,7 +184,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/pns/pns_ch2/" class="">CH2.工业生产模型</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch2/" class="">CH2. Manufacturing Models</a>
   
 
         </li>
@@ -207,7 +197,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/pns/pns_ch4.zh-cn-copy/" class="active">CH4.项目的规划调度</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch4/" class="active">CH4. Project Planning and Scheduling</a>
   
 
         </li>
@@ -220,20 +210,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/my-blog/pns/pns_ch4/" class="">CH4.项目的规划调度</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/pns/pns_ch5/" class="">CH5.机器和Job Shop的调度</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch5/" class="">CH5.Machien and JSS</a>
   
 
         </li>
@@ -251,66 +228,14 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle"  />
-    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
-      <a role="button" class="">导航</a>
+    <input type="checkbox" id="section-6c70eadb0aa09b0724af1b0ec9953205" class="toggle"  />
+    <label for="section-6c70eadb0aa09b0724af1b0ec9953205" class="flex justify-between">
+      <a role="button" class="">Navigation</a>
     </label>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/navigation/navi_l2/" class="">L2.导航数学基础</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/navigation/navi_l3/" class="">L3.惯性导航</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/navigation/navi_l4/" class="">L4.卫星导航</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/example/my-blog/navigation/navi_l5/" class="">L5.集成导航</a>
-  
-
-        </li>
-      
     
   </ul>
 
@@ -357,7 +282,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>CH4.项目的规划调度</h3>
+  <h3>CH4. Project Planning and Scheduling</h3>
 
   <label for="toc-control">
     
@@ -376,8 +301,8 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#41-introduction">4.1 Introduction</a></li>
     <li><a href="#42-critical-path-method-cpm">4.2 Critical Path Method (CPM)</a></li>
     <li><a href="#43-program-evaluation-and-review-technique-pert">4.3 Program Evaluation and Review Technique (PERT)</a></li>
-    <li><a href="#44-timecost-trade-oﬀs-linear-costs">4.4 Time/Cost Trade-Oﬀs: Linear Costs</a></li>
-    <li><a href="#45-timecost-trade-oﬀs-nonlinear-costs">4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs</a></li>
+    <li><a href="#44-timecost-trade-offs-linear-costs">4.4 Time/Cost Trade-Offs: Linear Costs</a></li>
+    <li><a href="#45-timecost-trade-offs-nonlinear-costs">4.5 Time/Cost Trade-Offs: Nonlinear Costs</a></li>
     <li><a href="#46-project-scheduling-with-workforce-constraints">4.6 Project Scheduling with Workforce Constraints</a></li>
     <li><a href="#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry</a></li>
     <li><a href="#48-discussion">4.8 Discussion</a></li>
@@ -401,21 +326,21 @@ https://github.com/alex-shpak/hugo-book
   4.1 Introduction
   <a class="anchor" href="#41-introduction">#</a>
 </h2>
-<p>本章的一些前提:</p>
+<p>Some basic assumptions for this chapter:</p>
 <blockquote>
-<p>This chapter focuses on the planning and scheduling of jobs that are subject
-to precedence constraints. The setting may be regarded as a parallel machine
+<p>This chapter focuses on the planning and scheduling of jobs that are subject<br>
+to precedence constraints. The setting may be regarded as a parallel machine<br>
 environment with an unlimited number of machines.</p></blockquote>
-<p>我们的优化目标:</p>
+<p>Our optimization objective is:</p>
 <blockquote>
-<p>The objective is to minimize the makespan while adhering to the precedence constraints</p></blockquote>
-<p>两个限制:</p>
+<p>The objective is to minimize the makespan while adhering to the precedence constraints.</p></blockquote>
+<p>Two main constraints are considered:</p>
 <ul>
-<li>precedence constraints: 每个 job 的开始需要等待上一个 job 的完成.</li>
-<li>workforce constraints: 操作员可能短缺 (忙不过来)</li>
+<li><strong>Precedence constraints</strong>: the start of a job must wait until its predecessor job has been completed.</li>
+<li><strong>Workforce constraints</strong>: operators may be limited or unavailable (i.e., not enough manpower).</li>
 </ul>
-<p>job 先后顺序表示的两种方式:
-
+<p>There are two common ways to represent job precedence relationships:</p>
+<p>
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/pns/fig4_1.png"><figure>
           <img src="/img/pns/fig4_1.png" alt="alt text" />
@@ -426,38 +351,40 @@ environment with an unlimited number of machines.</p></blockquote>
       </figure></a>
   </div>
 </p>
-<p>对于前一种, 每个 arc 代表 job, 每个 node 代表一个 epoch.
-对于后一种, 每个 node 代表 job, 每个 arc 代表 先后关系.</p>
+<p>For the first representation, each <strong>arc</strong> represents a job, and each <strong>node</strong> represents an epoch.<br>
+For the second representation, each <strong>node</strong> represents a job, and each <strong>arc</strong> represents a precedence relationship.</p>
+<hr>
 <h2 id="42-critical-path-method-cpm">
   4.2 Critical Path Method (CPM)
   <a class="anchor" href="#42-critical-path-method-cpm">#</a>
 </h2>
-<p>首先声明必要的 assumptions:</p>
+<p>We first state the necessary assumptions:</p>
 <ul>
-<li>The processing time of job j is fixed and equal to 
+<li>The processing time of job <em>j</em> is fixed and equal to 
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_j</annotation></semantics></math></span>
 .</li>
-<li>unlimited number of machines in parallel.</li>
-<li>Besides a machine (and there is always one available) a job does not require any other resource.</li>
+<li>There is an unlimited number of machines operating in parallel.</li>
+<li>Besides a machine (which is always available), a job does not require any other resource.</li>
 </ul>
-<p>在此前提下, 这个方法可以这样描述:</p>
+<p>Under these assumptions, the method can be described as follows:</p>
 <blockquote>
-<p>Start at time zero with the processing of all jobs that have no predecessors. Every time a job completes its processing, start processing those jobs of which all the predecessors have been completed.</p></blockquote>
-<p>也就是说, 一个一个按顺序做.</p>
-<p>但是为了更加正式的描述这个算法, 我们需要引入以下符号:</p>
+<p>Start at time zero with the processing of all jobs that have no predecessors.<br>
+Every time a job completes its processing, start processing those jobs for which all predecessors have been completed.</p></blockquote>
+<p>In simple terms, jobs are processed as soon as they become available.</p>
+<p>To describe this algorithm more formally, we introduce the following notation:</p>
 <ul>
 <li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>j</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msubsup></mrow><annotation encoding="application/x-tex">C&#x27;_j</annotation></semantics></math></span>
-: job j 的最早可能完成时间.</li>
+: the earliest possible completion time of job <em>j</em></li>
 <li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>j</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msubsup></mrow><annotation encoding="application/x-tex">S&#x27;_j</annotation></semantics></math></span>
-: job j 的最早可能开始时间.</li>
+: the earliest possible starting time of job <em>j</em></li>
 <li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_j</annotation></semantics></math></span>
-: job j 所需要的处理时间.</li>
-<li>{all k -&gt; j}: job j 的全部前置.</li>
+: the processing time required by job <em>j</em></li>
+<li>{all <em>k</em> → <em>j</em>}: all predecessors of job <em>j</em></li>
 </ul>
-<p>因此, 我们可以拥有以下伪代码:</p>
+<p>Based on these definitions, we obtain the following pseudocode:</p>
 <p>
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/pns/a4_2_1.png"><figure>
@@ -469,19 +396,22 @@ environment with an unlimited number of machines.</p></blockquote>
       </figure></a>
   </div>
 </p>
-<p>这个方法, 我们称之为 <strong>Forward Procedure</strong>. 然而, 它虽然简单易懂, 但是它并不一定能带来最优的效率. 有的时候我们也需要适当地延迟某些 job 的开始, 以缓解机器生产的压力和库存成本之类的东西.</p>
+<p>This procedure is called the <strong>Forward Procedure</strong>.<br>
+Although it is simple and intuitive, it does not always lead to optimal operational efficiency. In some cases, it may be beneficial to deliberately delay the start of certain jobs in order to reduce machine congestion or inventory-related costs.</p>
+<p>Therefore, we introduce another CPM algorithm: the <strong>Backward Procedure</strong>.<br>
+Based on the results of the Forward Procedure, this method postpones all possible starting times while keeping the overall makespan unchanged.</p>
 
   
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mi>m</mi></msub><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">C_max</annotation></semantics></math></span>
-<p> 作为输入, 然后其它需要定义的符号如下:</p>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mi>max</mi><mo>⁡</mo></msub></mrow><annotation encoding="application/x-tex">C_{\max}</annotation></semantics></math></span>
+<p> from the Forward Procedure as input, and introduces the following notation:</p>
 <ul>
 <li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>j</mi><mrow><mo mathvariant="normal">′</mo><mo mathvariant="normal">′</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">C^{\prime\prime}_j</annotation></semantics></math></span>
-: job j 最晚可能完成时间.</li>
+: the latest possible completion time of job <em>j</em></li>
 <li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>j</mi><mrow><mo mathvariant="normal">′</mo><mo mathvariant="normal">′</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">S^{\prime\prime}_j</annotation></semantics></math></span>
-: job j 最晚可能开始时间.</li>
-<li>{j -&gt; all k}: job j 的全部后置.</li>
+: the latest possible starting time of job <em>j</em></li>
+<li>{ <em>j</em> → all <em>k</em> }: all successors of job <em>j</em></li>
 </ul>
 <p>
   <div class="post-img-view">
@@ -495,46 +425,57 @@ environment with an unlimited number of machines.</p></blockquote>
   </div>
 </p>
 <blockquote>
-<p>So the forward procedure determines the earliest possible starting time and completion times as well as the minimum makespan.</p></blockquote>
-<p>后面又补充了几个概念:</p>
+<p>Thus, the forward procedure determines the earliest possible starting and completion times, as well as the minimum makespan.</p></blockquote>
+<p>Several additional concepts are then introduced:</p>
 <ul>
-<li>The diﬀerence between a job’s latest possible starting time and earliest possible starting time is the amount of slack, also referred to as <strong>float</strong>.</li>
-<li>A job of which the earliest starting time is equal to the latest starting time is referred to as a <strong>critical job</strong>.</li>
-<li>The set of critical jobs forms one or more <strong>critical paths</strong>. A critical path is a chain of non-slack jobs.</li>
+<li>The difference between a job’s latest possible starting time and its earliest possible starting time is called <strong>slack</strong>, also referred to as <strong>float</strong>.</li>
+<li>A job whose earliest starting time is equal to its latest starting time is referred to as a <strong>critical job</strong>.</li>
+<li>The set of critical jobs forms one or more <strong>critical paths</strong>. A critical path is a chain of jobs with zero slack.</li>
 </ul>
+<hr>
 <h2 id="43-program-evaluation-and-review-technique-pert">
   4.3 Program Evaluation and Review Technique (PERT)
   <a class="anchor" href="#43-program-evaluation-and-review-technique-pert">#</a>
 </h2>
-<p>与之前的章节不同, 这一节里, 每个 job 的处理时间现在是变量了. 相对的, 这些量的 <strong>均值</strong> 
+<p>Unlike the previous section, the processing time of each job is now treated as a random variable.<br>
+Instead, the <strong>mean</strong> 
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">u_j</annotation></semantics></math></span>
-, 和 <strong>方差</strong> 
+ and <strong>variance</strong> 
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math></span>
- 现在是已知的或者是可以被估计的. 而估计整的项目的 makespan, 我们可以用 <strong>Program Evaluation and Review Technique (PERT)</strong> 这一技术.</p>
-<p>接着, 我们定义以下量:</p>
-<p>
+ of the processing time are assumed to be known or estimable.</p>
+<p>To estimate the overall project makespan under uncertainty, we use the <strong>Program Evaluation and Review Technique (PERT)</strong>.</p>
+<p>We define the following quantities:</p>
+<ul>
+<li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup></mrow><annotation encoding="application/x-tex">p^a_j</annotation></semantics></math></span>
- = the optimistic processing time of job j,</p>
-<p>
+: optimistic processing time of job <em>j</em></li>
+<li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mi>m</mi></msubsup></mrow><annotation encoding="application/x-tex">p^m_j</annotation></semantics></math></span>
- = the most likely processing time of job j,</p>
-<p>
+: most likely processing time of job <em>j</em></li>
+<li>
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">p^b_j</annotation></semantics></math></span>
- = the pessimistic processing time of job j.</p>
-<p>那么, 一个 job 的估计处理时间可以得到:</p>
+: pessimistic processing time of job <em>j</em></li>
+</ul>
+<p>The estimated processing time of job <em>j</em> is then given by:</p>
 
   
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>u</mi><mo>^</mo></mover><mi>j</mi></msub><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup><mo>+</mo><mn>4</mn><mo>∗</mo><msubsup><mi>p</mi><mi>j</mi><mi>m</mi></msubsup><mo>+</mo><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\hat{u}_j = \frac{p^a_j + 4 * p^m_j + p^b_j}{6}</annotation></semantics></math></span>
-<p>基于这个估计处理时间, 我们就可以使用前面一节提到的 CPM.</p>
-<p>而 方差 则是:</p>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>u</mi><mo>^</mo></mover><mi>j</mi></msub><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup><mo>+</mo><mn>4</mn><msubsup><mi>p</mi><mi>j</mi><mi>m</mi></msubsup><mo>+</mo><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">
+\hat{u}_j = \frac{p^a_j + 4p^m_j + p^b_j}{6}
+</annotation></semantics></math></span>
+<p>Based on this estimated processing time, the CPM procedure introduced earlier can be applied.</p>
+<p>The variance of the processing time is given by:</p>
 
   
-  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mover accent="true"><mi>σ</mi><mo>^</mo></mover><mi>j</mi><mn>2</mn></msubsup><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup><mo>−</mo><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><mn>6</mn></mfrac><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\hat{\sigma}_j^2 = (\frac{p^a_j - p^b_j}{6})^2</annotation></semantics></math></span>
-<h2 id="44-timecost-trade-oﬀs-linear-costs">
-  4.4 Time/Cost Trade-Oﬀs: Linear Costs
-  <a class="anchor" href="#44-timecost-trade-o%ef%ac%80s-linear-costs">#</a>
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mover accent="true"><mi>σ</mi><mo>^</mo></mover><mi>j</mi><mn>2</mn></msubsup><mo>=</mo><msup><mrow><mo fence="true">(</mo><mfrac><mrow><msubsup><mi>p</mi><mi>j</mi><mi>a</mi></msubsup><mo>−</mo><msubsup><mi>p</mi><mi>j</mi><mi>b</mi></msubsup></mrow><mn>6</mn></mfrac><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+\hat{\sigma}_j^2 = \left(\frac{p^a_j - p^b_j}{6}\right)^2
+</annotation></semantics></math></span>
+<hr>
+<h2 id="44-timecost-trade-offs-linear-costs">
+  4.4 Time/Cost Trade-Offs: Linear Costs
+  <a class="anchor" href="#44-timecost-trade-offs-linear-costs">#</a>
 </h2>
-<p>在这一节里, 我们考虑成本的影响. 我们假设, 成本和处理时间有如下关系:</p>
+<p>In this section, the impact of costs is taken into account.<br>
+We assume that cost and processing time are related as follows:</p>
 <p>
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/pns/fig4_6.png"><figure>
@@ -546,12 +487,14 @@ environment with an unlimited number of machines.</p></blockquote>
       </figure></a>
   </div>
 </p>
-<p>在进一步探讨相关算法之前, 我们需要先对模型进行化简.</p>
+<p>Before discussing the corresponding algorithms, the model is simplified as follows:</p>
 <blockquote>
-<p>The precedence graph can be extended by incorporating a <strong>source</strong> node (with zero processing time) that has an arc emanating to each node that represents a job without predecessors. In the same way each node that represents a job without successors has an arc emanating to a single <strong>sink</strong> node, which also has zero processing time. A <strong>critical path</strong> is a longest path from the source to the sink.</p></blockquote>
-<p>我们记 
+<p>The precedence graph can be extended by incorporating a <strong>source</strong> node (with zero processing time) that has an arc to each job without predecessors.<br>
+Similarly, each job without successors has an arc to a single <strong>sink</strong> node, which also has zero processing time.<br>
+A <strong>critical path</strong> is the longest path from the source to the sink.</p></blockquote>
+<p>We denote by 
   <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>c</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">G_{cp}</annotation></semantics></math></span>
- 为一条或多条 Critical Path.</p>
+ one or more critical paths.</p>
 <p>
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/pns/fig4_7.png"><figure>
@@ -564,8 +507,9 @@ environment with an unlimited number of machines.</p></blockquote>
   </div>
 </p>
 <blockquote>
-<p>A <strong>cut set</strong> in this subgraph is a set of nodes whose removal from the subgraph disconnects the source from the sink. A cut set is said to be <strong>minimal</strong> if putting any node back in the graph reestablishes the connection between the source and the sink (see Figure 4.7).</p></blockquote>
-<p>根据如上的表示, 我们可以有如下的启发式算法:</p>
+<p>A <strong>cut set</strong> in this subgraph is a set of nodes whose removal disconnects the source from the sink.<br>
+A cut set is said to be <strong>minimal</strong> if adding back any node restores the connection between the source and the sink (see Figure 4.7).</p></blockquote>
+<p>Based on this representation, the following heuristic algorithm can be applied:</p>
 <p>
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/pns/a4_4_1.png"><figure>
@@ -577,7 +521,7 @@ environment with an unlimited number of machines.</p></blockquote>
       </figure></a>
   </div>
 </p>
-<p>example 4.4.2:</p>
+<p>Example 4.4.2:</p>
 <p>
   <div class="post-img-view">
   <a data-fancybox="gallery" href="/img/pns/fig4_4.png"><figure>
@@ -590,19 +534,23 @@ environment with an unlimited number of machines.</p></blockquote>
   </div>
 </p>
 <blockquote>
-<p>ps: Those jobs of which the earliest possible completion times are equal to the latest possible completion times are critical and constitute the critical path.</p></blockquote>
-<h2 id="45-timecost-trade-oﬀs-nonlinear-costs">
-  4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs
-  <a class="anchor" href="#45-timecost-trade-o%ef%ac%80s-nonlinear-costs">#</a>
+<p>ps: Jobs whose earliest possible completion times are equal to their latest possible completion times are critical and constitute the critical path.</p></blockquote>
+<hr>
+<h2 id="45-timecost-trade-offs-nonlinear-costs">
+  4.5 Time/Cost Trade-Offs: Nonlinear Costs
+  <a class="anchor" href="#45-timecost-trade-offs-nonlinear-costs">#</a>
 </h2>
+<hr>
 <h2 id="46-project-scheduling-with-workforce-constraints">
   4.6 Project Scheduling with Workforce Constraints
   <a class="anchor" href="#46-project-scheduling-with-workforce-constraints">#</a>
 </h2>
+<hr>
 <h2 id="47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">
   4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry
   <a class="anchor" href="#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">#</a>
 </h2>
+<hr>
 <h2 id="48-discussion">
   4.8 Discussion
   <a class="anchor" href="#48-discussion">#</a>
@@ -656,8 +604,8 @@ environment with an unlimited number of machines.</p></blockquote>
     <li><a href="#41-introduction">4.1 Introduction</a></li>
     <li><a href="#42-critical-path-method-cpm">4.2 Critical Path Method (CPM)</a></li>
     <li><a href="#43-program-evaluation-and-review-technique-pert">4.3 Program Evaluation and Review Technique (PERT)</a></li>
-    <li><a href="#44-timecost-trade-oﬀs-linear-costs">4.4 Time/Cost Trade-Oﬀs: Linear Costs</a></li>
-    <li><a href="#45-timecost-trade-oﬀs-nonlinear-costs">4.5 Time/Cost Trade-Oﬀs: Nonlinear Costs</a></li>
+    <li><a href="#44-timecost-trade-offs-linear-costs">4.4 Time/Cost Trade-Offs: Linear Costs</a></li>
+    <li><a href="#45-timecost-trade-offs-nonlinear-costs">4.5 Time/Cost Trade-Offs: Nonlinear Costs</a></li>
     <li><a href="#46-project-scheduling-with-workforce-constraints">4.6 Project Scheduling with Workforce Constraints</a></li>
     <li><a href="#47-roman-a-project-scheduling-system-for-the-nuclear-power-industry">4.7 ROMAN: A Project Scheduling System for the Nuclear Power Industry</a></li>
     <li><a href="#48-discussion">4.8 Discussion</a></li>

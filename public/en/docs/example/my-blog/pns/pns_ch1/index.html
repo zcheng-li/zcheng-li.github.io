@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  1.1 Planning and Scheduling: Role and Impact
+  #
+
+Planning and scheduling are both forms of decision-making.
+Decision-making in manufacturing and service industries can be applied to:
+
+procurement and production
+transportation and distribution
+information processing and communication
+
+and many other areas.
+In general, we expect planning and scheduling algorithms to be able to:
+
+allocate limited resources to the activities to be done so that the company can optimize its objectives and achieve its goals.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch1/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="CH1. Planning and Scheduling: Roles and Impact">
+  <meta property="og:description" content="1.1 Planning and Scheduling: Role and Impact # Planning and scheduling are both forms of decision-making.
+Decision-making in manufacturing and service industries can be applied to:
+procurement and production transportation and distribution information processing and communication and many other areas.
+In general, we expect planning and scheduling algorithms to be able to:
+allocate limited resources to the activities to be done so that the company can optimize its objectives and achieve its goals.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>CH1. Planning and Scheduling: Roles and Impact | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch1/">
+  <link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch1/" title="CH1.规划调度: 角色与影响">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.aad5a8f283f8e9eab0a8a8af2e009772f992bcfb3a898f9ecbdedd224640f133.js" integrity="sha256-qtWo8oP46eqwqKivLgCXcvmSvPs6iY&#43;ey97dIkZA8TM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/docs/example/my-blog/pns/pns_ch1/">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>My Blogs</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/qam/" class="">Dynamic QAM Modulation &amp; Demodulation in Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-316eed7585ddf2826093144a1ab46376" class="toggle" checked />
+    <label for="section-316eed7585ddf2826093144a1ab46376" class="flex justify-between">
+      <a role="button" class="">RN Planning and Scheduling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch1/" class="active">CH1. Planning and Scheduling: Roles and Impact</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch2/" class="">CH2. Manufacturing Models</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch4/" class="">CH4. Project Planning and Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch5/" class="">CH5.Machien and JSS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c70eadb0aa09b0724af1b0ec9953205" class="toggle"  />
+    <label for="section-6c70eadb0aa09b0724af1b0ec9953205" class="flex justify-between">
+      <a role="button" class="">Navigation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CH1. Planning and Scheduling: Roles and Impact</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-planning-and-scheduling-role-and-impact">1.1 Planning and Scheduling: Role and Impact</a></li>
+    <li><a href="#12-planning-and-scheduling-functions-in-an-enterprise">1.2 Planning and Scheduling Functions in an Enterprise</a>
+      <ul>
+        <li><a href="#planning-and-scheduling-in-manufacturing">Planning and Scheduling in Manufacturing</a></li>
+        <li><a href="#planning-and-scheduling-in-services">Planning and Scheduling in Services</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-outline-of-the-book">1.3 Outline of the Book</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="11-planning-and-scheduling-role-and-impact">
+  1.1 Planning and Scheduling: Role and Impact
+  <a class="anchor" href="#11-planning-and-scheduling-role-and-impact">#</a>
+</h2>
+<p><strong>Planning</strong> and <strong>scheduling</strong> are both forms of <strong>decision-making</strong>.</p>
+<p>Decision-making in manufacturing and service industries can be applied to:</p>
+<ul>
+<li>procurement and production</li>
+<li>transportation and distribution</li>
+<li>information processing and communication</li>
+</ul>
+<p>and many other areas.</p>
+<p>In general, we expect planning and scheduling algorithms to be able to:</p>
+<blockquote>
+<p>allocate limited <strong>resources</strong> to the <strong>activities</strong> to be done so that the company can optimize its <strong>objectives</strong> and achieve its goals.</p></blockquote>
+<p>Here, <strong>resources</strong> usually refer to things such as:</p>
+<ul>
+<li>machines in a workshop</li>
+<li>runways at an airport</li>
+<li>crews at a construction site</li>
+<li>processing units in a computing environment</li>
+</ul>
+<p><strong>Activities</strong> typically include:</p>
+<ul>
+<li>machine operations in a workshop</li>
+<li>take-offs and landings at an airport</li>
+<li>stages of a construction project</li>
+<li>execution of computer programs</li>
+</ul>
+<p><strong>Objectives</strong> can take many forms, for example:</p>
+<ul>
+<li>minimizing the total completion time of all jobs</li>
+<li>minimizing the number of tardy jobs</li>
+</ul>
+<p>The textbook then provides ten examples to illustrate these concepts (omitted here).</p>
+<hr>
+<h2 id="12-planning-and-scheduling-functions-in-an-enterprise">
+  1.2 Planning and Scheduling Functions in an Enterprise
+  <a class="anchor" href="#12-planning-and-scheduling-functions-in-an-enterprise">#</a>
+</h2>
+<h3 id="planning-and-scheduling-in-manufacturing">
+  Planning and Scheduling in Manufacturing
+  <a class="anchor" href="#planning-and-scheduling-in-manufacturing">#</a>
+</h3>
+<p>In manufacturing, each <strong>order</strong> is decomposed into <strong>jobs</strong>, each of which has a <strong>due date</strong>.</p>
+<p>These jobs must be processed by machines in a specific order.</p>
+<p>However, processing may be delayed if certain machines are heavily loaded. Therefore, to handle <strong>high-priority jobs</strong>, we may need to use <strong>preemptive scheduling</strong>.</p>
+<p>In addition, unexpected events must often be taken into account, such as:</p>
+<ul>
+<li>machine breakdowns</li>
+<li>processing times exceeding expectations</li>
+</ul>
+<p>Under such conditions, the overall objective is to achieve <strong>efficient and controllable production</strong>.</p>
+<p>Next, the author emphasizes again the distinction between <em>scheduling</em> and <em>planning</em>:</p>
+<blockquote>
+<p>The shopfloor is not the only part of the organization that impacts the <strong>scheduling</strong> process. The scheduling process also interacts with the production <strong>planning</strong> process, which handles medium- to long-term planning for the entire organization.</p></blockquote>
+<p>In short, scheduling is influenced not only by the current state of the shop floor, but also by planning decisions—that is, the planning algorithms being used.</p>
+<p>In this context, planning decisions are usually based on considerations such as:</p>
+<ul>
+<li>inventory levels</li>
+<li>demand forecasts</li>
+<li>resource requirements</li>
+</ul>
+<p>After understanding these concepts, we can examine a more detailed information flow diagram of a production system:</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/pns/fig1_1.png"><figure>
+          <img src="/img/pns/fig1_1.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>This diagram introduces many new concepts, which can be examined one by one. First of all, internal systems must interact and align with external systems:</p>
+<blockquote>
+<p>In manufacturing, planning and scheduling has to interact with other decision-making functions in the plant.</p></blockquote>
+<p>One commonly used system is the <strong>Material Requirements Planning (MRP)</strong> system. Since each schedule requires sufficient <strong>resources</strong> and <strong>raw materials</strong> to be available at the scheduled time, the MRP system determines <em>when</em> raw materials should be purchased based on current inventory levels. Today, mature commercial MRP software solutions are widely available.</p>
+<p>Another common system is the <strong>Enterprise Resource Planning (ERP)</strong> system. ERP systems are used to integrate data across individual computers and data centers, and may also be connected with suppliers and customers. Decision-support systems are typically integrated with ERP platforms.</p>
+<h3 id="planning-and-scheduling-in-services">
+  Planning and Scheduling in Services
+  <a class="anchor" href="#planning-and-scheduling-in-services">#</a>
+</h3>
+<p>(Omitted)</p>
+<hr>
+<h2 id="13-outline-of-the-book">
+  1.3 Outline of the Book
+  <a class="anchor" href="#13-outline-of-the-book">#</a>
+</h2>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/pns/fig1_3.png"><figure>
+          <img src="/img/pns/fig1_3.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-planning-and-scheduling-role-and-impact">1.1 Planning and Scheduling: Role and Impact</a></li>
+    <li><a href="#12-planning-and-scheduling-functions-in-an-enterprise">1.2 Planning and Scheduling Functions in an Enterprise</a>
+      <ul>
+        <li><a href="#planning-and-scheduling-in-manufacturing">Planning and Scheduling in Manufacturing</a></li>
+        <li><a href="#planning-and-scheduling-in-services">Planning and Scheduling in Services</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-outline-of-the-book">1.3 Outline of the Book</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

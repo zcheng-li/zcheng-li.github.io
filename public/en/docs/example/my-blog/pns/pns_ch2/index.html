@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Chapter 2 Manufacturing Models
+  #
+
+
+  2.1 Introduction
+  #
+
+This chapter introduces common manufacturing models used in planning and scheduling, focusing on how jobs, machines, and constraints are represented in a formal way.
+
+
+  2.2 Jobs, Machines, and Facilities
+  #
+
+Some basic definitions:
+
+The number of jobs is denoted by n and the number of machines by m.
+The subscripts j and k refer to jobs j and k.
+The subscripts h and i refer to machines h and i.
+The following data pertain to job j.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch2/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="CH2. Manufacturing Models">
+  <meta property="og:description" content="Chapter 2 Manufacturing Models # 2.1 Introduction # This chapter introduces common manufacturing models used in planning and scheduling, focusing on how jobs, machines, and constraints are represented in a formal way.
+2.2 Jobs, Machines, and Facilities # Some basic definitions:
+The number of jobs is denoted by n and the number of machines by m.
+The subscripts j and k refer to jobs j and k.
+The subscripts h and i refer to machines h and i.
+The following data pertain to job j.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>CH2. Manufacturing Models | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch2/">
+  <link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch2/" title="CH2.工业生产模型">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.aad5a8f283f8e9eab0a8a8af2e009772f992bcfb3a898f9ecbdedd224640f133.js" integrity="sha256-qtWo8oP46eqwqKivLgCXcvmSvPs6iY&#43;ey97dIkZA8TM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/docs/example/my-blog/pns/pns_ch2/">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>My Blogs</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/qam/" class="">Dynamic QAM Modulation &amp; Demodulation in Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-316eed7585ddf2826093144a1ab46376" class="toggle" checked />
+    <label for="section-316eed7585ddf2826093144a1ab46376" class="flex justify-between">
+      <a role="button" class="">RN Planning and Scheduling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch1/" class="">CH1. Planning and Scheduling: Roles and Impact</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch2/" class="active">CH2. Manufacturing Models</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch4/" class="">CH4. Project Planning and Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/my-blog/pns/pns_ch5/" class="">CH5.Machien and JSS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c70eadb0aa09b0724af1b0ec9953205" class="toggle"  />
+    <label for="section-6c70eadb0aa09b0724af1b0ec9953205" class="flex justify-between">
+      <a role="button" class="">Navigation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CH2. Manufacturing Models</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-introduction">2.1 Introduction</a></li>
+    <li><a href="#22-jobs-machines-and-facilities">2.2 Jobs, Machines, and Facilities</a></li>
+    <li><a href="#23-processing-characteristics-and-constraints">2.3 Processing Characteristics and Constraints</a></li>
+    <li><a href="#24-performance-measures-and-objectives">2.4 Performance Measures and Objectives</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="chapter-2-manufacturing-models">
+  Chapter 2 Manufacturing Models
+  <a class="anchor" href="#chapter-2-manufacturing-models">#</a>
+</h1>
+<h2 id="21-introduction">
+  2.1 Introduction
+  <a class="anchor" href="#21-introduction">#</a>
+</h2>
+<p>This chapter introduces common <strong>manufacturing models</strong> used in planning and scheduling, focusing on how jobs, machines, and constraints are represented in a formal way.</p>
+<hr>
+<h2 id="22-jobs-machines-and-facilities">
+  2.2 Jobs, Machines, and Facilities
+  <a class="anchor" href="#22-jobs-machines-and-facilities">#</a>
+</h2>
+<p>Some basic definitions:</p>
+<blockquote>
+<p>The number of jobs is denoted by <em>n</em> and the number of machines by <em>m</em>.<br>
+The subscripts <em>j</em> and <em>k</em> refer to jobs <em>j</em> and <em>k</em>.<br>
+The subscripts <em>h</em> and <em>i</em> refer to machines <em>h</em> and <em>i</em>.<br>
+The following data pertain to job <em>j</em>.</p></blockquote>
+<p>That is:</p>
+<ul>
+<li>Number of jobs: <em>n</em></li>
+<li>Number of machines: <em>m</em></li>
+</ul>
+<p>In addition, we define:</p>
+<ul>
+<li><strong>Processing time</strong> (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">p_{ij}</annotation></semantics></math></span>
+): the time job <em>j</em> has to spend on machine <em>i</em></li>
+<li><strong>Due date</strong> (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">d_j</annotation></semantics></math></span>
+)</li>
+<li><strong>Weight</strong> (
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">w_j</annotation></semantics></math></span>
+): the priority of job <em>j</em></li>
+</ul>
+<blockquote>
+<p>The weight may represent the cost of keeping job <em>j</em> in the system for one unit of time.<br>
+It can be a holding or inventory cost, or it can represent the amount of value already added to the job.</p></blockquote>
+<p>These four parameters are referred to as <strong>static data</strong>, since they do not depend on the scheduling algorithm itself.<br>
+In contrast, data that cannot be determined in advance and depend on the scheduling decisions are called <strong>dynamic data</strong>.</p>
+<p>Important dynamic data include:</p>
+<ul>
+<li><strong>Starting time</strong> 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">S_{ij}</annotation></semantics></math></span>
+: the time at which job <em>j</em> starts processing on machine <em>i</em></li>
+<li><strong>Completion time</strong> 
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{ij}</annotation></semantics></math></span>
+: the time at which processing is completed</li>
+</ul>
+<p>A key characteristic of a scheduling model is its <strong>machine configuration</strong>, which can be classified as follows:</p>
+<ul>
+<li><strong>Single Machine Models</strong>: each job can only be processed by one machine</li>
+<li><strong>Parallel Machine Models</strong>: a job can be processed by one of several machines</li>
+<li><strong>Flow Shop Models</strong>: all jobs follow the same processing route</li>
+<li><strong>Job Shop Models</strong>: different jobs may follow different routes</li>
+<li><strong>Supply Chain Models</strong></li>
+</ul>
+<blockquote>
+<p>A flow shop is a job shop in which every job has exactly the same route.</p></blockquote>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/pns/fig2_1.png"><figure>
+          <img src="/img/pns/fig2_1.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<p>
+  <div class="post-img-view">
+  <a data-fancybox="gallery" href="/img/pns/fig2_2.png"><figure>
+          <img src="/img/pns/fig2_2.png" alt="alt text" />
+          <figcaption></figcaption>
+          <style> 
+            .post-img-view{text-align:center} 
+          </style> 
+      </figure></a>
+  </div>
+</p>
+<hr>
+<h2 id="23-processing-characteristics-and-constraints">
+  2.3 Processing Characteristics and Constraints
+  <a class="anchor" href="#23-processing-characteristics-and-constraints">#</a>
+</h2>
+<p>Job processing is subject to various characteristics and constraints:</p>
+<ul>
+<li><strong>Precedence constraints</strong>: a job must complete one operation before starting the next</li>
+<li><strong>Machine eligibility constraints</strong>: when machines are not identical, some machines may not be capable of processing certain jobs</li>
+<li><strong>Workforce constraints</strong></li>
+<li><strong>Routing constraints</strong></li>
+<li><strong>Material handling constraints</strong></li>
+<li><strong>Sequence-dependent setup times and costs</strong></li>
+<li><strong>Storage space and waiting time constraints</strong></li>
+<li><strong>Make-to-stock and make-to-order</strong></li>
+<li><strong>Preemptions</strong></li>
+<li><strong>Transportation constraints</strong></li>
+</ul>
+<hr>
+<h2 id="24-performance-measures-and-objectives">
+  2.4 Performance Measures and Objectives
+  <a class="anchor" href="#24-performance-measures-and-objectives">#</a>
+</h2>
+<p>Several key performance measures and objectives are commonly used:</p>
+<ul>
+<li>
+<p><strong>Throughput and makespan objectives</strong></p>
+<p>Throughput = output rate<br>
+Makespan = total time required to complete all jobs</p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mi>max</mi><mo>⁡</mo></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>C</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>C</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_{\max} = \max(C_1, \ldots, C_n)</annotation></semantics></math></span>
+</li>
+<li>
+<p><strong>Due-date-related objectives</strong></p>
+<ul>
+<li>
+<p>One objective is minimizing the <strong>maximum lateness</strong></p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>L</mi><mi>j</mi></msub><mo>=</mo><msub><mi>C</mi><mi>j</mi></msub><mo>−</mo><msub><mi>d</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">L_j = C_j - d_j</annotation></semantics></math></span>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>L</mi><mi>max</mi><mo>⁡</mo></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>L</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>L</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_{\max} = \max(L_1, \ldots, L_n)</annotation></semantics></math></span>
+</li>
+<li>
+<p>Another objective is minimizing the <strong>number (or weighted sum) of tardy jobs</strong></p>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>T</mi><mi>j</mi></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>C</mi><mi>j</mi></msub><mo>−</mo><msub><mi>d</mi><mi>j</mi></msub><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T_j = \max(C_j - d_j, 0)</annotation></semantics></math></span>
+
+  
+  <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>w</mi><mi>j</mi></msub><msub><mi>T</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\sum_{j=1}^{n} w_j T_j</annotation></semantics></math></span>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Setup costs</strong></p>
+</li>
+<li>
+<p><strong>Work-in-process (WIP) inventory costs</strong></p>
+</li>
+<li>
+<p><strong>Finished goods inventory costs</strong></p>
+</li>
+<li>
+<p><strong>Transportation costs</strong></p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-introduction">2.1 Introduction</a></li>
+    <li><a href="#22-jobs-machines-and-facilities">2.2 Jobs, Machines, and Facilities</a></li>
+    <li><a href="#23-processing-characteristics-and-constraints">2.3 Processing Characteristics and Constraints</a></li>
+    <li><a href="#24-performance-measures-and-objectives">2.4 Performance Measures and Objectives</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
