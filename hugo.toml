@@ -19,6 +19,11 @@ defaultContentLanguage = 'zh-CN'
 [params]
     BookRepo = 'https://github.com/alex-shpak/hugo-book'
     fancybox = true
+    [params.BookTypeIcons]
+      default = ""
+      tutorial = "{ }"
+      note = "◦"
+      list = "≡"
 
 [caches]
   [caches.images]

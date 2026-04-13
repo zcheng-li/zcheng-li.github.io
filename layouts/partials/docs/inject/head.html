@@ -1,0 +1,11 @@
+{{ partial "head" . }}
+<script>
+  (function () {
+    var savedTheme = localStorage.getItem("site-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  })();
+</script>

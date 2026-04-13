@@ -1,5 +1,6 @@
 ---
-title: "动态QAM调制解调python实现"
+title: "动态 QAM 调制解调 python 实现"
+blogType: "tutorial"
 weight: 1
 # bookFlatSection: false
 bookToc: true
@@ -682,8 +683,6 @@ find error at []
 ```
 
 十分完美!
-
-
 
 
 

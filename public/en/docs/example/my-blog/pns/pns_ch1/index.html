@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52397&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -20,7 +20,7 @@ In general, we expect planning and scheduling algorithms to be able to:
 allocate limited resources to the activities to be done so that the company can optimize its objectives and achieve its goals.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch1/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:52397/en/docs/example/my-blog/pns/pns_ch1/">
   <meta property="og:site_name" content="ZCHENG LI">
   <meta property="og:title" content="CH1. Planning and Scheduling: Roles and Impact">
   <meta property="og:description" content="1.1 Planning and Scheduling: Role and Impact # Planning and scheduling are both forms of decision-making.
@@ -34,16 +34,31 @@ allocate limited resources to the activities to be done so that the company can 
 <title>CH1. Planning and Scheduling: Roles and Impact | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/en/docs/example/my-blog/pns/pns_ch1/">
-  <link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/docs/example/my-blog/pns/pns_ch1/" title="CH1.规划调度: 角色与影响">
-<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+<link rel="canonical" href="http://localhost:52397/en/docs/example/my-blog/pns/pns_ch1/">
+  <link rel="alternate" hreflang="zh-cn" href="http://localhost:52397/docs/example/my-blog/pns/pns_ch1/" title="CH1.规划调度: 角色与影响">
+<link rel="stylesheet" href="/book.min.4f4d4c475efe061135335299c6240f62663949979cbcc71e0feec7a86dad4d26.css" integrity="sha256-T01MR17&#43;BhE1M1KZxiQPYmY5SZecvMceD&#43;7HqG2tTSY=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.aad5a8f283f8e9eab0a8a8af2e009772f992bcfb3a898f9ecbdedd224640f133.js" integrity="sha256-qtWo8oP46eqwqKivLgCXcvmSvPs6iY&#43;ey97dIkZA8TM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.442ce9e9709271e385712e5aaf21cc73671f2703da1ab8398ade11da8ef92a26.js" integrity="sha256-RCzp6XCSceOFcS5aryHMc2cfJwPaGrg5it4R2o75KiY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 -->
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+
+<script>
+  (function () {
+    var savedTheme = localStorage.getItem("site-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  })();
+</script>
+
 </head>
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
@@ -81,6 +96,12 @@ https://github.com/alex-shpak/hugo-book
 
 
 <ul class="book-languages">
+  <li>
+    <button type="button" class="book-theme-toggle flex align-center" data-theme-toggle>
+      <img src="/svg/appearance.svg" class="book-icon" alt="Theme" />
+      <span data-theme-toggle-label>Theme</span>
+    </button>
+  </li>
   <li>
     <input type="checkbox" id="languages" class="toggle" />
     <label for="languages" class="flex justify-between">
@@ -125,7 +146,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>My Blogs</span>
+    <span><span class="book-menu-item"><span class="book-menu-item-label">My Blogs</span>
+</span>
+</span>
   
 
           
@@ -138,7 +161,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/my-blog/qam/" class="">Dynamic QAM Modulation &amp; Demodulation in Python</a>
+    <a href="/en/docs/example/my-blog/qam/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">Dynamic QAM Modulation &amp; Demodulation in Python</span>
+</span>
+</a>
   
 
         </li>
@@ -153,7 +178,9 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-316eed7585ddf2826093144a1ab46376" class="toggle" checked />
     <label for="section-316eed7585ddf2826093144a1ab46376" class="flex justify-between">
-      <a role="button" class="">RN Planning and Scheduling</a>
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">RN Planning and Scheduling</span>
+</span>
+</a>
     </label>
   
 
@@ -167,7 +194,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/my-blog/pns/pns_ch1/" class="active">CH1. Planning and Scheduling: Roles and Impact</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch1/" class="active"><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH1. Planning and Scheduling: Roles and Impact</span>
+</span>
+</a>
   
 
         </li>
@@ -180,7 +209,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/my-blog/pns/pns_ch2/" class="">CH2. Manufacturing Models</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch2/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH2. Manufacturing Models</span>
+</span>
+</a>
   
 
         </li>
@@ -193,7 +224,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/my-blog/pns/pns_ch4/" class="">CH4. Project Planning and Scheduling</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch4/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH4. Project Planning and Scheduling</span>
+</span>
+</a>
   
 
         </li>
@@ -206,7 +239,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/my-blog/pns/pns_ch5/" class="">CH5.Machien and JSS</a>
+    <a href="/en/docs/example/my-blog/pns/pns_ch5/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH5.Machien and JSS</span>
+</span>
+</a>
   
 
         </li>
@@ -226,7 +261,9 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-6c70eadb0aa09b0724af1b0ec9953205" class="toggle"  />
     <label for="section-6c70eadb0aa09b0724af1b0ec9953205" class="flex justify-between">
-      <a role="button" class="">Navigation</a>
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">UoG-ENG4184 Navigation System 4</span>
+</span>
+</a>
     </label>
   
 
@@ -479,7 +516,69 @@ https://github.com/alex-shpak/hugo-book
     
   </main>
 
-  
+  <script>
+  (function () {
+    var key = "site-theme";
+    var root = document.documentElement;
+    var btn = document.querySelector("[data-theme-toggle]");
+    var label = document.querySelector("[data-theme-toggle-label]");
+    if (!btn) return;
+
+    function isZh() {
+      var lang = (document.documentElement.lang || "").toLowerCase();
+      return lang.indexOf("zh") === 0;
+    }
+
+    function systemPrefersDark() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    function currentTheme() {
+      var explicit = root.getAttribute("data-theme");
+      if (explicit === "light" || explicit === "dark") return explicit;
+      return systemPrefersDark() ? "dark" : "light";
+    }
+
+    function setTheme(theme, persist) {
+      if (theme === "light" || theme === "dark") {
+        root.setAttribute("data-theme", theme);
+        if (persist) localStorage.setItem(key, theme);
+      } else {
+        root.removeAttribute("data-theme");
+        if (persist) localStorage.removeItem(key);
+      }
+      var effective = currentTheme();
+      var nextIsDark = effective !== "dark";
+      var aria = nextIsDark ? "Switch to dark mode" : "Switch to light mode";
+      btn.setAttribute("aria-label", aria);
+      if (label) {
+        if (isZh()) {
+          label.textContent = nextIsDark ? "外观：日间" : "外观：夜间";
+        } else {
+          label.textContent = nextIsDark ? "Theme: Light" : "Theme: Dark";
+        }
+      }
+    }
+
+    btn.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      setTheme(next, true);
+    });
+
+    var saved = localStorage.getItem(key);
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved, false);
+    } else {
+      setTheme(null, false);
+      if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          if (!localStorage.getItem(key)) setTheme(null, false);
+        });
+      }
+    }
+  })();
+</script>
+
 </body>
 </html>
 

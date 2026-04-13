@@ -1,0 +1,24 @@
+{{- $icon := "" -}}
+{{- with .Page.Params.menuIcon }}{{ $icon = . }}{{ end -}}
+
+{{- if eq $icon "" -}}
+  {{- $blogType := "" -}}
+  {{- with .Page.Params.blogType }}{{ $blogType = lower . }}{{ end -}}
+  {{- if and (eq $blogType "") .Page.CurrentSection -}}
+    {{- with .Page.CurrentSection.Params.blogType }}{{ $blogType = lower . }}{{ end -}}
+  {{- end -}}
+
+  {{- with .CurrentPage.Site.Params.BookTypeIcons -}}
+    {{- if ne $blogType "" -}}
+      {{- with index . $blogType }}{{ $icon = . }}{{ end -}}
+    {{- end -}}
+    {{- if eq $icon "" -}}
+      {{- with index . "default" }}{{ $icon = . }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<span class="book-menu-item{{ if ne $icon "" }} has-icon{{ end }}">
+  {{- if ne $icon "" -}}<span class="book-menu-item-icon" aria-hidden="true">{{ $icon }}</span>{{- end -}}
+  <span class="book-menu-item-label">{{- partial "docs/title" .Page -}}</span>
+</span>

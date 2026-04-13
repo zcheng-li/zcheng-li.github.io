@@ -1,5 +1,6 @@
 ---
 title: "Dynamic QAM Modulation & Demodulation in Python"
+blogType: "tutorial"
 weight: 1
 # bookFlatSection: false
 bookToc: true

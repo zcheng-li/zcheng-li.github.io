@@ -1,0 +1,62 @@
+<script>
+  (function () {
+    var key = "site-theme";
+    var root = document.documentElement;
+    var btn = document.querySelector("[data-theme-toggle]");
+    var label = document.querySelector("[data-theme-toggle-label]");
+    if (!btn) return;
+
+    function isZh() {
+      var lang = (document.documentElement.lang || "").toLowerCase();
+      return lang.indexOf("zh") === 0;
+    }
+
+    function systemPrefersDark() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    function currentTheme() {
+      var explicit = root.getAttribute("data-theme");
+      if (explicit === "light" || explicit === "dark") return explicit;
+      return systemPrefersDark() ? "dark" : "light";
+    }
+
+    function setTheme(theme, persist) {
+      if (theme === "light" || theme === "dark") {
+        root.setAttribute("data-theme", theme);
+        if (persist) localStorage.setItem(key, theme);
+      } else {
+        root.removeAttribute("data-theme");
+        if (persist) localStorage.removeItem(key);
+      }
+      var effective = currentTheme();
+      var nextIsDark = effective !== "dark";
+      var aria = nextIsDark ? "Switch to dark mode" : "Switch to light mode";
+      btn.setAttribute("aria-label", aria);
+      if (label) {
+        if (isZh()) {
+          label.textContent = nextIsDark ? "外观：日间" : "外观：夜间";
+        } else {
+          label.textContent = nextIsDark ? "Theme: Light" : "Theme: Dark";
+        }
+      }
+    }
+
+    btn.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      setTheme(next, true);
+    });
+
+    var saved = localStorage.getItem(key);
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved, false);
+    } else {
+      setTheme(null, false);
+      if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          if (!localStorage.getItem(key)) setTheme(null, false);
+        });
+      }
+    }
+  })();
+</script>
