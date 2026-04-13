@@ -1,5 +1,5 @@
 ---
-title: "UoG EEE 课程资料"
+title: "UoG EEE Course Resources"
 blogType: "list"
 weight: 999
 # bookFlatSection: false
@@ -10,14 +10,14 @@ bookToc: true
 # bookSearchExclude: false
 ---
 
-# UoG Notes 索引
+# UoG Notes Index
 
 这里汇总的是仓库根目录 `notes/UoG` 下的课程手写笔记以及考试答案。  
 点击每门课链接会直接跳转到对应 GitHub 文件夹。
 
 > 笔记和答案可能有不严谨甚至错误的地方, 请仔细辨别!
 
-## 三年级课程
+## 3rd Year
 
 - [ENG3014-Communication System](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3014-CSys)  
   通信系统笔记：信息论、傅里叶、Modem、光纤接入等。
@@ -42,7 +42,7 @@ bookToc: true
 - [ENG3091-Advanced Programming and Software Engeering](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3091-APSE)  
   APSE 课程笔记。
 
-## 四年级课程
+## 4th Year
 
 - [ENG4042-Control 4](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4042-C4)  
   高阶控制：可控/可观、极点映射、状态反馈、PID 等。
@@ -56,6 +56,6 @@ bookToc: true
 - [ENG4187-Power Electronic and Drives 4](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4187-PED4)  
   电机与驱动：PM 电机、感应电机、FOC、实验资料与历年题。
 
-## 总目录
+## Root
 
 - [notes/UoG](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG)
