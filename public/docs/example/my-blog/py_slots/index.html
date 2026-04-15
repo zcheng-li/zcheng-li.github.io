@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  为什么 Python __slots__ 不只是节省内存？
+  #
+
+很多 Python 开发者都听说过 __slots__，知道它可以“省内存”。但如果你只把它当成一个性能小技巧，那其实低估了它的价值。
+这篇文章我们从一个真实工程问题出发，系统讲清楚：
+
+__slots__ 到底在做什么？
+为什么它能节省内存？
+除了性能，还有哪些设计上的好处？
+和 @dataclass 应该怎么搭配？
+
+
+
+  从一个真实问题开始
+  #
+
+假设你在做一个 IoT 系统，需要处理大量传感器数据：
+class SensorData:
+    def __init__(self, device_id, temperature, humidity):
+        self.device_id = device_id
+        self.temperature = temperature
+        self.humidity = humidity
+
+# 模拟 100 万条数据
+records = [SensorData(i, 25.0, 60.0) for i in range(1_000_000)]
+代码很简单，但问题来了：
+👉 内存占用非常大
+为什么？
+
+
+  真正的罪魁祸首：__dict__
+  #
+
+默认情况下，每个 Python 对象都有一个：
+obj.__dict__
+它本质是一个字典，用来存储属性：
+s = SensorData(1, 25, 60)
+print(s.__dict__)
+# {&#39;device_id&#39;: 1, &#39;temperature&#39;: 25, &#39;humidity&#39;: 60}
+优点很明显：">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/example/my-blog/py_slots/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="为什么 Python `__slots__` 不只是节省内存？">
+  <meta property="og:description" content="为什么 Python __slots__ 不只是节省内存？ # 很多 Python 开发者都听说过 __slots__，知道它可以“省内存”。但如果你只把它当成一个性能小技巧，那其实低估了它的价值。
+这篇文章我们从一个真实工程问题出发，系统讲清楚：
+__slots__ 到底在做什么？ 为什么它能节省内存？ 除了性能，还有哪些设计上的好处？ 和 @dataclass 应该怎么搭配？ 从一个真实问题开始 # 假设你在做一个 IoT 系统，需要处理大量传感器数据：
+class SensorData: def __init__(self, device_id, temperature, humidity): self.device_id = device_id self.temperature = temperature self.humidity = humidity # 模拟 100 万条数据 records = [SensorData(i, 25.0, 60.0) for i in range(1_000_000)] 代码很简单，但问题来了：
+👉 内存占用非常大
+为什么？
+真正的罪魁祸首：__dict__ # 默认情况下，每个 Python 对象都有一个：
+obj.__dict__ 它本质是一个字典，用来存储属性：
+s = SensorData(1, 25, 60) print(s.__dict__) # {&#39;device_id&#39;: 1, &#39;temperature&#39;: 25, &#39;humidity&#39;: 60} 优点很明显：">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>为什么 Python `__slots__` 不只是节省内存？ | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/example/my-blog/py_slots/">
+<link rel="stylesheet" href="/book.min.4f4d4c475efe061135335299c6240f62663949979cbcc71e0feec7a86dad4d26.css" integrity="sha256-T01MR17&#43;BhE1M1KZxiQPYmY5SZecvMceD&#43;7HqG2tTSY=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.8dcf675a4a408386dc59348b3036f778bdc9a85bfa83cdd96fc8315a40aa8b62.js" integrity="sha256-jc9nWkpAg4bcWTSLMDb3eL3JqFv6g83Zb8gxWkCqi2I=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+
+<script>
+  (function () {
+    var savedTheme = localStorage.getItem("site-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  })();
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <button type="button" class="book-theme-toggle flex align-center" data-theme-toggle>
+      <img src="/svg/appearance.svg" class="book-icon" alt="Theme" />
+      <span data-theme-toggle-label>Theme</span>
+    </button>
+  </li>
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span><span class="book-menu-item"><span class="book-menu-item-label">博客</span>
+</span>
+</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/qam/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">动态 QAM 调制解调 python 实现</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/py_dataclass/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">什么是 Python @dataclass ?</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/py_slots/" class="active"><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">为什么 Python `__slots__` 不只是节省内存？</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c38e36427966c13a1cd40cc26aa6711" class="toggle"  />
+    <label for="section-1c38e36427966c13a1cd40cc26aa6711" class="flex justify-between">
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">工业生产规划调度阅读笔记</span>
+</span>
+</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch1/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH1.规划调度: 角色与影响</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch2/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH2.工业生产模型</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch4/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH4.项目的规划调度</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/pns/pns_ch5/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH5.机器和Job Shop的调度</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-698ab548bf0f39511c9219ff15d9bab1" class="toggle"  />
+    <label for="section-698ab548bf0f39511c9219ff15d9bab1" class="flex justify-between">
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">UoG-ENG4184 导航系统 4</span>
+</span>
+</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l2/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L2.导航数学基础</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l3/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L3.惯性导航</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l4/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L4.卫星导航</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/navigation/navi_l5/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L5.集成导航</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/my-blog/notelist/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">≡</span><span class="book-menu-item-label">UoG EEE 课程资料</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>为什么 Python `__slots__` 不只是节省内存？</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#从一个真实问题开始">从一个真实问题开始</a>
+      <ul>
+        <li><a href="#真正的罪魁祸首__dict__">真正的罪魁祸首：<code>__dict__</code></a></li>
+        <li><a href="#如果我们使用-__slots__">如果我们使用 <code>__slots__</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#-实测对比">📊 实测对比</a></li>
+    <li><a href="#性能提升来自哪里">性能提升来自哪里？</a>
+      <ul>
+        <li><a href="#1-内存更少">1️⃣ 内存更少</a></li>
+        <li><a href="#2-访问更快">2️⃣ 访问更快</a></li>
+      </ul>
+    </li>
+    <li><a href="#不只是性能设计层面的优势">不只是性能：设计层面的优势</a>
+      <ul>
+        <li><a href="#1-明确数据结构">1️⃣ 明确“数据结构”</a></li>
+        <li><a href="#2-防止拼写错误">2️⃣ 防止拼写错误</a></li>
+        <li><a href="#3-更像类型系统">3️⃣ 更像“类型系统”</a></li>
+      </ul>
+    </li>
+    <li><a href="#和-dataclass-的关系">和 <code>@dataclass</code> 的关系</a>
+      <ul>
+        <li><a href="#推荐写法python-310">推荐写法（Python 3.10+）</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用-__slots__-的限制">使用 <code>__slots__</code> 的限制</a>
+      <ul>
+        <li><a href="#-不能随便加属性">❌ 不能随便加属性</a></li>
+        <li><a href="#-某些库不兼容">❌ 某些库不兼容</a></li>
+        <li><a href="#-调试稍微麻烦">❌ 调试稍微麻烦</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么时候该用">什么时候该用？</a></li>
+    <li><a href="#最佳实践">最佳实践</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="为什么-python-__slots__-不只是节省内存">
+  为什么 Python <code>__slots__</code> 不只是节省内存？
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88-python-__slots__-%e4%b8%8d%e5%8f%aa%e6%98%af%e8%8a%82%e7%9c%81%e5%86%85%e5%ad%98">#</a>
+</h1>
+<p>很多 Python 开发者都听说过 <code>__slots__</code>，知道它可以“省内存”。但如果你只把它当成一个性能小技巧，那其实低估了它的价值。</p>
+<p>这篇文章我们从一个真实工程问题出发，系统讲清楚：</p>
+<ul>
+<li><code>__slots__</code> 到底在做什么？</li>
+<li>为什么它能节省内存？</li>
+<li>除了性能，还有哪些设计上的好处？</li>
+<li>和 <code>@dataclass</code> 应该怎么搭配？</li>
+</ul>
+<hr>
+<h2 id="从一个真实问题开始">
+  从一个真实问题开始
+  <a class="anchor" href="#%e4%bb%8e%e4%b8%80%e4%b8%aa%e7%9c%9f%e5%ae%9e%e9%97%ae%e9%a2%98%e5%bc%80%e5%a7%8b">#</a>
+</h2>
+<p>假设你在做一个 IoT 系统，需要处理大量传感器数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SensorData</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, device_id, temperature, humidity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device_id <span style="color:#f92672">=</span> device_id
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>temperature <span style="color:#f92672">=</span> temperature
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>humidity <span style="color:#f92672">=</span> humidity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 模拟 100 万条数据</span>
+</span></span><span style="display:flex;"><span>records <span style="color:#f92672">=</span> [SensorData(i, <span style="color:#ae81ff">25.0</span>, <span style="color:#ae81ff">60.0</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1_000_000</span>)]
+</span></span></code></pre></div><p>代码很简单，但问题来了：</p>
+<p>👉 <strong>内存占用非常大</strong></p>
+<p>为什么？</p>
+<hr>
+<h3 id="真正的罪魁祸首__dict__">
+  真正的罪魁祸首：<code>__dict__</code>
+  <a class="anchor" href="#%e7%9c%9f%e6%ad%a3%e7%9a%84%e7%bd%aa%e9%ad%81%e7%a5%b8%e9%a6%96__dict__">#</a>
+</h3>
+<p>默认情况下，每个 Python 对象都有一个：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>obj<span style="color:#f92672">.</span>__dict__
+</span></span></code></pre></div><p>它本质是一个字典，用来存储属性：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s <span style="color:#f92672">=</span> SensorData(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">60</span>)
+</span></span><span style="display:flex;"><span>print(s<span style="color:#f92672">.</span>__dict__)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># {&#39;device_id&#39;: 1, &#39;temperature&#39;: 25, &#39;humidity&#39;: 60}</span>
+</span></span></code></pre></div><p>优点很明显：</p>
+<p>✅ 可以随时加属性</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s<span style="color:#f92672">.</span>status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OK&#34;</span>
+</span></span></code></pre></div><p>但代价是什么😧：</p>
+<ul>
+<li>每个对象都带一个 dict</li>
+<li>dict 有额外空间开销（哈希表）</li>
+<li>对象越多 → 内存爆炸</li>
+</ul>
+<hr>
+<h3 id="如果我们使用-__slots__">
+  如果我们使用 <code>__slots__</code>
+  <a class="anchor" href="#%e5%a6%82%e6%9e%9c%e6%88%91%e4%bb%ac%e4%bd%bf%e7%94%a8-__slots__">#</a>
+</h3>
+<p>我们改造一下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SensorData</span>:
+</span></span><span style="display:flex;"><span>    __slots__ <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;device_id&#39;</span>, <span style="color:#e6db74">&#39;temperature&#39;</span>, <span style="color:#e6db74">&#39;humidity&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, device_id, temperature, humidity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device_id <span style="color:#f92672">=</span> device_id
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>temperature <span style="color:#f92672">=</span> temperature
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>humidity <span style="color:#f92672">=</span> humidity
+</span></span></code></pre></div><p>变化很关键：</p>
+<p>👉 <strong>不再使用 <code>__dict__</code></strong></p>
+<p>使用 <code>__slots__</code> 后，Python 会：</p>
+<ul>
+<li>不再创建 <code>__dict__</code></li>
+<li>用一个固定结构存储属性（类似数组）</li>
+</ul>
+<hr>
+<h2 id="-实测对比">
+  📊 实测对比
+  <a class="anchor" href="#-%e5%ae%9e%e6%b5%8b%e5%af%b9%e6%af%94">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tracemalloc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SensorData</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, device_id, temperature, humidity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device_id <span style="color:#f92672">=</span> device_id
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>temperature <span style="color:#f92672">=</span> temperature
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>humidity <span style="color:#f92672">=</span> humidity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SensorDataWithSlots</span>:
+</span></span><span style="display:flex;"><span>    __slots__ <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;device_id&#39;</span>, <span style="color:#e6db74">&#39;temperature&#39;</span>, <span style="color:#e6db74">&#39;humidity&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, device_id, temperature, humidity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device_id <span style="color:#f92672">=</span> device_id
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>temperature <span style="color:#f92672">=</span> temperature
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>humidity <span style="color:#f92672">=</span> humidity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">measure_memory_and_speed</span>(cls, n_objects<span style="color:#f92672">=</span><span style="color:#ae81ff">1_000_000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 启动内存跟踪</span>
+</span></span><span style="display:flex;"><span>    tracemalloc<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 创建对象</span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>    objects <span style="color:#f92672">=</span> [cls(i, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n_objects)]
+</span></span><span style="display:flex;"><span>    creation_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 测量内存</span>
+</span></span><span style="display:flex;"><span>    current, peak <span style="color:#f92672">=</span> tracemalloc<span style="color:#f92672">.</span>get_traced_memory()
+</span></span><span style="display:flex;"><span>    tracemalloc<span style="color:#f92672">.</span>stop()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 测试属性访问速度</span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> obj <span style="color:#f92672">in</span> objects:
+</span></span><span style="display:flex;"><span>        _ <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>device_id
+</span></span><span style="display:flex;"><span>        _ <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>temperature
+</span></span><span style="display:flex;"><span>        _ <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>humidity
+</span></span><span style="display:flex;"><span>    access_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;内存占用(MB)&#34;</span>: peak <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;对象创建时间(秒)&#34;</span>: creation_time,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;属性访问时间(秒)&#34;</span>: access_time
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 测试普通类</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;测试普通类:&#34;</span>)
+</span></span><span style="display:flex;"><span>    dict_results <span style="color:#f92672">=</span> measure_memory_and_speed(SensorData)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> dict_results<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>k<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>v<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">测试使用 __slots__ 的类:&#34;</span>)
+</span></span><span style="display:flex;"><span>    slots_results <span style="color:#f92672">=</span> measure_memory_and_speed(SensorDataWithSlots)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> slots_results<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>k<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>v<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 计算差异百分比</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">性能提升:&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> dict_results:
+</span></span><span style="display:flex;"><span>        improvement <span style="color:#f92672">=</span> (dict_results[k] <span style="color:#f92672">-</span> slots_results[k]) <span style="color:#f92672">/</span> dict_results[k] <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>k<span style="color:#e6db74">}</span><span style="color:#e6db74">: 提升 </span><span style="color:#e6db74">{</span>improvement<span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 展示单个对象的大小差异</span>
+</span></span><span style="display:flex;"><span>    normal_obj <span style="color:#f92672">=</span> SensorData(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>    slots_obj <span style="color:#f92672">=</span> SensorDataWithSlots(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">单个对象大小对比:&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;普通对象: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getsizeof(normal_obj)<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;普通对象的__dict__: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getsizeof(normal_obj<span style="color:#f92672">.</span>__dict__)<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;普通对象总大小: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getsizeof(normal_obj) <span style="color:#f92672">+</span> sys<span style="color:#f92672">.</span>getsizeof(normal_obj<span style="color:#f92672">.</span>__dict__)<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Slots对象: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getsizeof(slots_obj)<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Slots对象的__dict__: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getsizeof(slots_obj<span style="color:#f92672">.</span>__dict__)<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">AttributeError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Slots对象没有__dict__属性：</span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>输出结果:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>测试普通类:
+</span></span><span style="display:flex;"><span>内存占用(MB): <span style="color:#ae81ff">122.49</span>
+</span></span><span style="display:flex;"><span>对象创建时间(秒): <span style="color:#ae81ff">11.60</span>
+</span></span><span style="display:flex;"><span>属性访问时间(秒): <span style="color:#ae81ff">0.18</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>测试使用 __slots__ 的类:
+</span></span><span style="display:flex;"><span>内存占用(MB): <span style="color:#ae81ff">91.97</span>
+</span></span><span style="display:flex;"><span>对象创建时间(秒): <span style="color:#ae81ff">9.01</span>
+</span></span><span style="display:flex;"><span>属性访问时间(秒): <span style="color:#ae81ff">0.19</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>性能提升:
+</span></span><span style="display:flex;"><span>内存占用(MB): 提升 <span style="color:#ae81ff">24.9</span><span style="color:#f92672">%</span>
+</span></span><span style="display:flex;"><span>对象创建时间(秒): 提升 <span style="color:#ae81ff">22.4</span><span style="color:#f92672">%</span>
+</span></span><span style="display:flex;"><span>属性访问时间(秒): 提升 <span style="color:#f92672">-</span><span style="color:#ae81ff">4.6</span><span style="color:#f92672">%</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>单个对象大小对比:
+</span></span><span style="display:flex;"><span>普通对象: <span style="color:#ae81ff">48</span> bytes
+</span></span><span style="display:flex;"><span>普通对象的__dict__: <span style="color:#ae81ff">96</span> bytes
+</span></span><span style="display:flex;"><span>普通对象总大小: <span style="color:#ae81ff">144</span> bytes
+</span></span><span style="display:flex;"><span>Slots对象: <span style="color:#ae81ff">56</span> bytes
+</span></span><span style="display:flex;"><span>Slots对象没有__dict__属性<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#e6db74">&#39;SensorDataWithSlots&#39;</span> object has no attribute <span style="color:#e6db74">&#39;__dict__&#39;</span>
+</span></span></code></pre></div><hr>
+<h2 id="性能提升来自哪里">
+  性能提升来自哪里？
+  <a class="anchor" href="#%e6%80%a7%e8%83%bd%e6%8f%90%e5%8d%87%e6%9d%a5%e8%87%aa%e5%93%aa%e9%87%8c">#</a>
+</h2>
+<h3 id="1-内存更少">
+  1️⃣ 内存更少
+  <a class="anchor" href="#1-%e5%86%85%e5%ad%98%e6%9b%b4%e5%b0%91">#</a>
+</h3>
+<p>没有 <code>__dict__</code></p>
+<p>👉 每个对象节省几十到上百字节</p>
+<hr>
+<h3 id="2-访问更快">
+  2️⃣ 访问更快
+  <a class="anchor" href="#2-%e8%ae%bf%e9%97%ae%e6%9b%b4%e5%bf%ab">#</a>
+</h3>
+<p>普通情况：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>属性访问 → dict 查找 → 哈希
+</span></span></code></pre></div><p>slots：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>属性访问 → 直接偏移量
+</span></span></code></pre></div><p>👉 更像 C 结构体</p>
+<hr>
+<h2 id="不只是性能设计层面的优势">
+  不只是性能：设计层面的优势
+  <a class="anchor" href="#%e4%b8%8d%e5%8f%aa%e6%98%af%e6%80%a7%e8%83%bd%e8%ae%be%e8%ae%a1%e5%b1%82%e9%9d%a2%e7%9a%84%e4%bc%98%e5%8a%bf">#</a>
+</h2>
+<h3 id="1-明确数据结构">
+  1️⃣ 明确“数据结构”
+  <a class="anchor" href="#1-%e6%98%8e%e7%a1%ae%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>:
+</span></span><span style="display:flex;"><span>    __slots__ <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>]
+</span></span></code></pre></div><p>👉 等价于：</p>
+<p>“这个类只能有这两个字段”</p>
+<hr>
+<h3 id="2-防止拼写错误">
+  2️⃣ 防止拼写错误
+  <a class="anchor" href="#2-%e9%98%b2%e6%ad%a2%e6%8b%bc%e5%86%99%e9%94%99%e8%af%af">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> User()
+</span></span><span style="display:flex;"><span>u<span style="color:#f92672">.</span>nmae <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alice&#34;</span>  <span style="color:#75715e"># 直接报错</span>
+</span></span></code></pre></div><p>👉 提前发现 bug</p>
+<hr>
+<h3 id="3-更像类型系统">
+  3️⃣ 更像“类型系统”
+  <a class="anchor" href="#3-%e6%9b%b4%e5%83%8f%e7%b1%bb%e5%9e%8b%e7%b3%bb%e7%bb%9f">#</a>
+</h3>
+<p>你其实在做：</p>
+<p>👉 限制对象结构</p>
+<p>这在大型项目中非常重要</p>
+<hr>
+<h2 id="和-dataclass-的关系">
+  和 <code>@dataclass</code> 的关系
+  <a class="anchor" href="#%e5%92%8c-dataclass-%e7%9a%84%e5%85%b3%e7%b3%bb">#</a>
+</h2>
+<p>很多人会问：</p>
+<p>👉 <code>dataclass</code> 不是已经很好了吗？</p>
+<p>来看：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span>:
+</span></span><span style="display:flex;"><span>    x: int
+</span></span><span style="display:flex;"><span>    y: int
+</span></span></code></pre></div><p>👉 默认还是有 <code>__dict__</code></p>
+<hr>
+<h3 id="推荐写法python-310">
+  推荐写法（Python 3.10+）
+  <a class="anchor" href="#%e6%8e%a8%e8%8d%90%e5%86%99%e6%b3%95python-310">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>(slots<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span>:
+</span></span><span style="display:flex;"><span>    x: int
+</span></span><span style="display:flex;"><span>    y: int
+</span></span></code></pre></div><p>👉 最佳组合：</p>
+<ul>
+<li>自动生成方法</li>
+<li>内存优化</li>
+</ul>
+<hr>
+<h2 id="使用-__slots__-的限制">
+  使用 <code>__slots__</code> 的限制
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8-__slots__-%e7%9a%84%e9%99%90%e5%88%b6">#</a>
+</h2>
+<h3 id="-不能随便加属性">
+  ❌ 不能随便加属性
+  <a class="anchor" href="#-%e4%b8%8d%e8%83%bd%e9%9a%8f%e4%be%bf%e5%8a%a0%e5%b1%9e%e6%80%a7">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>obj<span style="color:#f92672">.</span>new_attr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 报错</span>
+</span></span></code></pre></div><hr>
+<h3 id="-某些库不兼容">
+  ❌ 某些库不兼容
+  <a class="anchor" href="#-%e6%9f%90%e4%ba%9b%e5%ba%93%e4%b8%8d%e5%85%bc%e5%ae%b9">#</a>
+</h3>
+<p>比如依赖 <code>__dict__</code> 的库</p>
+<hr>
+<h3 id="-调试稍微麻烦">
+  ❌ 调试稍微麻烦
+  <a class="anchor" href="#-%e8%b0%83%e8%af%95%e7%a8%8d%e5%be%ae%e9%ba%bb%e7%83%a6">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vars(obj)  <span style="color:#75715e"># 会报错</span>
+</span></span></code></pre></div><hr>
+<h2 id="什么时候该用">
+  什么时候该用？
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e8%af%a5%e7%94%a8">#</a>
+</h2>
+<p>推荐场景:</p>
+<ul>
+<li>大量对象（10万+）</li>
+<li>数据结构固定</li>
+<li>性能敏感系统（如交易 / 实时处理）</li>
+</ul>
+<hr>
+<p>不推荐:</p>
+<ul>
+<li>需要动态属性</li>
+<li>业务逻辑复杂、结构不稳定</li>
+</ul>
+<hr>
+<h2 id="最佳实践">
+  最佳实践
+  <a class="anchor" href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5">#</a>
+</h2>
+<p>👉 如果你用 Python 3.10+：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>(slots<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Trade</span>:
+</span></span><span style="display:flex;"><span>    symbol: str
+</span></span><span style="display:flex;"><span>    price: float
+</span></span></code></pre></div><hr>
+<h2 id="总结">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93">#</a>
+</h2>
+<p><code>__slots__</code> 本质不是“优化技巧”，而是：</p>
+<p>👉 <strong>一种数据建模方式</strong></p>
+<p>它让你的类：</p>
+<ul>
+<li>更节省内存</li>
+<li>更快</li>
+<li>更严格</li>
+</ul>
+<p>但代价是：</p>
+<p>👉 失去一部分灵活性</p>
+<hr>
+<p>💡 最重要的一点：</p>
+<blockquote>
+<p>先写正确的代码，再优化；
+但当你需要优化时，<code>__slots__</code> 是一个非常值得考虑的工具。</p></blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#从一个真实问题开始">从一个真实问题开始</a>
+      <ul>
+        <li><a href="#真正的罪魁祸首__dict__">真正的罪魁祸首：<code>__dict__</code></a></li>
+        <li><a href="#如果我们使用-__slots__">如果我们使用 <code>__slots__</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#-实测对比">📊 实测对比</a></li>
+    <li><a href="#性能提升来自哪里">性能提升来自哪里？</a>
+      <ul>
+        <li><a href="#1-内存更少">1️⃣ 内存更少</a></li>
+        <li><a href="#2-访问更快">2️⃣ 访问更快</a></li>
+      </ul>
+    </li>
+    <li><a href="#不只是性能设计层面的优势">不只是性能：设计层面的优势</a>
+      <ul>
+        <li><a href="#1-明确数据结构">1️⃣ 明确“数据结构”</a></li>
+        <li><a href="#2-防止拼写错误">2️⃣ 防止拼写错误</a></li>
+        <li><a href="#3-更像类型系统">3️⃣ 更像“类型系统”</a></li>
+      </ul>
+    </li>
+    <li><a href="#和-dataclass-的关系">和 <code>@dataclass</code> 的关系</a>
+      <ul>
+        <li><a href="#推荐写法python-310">推荐写法（Python 3.10+）</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用-__slots__-的限制">使用 <code>__slots__</code> 的限制</a>
+      <ul>
+        <li><a href="#-不能随便加属性">❌ 不能随便加属性</a></li>
+        <li><a href="#-某些库不兼容">❌ 某些库不兼容</a></li>
+        <li><a href="#-调试稍微麻烦">❌ 调试稍微麻烦</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么时候该用">什么时候该用？</a></li>
+    <li><a href="#最佳实践">最佳实践</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script>
+  (function () {
+    var key = "site-theme";
+    var root = document.documentElement;
+    var btn = document.querySelector("[data-theme-toggle]");
+    var label = document.querySelector("[data-theme-toggle-label]");
+    if (!btn) return;
+
+    function isZh() {
+      var lang = (document.documentElement.lang || "").toLowerCase();
+      return lang.indexOf("zh") === 0;
+    }
+
+    function systemPrefersDark() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    function currentTheme() {
+      var explicit = root.getAttribute("data-theme");
+      if (explicit === "light" || explicit === "dark") return explicit;
+      return systemPrefersDark() ? "dark" : "light";
+    }
+
+    function setTheme(theme, persist) {
+      if (theme === "light" || theme === "dark") {
+        root.setAttribute("data-theme", theme);
+        if (persist) localStorage.setItem(key, theme);
+      } else {
+        root.removeAttribute("data-theme");
+        if (persist) localStorage.removeItem(key);
+      }
+      var effective = currentTheme();
+      var nextIsDark = effective !== "dark";
+      var aria = nextIsDark ? "Switch to dark mode" : "Switch to light mode";
+      btn.setAttribute("aria-label", aria);
+      if (label) {
+        if (isZh()) {
+          label.textContent = nextIsDark ? "外观：日间" : "外观：夜间";
+        } else {
+          label.textContent = nextIsDark ? "Theme: Light" : "Theme: Dark";
+        }
+      }
+    }
+
+    btn.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      setTheme(next, true);
+    });
+
+    var saved = localStorage.getItem(key);
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved, false);
+    } else {
+      setTheme(null, false);
+      if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          if (!localStorage.getItem(key)) setTheme(null, false);
+        });
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
