@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UoG-ENG4118 Robotics 4 on ZCHENG LI</title>
+    <link>http://localhost:1313/en/docs/my-blog/robotics/</link>
+    <description>Recent content in UoG-ENG4118 Robotics 4 on ZCHENG LI</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/en/docs/my-blog/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>L3.Knimatics</title>
+      <link>http://localhost:1313/en/docs/my-blog/robotics/robo_l3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/my-blog/robotics/robo_l3/</guid>
+      <description>&lt;h1 id=&#34;l3kinematics&#34;&gt;&#xA;  L3.Kinematics&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#l3kinematics&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Kinematcis describe the &lt;strong&gt;position&lt;/strong&gt; and &lt;strong&gt;orientation&lt;/strong&gt; of a robot. These depends on the translational and rotational relationship of &lt;strong&gt;all the joints&lt;/strong&gt; for a robot. These are called &lt;strong&gt;transformation&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;kinematcis = position + orientation&lt;/p&gt;&#xA;&lt;p&gt;transformation = translation + rotation&lt;/p&gt;&#xA;&lt;p&gt;Transformation is defined in terms of specific reference frames i.e. coordinate systems in space.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -15,6 +15,13 @@
       <description>&lt;h2 id=&#34;11-planning-and-scheduling-role-and-impact&#34;&gt;&#xA;  1.1 Planning and Scheduling: Role and Impact&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#11-planning-and-scheduling-role-and-impact&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;规划&lt;/strong&gt; 与 &lt;strong&gt;调度&lt;/strong&gt; 是 &lt;strong&gt;决策制定&lt;/strong&gt; (decision-making) 一种形式.&lt;/p&gt;&#xA;&lt;p&gt;决策制定 在制造服务产业中 可以用来&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;采购与生产 (procurement and production)&lt;/li&gt;&#xA;&lt;li&gt;运输与分发 (transportation and distribution)&lt;/li&gt;&#xA;&lt;li&gt;信息处理与通讯 (information processing and communication)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;等等.&lt;/p&gt;&#xA;&lt;p&gt;我们希望我们的规划与调度算法可以做到:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;allocate limited &lt;strong&gt;resources&lt;/strong&gt; to the &lt;strong&gt;activities&lt;/strong&gt; to be done so that the company can optimize its &lt;strong&gt;objectives&lt;/strong&gt; and achieve its goals.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;这里的 资源 (resources) 一般可以是:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;车间里的机器 (machines in a workshop)&lt;/li&gt;&#xA;&lt;li&gt;飞机场的跑道 (runways at an airport)&lt;/li&gt;&#xA;&lt;li&gt;工地的员工 (crews at a construction site)&lt;/li&gt;&#xA;&lt;li&gt;计算机的处理单元 (processing units in a computing environment)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;行动 (activities) 一般可以是:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>L3.机器人运动学</title>
+      <link>http://localhost:1313/docs/my-blog/robotics/robo_l3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/my-blog/robotics/robo_l3/</guid>
+      <description>&lt;h1 id=&#34;l3机器人运动学&#34;&gt;&#xA;  L3.机器人运动学&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#l3%e6%9c%ba%e5%99%a8%e4%ba%ba%e8%bf%90%e5%8a%a8%e5%ad%a6&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+    </item>
+    <item>
       <title>动态 QAM 调制解调 python 实现</title>
       <link>http://localhost:1313/docs/my-blog/qam/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
