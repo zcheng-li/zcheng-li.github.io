@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UoG-ENG4118 机器人 4 on ZCHENG LI</title>
-    <link>http://localhost:1313/docs/my-blog/robotics/</link>
+    <link>https://zcheng-li.github.io/docs/my-blog/robotics/</link>
     <description>Recent content in UoG-ENG4118 机器人 4 on ZCHENG LI</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <atom:link href="http://localhost:1313/docs/my-blog/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zcheng-li.github.io/docs/my-blog/robotics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>L3.机器人运动学</title>
-      <link>http://localhost:1313/docs/my-blog/robotics/robo_l3/</link>
+      <link>https://zcheng-li.github.io/docs/my-blog/robotics/robo_l3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/robotics/robo_l3/</guid>
+      <guid>https://zcheng-li.github.io/docs/my-blog/robotics/robo_l3/</guid>
       <description>&lt;h1 id=&#34;l3机器人运动学&#34;&gt;&#xA;  L3.机器人运动学&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#l3%e6%9c%ba%e5%99%a8%e4%ba%ba%e8%bf%90%e5%8a%a8%e5%ad%a6&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
     </item>
   </channel>

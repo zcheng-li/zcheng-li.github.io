@@ -1,0 +1,13 @@
+{{- $title := "Details" -}}
+{{- if .IsNamedParams -}}
+  {{- with .Get "title" }}{{ $title = . }}{{ end -}}
+{{- else -}}
+  {{- with .Get 0 }}{{ $title = . }}{{ end -}}
+{{- end -}}
+
+<details class="book-collapse" {{ if or (.Get "open") (in .Params "open") }}open{{ end }}>
+  <summary>{{ $title }}</summary>
+  <div class="markdown-inner">
+    {{ .InnerDeindent | safeHTML }}
+  </div>
+</details>
