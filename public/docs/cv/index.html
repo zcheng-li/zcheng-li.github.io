@@ -8,7 +8,7 @@
     
       
     
-    resume.cs
+    resume.py
   
 
   
@@ -17,73 +17,93 @@
         
       
 
-      public enum PLATFORMS()
-{
-  Windows,
-  Linux,
-  macOS
+      # Contact
+name = &#34;Zhicheng Li&#34;
+location = [&#34;Chengdu, China&#34;, &#34;Glasgow, UK&#34;]
+email = &#34;zcheng.li@outlook.com&#34;
+github = &#34;github.com/zcheng-li&#34;
+linkedin = &#34;www.linkedin.com/in/zhicheng-li-3547b8322&#34;
+website = &#34;https://zcheng-li.github.io&#34;
+
+
+# Languages
+languages = {
+    &#34;Chinese&#34;: .native,
+    &#34;English&#34;: .fluent,
 }
 
-public enum SKILLS()
-{
-  C&#43;&#43;, Python, SQL,
-  PyTorch, ROS2,
-  HTML, CSS, JS
-}
+# Programming
+tech_stack = [
+    &#34;Python&#34;, &#34;C&#34;, &#34;C&#43;&#43;&#34;, 
+    &#34;Matlab&#34;, &#34;Swift&#34;, 
+    &#34;Bash&#34;
+]
 
-public enum MEDIA()
-{
-  GitHub,
-  LinkedIn,
-  Email,
-  CV(PDF)
-}
+# Platforms
+platforms = [
+    &#34;macOS&#34;, 
+    &#34;Windows&#34;, 
+    &#34;Linux&#34;
+]
+
+
+
+      # Hobbies
+hobbies = [
+    &#34;Bouldering&#34;,
+    &#34;Hiking&#34;,
+    &#34;App Development&#34;,
+    &#34;3D Modeling&#34;,
+    &#34;sci-fi&#34;
+]
+
+
     
 
     
-      /// &lt;summary&gt;
-/// 机器人工程/软件开发方向，偏好 C&#43;&#43; 与 Python。
-/// 关注工程化、可维护性和实际落地。
-/// &lt;/summary&gt;
-public class PROFILE
-{
-  public string NAME = &#34;Your Name&#34;;
-  public string TITLE = &#34;Robotics / Software Engineer&#34;;
-  public string EMAIL = &#34;you@example.com&#34;;
-  public string LOCATION = &#34;London, UK&#34;;
-}
+      from dataclasses import dataclass
 
-      public static class EXPERIENCE
-{
-  public void ResearchAssistant()
-  {
-    var _Date = &#34;2024.09 - Present&#34;;
-    var _Focus = &#34;Perception, control, model deployment&#34;;
-  }
+@dataclass
+class Education:
+    university: str
+    program: str
+    period: str
+    location: str
+    notes: list[str]
 
-  public void ProjectLead()
-  {
-    var _Date = &#34;2023.02 - 2024.06&#34;;
-    var _Outcome = &#34;Shipped end-to-end demo with CI pipeline&#34;;
-  }
-}
+education = [
+    Education(
+        university=&#34;University of Electronic Science and Technology of China&#34;,
+        program=&#34;Bachelor of Electronic Information Engineering&#34;,
+        period=&#34;2022-2026&#34;,
+        location=&#34;Chengdu, China&#34;,
+        notes=[
+            &#34;GPA: 3.78/4.0&#34;,
+            &#34;Accumulated Grade Average: 87.87/100&#34;,
+            &#34;Rank: 9/241&#34;,
+        ],
+    ),
+    Education(
+        university=&#34;University of Glasgow (Joint-Degree Program)&#34;,
+        program=&#34;Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)&#34;,
+        period=&#34;2024-2026&#34;,
+        location=&#34;Glasgow, UK&#34;,
+        notes=[
+            &#34;GPA: 20.0/22.0&#34;,
+            &#34;Degree: 1:1 (estimated)&#34;,
+            ],
+    ),
+]
 
-      public partial class EDUCATION
-{
-  private void MasterDegree()
-  {
-    var _School = &#34;Your University&#34;;
-    var _Program = &#34;MSc in Robotics / AI&#34;;
-    var _Date = &#34;2024 - 2026&#34;;
-  }
-}
-
-      
-        GitHub
-        LinkedIn
-        Email
-        Download CV
-      
+      def awards_and_honors() -&gt; list[tuple[str, str]]:
+    return [
+        (&#34;Francis Morrison Award (Top 5)&#34;, &#34;2025&#34;),
+        (&#34;Scholarship for Excellent Student of UESTC (1st Tier, Top 5%)&#34;, &#34;2025&#34;),
+        (&#34;Scholarship for Excellent Student of UESTC (2nd Tier, Top 10%)&#34;, &#34;2023 &amp; 2024&#34;),
+        (&#34;Excellent Student Club Leader at UESTC&#34;, &#34;2024&#34;),
+        (&#34;Academic Scholarship (Top 10%)&#34;, &#34;2023 &amp; 2024 &amp; 2025&#34;),
+        (&#34;Apple Swift Student Challenge Winner&#34;, &#34;2024&#34;),
+    ]
     
   
 ">
@@ -91,20 +111,20 @@ public class PROFILE
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/cv/">
   <meta property="og:site_name" content="ZCHENG LI">
-  <meta property="og:title" content="代码风 CV">
-  <meta property="og:description" content="resume.cs
-public enum PLATFORMS() { Windows, Linux, macOS } public enum SKILLS() { C&#43;&#43;, Python, SQL, PyTorch, ROS2, HTML, CSS, JS } public enum MEDIA() { GitHub, LinkedIn, Email, CV(PDF) } /// &lt;summary&gt; /// 机器人工程/软件开发方向，偏好 C&#43;&#43; 与 Python。 /// 关注工程化、可维护性和实际落地。 /// &lt;/summary&gt; public class PROFILE { public string NAME = &#34;Your Name&#34;; public string TITLE = &#34;Robotics / Software Engineer&#34;; public string EMAIL = &#34;you@example.com&#34;; public string LOCATION = &#34;London, UK&#34;; } public static class EXPERIENCE { public void ResearchAssistant() { var _Date = &#34;2024.09 - Present&#34;; var _Focus = &#34;Perception, control, model deployment&#34;; } public void ProjectLead() { var _Date = &#34;2023.02 - 2024.06&#34;; var _Outcome = &#34;Shipped end-to-end demo with CI pipeline&#34;; } } public partial class EDUCATION { private void MasterDegree() { var _School = &#34;Your University&#34;; var _Program = &#34;MSc in Robotics / AI&#34;; var _Date = &#34;2024 - 2026&#34;; } } GitHub LinkedIn Email Download CV">
+  <meta property="og:title" content="CV Website">
+  <meta property="og:description" content="resume.py
+# Contact name = &#34;Zhicheng Li&#34; location = [&#34;Chengdu, China&#34;, &#34;Glasgow, UK&#34;] email = &#34;zcheng.li@outlook.com&#34; github = &#34;github.com/zcheng-li&#34; linkedin = &#34;www.linkedin.com/in/zhicheng-li-3547b8322&#34; website = &#34;https://zcheng-li.github.io&#34; # Languages languages = { &#34;Chinese&#34;: .native, &#34;English&#34;: .fluent, } # Programming tech_stack = [ &#34;Python&#34;, &#34;C&#34;, &#34;C&#43;&#43;&#34;, &#34;Matlab&#34;, &#34;Swift&#34;, &#34;Bash&#34; ] # Platforms platforms = [ &#34;macOS&#34;, &#34;Windows&#34;, &#34;Linux&#34; ] # Hobbies hobbies = [ &#34;Bouldering&#34;, &#34;Hiking&#34;, &#34;App Development&#34;, &#34;3D Modeling&#34;, &#34;sci-fi&#34; ] from dataclasses import dataclass @dataclass class Education: university: str program: str period: str location: str notes: list[str] education = [ Education( university=&#34;University of Electronic Science and Technology of China&#34;, program=&#34;Bachelor of Electronic Information Engineering&#34;, period=&#34;2022-2026&#34;, location=&#34;Chengdu, China&#34;, notes=[ &#34;GPA: 3.78/4.0&#34;, &#34;Accumulated Grade Average: 87.87/100&#34;, &#34;Rank: 9/241&#34;, ], ), Education( university=&#34;University of Glasgow (Joint-Degree Program)&#34;, program=&#34;Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)&#34;, period=&#34;2024-2026&#34;, location=&#34;Glasgow, UK&#34;, notes=[ &#34;GPA: 20.0/22.0&#34;, &#34;Degree: 1:1 (estimated)&#34;, ], ), ] def awards_and_honors() -&gt; list[tuple[str, str]]: return [ (&#34;Francis Morrison Award (Top 5)&#34;, &#34;2025&#34;), (&#34;Scholarship for Excellent Student of UESTC (1st Tier, Top 5%)&#34;, &#34;2025&#34;), (&#34;Scholarship for Excellent Student of UESTC (2nd Tier, Top 10%)&#34;, &#34;2023 &amp; 2024&#34;), (&#34;Excellent Student Club Leader at UESTC&#34;, &#34;2024&#34;), (&#34;Academic Scholarship (Top 10%)&#34;, &#34;2023 &amp; 2024 &amp; 2025&#34;), (&#34;Apple Swift Student Challenge Winner&#34;, &#34;2024&#34;), ]">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>代码风 CV | ZCHENG LI</title>
+<title>CV Website | ZCHENG LI</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/docs/cv/">
-  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/cv/" title="Code-style CV">
-<link rel="stylesheet" href="/book.min.e6651901422a223e8a017fb5943bde8ae09e0719d0047eb3848dc837fa3f25b9.css" integrity="sha256-5mUZAUIqIj6KAX&#43;1lDveiuCeBxnQBH6zhI3IN/o/Jbk=" crossorigin="anonymous">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/en/docs/cv/" title="CV Website">
+<link rel="stylesheet" href="/book.min.685eef578fb846819d8d45a737d50697b95ce0ec5d2e7a877b269bd68db20920.css" integrity="sha256-aF7vV4&#43;4RoGdjUWnN9UGl7lc4OxdLnqHeyab1o2yCSA=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh-cn.search.min.748402809b777c2e70671535ad5e773510173e0557eb9523a188308000487ce8.js" integrity="sha256-dIQCgJt3fC5wZxU1rV53NRAXPgVX65UjoYgwgABIfOg=" crossorigin="anonymous"></script>
+  <script defer src="/zh-cn.search.min.52d2b74520c44da9ec5ffdeeaa133966ae716f8e515701f2312ed6400d5f3d1e.js" integrity="sha256-UtK3RSDETansX/3uqhM5Zq5xb45RVwHyMS7WQA1fPR4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -579,25 +599,14 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>代码风 CV</h3>
+  <h3>CV Website</h3>
 
   <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
     
   </label>
 </div>
 
 
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents"></nav>
-
-
-
-  </aside>
   
  
       </header>
@@ -609,82 +618,102 @@ https://github.com/alex-shpak/hugo-book
     <div class="cv-window-dots" aria-hidden="true">
       <span></span><span></span><span></span>
     </div>
-    <p class="cv-file">resume.cs</p>
+    <p class="cv-file">resume.py</p>
   </header>
 
   <div class="cv-grid">
     <aside class="cv-left">
       <div class="cv-photo-wrap">
-        <img src="/images/cv-avatar.svg" alt="Profile photo" class="cv-photo" />
+        <img src="/img/cv-avatar.jpg" alt="Profile photo" class="cv-photo" />
       </div>
 
-      <pre class="cv-block"><code><span class="kw">public enum</span> <span class="type">PLATFORMS</span>()
-{
-  Windows,
-  Linux,
-  macOS
+      <pre class="cv-block"><code><span class="comment"># Contact</span>
+<span class="var">name</span> = <span class="str">"Zhicheng Li"</span>
+<span class="var">location</span> = [<span class="str">"Chengdu, China"</span>, <span class="str">"Glasgow, UK"</span>]
+<span class="var">email</span> = <span class="str">"zcheng.li@outlook.com"</span>
+<span class="var">github</span> = <span class="str">"github.com/zcheng-li"</span>
+<span class="var">linkedin</span> = <span class="str">"www.linkedin.com/in/zhicheng-li-3547b8322"</span>
+<span class="var">website</span> = <span class="str">"https://zcheng-li.github.io"</span>
+
+
+<span class="comment"># Languages</span>
+<span class="var">languages</span> = {
+    <span class="str">"Chinese"</span>: .native,
+    <span class="str">"English"</span>: .fluent,
 }
 
-<span class="kw">public enum</span> <span class="type">SKILLS</span>()
-{
-  C++, Python, SQL,
-  PyTorch, ROS2,
-  HTML, CSS, JS
-}
+<span class="comment"># Programming</span>
+<span class="var">tech_stack</span> = [
+    <span class="str">"Python"</span>, <span class="str">"C"</span>, <span class="str">"C++"</span>, 
+    <span class="str">"Matlab"</span>, <span class="str">"Swift"</span>, 
+    <span class="str">"Bash"</span>
+]
 
-<span class="kw">public enum</span> <span class="type">MEDIA</span>()
-{
-  GitHub,
-  LinkedIn,
-  Email,
-  CV(PDF)
-}</code></pre>
+<span class="comment"># Platforms</span>
+<span class="var">platforms</span> = [
+    <span class="str">"macOS"</span>, 
+    <span class="str">"Windows"</span>, 
+    <span class="str">"Linux"</span>
+]
+
+</code></pre>
+
+      <pre class="cv-block"><code><span class="comment"># Hobbies</span>
+<span class="var">hobbies</span> = [
+    <span class="str">"Bouldering"</span>,
+    <span class="str">"Hiking"</span>,
+    <span class="str">"App Development"</span>,
+    <span class="str">"3D Modeling"</span>,
+    <span class="str">"sci-fi"</span>
+]
+</code></pre>
+
     </aside>
 
     <main class="cv-main">
-      <pre class="cv-block"><code><span class="comment">/// &lt;summary&gt;</span>
-<span class="comment">/// 机器人工程/软件开发方向，偏好 C++ 与 Python。</span>
-<span class="comment">/// 关注工程化、可维护性和实际落地。</span>
-<span class="comment">/// &lt;/summary&gt;</span>
-<span class="kw">public class</span> <span class="type">PROFILE</span>
-{
-  <span class="kw">public string</span> <span class="prop">NAME</span> = <span class="str">"Your Name"</span>;
-  <span class="kw">public string</span> <span class="prop">TITLE</span> = <span class="str">"Robotics / Software Engineer"</span>;
-  <span class="kw">public string</span> <span class="prop">EMAIL</span> = <span class="str">"you@example.com"</span>;
-  <span class="kw">public string</span> <span class="prop">LOCATION</span> = <span class="str">"London, UK"</span>;
-}</code></pre>
+      <pre class="cv-block"><code><span class="kw">from</span> <span class="name">dataclasses</span> <span class="kw">import</span> <span class="name">dataclass</span>
 
-      <pre class="cv-block"><code><span class="kw">public static class</span> <span class="type">EXPERIENCE</span>
-{
-  <span class="kw">public void</span> <span class="fn">ResearchAssistant</span>()
-  {
-    <span class="kw">var</span> _Date = <span class="str">"2024.09 - Present"</span>;
-    <span class="kw">var</span> _Focus = <span class="str">"Perception, control, model deployment"</span>;
-  }
+<span class="decor">@dataclass</span>
+<span class="kw">class</span> <span class="name">Education</span>:
+    <span class="var">university</span>: <span class="name">str</span>
+    <span class="var">program</span>: <span class="name">str</span>
+    <span class="var">period</span>: <span class="name">str</span>
+    <span class="var">location</span>: <span class="name">str</span>
+    <span class="var">notes</span>: <span class="name">list</span>[<span class="name">str</span>]
 
-  <span class="kw">public void</span> <span class="fn">ProjectLead</span>()
-  {
-    <span class="kw">var</span> _Date = <span class="str">"2023.02 - 2024.06"</span>;
-    <span class="kw">var</span> _Outcome = <span class="str">"Shipped end-to-end demo with CI pipeline"</span>;
-  }
-}</code></pre>
+<span class="var">education</span> = [
+    <span class="name">Education</span>(
+        <span class="var">university</span>=<span class="str">"University of Electronic Science and Technology of China"</span>,
+        <span class="var">program</span>=<span class="str">"Bachelor of Electronic Information Engineering"</span>,
+        <span class="var">period</span>=<span class="str">"2022-2026"</span>,
+        <span class="var">location</span>=<span class="str">"Chengdu, China"</span>,
+        <span class="var">notes</span>=[
+            <span class="str">"GPA: 3.78/4.0"</span>,
+            <span class="str">"Accumulated Grade Average: 87.87/100"</span>,
+            <span class="str">"Rank: 9/241"</span>,
+        ],
+    ),
+    <span class="name">Education</span>(
+        <span class="var">university</span>=<span class="str">"University of Glasgow (Joint-Degree Program)"</span>,
+        <span class="var">program</span>=<span class="str">"Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)"</span>,
+        <span class="var">period</span>=<span class="str">"2024-2026"</span>,
+        <span class="var">location</span>=<span class="str">"Glasgow, UK"</span>,
+        <span class="var">notes</span>=[
+            <span class="str">"GPA: 20.0/22.0"</span>,
+            <span class="str">"Degree: 1:1 (estimated)"</span>,
+            ],
+    ),
+]</code></pre>
 
-      <pre class="cv-block"><code><span class="kw">public partial class</span> <span class="type">EDUCATION</span>
-{
-  <span class="kw">private void</span> <span class="fn">MasterDegree</span>()
-  {
-    <span class="kw">var</span> _School = <span class="str">"Your University"</span>;
-    <span class="kw">var</span> _Program = <span class="str">"MSc in Robotics / AI"</span>;
-    <span class="kw">var</span> _Date = <span class="str">"2024 - 2026"</span>;
-  }
-}</code></pre>
-
-      <div class="cv-links">
-        <a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:you@example.com">Email</a>
-        <a href="/files/cv.pdf" target="_blank" rel="noopener">Download CV</a>
-      </div>
+      <pre class="cv-block"><code><span class="kw">def</span> <span class="fn">awards_and_honors</span>() -> <span class="name">list</span>[<span class="name">tuple</span>[<span class="name">str</span>, <span class="name">str</span>]]:
+    <span class="kw">return</span> [
+        (<span class="str">"Francis Morrison Award (Top 5)"</span>, <span class="str">"2025"</span>),
+        (<span class="str">"Scholarship for Excellent Student of UESTC (1st Tier, Top 5%)"</span>, <span class="str">"2025"</span>),
+        (<span class="str">"Scholarship for Excellent Student of UESTC (2nd Tier, Top 10%)"</span>, <span class="str">"2023 &amp; 2024"</span>),
+        (<span class="str">"Excellent Student Club Leader at UESTC"</span>, <span class="str">"2024"</span>),
+        (<span class="str">"Academic Scholarship (Top 10%)"</span>, <span class="str">"2023 &amp; 2024 &amp; 2025"</span>),
+        (<span class="str">"Apple Swift Student Challenge Winner"</span>, <span class="str">"2024"</span>),
+    ]</code></pre>
     </main>
   </div>
 </section>
@@ -728,17 +757,6 @@ https://github.com/alex-shpak/hugo-book
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents"></nav>
-
-
- 
-      </div>
-    </aside>
     
   </main>
 

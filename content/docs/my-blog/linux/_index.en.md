@@ -1,5 +1,5 @@
 ---
-title: "liniux"
+title: "linux"
 weight: 11
 ---
 

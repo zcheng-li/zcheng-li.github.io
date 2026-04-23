@@ -1,5 +1,5 @@
 ---
-title: "linux"
+title: "python"
 weight: 10
 ---
 

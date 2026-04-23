@@ -3,82 +3,102 @@
     <div class="cv-window-dots" aria-hidden="true">
       <span></span><span></span><span></span>
     </div>
-    <p class="cv-file">resume.cs</p>
+    <p class="cv-file">resume.py</p>
   </header>
 
   <div class="cv-grid">
     <aside class="cv-left">
       <div class="cv-photo-wrap">
-        <img src="/images/cv-avatar.svg" alt="Profile photo" class="cv-photo" />
+        <img src="/img/cv-avatar.jpg" alt="Profile photo" class="cv-photo" />
       </div>
 
-      <pre class="cv-block"><code><span class="kw">public enum</span> <span class="type">PLATFORMS</span>()
-{
-  Windows,
-  Linux,
-  macOS
+      <pre class="cv-block"><code><span class="comment"># Contact</span>
+<span class="var">name</span> = <span class="str">"Zhicheng Li"</span>
+<span class="var">location</span> = [<span class="str">"Chengdu, China"</span>, <span class="str">"Glasgow, UK"</span>]
+<span class="var">email</span> = <span class="str">"zcheng.li@outlook.com"</span>
+<span class="var">github</span> = <span class="str">"github.com/zcheng-li"</span>
+<span class="var">linkedin</span> = <span class="str">"www.linkedin.com/in/zhicheng-li-3547b8322"</span>
+<span class="var">website</span> = <span class="str">"https://zcheng-li.github.io"</span>
+
+
+<span class="comment"># Languages</span>
+<span class="var">languages</span> = {
+    <span class="str">"Chinese"</span>: .native,
+    <span class="str">"English"</span>: .fluent,
 }
 
-<span class="kw">public enum</span> <span class="type">SKILLS</span>()
-{
-  C++, Python, SQL,
-  PyTorch, ROS2,
-  HTML, CSS, JS
-}
+<span class="comment"># Programming</span>
+<span class="var">tech_stack</span> = [
+    <span class="str">"Python"</span>, <span class="str">"C"</span>, <span class="str">"C++"</span>, 
+    <span class="str">"Matlab"</span>, <span class="str">"Swift"</span>, 
+    <span class="str">"Bash"</span>
+]
 
-<span class="kw">public enum</span> <span class="type">MEDIA</span>()
-{
-  GitHub,
-  LinkedIn,
-  Email,
-  CV(PDF)
-}</code></pre>
+<span class="comment"># Platforms</span>
+<span class="var">platforms</span> = [
+    <span class="str">"macOS"</span>, 
+    <span class="str">"Windows"</span>, 
+    <span class="str">"Linux"</span>
+]
+
+</code></pre>
+
+      <pre class="cv-block"><code><span class="comment"># Hobbies</span>
+<span class="var">hobbies</span> = [
+    <span class="str">"Bouldering"</span>,
+    <span class="str">"Hiking"</span>,
+    <span class="str">"App Development"</span>,
+    <span class="str">"3D Modeling"</span>,
+    <span class="str">"sci-fi"</span>
+]
+</code></pre>
+
     </aside>
 
     <main class="cv-main">
-      <pre class="cv-block"><code><span class="comment">/// &lt;summary&gt;</span>
-<span class="comment">/// 机器人工程/软件开发方向，偏好 C++ 与 Python。</span>
-<span class="comment">/// 关注工程化、可维护性和实际落地。</span>
-<span class="comment">/// &lt;/summary&gt;</span>
-<span class="kw">public class</span> <span class="type">PROFILE</span>
-{
-  <span class="kw">public string</span> <span class="prop">NAME</span> = <span class="str">"Your Name"</span>;
-  <span class="kw">public string</span> <span class="prop">TITLE</span> = <span class="str">"Robotics / Software Engineer"</span>;
-  <span class="kw">public string</span> <span class="prop">EMAIL</span> = <span class="str">"you@example.com"</span>;
-  <span class="kw">public string</span> <span class="prop">LOCATION</span> = <span class="str">"London, UK"</span>;
-}</code></pre>
+      <pre class="cv-block"><code><span class="kw">from</span> <span class="name">dataclasses</span> <span class="kw">import</span> <span class="name">dataclass</span>
 
-      <pre class="cv-block"><code><span class="kw">public static class</span> <span class="type">EXPERIENCE</span>
-{
-  <span class="kw">public void</span> <span class="fn">ResearchAssistant</span>()
-  {
-    <span class="kw">var</span> _Date = <span class="str">"2024.09 - Present"</span>;
-    <span class="kw">var</span> _Focus = <span class="str">"Perception, control, model deployment"</span>;
-  }
+<span class="decor">@dataclass</span>
+<span class="kw">class</span> <span class="name">Education</span>:
+    <span class="var">university</span>: <span class="name">str</span>
+    <span class="var">program</span>: <span class="name">str</span>
+    <span class="var">period</span>: <span class="name">str</span>
+    <span class="var">location</span>: <span class="name">str</span>
+    <span class="var">notes</span>: <span class="name">list</span>[<span class="name">str</span>]
 
-  <span class="kw">public void</span> <span class="fn">ProjectLead</span>()
-  {
-    <span class="kw">var</span> _Date = <span class="str">"2023.02 - 2024.06"</span>;
-    <span class="kw">var</span> _Outcome = <span class="str">"Shipped end-to-end demo with CI pipeline"</span>;
-  }
-}</code></pre>
+<span class="var">education</span> = [
+    <span class="name">Education</span>(
+        <span class="var">university</span>=<span class="str">"University of Electronic Science and Technology of China"</span>,
+        <span class="var">program</span>=<span class="str">"Bachelor of Electronic Information Engineering"</span>,
+        <span class="var">period</span>=<span class="str">"2022-2026"</span>,
+        <span class="var">location</span>=<span class="str">"Chengdu, China"</span>,
+        <span class="var">notes</span>=[
+            <span class="str">"GPA: 3.78/4.0"</span>,
+            <span class="str">"Accumulated Grade Average: 87.87/100"</span>,
+            <span class="str">"Rank: 9/241"</span>,
+        ],
+    ),
+    <span class="name">Education</span>(
+        <span class="var">university</span>=<span class="str">"University of Glasgow (Joint-Degree Program)"</span>,
+        <span class="var">program</span>=<span class="str">"Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)"</span>,
+        <span class="var">period</span>=<span class="str">"2024-2026"</span>,
+        <span class="var">location</span>=<span class="str">"Glasgow, UK"</span>,
+        <span class="var">notes</span>=[
+            <span class="str">"GPA: 20.0/22.0"</span>,
+            <span class="str">"Degree: 1:1 (estimated)"</span>,
+            ],
+    ),
+]</code></pre>
 
-      <pre class="cv-block"><code><span class="kw">public partial class</span> <span class="type">EDUCATION</span>
-{
-  <span class="kw">private void</span> <span class="fn">MasterDegree</span>()
-  {
-    <span class="kw">var</span> _School = <span class="str">"Your University"</span>;
-    <span class="kw">var</span> _Program = <span class="str">"MSc in Robotics / AI"</span>;
-    <span class="kw">var</span> _Date = <span class="str">"2024 - 2026"</span>;
-  }
-}</code></pre>
-
-      <div class="cv-links">
-        <a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:you@example.com">Email</a>
-        <a href="/files/cv.pdf" target="_blank" rel="noopener">Download CV</a>
-      </div>
+      <pre class="cv-block"><code><span class="kw">def</span> <span class="fn">awards_and_honors</span>() -> <span class="name">list</span>[<span class="name">tuple</span>[<span class="name">str</span>, <span class="name">str</span>]]:
+    <span class="kw">return</span> [
+        (<span class="str">"Francis Morrison Award (Top 5)"</span>, <span class="str">"2025"</span>),
+        (<span class="str">"Scholarship for Excellent Student of UESTC (1st Tier, Top 5%)"</span>, <span class="str">"2025"</span>),
+        (<span class="str">"Scholarship for Excellent Student of UESTC (2nd Tier, Top 10%)"</span>, <span class="str">"2023 &amp; 2024"</span>),
+        (<span class="str">"Excellent Student Club Leader at UESTC"</span>, <span class="str">"2024"</span>),
+        (<span class="str">"Academic Scholarship (Top 10%)"</span>, <span class="str">"2023 &amp; 2024 &amp; 2025"</span>),
+        (<span class="str">"Apple Swift Student Challenge Winner"</span>, <span class="str">"2024"</span>),
+    ]</code></pre>
     </main>
   </div>
 </section>

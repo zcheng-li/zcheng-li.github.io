@@ -1,8 +1,9 @@
 ---
-title: 代码风 CV
+title: CV Website
 type: docs
 weight: 5
 bookHidden: True
+bookToC: False
 ---
 
 {{< cv-code >}}

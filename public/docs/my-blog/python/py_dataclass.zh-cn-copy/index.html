@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  什么是 Python @dataclass ?
+  #
+
+
+
+  引言
+  #
+
+如果你写过这样的类：
+class Trade:
+    def __init__(self, symbol, price, quantity):
+        self.symbol = symbol
+        self.price = price
+        self.quantity = quantity
+你可能觉得：
+👉 “这不就很正常吗？”
+但实际上，这类代码在项目中会大量重复，而且还存在一些明显问题：
+
+需要手写 __init__
+打印对象时可读性差
+没有自动比较、排序能力
+容易出现重复样板代码
+
+这正是 @dataclass 诞生的意义。
+
+
+  什么是 dataclass？
+  #
+
+dataclass 是 Python 3.7 引入的标准库工具，用于：
+👉 快速定义以“数据”为核心的类
+它可以自动生成：
+
+__init__
+__repr__
+__eq__
+
+从而显著减少重复代码。
+
+
+  从传统写法到 dataclass
+  #
+
+
+  传统写法
+  #
+
+class User:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+打印：">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/my-blog/python/py_dataclass.zh-cn-copy/">
+  <meta property="og:site_name" content="ZCHENG LI">
+  <meta property="og:title" content="什么是 Python @dataclass ?">
+  <meta property="og:description" content="什么是 Python @dataclass ? # 引言 # 如果你写过这样的类：
+class Trade: def __init__(self, symbol, price, quantity): self.symbol = symbol self.price = price self.quantity = quantity 你可能觉得：
+👉 “这不就很正常吗？”
+但实际上，这类代码在项目中会大量重复，而且还存在一些明显问题：
+需要手写 __init__ 打印对象时可读性差 没有自动比较、排序能力 容易出现重复样板代码 这正是 @dataclass 诞生的意义。
+什么是 dataclass？ # dataclass 是 Python 3.7 引入的标准库工具，用于：
+👉 快速定义以“数据”为核心的类
+它可以自动生成：
+__init__ __repr__ __eq__ 从而显著减少重复代码。
+从传统写法到 dataclass # 传统写法 # class User: def __init__(self, name, age): self.name = name self.age = age 打印：">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>什么是 Python @dataclass ? | ZCHENG LI</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/my-blog/python/py_dataclass.zh-cn-copy/">
+<link rel="stylesheet" href="/book.min.685eef578fb846819d8d45a737d50697b95ce0ec5d2e7a877b269bd68db20920.css" integrity="sha256-aF7vV4&#43;4RoGdjUWnN9UGl7lc4OxdLnqHeyab1o2yCSA=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh-cn.search.min.52d2b74520c44da9ec5ffdeeaa133966ae716f8e515701f2312ed6400d5f3d1e.js" integrity="sha256-UtK3RSDETansX/3uqhM5Zq5xb45RVwHyMS7WQA1fPR4=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+
+<script>
+  (function () {
+    var savedTheme = localStorage.getItem("site-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  })();
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZCHENG LI</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <button type="button" class="book-theme-toggle flex align-center" data-theme-toggle>
+      <img src="/svg/appearance.svg" class="book-icon" alt="Theme" />
+      <span data-theme-toggle-label>Theme</span>
+    </button>
+  </li>
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="/en/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span><span class="book-menu-item"><span class="book-menu-item-label">博客</span>
+</span>
+</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/qam/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">动态 QAM 调制解调 python 实现</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span><span class="book-menu-item"><span class="book-menu-item-label">python</span>
+</span>
+</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/python/py_dataclass.zh-cn-copy/" class="active"><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">什么是 Python @dataclass ?</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/python/py_dataclass/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">什么是 Python @dataclass ?</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/python/py_slots/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">为什么 Python `__slots__` 不只是节省内存？</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span><span class="book-menu-item"><span class="book-menu-item-label">linux</span>
+</span>
+</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/linux/linux_ps/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">{ }</span><span class="book-menu-item-label">理解 linux 里的 ps</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ac24e95d0d52604974a4448da1c9c80" class="toggle"  />
+    <label for="section-1ac24e95d0d52604974a4448da1c9c80" class="flex justify-between">
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">工业生产规划调度阅读笔记</span>
+</span>
+</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/pns/pns_ch1/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH1.规划调度: 角色与影响</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/pns/pns_ch2/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH2.工业生产模型</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/pns/pns_ch4/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH4.项目的规划调度</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/pns/pns_ch5/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">CH5.机器和Job Shop的调度</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-289f47155a65a8c59a49501a764a24f1" class="toggle"  />
+    <label for="section-289f47155a65a8c59a49501a764a24f1" class="flex justify-between">
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">UoG-ENG4184 导航系统 4</span>
+</span>
+</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/navigation/navi_l2/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L2.导航数学基础</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/navigation/navi_l3/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L3.惯性导航</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/navigation/navi_l4/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L4.卫星导航</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/navigation/navi_l5/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L5.集成导航</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-07082df19b8a07cd3e0b0feff6e272e6" class="toggle"  />
+    <label for="section-07082df19b8a07cd3e0b0feff6e272e6" class="flex justify-between">
+      <a role="button" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">UoG-ENG4118 机器人 4</span>
+</span>
+</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/robotics/robo_l3/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">◦</span><span class="book-menu-item-label">L3.机器人运动学</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/my-blog/notelist/" class=""><span class="book-menu-item has-icon"><span class="book-menu-item-icon" aria-hidden="true">≡</span><span class="book-menu-item-label">UoG EEE 课程资料</span>
+</span>
+</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>什么是 Python @dataclass ?</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#引言">引言</a></li>
+    <li><a href="#什么是-dataclass">什么是 dataclass？</a></li>
+    <li><a href="#从传统写法到-dataclass">从传统写法到 dataclass</a>
+      <ul>
+        <li><a href="#传统写法">传统写法</a></li>
+        <li><a href="#dataclass-写法">dataclass 写法</a></li>
+      </ul>
+    </li>
+    <li><a href="#dataclass-的核心价值">dataclass 的核心价值</a>
+      <ul>
+        <li><a href="#1-减少样板代码">1️⃣ 减少样板代码</a></li>
+        <li><a href="#2-更清晰的数据建模">2️⃣ 更清晰的数据建模</a></li>
+        <li><a href="#3-自动支持比较">3️⃣ 自动支持比较</a></li>
+      </ul>
+    </li>
+    <li><a href="#进阶用法">进阶用法</a>
+      <ul>
+        <li><a href="#默认值">默认值</a></li>
+        <li><a href="#可变对象陷阱">可变对象陷阱</a></li>
+        <li><a href="#隐藏敏感信息-repr">隐藏敏感信息 <code>repr</code></a></li>
+        <li><a href="#不可变对象-frozen">不可变对象 <code>frozen</code></a></li>
+        <li><a href="#初始化后处理">初始化后处理</a></li>
+        <li><a href="#与-dict--tuple-转换">与 dict / tuple 转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么时候使用-dataclass">什么时候使用 dataclass？</a></li>
+    <li><a href="#最佳实践">最佳实践</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#-原文地址">📎 原文地址</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="什么是-python-dataclass-">
+  什么是 Python <code>@dataclass</code> ?
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af-python-dataclass-">#</a>
+</h1>
+<hr>
+<h2 id="引言">
+  引言
+  <a class="anchor" href="#%e5%bc%95%e8%a8%80">#</a>
+</h2>
+<p>如果你写过这样的类：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Trade</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, symbol, price, quantity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>symbol <span style="color:#f92672">=</span> symbol
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>price <span style="color:#f92672">=</span> price
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>quantity <span style="color:#f92672">=</span> quantity
+</span></span></code></pre></div><p>你可能觉得：</p>
+<p>👉 “这不就很正常吗？”</p>
+<p>但实际上，这类代码在项目中会大量重复，而且还存在一些明显问题：</p>
+<ul>
+<li>需要手写 <code>__init__</code></li>
+<li>打印对象时可读性差</li>
+<li>没有自动比较、排序能力</li>
+<li>容易出现重复样板代码</li>
+</ul>
+<p>这正是 <code>@dataclass</code> 诞生的意义。</p>
+<hr>
+<h2 id="什么是-dataclass">
+  什么是 dataclass？
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af-dataclass">#</a>
+</h2>
+<p><code>dataclass</code> 是 Python 3.7 引入的标准库工具，用于：</p>
+<p>👉 <strong>快速定义以“数据”为核心的类</strong></p>
+<p>它可以自动生成：</p>
+<ul>
+<li><code>__init__</code></li>
+<li><code>__repr__</code></li>
+<li><code>__eq__</code></li>
+</ul>
+<p>从而显著减少重复代码。</p>
+<hr>
+<h2 id="从传统写法到-dataclass">
+  从传统写法到 dataclass
+  <a class="anchor" href="#%e4%bb%8e%e4%bc%a0%e7%bb%9f%e5%86%99%e6%b3%95%e5%88%b0-dataclass">#</a>
+</h2>
+<h3 id="传统写法">
+  传统写法
+  <a class="anchor" href="#%e4%bc%a0%e7%bb%9f%e5%86%99%e6%b3%95">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, name, age):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>age <span style="color:#f92672">=</span> age
+</span></span></code></pre></div><p>打印：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(User(<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#ae81ff">20</span>))
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>&lt;__main__.User object at 0x...&gt;
+</span></span></code></pre></div><p>👉 几乎不可读</p>
+<hr>
+<h3 id="dataclass-写法">
+  dataclass 写法
+  <a class="anchor" href="#dataclass-%e5%86%99%e6%b3%95">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>:
+</span></span><span style="display:flex;"><span>    name: str
+</span></span><span style="display:flex;"><span>    age: int
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User(name=&#39;Alice&#39;, age=20)
+</span></span></code></pre></div><p>👉 自动生成 <code>__repr__</code>，可读性显著提升</p>
+<hr>
+<h2 id="dataclass-的核心价值">
+  dataclass 的核心价值
+  <a class="anchor" href="#dataclass-%e7%9a%84%e6%a0%b8%e5%bf%83%e4%bb%b7%e5%80%bc">#</a>
+</h2>
+<h3 id="1-减少样板代码">
+  1️⃣ 减少样板代码
+  <a class="anchor" href="#1-%e5%87%8f%e5%b0%91%e6%a0%b7%e6%9d%bf%e4%bb%a3%e7%a0%81">#</a>
+</h3>
+<p>无需再手写：</p>
+<ul>
+<li><code>__init__</code></li>
+<li><code>__str__ / __repr__</code></li>
+<li>比较函数</li>
+</ul>
+<hr>
+<h3 id="2-更清晰的数据建模">
+  2️⃣ 更清晰的数据建模
+  <a class="anchor" href="#2-%e6%9b%b4%e6%b8%85%e6%99%b0%e7%9a%84%e6%95%b0%e6%8d%ae%e5%bb%ba%e6%a8%a1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span>:
+</span></span><span style="display:flex;"><span>    id: int
+</span></span><span style="display:flex;"><span>    price: float
+</span></span></code></pre></div><p>👉 类结构一目了然</p>
+<hr>
+<h3 id="3-自动支持比较">
+  3️⃣ 自动支持比较
+  <a class="anchor" href="#3-%e8%87%aa%e5%8a%a8%e6%94%af%e6%8c%81%e6%af%94%e8%be%83">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span>:
+</span></span><span style="display:flex;"><span>    x: int
+</span></span><span style="display:flex;"><span>    y: int
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Point(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>) <span style="color:#f92672">==</span> Point(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># True</span>
+</span></span></code></pre></div><hr>
+<h2 id="进阶用法">
+  进阶用法
+  <a class="anchor" href="#%e8%bf%9b%e9%98%b6%e7%94%a8%e6%b3%95">#</a>
+</h2>
+<h3 id="默认值">
+  默认值
+  <a class="anchor" href="#%e9%bb%98%e8%ae%a4%e5%80%bc">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+</span></span><span style="display:flex;"><span>    host: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;localhost&#34;</span>
+</span></span><span style="display:flex;"><span>    port: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">8080</span>
+</span></span></code></pre></div><hr>
+<h3 id="可变对象陷阱">
+  可变对象陷阱
+  <a class="anchor" href="#%e5%8f%af%e5%8f%98%e5%af%b9%e8%b1%a1%e9%99%b7%e9%98%b1">#</a>
+</h3>
+<p>❌ 错误写法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>:
+</span></span><span style="display:flex;"><span>    items: list <span style="color:#f92672">=</span> []
+</span></span></code></pre></div><p>运行之后发现，在 <code>items</code> 属性那行会报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">ValueError</span>: mutable default <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">list</span><span style="color:#e6db74">&#39;&gt; for field items is not allowed: use default_factory</span>
+</span></span></code></pre></div><p>大概的意思就是，<code>list</code> 作为一种可变的类型（引用类型，会有被其他对象意外修改的风险），不能直接作为默认值，需要用工厂方法来产生默认值。</p>
+<p>其他字符串，数值，布尔类型的数据则没有这个问题。</p>
+<p>我们只要定义个函数来产生此默认值即可。</p>
+<p>✅ 正确写法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_items</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;1&#34;</span>, <span style="color:#e6db74">&#34;2&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>:
+</span></span><span style="display:flex;"><span>    items: list <span style="color:#f92672">=</span> field(default_factory<span style="color:#f92672">=</span>gen_items)
+</span></span></code></pre></div><p>👉 每个实例独立</p>
+<hr>
+<h3 id="隐藏敏感信息-repr">
+  隐藏敏感信息 <code>repr</code>
+  <a class="anchor" href="#%e9%9a%90%e8%97%8f%e6%95%8f%e6%84%9f%e4%bf%a1%e6%81%af-repr">#</a>
+</h3>
+<p>我们打印对象信息的时候，有时执行打印其中几个属性的信息，涉及敏感信息的属性不希望打印出来。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass, field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>:
+</span></span><span style="display:flex;"><span>    name: str
+</span></span><span style="display:flex;"><span>    password: str <span style="color:#f92672">=</span> field(repr<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> User(<span style="color:#e6db74">&#34;zcheng&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span></code></pre></div><p>👉 避免敏感信息泄露</p>
+<hr>
+<h3 id="不可变对象-frozen">
+  不可变对象 <code>frozen</code>
+  <a class="anchor" href="#%e4%b8%8d%e5%8f%af%e5%8f%98%e5%af%b9%e8%b1%a1-frozen">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>(frozen<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+</span></span><span style="display:flex;"><span>    host: str
+</span></span><span style="display:flex;"><span>    port: int
+</span></span></code></pre></div><p>👉 属性不可修改，更安全</p>
+<hr>
+<h3 id="初始化后处理">
+  初始化后处理
+  <a class="anchor" href="#%e5%88%9d%e5%a7%8b%e5%8c%96%e5%90%8e%e5%a4%84%e7%90%86">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>:
+</span></span><span style="display:flex;"><span>    age: int
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__post_init__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>age <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;年龄不能为负&#34;</span>)
+</span></span></code></pre></div><hr>
+<h3 id="与-dict--tuple-转换">
+  与 dict / tuple 转换
+  <a class="anchor" href="#%e4%b8%8e-dict--tuple-%e8%bd%ac%e6%8d%a2">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> asdict, astuple
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user <span style="color:#f92672">=</span> User(<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(asdict(user))
+</span></span><span style="display:flex;"><span>print(astuple(user))
+</span></span></code></pre></div><p>👉 在数据传输 / API / ML pipeline 中非常实用</p>
+<hr>
+<h2 id="什么时候使用-dataclass">
+  什么时候使用 dataclass？
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8-dataclass">#</a>
+</h2>
+<p>推荐场景</p>
+<ul>
+<li>数据结构类（DTO / config / record）</li>
+<li>数据处理 / 机器学习 pipeline</li>
+<li>API 数据对象</li>
+<li>配置管理</li>
+</ul>
+<hr>
+<p>不推荐场景</p>
+<ul>
+<li>行为复杂的类（大量业务逻辑）</li>
+<li>需要动态添加属性的类</li>
+</ul>
+<hr>
+<h2 id="最佳实践">
+  最佳实践
+  <a class="anchor" href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>(slots<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, frozen<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Trade</span>:
+</span></span><span style="display:flex;"><span>    symbol: str
+</span></span><span style="display:flex;"><span>    price: float
+</span></span></code></pre></div><hr>
+<h2 id="总结">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93">#</a>
+</h2>
+<p><code>dataclass</code> 的本质不仅是语法简化，更是一种：</p>
+<p>👉 <strong>结构化数据建模方式</strong></p>
+<p>它带来的提升：</p>
+<ul>
+<li>更少代码</li>
+<li>更高可读性</li>
+<li>更安全的数据结构</li>
+</ul>
+<hr>
+<p>💡 一句话总结：</p>
+<blockquote>
+<p>如果一个类“只是用来存数据”，那它几乎一定应该是 dataclass。</p></blockquote>
+<hr>
+<h2 id="-原文地址">
+  📎 原文地址
+  <a class="anchor" href="#-%e5%8e%9f%e6%96%87%e5%9c%b0%e5%9d%80">#</a>
+</h2>
+<p>👉 <a href="https://www.cnblogs.com/wang_yb/p/18077397">https://www.cnblogs.com/wang_yb/p/18077397</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#引言">引言</a></li>
+    <li><a href="#什么是-dataclass">什么是 dataclass？</a></li>
+    <li><a href="#从传统写法到-dataclass">从传统写法到 dataclass</a>
+      <ul>
+        <li><a href="#传统写法">传统写法</a></li>
+        <li><a href="#dataclass-写法">dataclass 写法</a></li>
+      </ul>
+    </li>
+    <li><a href="#dataclass-的核心价值">dataclass 的核心价值</a>
+      <ul>
+        <li><a href="#1-减少样板代码">1️⃣ 减少样板代码</a></li>
+        <li><a href="#2-更清晰的数据建模">2️⃣ 更清晰的数据建模</a></li>
+        <li><a href="#3-自动支持比较">3️⃣ 自动支持比较</a></li>
+      </ul>
+    </li>
+    <li><a href="#进阶用法">进阶用法</a>
+      <ul>
+        <li><a href="#默认值">默认值</a></li>
+        <li><a href="#可变对象陷阱">可变对象陷阱</a></li>
+        <li><a href="#隐藏敏感信息-repr">隐藏敏感信息 <code>repr</code></a></li>
+        <li><a href="#不可变对象-frozen">不可变对象 <code>frozen</code></a></li>
+        <li><a href="#初始化后处理">初始化后处理</a></li>
+        <li><a href="#与-dict--tuple-转换">与 dict / tuple 转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么时候使用-dataclass">什么时候使用 dataclass？</a></li>
+    <li><a href="#最佳实践">最佳实践</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#-原文地址">📎 原文地址</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script>
+  (function () {
+    var key = "site-theme";
+    var root = document.documentElement;
+    var btn = document.querySelector("[data-theme-toggle]");
+    var label = document.querySelector("[data-theme-toggle-label]");
+    if (!btn) return;
+
+    function isZh() {
+      var lang = (document.documentElement.lang || "").toLowerCase();
+      return lang.indexOf("zh") === 0;
+    }
+
+    function systemPrefersDark() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    function currentTheme() {
+      var explicit = root.getAttribute("data-theme");
+      if (explicit === "light" || explicit === "dark") return explicit;
+      return systemPrefersDark() ? "dark" : "light";
+    }
+
+    function setTheme(theme, persist) {
+      if (theme === "light" || theme === "dark") {
+        root.setAttribute("data-theme", theme);
+        if (persist) localStorage.setItem(key, theme);
+      } else {
+        root.removeAttribute("data-theme");
+        if (persist) localStorage.removeItem(key);
+      }
+      var effective = currentTheme();
+      var nextIsDark = effective !== "dark";
+      var aria = nextIsDark ? "Switch to dark mode" : "Switch to light mode";
+      btn.setAttribute("aria-label", aria);
+      if (label) {
+        if (isZh()) {
+          label.textContent = nextIsDark ? "外观：日间" : "外观：夜间";
+        } else {
+          label.textContent = nextIsDark ? "Theme: Light" : "Theme: Dark";
+        }
+      }
+    }
+
+    btn.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      setTheme(next, true);
+    });
+
+    var saved = localStorage.getItem(key);
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved, false);
+    } else {
+      setTheme(null, false);
+      if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          if (!localStorage.getItem(key)) setTheme(null, false);
+        });
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
