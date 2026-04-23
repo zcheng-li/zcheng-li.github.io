@@ -1,0 +1,8 @@
+<div class="social-links">
+  {{ range site.Data.social }}
+    <a class="social-link" href="{{ .url }}" target="_blank" rel="noopener">
+      <img src="{{ printf "/icons/%s" .icon }}" alt="{{ .name }}" />
+      <span>{{ .name }}</span>
+    </a>
+  {{ end }}
+</div>

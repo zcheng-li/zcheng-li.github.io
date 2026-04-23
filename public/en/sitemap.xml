@@ -38,6 +38,18 @@
                 href="https://zcheng-li.github.io/en/docs/my-blog/robotics/robo_l3/"
                 />
   </url><url>
+    <loc>https://zcheng-li.github.io/en/docs/cv/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://zcheng-li.github.io/docs/cv/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zcheng-li.github.io/en/docs/cv/"
+                />
+  </url><url>
     <loc>https://zcheng-li.github.io/en/docs/my-blog/python/</loc>
     <xhtml:link
                 rel="alternate"

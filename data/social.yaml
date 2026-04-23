@@ -1,0 +1,15 @@
+- name: GitHub
+  url: "https://github.com/zcheng-li"
+  icon: "github.svg"
+- name: LinkedIn
+  url: "https://www.linkedin.com/in/zhicheng-li-3547b8322/"
+  icon: "linkedin.svg"
+- name: Instagram
+  url: "https://www.instagram.com/zcheng2004/"
+  icon: "instagram.svg"
+- name: Email
+  url: "mailto:zcheng.li@outlook.com"
+  icon: "email.svg"
+- name: CV Website
+  url: "/files/cv.pdf"
+  icon: "file-text.svg"
