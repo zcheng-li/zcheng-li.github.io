@@ -1,18 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>linux on ZCHENG LI</title>
-    <link>http://localhost:1313/docs/my-blog/linux/</link>
-    <description>Recent content in linux on ZCHENG LI</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <atom:link href="http://localhost:1313/docs/my-blog/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>理解 linux 里的 ps</title>
-      <link>http://localhost:1313/docs/my-blog/linux/linux_ps/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/linux/linux_ps/</guid>
-      <description>&lt;h1 id=&#34;理解-linux-里的-ps&#34;&gt;&#xA;  理解 linux 里的 ps&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%90%86%e8%a7%a3-linux-%e9%87%8c%e7%9a%84-ps&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;引入&#34;&gt;&#xA;  引入&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%95%e5%85%a5&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一切的一切都得从我在使用 OpenCV 处理视频的时候说起&amp;hellip;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; cv2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    success, frame &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cap&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; success:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;End of video or error occurred.&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# process frame...&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cap&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;release()  &lt;span style=&#34;color:#75715e&#34;&gt;# Release the video capture object&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cv2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;destroyAllWindows()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看似这个代码没有什么大问题, 但是在多次调试反复运行之后程序突然崩溃😱, 一检查发现硬盘占用高达 96 GB! 这显然不合理.&lt;/p&gt;&#xA;&lt;p&gt;一问 ChatGPT, 突然发现, 这原来是因为我一直把 Ctrl+Z 当成了 终止 terminal 来使用, 然而实际上, 它是 suspend terminal. 当使用 &lt;code&gt;fb&lt;/code&gt; 指令后, 突然发现, 一大堆之前的 程序 又回来了!&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linux on ZCHENG LI</title><link>https://zcheng-li.github.io/docs/my-blog/linux/</link><description>Recent content in linux on ZCHENG LI</description><generator>Hugo</generator><language>zh-CN</language><atom:link href="https://zcheng-li.github.io/docs/my-blog/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>理解 linux 里的 ps</title><link>https://zcheng-li.github.io/docs/my-blog/linux/linux_ps/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/linux/linux_ps/</guid><description>&lt;h1 id="理解-linux-里的-ps">
+ 理解 linux 里的 ps
+ &lt;a class="anchor" href="#%e7%90%86%e8%a7%a3-linux-%e9%87%8c%e7%9a%84-ps">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="引入">
+ 引入
+ &lt;a class="anchor" href="#%e5%bc%95%e5%85%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>一切的一切都得从我在使用 OpenCV 处理视频的时候说起&amp;hellip;&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> cv2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> success, frame &lt;span style="color:#f92672">=&lt;/span> cap&lt;span style="color:#f92672">.&lt;/span>read()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> success:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#34;End of video or error occurred.&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># process frame...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cap&lt;span style="color:#f92672">.&lt;/span>release() &lt;span style="color:#75715e"># Release the video capture object&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cv2&lt;span style="color:#f92672">.&lt;/span>destroyAllWindows()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>看似这个代码没有什么大问题, 但是在多次调试反复运行之后程序突然崩溃😱, 一检查发现硬盘占用高达 96 GB! 这显然不合理.&lt;/p>
+&lt;p>一问 ChatGPT, 突然发现, 这原来是因为我一直把 Ctrl+Z 当成了 终止 terminal 来使用, 然而实际上, 它是 suspend terminal. 当使用 &lt;code>fb&lt;/code> 指令后, 突然发现, 一大堆之前的 程序 又回来了!&lt;/p></description></item></channel></rss>

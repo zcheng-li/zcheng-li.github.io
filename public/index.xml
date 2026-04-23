@@ -1,116 +1,604 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Introduction on ZCHENG LI</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in Introduction on ZCHENG LI</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CH1.规划调度: 角色与影响</title>
-      <link>http://localhost:1313/docs/my-blog/pns/pns_ch1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/pns/pns_ch1/</guid>
-      <description>&lt;h2 id=&#34;11-planning-and-scheduling-role-and-impact&#34;&gt;&#xA;  1.1 Planning and Scheduling: Role and Impact&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#11-planning-and-scheduling-role-and-impact&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;规划&lt;/strong&gt; 与 &lt;strong&gt;调度&lt;/strong&gt; 是 &lt;strong&gt;决策制定&lt;/strong&gt; (decision-making) 一种形式.&lt;/p&gt;&#xA;&lt;p&gt;决策制定 在制造服务产业中 可以用来&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;采购与生产 (procurement and production)&lt;/li&gt;&#xA;&lt;li&gt;运输与分发 (transportation and distribution)&lt;/li&gt;&#xA;&lt;li&gt;信息处理与通讯 (information processing and communication)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;等等.&lt;/p&gt;&#xA;&lt;p&gt;我们希望我们的规划与调度算法可以做到:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;allocate limited &lt;strong&gt;resources&lt;/strong&gt; to the &lt;strong&gt;activities&lt;/strong&gt; to be done so that the company can optimize its &lt;strong&gt;objectives&lt;/strong&gt; and achieve its goals.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;这里的 资源 (resources) 一般可以是:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;车间里的机器 (machines in a workshop)&lt;/li&gt;&#xA;&lt;li&gt;飞机场的跑道 (runways at an airport)&lt;/li&gt;&#xA;&lt;li&gt;工地的员工 (crews at a construction site)&lt;/li&gt;&#xA;&lt;li&gt;计算机的处理单元 (processing units in a computing environment)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;行动 (activities) 一般可以是:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L3.机器人运动学</title>
-      <link>http://localhost:1313/docs/my-blog/robotics/robo_l3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/robotics/robo_l3/</guid>
-      <description>&lt;h1 id=&#34;l3机器人运动学&#34;&gt;&#xA;  L3.机器人运动学&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#l3%e6%9c%ba%e5%99%a8%e4%ba%ba%e8%bf%90%e5%8a%a8%e5%ad%a6&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
-    </item>
-    <item>
-      <title>动态 QAM 调制解调 python 实现</title>
-      <link>http://localhost:1313/docs/my-blog/qam/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/qam/</guid>
-      <description>&lt;h2 id=&#34;引入&#34;&gt;&#xA;  引入&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%95%e5%85%a5&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;题目基于 University of Glasgow 课程 ENG3014 Communications Systems 3 的大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;This should include at minimum:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.&lt;/li&gt;&#xA;&lt;li&gt;Using your modulation format of choice, modulate a carrier to encode this information.&lt;/li&gt;&#xA;&lt;li&gt;The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.&lt;/li&gt;&#xA;&lt;li&gt;An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.&lt;/li&gt;&#xA;&lt;li&gt;Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.&lt;/li&gt;&#xA;&lt;li&gt;Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>理解 linux 里的 ps</title>
-      <link>http://localhost:1313/docs/my-blog/linux/linux_ps/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/linux/linux_ps/</guid>
-      <description>&lt;h1 id=&#34;理解-linux-里的-ps&#34;&gt;&#xA;  理解 linux 里的 ps&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%90%86%e8%a7%a3-linux-%e9%87%8c%e7%9a%84-ps&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;引入&#34;&gt;&#xA;  引入&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%95%e5%85%a5&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一切的一切都得从我在使用 OpenCV 处理视频的时候说起&amp;hellip;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; cv2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    success, frame &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cap&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; success:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;End of video or error occurred.&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# process frame...&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cap&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;release()  &lt;span style=&#34;color:#75715e&#34;&gt;# Release the video capture object&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cv2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;destroyAllWindows()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看似这个代码没有什么大问题, 但是在多次调试反复运行之后程序突然崩溃😱, 一检查发现硬盘占用高达 96 GB! 这显然不合理.&lt;/p&gt;&#xA;&lt;p&gt;一问 ChatGPT, 突然发现, 这原来是因为我一直把 Ctrl+Z 当成了 终止 terminal 来使用, 然而实际上, 它是 suspend terminal. 当使用 &lt;code&gt;fb&lt;/code&gt; 指令后, 突然发现, 一大堆之前的 程序 又回来了!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>什么是 Python @dataclass ?</title>
-      <link>http://localhost:1313/docs/my-blog/python/py_dataclass/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/python/py_dataclass/</guid>
-      <description>&lt;h1 id=&#34;什么是-python-dataclass-&#34;&gt;&#xA;  什么是 Python &lt;code&gt;@dataclass&lt;/code&gt; ?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%bb%80%e4%b9%88%e6%98%af-python-dataclass-&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;引言&#34;&gt;&#xA;  引言&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%95%e8%a8%80&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;如果你写过这样的类：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Trade&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; __init__(self, symbol, price, quantity):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;symbol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; symbol&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;price &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; price&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;quantity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; quantity&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;你可能觉得：&lt;/p&gt;&#xA;&lt;p&gt;👉 “这不就很正常吗？”&lt;/p&gt;&#xA;&lt;p&gt;但实际上，这类代码在项目中会大量重复，而且还存在一些明显问题：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;需要手写 &lt;code&gt;__init__&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;打印对象时可读性差&lt;/li&gt;&#xA;&lt;li&gt;没有自动比较、排序能力&lt;/li&gt;&#xA;&lt;li&gt;容易出现重复样板代码&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;这正是 &lt;code&gt;@dataclass&lt;/code&gt; 诞生的意义。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;什么是-dataclass&#34;&gt;&#xA;  什么是 dataclass？&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%bb%80%e4%b9%88%e6%98%af-dataclass&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;dataclass&lt;/code&gt; 是 Python 3.7 引入的标准库工具，用于：&lt;/p&gt;&#xA;&lt;p&gt;👉 &lt;strong&gt;快速定义以“数据”为核心的类&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;它可以自动生成：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;__init__&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;__repr__&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;__eq__&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;从而显著减少重复代码。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;从传统写法到-dataclass&#34;&gt;&#xA;  从传统写法到 dataclass&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%bb%8e%e4%bc%a0%e7%bb%9f%e5%86%99%e6%b3%95%e5%88%b0-dataclass&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;传统写法&#34;&gt;&#xA;  传统写法&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%bc%a0%e7%bb%9f%e5%86%99%e6%b3%95&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;User&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; __init__(self, name, age):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; name&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; age&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打印：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>为什么 Python `__slots__` 不只是节省内存？</title>
-      <link>http://localhost:1313/docs/my-blog/python/py_slots/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/python/py_slots/</guid>
-      <description>&lt;h1 id=&#34;为什么-python-__slots__-不只是节省内存&#34;&gt;&#xA;  为什么 Python &lt;code&gt;__slots__&lt;/code&gt; 不只是节省内存？&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%b8%ba%e4%bb%80%e4%b9%88-python-__slots__-%e4%b8%8d%e5%8f%aa%e6%98%af%e8%8a%82%e7%9c%81%e5%86%85%e5%ad%98&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;很多 Python 开发者都听说过 &lt;code&gt;__slots__&lt;/code&gt;，知道它可以“省内存”。但如果你只把它当成一个性能小技巧，那其实低估了它的价值。&lt;/p&gt;&#xA;&lt;p&gt;这篇文章我们从一个真实工程问题出发，系统讲清楚：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;__slots__&lt;/code&gt; 到底在做什么？&lt;/li&gt;&#xA;&lt;li&gt;为什么它能节省内存？&lt;/li&gt;&#xA;&lt;li&gt;除了性能，还有哪些设计上的好处？&lt;/li&gt;&#xA;&lt;li&gt;和 &lt;code&gt;@dataclass&lt;/code&gt; 应该怎么搭配？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;从一个真实问题开始&#34;&gt;&#xA;  从一个真实问题开始&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%bb%8e%e4%b8%80%e4%b8%aa%e7%9c%9f%e5%ae%9e%e9%97%ae%e9%a2%98%e5%bc%80%e5%a7%8b&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;假设你在做一个 IoT 系统，需要处理大量传感器数据：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SensorData&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; __init__(self, device_id, temperature, humidity):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;device_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; device_id&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;temperature &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temperature&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;humidity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; humidity&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 模拟 100 万条数据&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;records &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [SensorData(i, &lt;span style=&#34;color:#ae81ff&#34;&gt;25.0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;60.0&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_000&lt;/span&gt;)]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;代码很简单，但问题来了：&lt;/p&gt;&#xA;&lt;p&gt;👉 &lt;strong&gt;内存占用非常大&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;为什么？&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;真正的罪魁祸首__dict__&#34;&gt;&#xA;  真正的罪魁祸首：&lt;code&gt;__dict__&lt;/code&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%9c%9f%e6%ad%a3%e7%9a%84%e7%bd%aa%e9%ad%81%e7%a5%b8%e9%a6%96__dict__&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;默认情况下，每个 Python 对象都有一个：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;obj&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__dict__&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;它本质是一个字典，用来存储属性：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SensorData(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__dict__)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# {&amp;#39;device_id&amp;#39;: 1, &amp;#39;temperature&amp;#39;: 25, &amp;#39;humidity&amp;#39;: 60}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;优点很明显：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CV Website</title>
-      <link>http://localhost:1313/docs/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/cv/</guid>
-      <description>&lt;section class=&#34;cv-codepage&#34;&gt;&#xA;  &lt;header class=&#34;cv-head&#34;&gt;&#xA;    &lt;div class=&#34;cv-window-dots&#34; aria-hidden=&#34;true&#34;&gt;&#xA;      &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;p class=&#34;cv-file&#34;&gt;resume.py&lt;/p&gt;&#xA;  &lt;/header&gt;&#xA;&#xA;  &lt;div class=&#34;cv-grid&#34;&gt;&#xA;    &lt;aside class=&#34;cv-left&#34;&gt;&#xA;      &lt;div class=&#34;cv-photo-wrap&#34;&gt;&#xA;        &lt;img src=&#34;http://localhost:1313/img/cv-avatar.jpg&#34; alt=&#34;Profile photo&#34; class=&#34;cv-photo&#34; /&gt;&#xA;      &lt;/div&gt;&#xA;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;# Contact&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;name&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;Zhicheng Li&#34;&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;location&lt;/span&gt; = [&lt;span class=&#34;str&#34;&gt;&#34;Chengdu, China&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;Glasgow, UK&#34;&lt;/span&gt;]&#xA;&lt;span class=&#34;var&#34;&gt;email&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;zcheng.li@outlook.com&#34;&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;github&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;github.com/zcheng-li&#34;&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;linkedin&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;www.linkedin.com/in/zhicheng-li-3547b8322&#34;&lt;/span&gt;&#xA;&#xA;&lt;span class=&#34;comment&#34;&gt;# Languages&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;languages&lt;/span&gt; = {&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Chinese&#34;&lt;/span&gt;: .native,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;English&#34;&lt;/span&gt;: .fluent,&#xA;}&#xA;&#xA;&lt;span class=&#34;comment&#34;&gt;# Programming&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;tech_stack&lt;/span&gt; = [&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Python&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;C&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;C++&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Matlab&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;Swift&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Bash&#34;&lt;/span&gt;&#xA;]&#xA;&#xA;&lt;span class=&#34;comment&#34;&gt;# Platforms&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;platforms&lt;/span&gt; = [&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;macOS&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Windows&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Linux&#34;&lt;/span&gt;&#xA;]&#xA;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;# Hobbies&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;hobbies&lt;/span&gt; = [&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Bouldering&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Hiking&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;App Development&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;3D Modeling&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;sci-fi&#34;&lt;/span&gt;&#xA;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;    &lt;/aside&gt;&#xA;&#xA;    &lt;main class=&#34;cv-main&#34;&gt;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;kw&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;name&#34;&gt;dataclasses&lt;/span&gt; &lt;span class=&#34;kw&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;name&#34;&gt;dataclass&lt;/span&gt;&#xA;&#xA;&lt;span class=&#34;decor&#34;&gt;@dataclass&lt;/span&gt;&#xA;&lt;span class=&#34;kw&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;name&#34;&gt;Education&lt;/span&gt;:&#xA;    &lt;span class=&#34;var&#34;&gt;university&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;program&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;period&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;location&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;notes&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;list&lt;/span&gt;[&lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;]&#xA;&#xA;&lt;span class=&#34;var&#34;&gt;education&lt;/span&gt; = [&#xA;    &lt;span class=&#34;name&#34;&gt;Education&lt;/span&gt;(&#xA;        &lt;span class=&#34;var&#34;&gt;university&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;University of Electronic Science and Technology of China&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;program&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Bachelor of Electronic Information Engineering&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;period&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;2022-2026&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;location&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Chengdu, China&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;notes&lt;/span&gt;=[&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;GPA: 3.78/4.0&#34;&lt;/span&gt;,&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;Accumulated Grade Average: 87.87/100&#34;&lt;/span&gt;,&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;Rank: 9/241&#34;&lt;/span&gt;,&#xA;        ],&#xA;    ),&#xA;    &lt;span class=&#34;name&#34;&gt;Education&lt;/span&gt;(&#xA;        &lt;span class=&#34;var&#34;&gt;university&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;University of Glasgow (Joint-Degree Program)&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;program&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;period&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;2024-2026&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;location&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Glasgow, UK&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;notes&lt;/span&gt;=[&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;GPA: 20.0/22.0&#34;&lt;/span&gt;,&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;Degree: 1:1 (esitimated)&#34;&lt;/span&gt;,&#xA;            ],&#xA;    ),&#xA;]&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;kw&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fn&#34;&gt;awards_and_honors&lt;/span&gt;() -&gt; &lt;span class=&#34;name&#34;&gt;list&lt;/span&gt;[&lt;span class=&#34;name&#34;&gt;tuple&lt;/span&gt;[&lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;, &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;]]:&#xA;    &lt;span class=&#34;kw&#34;&gt;return&lt;/span&gt; [&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Scholarship for Excellent Student of UESTC&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2023 &amp;amp; 2024&#34;&lt;/span&gt;),&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Excellent Student Club Leader at UESTC&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2024&#34;&lt;/span&gt;),&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Academic Scholarship (Top 10%)&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2023 &amp;amp; 2024&#34;&lt;/span&gt;),&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Apple Swift Student Challenge Winner&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2024&#34;&lt;/span&gt;),&#xA;    ]&lt;/code&gt;&lt;/pre&gt;&#xA;    &lt;/main&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/section&gt;</description>
-    </item>
-    <item>
-      <title>CH2.工业生产模型</title>
-      <link>http://localhost:1313/docs/my-blog/pns/pns_ch2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/pns/pns_ch2/</guid>
-      <description>&lt;h1 id=&#34;chapter-2-manufacturing-models&#34;&gt;&#xA;  Chapter 2 Manufacturing Models&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#chapter-2-manufacturing-models&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;21-introduction&#34;&gt;&#xA;  2.1 Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#21-introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;22-jobs-machines-and-facilities&#34;&gt;&#xA;  2.2 Jobs, Machines, and Facilities&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#22-jobs-machines-and-facilities&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一些基本概念:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The number of jobs is denoted by n and the number of machines by m. The subscripts j and k refer to jobs j and k. The subscripts h and i refer to machines h and i. The following data pertain to job j.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;也就是:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;job 数: n.&lt;/li&gt;&#xA;&lt;li&gt;机器数: m.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;除此外, 还有:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L2.导航数学基础</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l2/</guid>
-      <description>&lt;h1 id=&#34;the-mathematics-of-navigation&#34;&gt;&#xA;  The Mathematics of Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-mathematics-of-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;coordinate-systems&#34;&gt;&#xA;  Coordinate Systems&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#coordinate-systems&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;为了实现 navigation position fix, 我们需要先确定一个&lt;strong&gt;参考系&lt;/strong&gt; (frame-of-reference), &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;script&#34;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mathscr{F}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;一个&lt;strong&gt;直角坐标系&lt;/strong&gt; (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;(x, y, z)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;例如:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L2_p3.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L2_p3.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;这个图中, &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;p&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 在坐标系 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi mathvariant=&#34;script&#34;&gt;F&lt;/mi&gt;&lt;mi mathvariant=&#34;script&#34;&gt;β&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mathscr{F^{\beta}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 中, 因此我们可以把其记作 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;munder accentunder=&#34;true&#34;&gt;&lt;msup&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;/msup&gt;&lt;mo stretchy=&#34;true&#34;&gt;‾&lt;/mo&gt;&lt;/munder&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\underline{p^{\beta}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;其中, 下划线表示其是一个矢量, 上标 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\beta&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 表示其是在 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi mathvariant=&#34;script&#34;&gt;F&lt;/mi&gt;&lt;mi mathvariant=&#34;script&#34;&gt;β&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mathscr{F^{\beta}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 进行的测量.&lt;/p&gt;&#xA;&lt;h2 id=&#34;navigation-frames&#34;&gt;&#xA;  Navigation Frames&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#navigation-frames&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;接下来, 我们需要定义几个常用的参考系用于导航.&lt;/p&gt;&#xA;&lt;h3 id=&#34;earth-centred-inertial&#34;&gt;&#xA;  Earth Centred Inertial&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#earth-centred-inertial&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;地心惯性坐标系&lt;/strong&gt; (Earth-Centered Inertial), 简称 ECI, 常用 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;表示.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L3.惯性导航</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l3/</guid>
-      <description>&lt;h1 id=&#34;inertial-navigation&#34;&gt;&#xA;  Inertial Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#inertial-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;mechanisation-of-inertial-navigation-systems&#34;&gt;&#xA;  Mechanisation of Inertial Navigation Systems&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mechanisation-of-inertial-navigation-systems&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;惯性导航是一种&lt;strong&gt;航位推测法&lt;/strong&gt; (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.&lt;/p&gt;&#xA;&lt;p&gt;不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.&lt;/p&gt;&#xA;&lt;p&gt;在过去, 由于算力有限, 人们需要使用 &lt;strong&gt;Stabilised Inertial Platform&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 &lt;strong&gt;Strapdown INS configuration&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;stabilised-inertial-platform&#34;&gt;&#xA;  Stabilised Inertial Platform&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#stabilised-inertial-platform&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;稳定惯性平台&lt;/strong&gt; (Stabilised Inertial Platform) 大致如下:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L3_p3.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L3_p3.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.&lt;/p&gt;&#xA;&lt;p&gt;然而, 它有如下缺点:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;mechanically complex&lt;/li&gt;&#xA;&lt;li&gt;costly to manufacture/maintain&lt;/li&gt;&#xA;&lt;li&gt;larger volume/weight&lt;/li&gt;&#xA;&lt;li&gt;cannot be used directly for airframe stabilisation&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;strapdown-system&#34;&gt;&#xA;  Strapdown System&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#strapdown-system&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;因此, 对于新的 INS 系统, 人们通常喜欢使用 &lt;strong&gt;Strapdown Configuration&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CH4.项目的规划调度</title>
-      <link>http://localhost:1313/docs/my-blog/pns/pns_ch4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/pns/pns_ch4/</guid>
-      <description>&lt;h1 id=&#34;chapter-4-project-planning-and-scheduling&#34;&gt;&#xA;  Chapter 4 Project Planning and Scheduling&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#chapter-4-project-planning-and-scheduling&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;41-introduction&#34;&gt;&#xA;  4.1 Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#41-introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;本章的一些前提:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;This chapter focuses on the planning and scheduling of jobs that are subject&#xA;to precedence constraints. The setting may be regarded as a parallel machine&#xA;environment with an unlimited number of machines.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;我们的优化目标:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The objective is to minimize the makespan while adhering to the precedence constraints&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;两个限制:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;precedence constraints: 每个 job 的开始需要等待上一个 job 的完成.&lt;/li&gt;&#xA;&lt;li&gt;workforce constraints: 操作员可能短缺 (忙不过来)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;job 先后顺序表示的两种方式:&#xA;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/pns/fig4_1.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/pns/fig4_1.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L4.卫星导航</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l4/</guid>
-      <description>&lt;h1 id=&#34;satellite-navigation&#34;&gt;&#xA;  Satellite Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#satellite-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;radio-navigation-and-trilateration&#34;&gt;&#xA;  Radio Navigation and Trilateration&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#radio-navigation-and-trilateration&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.&lt;/p&gt;&#xA;&lt;p&gt;三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)&lt;/p&gt;&#xA;&lt;p&gt;它的计算步骤十分繁琐! 但是适合电脑. 流程如下:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p12.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p12.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;其中, dr 是 true r - predicted r.&lt;/p&gt;&#xA;&lt;p&gt;还有, 里面提到的 H, 是&lt;strong&gt;雅各布矩阵&lt;/strong&gt; (Jacobian Matrix):&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p11.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p11.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;里面的 df / dx 可以用如下方式计算:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p10.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p10.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;如果是 3 个 beacon 的话, 那么 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mrow&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;H^{-1}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 需要通过&lt;strong&gt;Moore-Penrose pseudo inverse&lt;/strong&gt; 的方法来实现:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p21.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p21.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CH5.机器和Job Shop的调度</title>
-      <link>http://localhost:1313/docs/my-blog/pns/pns_ch5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/pns/pns_ch5/</guid>
-      <description>&lt;h1 id=&#34;chapter-5-machine-scheduling-and-job-shop-scheduling&#34;&gt;&#xA;  Chapter 5 Machine Scheduling and Job Shop Scheduling&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#chapter-5-machine-scheduling-and-job-shop-scheduling&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;51-introduction&#34;&gt;&#xA;  5.1 Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#51-introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;52-single-machine-and-parallel-machine-models&#34;&gt;&#xA;  5.2 Single Machine and Parallel Machine Models&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#52-single-machine-and-parallel-machine-models&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;53-job-shops-and-mathematical-programming&#34;&gt;&#xA;  5.3 Job Shops and Mathematical Programming&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#53-job-shops-and-mathematical-programming&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;54-job-shops-and-the-shifting-bottleneck-heuristic&#34;&gt;&#xA;  5.4 Job Shops and the Shifting Bottleneck Heuristic&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#54-job-shops-and-the-shifting-bottleneck-heuristic&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;55-job-shops-and-constraint-programming&#34;&gt;&#xA;  5.5 Job Shops and Constraint Programming&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#55-job-shops-and-constraint-programming&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;56-lekin-a-generic-job-shop-scheduling-system&#34;&gt;&#xA;  5.6 LEKIN: A Generic Job Shop Scheduling System&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#56-lekin-a-generic-job-shop-scheduling-system&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;57-discussion&#34;&gt;&#xA;  5.7 Discussion&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#57-discussion&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>L5.集成导航</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l5/</guid>
-      <description>&lt;h1 id=&#34;integrated-navigation&#34;&gt;&#xA;  Integrated Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#integrated-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;principles-of-sensor-fusion&#34;&gt;&#xA;  Principles of Sensor Fusion&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#principles-of-sensor-fusion&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;引入了一个小的知识点:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;to fuse the information from two pdfs we can multiply them together&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;the-kalman-filter&#34;&gt;&#xA;  The Kalman Filter&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-kalman-filter&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;卡尔曼滤波&lt;/strong&gt; (Kalman Filter) 的工作步骤:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A Prediction Step and&lt;/li&gt;&#xA;&lt;li&gt;A Measurement Update Step&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;filter-equations&#34;&gt;&#xA;  Filter Equations&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#filter-equations&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L5_p14.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L5_p14.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L5_p15.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L5_p15.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>UoG EEE 课程资料</title>
-      <link>http://localhost:1313/docs/my-blog/notelist/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/notelist/</guid>
-      <description>&lt;h1 id=&#34;uog-notes-索引&#34;&gt;&#xA;  UoG Notes 索引&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#uog-notes-%e7%b4%a2%e5%bc%95&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;这里汇总的是仓库根目录 &lt;code&gt;notes/UoG&lt;/code&gt; 下的课程手写笔记以及考试答案。&lt;br&gt;&#xA;点击每门课链接会直接跳转到对应 GitHub 文件夹。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;笔记和答案可能有不严谨甚至错误的地方, 请仔细辨别!&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;三年级课程&#34;&gt;&#xA;  三年级课程&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e4%b8%89%e5%b9%b4%e7%ba%a7%e8%af%be%e7%a8%8b&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3014-CSys&#34;&gt;ENG3014-Communication System (B1)&lt;/a&gt;&lt;br&gt;&#xA;通信系统笔记：信息论、傅里叶、Modem、光纤接入等。&lt;/p&gt;&#xA;&lt;p&gt;其中最后的大作业可以参考 &lt;a href=&#34;https://zcheng-li.github.io/docs/example/my-blog/qam/&#34;&gt;动态 QAM 调制的 python 实现&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3015-C3&#34;&gt;ENG3015-Control 3&lt;/a&gt;&lt;br&gt;&#xA;控制课程笔记与历年题整理。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3023-EC&#34;&gt;ENG3023-Electronic Compatibility&lt;/a&gt;&lt;br&gt;&#xA;电磁场与天线相关笔记。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3024-ECD&#34;&gt;ENG3024-Electronic Circuit Design&lt;/a&gt;&lt;br&gt;&#xA;电子电路设计：放大器、差分放大、电流镜、反相器等。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3041-PE&#34;&gt;ENG3041-Power Electronics&lt;/a&gt;&lt;br&gt;&#xA;电力电子课程资料与题库。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3043-RTCS&#34;&gt;ENG3043-Real Time Computer System&lt;/a&gt;&lt;br&gt;&#xA;实时控制系统：体系结构、进程调度、中断、汇编等。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3091-APSE&#34;&gt;ENG3091-Advanced Programming and Software Engeering&lt;/a&gt;&lt;br&gt;&#xA;APSE 课程笔记。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;四年级课程&#34;&gt;&#xA;  四年级课程&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%9b%9b%e5%b9%b4%e7%ba%a7%e8%af%be%e7%a8%8b&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4042-C4&#34;&gt;ENG4042-Control 4&lt;/a&gt;&lt;br&gt;&#xA;高阶控制：可控/可观、极点映射、状态反馈、PID 等。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4053-DSP4&#34;&gt;ENG4053-Digital Signal Processing 4&lt;/a&gt;&lt;br&gt;&#xA;数字信号处理：DTFT/DFT、采样、差分方程、自适应 FIR。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4184-NS4&#34;&gt;ENG4184-Navigation System 4&lt;/a&gt;&lt;br&gt;&#xA;导航系统：INS/GNSS、ECEF/NED、惯导方程、传感器模型。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4187-PED4&#34;&gt;ENG4187-Power Electronic and Drives 4&lt;/a&gt;&lt;br&gt;&#xA;电机与驱动：PM 电机、感应电机、FOC、实验资料与历年题。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Introduction on ZCHENG LI</title><link>https://zcheng-li.github.io/</link><description>Recent content in Introduction on ZCHENG LI</description><generator>Hugo</generator><language>zh-CN</language><atom:link href="https://zcheng-li.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>CH1.规划调度: 角色与影响</title><link>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch1/</guid><description>&lt;h2 id="11-planning-and-scheduling-role-and-impact">
+ 1.1 Planning and Scheduling: Role and Impact
+ &lt;a class="anchor" href="#11-planning-and-scheduling-role-and-impact">#&lt;/a>
+&lt;/h2>
+&lt;p>&lt;strong>规划&lt;/strong> 与 &lt;strong>调度&lt;/strong> 是 &lt;strong>决策制定&lt;/strong> (decision-making) 一种形式.&lt;/p>
+&lt;p>决策制定 在制造服务产业中 可以用来&lt;/p>
+&lt;ul>
+&lt;li>采购与生产 (procurement and production)&lt;/li>
+&lt;li>运输与分发 (transportation and distribution)&lt;/li>
+&lt;li>信息处理与通讯 (information processing and communication)&lt;/li>
+&lt;/ul>
+&lt;p>等等.&lt;/p>
+&lt;p>我们希望我们的规划与调度算法可以做到:&lt;/p>
+&lt;blockquote>
+&lt;p>allocate limited &lt;strong>resources&lt;/strong> to the &lt;strong>activities&lt;/strong> to be done so that the company can optimize its &lt;strong>objectives&lt;/strong> and achieve its goals.&lt;/p>&lt;/blockquote>
+&lt;p>这里的 资源 (resources) 一般可以是:&lt;/p>
+&lt;ul>
+&lt;li>车间里的机器 (machines in a workshop)&lt;/li>
+&lt;li>飞机场的跑道 (runways at an airport)&lt;/li>
+&lt;li>工地的员工 (crews at a construction site)&lt;/li>
+&lt;li>计算机的处理单元 (processing units in a computing environment)&lt;/li>
+&lt;/ul>
+&lt;p>行动 (activities) 一般可以是:&lt;/p></description></item><item><title>L3.机器人运动学</title><link>https://zcheng-li.github.io/docs/my-blog/robotics/robo_l3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/robotics/robo_l3/</guid><description>&lt;h1 id="l3机器人运动学">
+ L3.机器人运动学
+ &lt;a class="anchor" href="#l3%e6%9c%ba%e5%99%a8%e4%ba%ba%e8%bf%90%e5%8a%a8%e5%ad%a6">#&lt;/a>
+&lt;/h1></description></item><item><title>动态 QAM 调制解调 python 实现</title><link>https://zcheng-li.github.io/docs/my-blog/qam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/qam/</guid><description>&lt;h2 id="引入">
+ 引入
+ &lt;a class="anchor" href="#%e5%bc%95%e5%85%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>题目基于 University of Glasgow 课程 ENG3014 Communications Systems 3 的大作业, 希望我们用课程学到的知识写一个简单的信息收发模拟程序:&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>This should include at minimum:&lt;/p>
+&lt;ul>
+&lt;li>A message of your choice, comprising more than 2048 bits, converted from a “STRING” to a “BINARY”.&lt;/li>
+&lt;li>Using your modulation format of choice, modulate a carrier to encode this information.&lt;/li>
+&lt;li>The channel SNR to be considered will be 6dB, 18dB and 24dB with respect to AGWN.&lt;/li>
+&lt;li>An output filter limiting the transmitter bandwidth to less than 20% of the carrier frequency.&lt;/li>
+&lt;li>Demodulation of the signal and recovery of the signal. Please analyse the Bit Error Rate of the received signal over multiple retransmission of the signal over the simulated channel.&lt;/li>
+&lt;li>Discuss in your report choices you make, such as modulation format, Baud Rate, Filter type and bandwidth.&lt;/li>
+&lt;/ul>
+&lt;p>Up to 30% of the marks allocated will be included for creative additions (10% each), these could include:&lt;/p></description></item><item><title>理解 linux 里的 ps</title><link>https://zcheng-li.github.io/docs/my-blog/linux/linux_ps/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/linux/linux_ps/</guid><description>&lt;h1 id="理解-linux-里的-ps">
+ 理解 linux 里的 ps
+ &lt;a class="anchor" href="#%e7%90%86%e8%a7%a3-linux-%e9%87%8c%e7%9a%84-ps">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="引入">
+ 引入
+ &lt;a class="anchor" href="#%e5%bc%95%e5%85%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>一切的一切都得从我在使用 OpenCV 处理视频的时候说起&amp;hellip;&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> cv2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> success, frame &lt;span style="color:#f92672">=&lt;/span> cap&lt;span style="color:#f92672">.&lt;/span>read()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> success:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#34;End of video or error occurred.&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># process frame...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cap&lt;span style="color:#f92672">.&lt;/span>release() &lt;span style="color:#75715e"># Release the video capture object&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cv2&lt;span style="color:#f92672">.&lt;/span>destroyAllWindows()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>看似这个代码没有什么大问题, 但是在多次调试反复运行之后程序突然崩溃😱, 一检查发现硬盘占用高达 96 GB! 这显然不合理.&lt;/p>
+&lt;p>一问 ChatGPT, 突然发现, 这原来是因为我一直把 Ctrl+Z 当成了 终止 terminal 来使用, 然而实际上, 它是 suspend terminal. 当使用 &lt;code>fb&lt;/code> 指令后, 突然发现, 一大堆之前的 程序 又回来了!&lt;/p></description></item><item><title>什么是 Python @dataclass ?</title><link>https://zcheng-li.github.io/docs/my-blog/python/py_dataclass/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/python/py_dataclass/</guid><description>&lt;h1 id="什么是-python-dataclass-">
+ 什么是 Python &lt;code>@dataclass&lt;/code> ?
+ &lt;a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af-python-dataclass-">#&lt;/a>
+&lt;/h1>
+&lt;hr>
+&lt;h2 id="引言">
+ 引言
+ &lt;a class="anchor" href="#%e5%bc%95%e8%a8%80">#&lt;/a>
+&lt;/h2>
+&lt;p>如果你写过这样的类：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Trade&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self, symbol, price, quantity):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>symbol &lt;span style="color:#f92672">=&lt;/span> symbol
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>price &lt;span style="color:#f92672">=&lt;/span> price
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>quantity &lt;span style="color:#f92672">=&lt;/span> quantity
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>你可能觉得：&lt;/p>
+&lt;p>👉 “这不就很正常吗？”&lt;/p>
+&lt;p>但实际上，这类代码在项目中会大量重复，而且还存在一些明显问题：&lt;/p>
+&lt;ul>
+&lt;li>需要手写 &lt;code>__init__&lt;/code>&lt;/li>
+&lt;li>打印对象时可读性差&lt;/li>
+&lt;li>没有自动比较、排序能力&lt;/li>
+&lt;li>容易出现重复样板代码&lt;/li>
+&lt;/ul>
+&lt;p>这正是 &lt;code>@dataclass&lt;/code> 诞生的意义。&lt;/p>
+&lt;hr>
+&lt;h2 id="什么是-dataclass">
+ 什么是 dataclass？
+ &lt;a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af-dataclass">#&lt;/a>
+&lt;/h2>
+&lt;p>&lt;code>dataclass&lt;/code> 是 Python 3.7 引入的标准库工具，用于：&lt;/p>
+&lt;p>👉 &lt;strong>快速定义以“数据”为核心的类&lt;/strong>&lt;/p>
+&lt;p>它可以自动生成：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>__init__&lt;/code>&lt;/li>
+&lt;li>&lt;code>__repr__&lt;/code>&lt;/li>
+&lt;li>&lt;code>__eq__&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>从而显著减少重复代码。&lt;/p>
+&lt;hr>
+&lt;h2 id="从传统写法到-dataclass">
+ 从传统写法到 dataclass
+ &lt;a class="anchor" href="#%e4%bb%8e%e4%bc%a0%e7%bb%9f%e5%86%99%e6%b3%95%e5%88%b0-dataclass">#&lt;/a>
+&lt;/h2>
+&lt;h3 id="传统写法">
+ 传统写法
+ &lt;a class="anchor" href="#%e4%bc%a0%e7%bb%9f%e5%86%99%e6%b3%95">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">User&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self, name, age):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>age &lt;span style="color:#f92672">=&lt;/span> age
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打印：&lt;/p></description></item><item><title>为什么 Python `__slots__` 不只是节省内存？</title><link>https://zcheng-li.github.io/docs/my-blog/python/py_slots/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/python/py_slots/</guid><description>&lt;h1 id="为什么-python-__slots__-不只是节省内存">
+ 为什么 Python &lt;code>__slots__&lt;/code> 不只是节省内存？
+ &lt;a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88-python-__slots__-%e4%b8%8d%e5%8f%aa%e6%98%af%e8%8a%82%e7%9c%81%e5%86%85%e5%ad%98">#&lt;/a>
+&lt;/h1>
+&lt;p>很多 Python 开发者都听说过 &lt;code>__slots__&lt;/code>，知道它可以“省内存”。但如果你只把它当成一个性能小技巧，那其实低估了它的价值。&lt;/p>
+&lt;p>这篇文章我们从一个真实工程问题出发，系统讲清楚：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>__slots__&lt;/code> 到底在做什么？&lt;/li>
+&lt;li>为什么它能节省内存？&lt;/li>
+&lt;li>除了性能，还有哪些设计上的好处？&lt;/li>
+&lt;li>和 &lt;code>@dataclass&lt;/code> 应该怎么搭配？&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="从一个真实问题开始">
+ 从一个真实问题开始
+ &lt;a class="anchor" href="#%e4%bb%8e%e4%b8%80%e4%b8%aa%e7%9c%9f%e5%ae%9e%e9%97%ae%e9%a2%98%e5%bc%80%e5%a7%8b">#&lt;/a>
+&lt;/h2>
+&lt;p>假设你在做一个 IoT 系统，需要处理大量传感器数据：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SensorData&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self, device_id, temperature, humidity):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>device_id &lt;span style="color:#f92672">=&lt;/span> device_id
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>temperature &lt;span style="color:#f92672">=&lt;/span> temperature
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>humidity &lt;span style="color:#f92672">=&lt;/span> humidity
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 模拟 100 万条数据&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>records &lt;span style="color:#f92672">=&lt;/span> [SensorData(i, &lt;span style="color:#ae81ff">25.0&lt;/span>, &lt;span style="color:#ae81ff">60.0&lt;/span>) &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">1_000_000&lt;/span>)]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>代码很简单，但问题来了：&lt;/p>
+&lt;p>👉 &lt;strong>内存占用非常大&lt;/strong>&lt;/p>
+&lt;p>为什么？&lt;/p>
+&lt;hr>
+&lt;h3 id="真正的罪魁祸首__dict__">
+ 真正的罪魁祸首：&lt;code>__dict__&lt;/code>
+ &lt;a class="anchor" href="#%e7%9c%9f%e6%ad%a3%e7%9a%84%e7%bd%aa%e9%ad%81%e7%a5%b8%e9%a6%96__dict__">#&lt;/a>
+&lt;/h3>
+&lt;p>默认情况下，每个 Python 对象都有一个：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>obj&lt;span style="color:#f92672">.&lt;/span>__dict__
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>它本质是一个字典，用来存储属性：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>s &lt;span style="color:#f92672">=&lt;/span> SensorData(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#ae81ff">60&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(s&lt;span style="color:#f92672">.&lt;/span>__dict__)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># {&amp;#39;device_id&amp;#39;: 1, &amp;#39;temperature&amp;#39;: 25, &amp;#39;humidity&amp;#39;: 60}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>优点很明显：&lt;/p></description></item><item><title>CV Website</title><link>https://zcheng-li.github.io/docs/cv/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/cv/</guid><description>&lt;section class="cv-codepage">
+ &lt;header class="cv-head">
+ &lt;div class="cv-window-dots" aria-hidden="true">
+ &lt;span>&lt;/span>&lt;span>&lt;/span>&lt;span>&lt;/span>
+ &lt;/div>
+ &lt;p class="cv-file">resume.py&lt;/p>
+ &lt;/header>
+
+ &lt;div class="cv-grid">
+ &lt;aside class="cv-left">
+ &lt;div class="cv-photo-wrap">
+ &lt;img src="https://zcheng-li.github.io/img/cv-avatar.jpg" alt="Profile photo" class="cv-photo" />
+ &lt;/div>
+
+ &lt;pre class="cv-block">&lt;code>&lt;span class="comment"># Contact&lt;/span>
+&lt;span class="var">name&lt;/span> = &lt;span class="str">"Zhicheng Li"&lt;/span>
+&lt;span class="var">location&lt;/span> = [&lt;span class="str">"Chengdu, China"&lt;/span>, &lt;span class="str">"Glasgow, UK"&lt;/span>]
+&lt;span class="var">email&lt;/span> = &lt;span class="str">"zcheng.li@outlook.com"&lt;/span>
+&lt;span class="var">github&lt;/span> = &lt;span class="str">"github.com/zcheng-li"&lt;/span>
+&lt;span class="var">linkedin&lt;/span> = &lt;span class="str">"www.linkedin.com/in/zhicheng-li-3547b8322"&lt;/span>
+&lt;span class="var">website&lt;/span> = &lt;span class="str">"https://zcheng-li.github.io"&lt;/span>
+
+
+&lt;span class="comment"># Languages&lt;/span>
+&lt;span class="var">languages&lt;/span> = {
+ &lt;span class="str">"Chinese"&lt;/span>: .native,
+ &lt;span class="str">"English"&lt;/span>: .fluent,
+}
+
+&lt;span class="comment"># Programming&lt;/span>
+&lt;span class="var">tech_stack&lt;/span> = [
+ &lt;span class="str">"Python"&lt;/span>, &lt;span class="str">"C"&lt;/span>, &lt;span class="str">"C++"&lt;/span>, 
+ &lt;span class="str">"Matlab"&lt;/span>, &lt;span class="str">"Swift"&lt;/span>, 
+ &lt;span class="str">"Bash"&lt;/span>
+]
+
+&lt;span class="comment"># Platforms&lt;/span>
+&lt;span class="var">platforms&lt;/span> = [
+ &lt;span class="str">"macOS"&lt;/span>, 
+ &lt;span class="str">"Windows"&lt;/span>, 
+ &lt;span class="str">"Linux"&lt;/span>
+]
+
+&lt;/code>&lt;/pre>
+
+ &lt;pre class="cv-block">&lt;code>&lt;span class="comment"># Hobbies&lt;/span>
+&lt;span class="var">hobbies&lt;/span> = [
+ &lt;span class="str">"Bouldering"&lt;/span>,
+ &lt;span class="str">"Hiking"&lt;/span>,
+ &lt;span class="str">"App Development"&lt;/span>,
+ &lt;span class="str">"3D Modeling"&lt;/span>,
+ &lt;span class="str">"sci-fi"&lt;/span>
+]
+&lt;/code>&lt;/pre>
+
+ &lt;/aside>
+
+ &lt;main class="cv-main">
+ &lt;pre class="cv-block">&lt;code>&lt;span class="kw">from&lt;/span> &lt;span class="name">dataclasses&lt;/span> &lt;span class="kw">import&lt;/span> &lt;span class="name">dataclass&lt;/span>
+
+&lt;span class="decor">@dataclass&lt;/span>
+&lt;span class="kw">class&lt;/span> &lt;span class="name">Education&lt;/span>:
+ &lt;span class="var">university&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">program&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">period&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">location&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">notes&lt;/span>: &lt;span class="name">list&lt;/span>[&lt;span class="name">str&lt;/span>]
+
+&lt;span class="var">education&lt;/span> = [
+ &lt;span class="name">Education&lt;/span>(
+ &lt;span class="var">university&lt;/span>=&lt;span class="str">"University of Electronic Science and Technology of China"&lt;/span>,
+ &lt;span class="var">program&lt;/span>=&lt;span class="str">"Bachelor of Electronic Information Engineering"&lt;/span>,
+ &lt;span class="var">period&lt;/span>=&lt;span class="str">"2022-2026"&lt;/span>,
+ &lt;span class="var">location&lt;/span>=&lt;span class="str">"Chengdu, China"&lt;/span>,
+ &lt;span class="var">notes&lt;/span>=[
+ &lt;span class="str">"GPA: 3.78/4.0"&lt;/span>,
+ &lt;span class="str">"Accumulated Grade Average: 87.87/100"&lt;/span>,
+ &lt;span class="str">"Rank: 9/241"&lt;/span>,
+ ],
+ ),
+ &lt;span class="name">Education&lt;/span>(
+ &lt;span class="var">university&lt;/span>=&lt;span class="str">"University of Glasgow (Joint-Degree Program)"&lt;/span>,
+ &lt;span class="var">program&lt;/span>=&lt;span class="str">"Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)"&lt;/span>,
+ &lt;span class="var">period&lt;/span>=&lt;span class="str">"2024-2026"&lt;/span>,
+ &lt;span class="var">location&lt;/span>=&lt;span class="str">"Glasgow, UK"&lt;/span>,
+ &lt;span class="var">notes&lt;/span>=[
+ &lt;span class="str">"GPA: 20.0/22.0"&lt;/span>,
+ &lt;span class="str">"Degree: 1:1 (estimated)"&lt;/span>,
+ ],
+ ),
+]&lt;/code>&lt;/pre>
+
+ &lt;pre class="cv-block">&lt;code>&lt;span class="kw">def&lt;/span> &lt;span class="fn">awards_and_honors&lt;/span>() -> &lt;span class="name">list&lt;/span>[&lt;span class="name">tuple&lt;/span>[&lt;span class="name">str&lt;/span>, &lt;span class="name">str&lt;/span>]]:
+ &lt;span class="kw">return&lt;/span> [
+ (&lt;span class="str">"Francis Morrison Award (Top 5)"&lt;/span>, &lt;span class="str">"2025"&lt;/span>),
+ (&lt;span class="str">"Scholarship for Excellent Student of UESTC (1st Tier, Top 5%)"&lt;/span>, &lt;span class="str">"2025"&lt;/span>),
+ (&lt;span class="str">"Scholarship for Excellent Student of UESTC (2nd Tier, Top 10%)"&lt;/span>, &lt;span class="str">"2023 &amp;amp; 2024"&lt;/span>),
+ (&lt;span class="str">"Excellent Student Club Leader at UESTC"&lt;/span>, &lt;span class="str">"2024"&lt;/span>),
+ (&lt;span class="str">"Academic Scholarship (Top 10%)"&lt;/span>, &lt;span class="str">"2023 &amp;amp; 2024 &amp;amp; 2025"&lt;/span>),
+ (&lt;span class="str">"Apple Swift Student Challenge Winner"&lt;/span>, &lt;span class="str">"2024"&lt;/span>),
+ ]&lt;/code>&lt;/pre>
+ &lt;/main>
+ &lt;/div>
+&lt;/section></description></item><item><title>CH2.工业生产模型</title><link>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch2/</guid><description>&lt;h1 id="chapter-2-manufacturing-models">
+ Chapter 2 Manufacturing Models
+ &lt;a class="anchor" href="#chapter-2-manufacturing-models">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="21-introduction">
+ 2.1 Introduction
+ &lt;a class="anchor" href="#21-introduction">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="22-jobs-machines-and-facilities">
+ 2.2 Jobs, Machines, and Facilities
+ &lt;a class="anchor" href="#22-jobs-machines-and-facilities">#&lt;/a>
+&lt;/h2>
+&lt;p>一些基本概念:&lt;/p>
+&lt;blockquote>
+&lt;p>The number of jobs is denoted by n and the number of machines by m. The subscripts j and k refer to jobs j and k. The subscripts h and i refer to machines h and i. The following data pertain to job j.&lt;/p>&lt;/blockquote>
+&lt;p>也就是:&lt;/p>
+&lt;ul>
+&lt;li>job 数: n.&lt;/li>
+&lt;li>机器数: m.&lt;/li>
+&lt;/ul>
+&lt;p>除此外, 还有:&lt;/p></description></item><item><title>L2.导航数学基础</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l2/</guid><description>&lt;h1 id="the-mathematics-of-navigation">
+ The Mathematics of Navigation
+ &lt;a class="anchor" href="#the-mathematics-of-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="coordinate-systems">
+ Coordinate Systems
+ &lt;a class="anchor" href="#coordinate-systems">#&lt;/a>
+&lt;/h2>
+&lt;p>为了实现 navigation position fix, 我们需要先确定一个&lt;strong>参考系&lt;/strong> (frame-of-reference), 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi mathvariant="script">F&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">\mathscr{F}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+.&lt;/p>
+&lt;p>一个&lt;strong>直角坐标系&lt;/strong> (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mo stretchy="false">(&lt;/mo>&lt;mi>x&lt;/mi>&lt;mo separator="true">,&lt;/mo>&lt;mi>y&lt;/mi>&lt;mo separator="true">,&lt;/mo>&lt;mi>z&lt;/mi>&lt;mo stretchy="false">)&lt;/mo>&lt;/mrow>&lt;annotation encoding="application/x-tex">(x, y, z)&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+.&lt;/p>
+&lt;p>例如:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L2_p3.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L2_p3.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>这个图中, 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi>p&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">p&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 在坐标系 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;msup>&lt;mi mathvariant="script">F&lt;/mi>&lt;mi mathvariant="script">β&lt;/mi>&lt;/msup>&lt;/mrow>&lt;annotation encoding="application/x-tex">\mathscr{F^{\beta}}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 中, 因此我们可以把其记作 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;munder accentunder="true">&lt;msup>&lt;mi>p&lt;/mi>&lt;mi>β&lt;/mi>&lt;/msup>&lt;mo stretchy="true">‾&lt;/mo>&lt;/munder>&lt;/mrow>&lt;annotation encoding="application/x-tex">\underline{p^{\beta}}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+.&lt;/p>
+&lt;p>其中, 下划线表示其是一个矢量, 上标 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi>β&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">\beta&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 表示其是在 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;msup>&lt;mi mathvariant="script">F&lt;/mi>&lt;mi mathvariant="script">β&lt;/mi>&lt;/msup>&lt;/mrow>&lt;annotation encoding="application/x-tex">\mathscr{F^{\beta}}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 进行的测量.&lt;/p>
+&lt;h2 id="navigation-frames">
+ Navigation Frames
+ &lt;a class="anchor" href="#navigation-frames">#&lt;/a>
+&lt;/h2>
+&lt;p>接下来, 我们需要定义几个常用的参考系用于导航.&lt;/p>
+&lt;h3 id="earth-centred-inertial">
+ Earth Centred Inertial
+ &lt;a class="anchor" href="#earth-centred-inertial">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;strong>地心惯性坐标系&lt;/strong> (Earth-Centered Inertial), 简称 ECI, 常用 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi>i&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">i&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+表示.&lt;/p>
+&lt;blockquote>
+&lt;p>An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.&lt;/p></description></item><item><title>L3.惯性导航</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l3/</guid><description>&lt;h1 id="inertial-navigation">
+ Inertial Navigation
+ &lt;a class="anchor" href="#inertial-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="mechanisation-of-inertial-navigation-systems">
+ Mechanisation of Inertial Navigation Systems
+ &lt;a class="anchor" href="#mechanisation-of-inertial-navigation-systems">#&lt;/a>
+&lt;/h2>
+&lt;p>惯性导航是一种&lt;strong>航位推测法&lt;/strong> (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.&lt;/p>
+&lt;p>不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.&lt;/p>
+&lt;p>在过去, 由于算力有限, 人们需要使用 &lt;strong>Stabilised Inertial Platform&lt;/strong>.&lt;/p>
+&lt;p>而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 &lt;strong>Strapdown INS configuration&lt;/strong>.&lt;/p>
+&lt;h3 id="stabilised-inertial-platform">
+ Stabilised Inertial Platform
+ &lt;a class="anchor" href="#stabilised-inertial-platform">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;strong>稳定惯性平台&lt;/strong> (Stabilised Inertial Platform) 大致如下:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L3_p3.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L3_p3.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.&lt;/p>
+&lt;p>然而, 它有如下缺点:&lt;/p>
+&lt;ul>
+&lt;li>mechanically complex&lt;/li>
+&lt;li>costly to manufacture/maintain&lt;/li>
+&lt;li>larger volume/weight&lt;/li>
+&lt;li>cannot be used directly for airframe stabilisation&lt;/li>
+&lt;/ul>
+&lt;h3 id="strapdown-system">
+ Strapdown System
+ &lt;a class="anchor" href="#strapdown-system">#&lt;/a>
+&lt;/h3>
+&lt;p>因此, 对于新的 INS 系统, 人们通常喜欢使用 &lt;strong>Strapdown Configuration&lt;/strong>.&lt;/p></description></item><item><title>CH4.项目的规划调度</title><link>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch4/</guid><description>&lt;h1 id="chapter-4-project-planning-and-scheduling">
+ Chapter 4 Project Planning and Scheduling
+ &lt;a class="anchor" href="#chapter-4-project-planning-and-scheduling">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="41-introduction">
+ 4.1 Introduction
+ &lt;a class="anchor" href="#41-introduction">#&lt;/a>
+&lt;/h2>
+&lt;p>本章的一些前提:&lt;/p>
+&lt;blockquote>
+&lt;p>This chapter focuses on the planning and scheduling of jobs that are subject
+to precedence constraints. The setting may be regarded as a parallel machine
+environment with an unlimited number of machines.&lt;/p>&lt;/blockquote>
+&lt;p>我们的优化目标:&lt;/p>
+&lt;blockquote>
+&lt;p>The objective is to minimize the makespan while adhering to the precedence constraints&lt;/p>&lt;/blockquote>
+&lt;p>两个限制:&lt;/p>
+&lt;ul>
+&lt;li>precedence constraints: 每个 job 的开始需要等待上一个 job 的完成.&lt;/li>
+&lt;li>workforce constraints: 操作员可能短缺 (忙不过来)&lt;/li>
+&lt;/ul>
+&lt;p>job 先后顺序表示的两种方式:
+
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/pns/fig4_1.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/pns/fig4_1.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p></description></item><item><title>L4.卫星导航</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l4/</guid><description>&lt;h1 id="satellite-navigation">
+ Satellite Navigation
+ &lt;a class="anchor" href="#satellite-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="radio-navigation-and-trilateration">
+ Radio Navigation and Trilateration
+ &lt;a class="anchor" href="#radio-navigation-and-trilateration">#&lt;/a>
+&lt;/h2>
+&lt;p>雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.&lt;/p>
+&lt;p>三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)&lt;/p>
+&lt;p>它的计算步骤十分繁琐! 但是适合电脑. 流程如下:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p12.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p12.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>其中, dr 是 true r - predicted r.&lt;/p>
+&lt;p>还有, 里面提到的 H, 是&lt;strong>雅各布矩阵&lt;/strong> (Jacobian Matrix):&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p11.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p11.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>里面的 df / dx 可以用如下方式计算:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p10.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p10.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>如果是 3 个 beacon 的话, 那么 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;msup>&lt;mi>H&lt;/mi>&lt;mrow>&lt;mo>−&lt;/mo>&lt;mn>1&lt;/mn>&lt;/mrow>&lt;/msup>&lt;/mrow>&lt;annotation encoding="application/x-tex">H^{-1}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 需要通过&lt;strong>Moore-Penrose pseudo inverse&lt;/strong> 的方法来实现:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p21.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p21.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p></description></item><item><title>CH5.机器和Job Shop的调度</title><link>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/pns/pns_ch5/</guid><description>&lt;h1 id="chapter-5-machine-scheduling-and-job-shop-scheduling">
+ Chapter 5 Machine Scheduling and Job Shop Scheduling
+ &lt;a class="anchor" href="#chapter-5-machine-scheduling-and-job-shop-scheduling">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="51-introduction">
+ 5.1 Introduction
+ &lt;a class="anchor" href="#51-introduction">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="52-single-machine-and-parallel-machine-models">
+ 5.2 Single Machine and Parallel Machine Models
+ &lt;a class="anchor" href="#52-single-machine-and-parallel-machine-models">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="53-job-shops-and-mathematical-programming">
+ 5.3 Job Shops and Mathematical Programming
+ &lt;a class="anchor" href="#53-job-shops-and-mathematical-programming">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="54-job-shops-and-the-shifting-bottleneck-heuristic">
+ 5.4 Job Shops and the Shifting Bottleneck Heuristic
+ &lt;a class="anchor" href="#54-job-shops-and-the-shifting-bottleneck-heuristic">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="55-job-shops-and-constraint-programming">
+ 5.5 Job Shops and Constraint Programming
+ &lt;a class="anchor" href="#55-job-shops-and-constraint-programming">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="56-lekin-a-generic-job-shop-scheduling-system">
+ 5.6 LEKIN: A Generic Job Shop Scheduling System
+ &lt;a class="anchor" href="#56-lekin-a-generic-job-shop-scheduling-system">#&lt;/a>
+&lt;/h2>
+&lt;h2 id="57-discussion">
+ 5.7 Discussion
+ &lt;a class="anchor" href="#57-discussion">#&lt;/a>
+&lt;/h2></description></item><item><title>L5.集成导航</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l5/</guid><description>&lt;h1 id="integrated-navigation">
+ Integrated Navigation
+ &lt;a class="anchor" href="#integrated-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="principles-of-sensor-fusion">
+ Principles of Sensor Fusion
+ &lt;a class="anchor" href="#principles-of-sensor-fusion">#&lt;/a>
+&lt;/h2>
+&lt;p>引入了一个小的知识点:&lt;/p>
+&lt;blockquote>
+&lt;p>to fuse the information from two pdfs we can multiply them together&lt;/p>&lt;/blockquote>
+&lt;h2 id="the-kalman-filter">
+ The Kalman Filter
+ &lt;a class="anchor" href="#the-kalman-filter">#&lt;/a>
+&lt;/h2>
+&lt;p>&lt;strong>卡尔曼滤波&lt;/strong> (Kalman Filter) 的工作步骤:&lt;/p>
+&lt;ul>
+&lt;li>A Prediction Step and&lt;/li>
+&lt;li>A Measurement Update Step&lt;/li>
+&lt;/ul>
+&lt;h3 id="filter-equations">
+ Filter Equations
+ &lt;a class="anchor" href="#filter-equations">#&lt;/a>
+&lt;/h3>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L5_p14.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L5_p14.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L5_p15.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L5_p15.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;blockquote>
+&lt;p>We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)&lt;/p></description></item><item><title>UoG EEE 课程资料</title><link>https://zcheng-li.github.io/docs/my-blog/notelist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/notelist/</guid><description>&lt;h1 id="uog-notes-索引">
+ UoG Notes 索引
+ &lt;a class="anchor" href="#uog-notes-%e7%b4%a2%e5%bc%95">#&lt;/a>
+&lt;/h1>
+&lt;p>这里汇总的是仓库根目录 &lt;code>notes/UoG&lt;/code> 下的课程手写笔记以及考试答案。&lt;br>
+点击每门课链接会直接跳转到对应 GitHub 文件夹。&lt;/p>
+&lt;blockquote>
+&lt;p>笔记和答案可能有不严谨甚至错误的地方, 请仔细辨别!&lt;/p>&lt;/blockquote>
+&lt;h2 id="三年级课程">
+ 三年级课程
+ &lt;a class="anchor" href="#%e4%b8%89%e5%b9%b4%e7%ba%a7%e8%af%be%e7%a8%8b">#&lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3014-CSys">ENG3014-Communication System (B1)&lt;/a>&lt;br>
+通信系统笔记：信息论、傅里叶、Modem、光纤接入等。&lt;/p>
+&lt;p>其中最后的大作业可以参考 &lt;a href="https://zcheng-li.github.io/docs/example/my-blog/qam/">动态 QAM 调制的 python 实现&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3015-C3">ENG3015-Control 3&lt;/a>&lt;br>
+控制课程笔记与历年题整理。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3023-EC">ENG3023-Electronic Compatibility&lt;/a>&lt;br>
+电磁场与天线相关笔记。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3024-ECD">ENG3024-Electronic Circuit Design&lt;/a>&lt;br>
+电子电路设计：放大器、差分放大、电流镜、反相器等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3041-PE">ENG3041-Power Electronics&lt;/a>&lt;br>
+电力电子课程资料与题库。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3043-RTCS">ENG3043-Real Time Computer System&lt;/a>&lt;br>
+实时控制系统：体系结构、进程调度、中断、汇编等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3091-APSE">ENG3091-Advanced Programming and Software Engeering&lt;/a>&lt;br>
+APSE 课程笔记。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="四年级课程">
+ 四年级课程
+ &lt;a class="anchor" href="#%e5%9b%9b%e5%b9%b4%e7%ba%a7%e8%af%be%e7%a8%8b">#&lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4042-C4">ENG4042-Control 4&lt;/a>&lt;br>
+高阶控制：可控/可观、极点映射、状态反馈、PID 等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4053-DSP4">ENG4053-Digital Signal Processing 4&lt;/a>&lt;br>
+数字信号处理：DTFT/DFT、采样、差分方程、自适应 FIR。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4184-NS4">ENG4184-Navigation System 4&lt;/a>&lt;br>
+导航系统：INS/GNSS、ECEF/NED、惯导方程、传感器模型。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4187-PED4">ENG4187-Power Electronic and Drives 4&lt;/a>&lt;br>
+电机与驱动：PM 电机、感应电机、FOC、实验资料与历年题。&lt;/p></description></item></channel></rss>

@@ -1,39 +1,199 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>UoG-ENG4184 导航系统 4 on ZCHENG LI</title>
-    <link>http://localhost:1313/docs/my-blog/navigation/</link>
-    <description>Recent content in UoG-ENG4184 导航系统 4 on ZCHENG LI</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <atom:link href="http://localhost:1313/docs/my-blog/navigation/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>L2.导航数学基础</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l2/</guid>
-      <description>&lt;h1 id=&#34;the-mathematics-of-navigation&#34;&gt;&#xA;  The Mathematics of Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-mathematics-of-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;coordinate-systems&#34;&gt;&#xA;  Coordinate Systems&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#coordinate-systems&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;为了实现 navigation position fix, 我们需要先确定一个&lt;strong&gt;参考系&lt;/strong&gt; (frame-of-reference), &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;script&#34;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mathscr{F}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;一个&lt;strong&gt;直角坐标系&lt;/strong&gt; (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;(x, y, z)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;例如:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L2_p3.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L2_p3.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;这个图中, &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;p&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 在坐标系 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi mathvariant=&#34;script&#34;&gt;F&lt;/mi&gt;&lt;mi mathvariant=&#34;script&#34;&gt;β&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mathscr{F^{\beta}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 中, 因此我们可以把其记作 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;munder accentunder=&#34;true&#34;&gt;&lt;msup&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;/msup&gt;&lt;mo stretchy=&#34;true&#34;&gt;‾&lt;/mo&gt;&lt;/munder&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\underline{p^{\beta}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;其中, 下划线表示其是一个矢量, 上标 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;β&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\beta&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 表示其是在 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi mathvariant=&#34;script&#34;&gt;F&lt;/mi&gt;&lt;mi mathvariant=&#34;script&#34;&gt;β&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mathscr{F^{\beta}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 进行的测量.&lt;/p&gt;&#xA;&lt;h2 id=&#34;navigation-frames&#34;&gt;&#xA;  Navigation Frames&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#navigation-frames&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;接下来, 我们需要定义几个常用的参考系用于导航.&lt;/p&gt;&#xA;&lt;h3 id=&#34;earth-centred-inertial&#34;&gt;&#xA;  Earth Centred Inertial&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#earth-centred-inertial&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;地心惯性坐标系&lt;/strong&gt; (Earth-Centered Inertial), 简称 ECI, 常用 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA;表示.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L3.惯性导航</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l3/</guid>
-      <description>&lt;h1 id=&#34;inertial-navigation&#34;&gt;&#xA;  Inertial Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#inertial-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;mechanisation-of-inertial-navigation-systems&#34;&gt;&#xA;  Mechanisation of Inertial Navigation Systems&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mechanisation-of-inertial-navigation-systems&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;惯性导航是一种&lt;strong&gt;航位推测法&lt;/strong&gt; (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.&lt;/p&gt;&#xA;&lt;p&gt;不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.&lt;/p&gt;&#xA;&lt;p&gt;在过去, 由于算力有限, 人们需要使用 &lt;strong&gt;Stabilised Inertial Platform&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 &lt;strong&gt;Strapdown INS configuration&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;stabilised-inertial-platform&#34;&gt;&#xA;  Stabilised Inertial Platform&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#stabilised-inertial-platform&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;稳定惯性平台&lt;/strong&gt; (Stabilised Inertial Platform) 大致如下:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L3_p3.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L3_p3.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.&lt;/p&gt;&#xA;&lt;p&gt;然而, 它有如下缺点:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;mechanically complex&lt;/li&gt;&#xA;&lt;li&gt;costly to manufacture/maintain&lt;/li&gt;&#xA;&lt;li&gt;larger volume/weight&lt;/li&gt;&#xA;&lt;li&gt;cannot be used directly for airframe stabilisation&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;strapdown-system&#34;&gt;&#xA;  Strapdown System&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#strapdown-system&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;因此, 对于新的 INS 系统, 人们通常喜欢使用 &lt;strong&gt;Strapdown Configuration&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L4.卫星导航</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l4/</guid>
-      <description>&lt;h1 id=&#34;satellite-navigation&#34;&gt;&#xA;  Satellite Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#satellite-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;radio-navigation-and-trilateration&#34;&gt;&#xA;  Radio Navigation and Trilateration&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#radio-navigation-and-trilateration&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.&lt;/p&gt;&#xA;&lt;p&gt;三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)&lt;/p&gt;&#xA;&lt;p&gt;它的计算步骤十分繁琐! 但是适合电脑. 流程如下:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p12.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p12.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;其中, dr 是 true r - predicted r.&lt;/p&gt;&#xA;&lt;p&gt;还有, 里面提到的 H, 是&lt;strong&gt;雅各布矩阵&lt;/strong&gt; (Jacobian Matrix):&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p11.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p11.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;里面的 df / dx 可以用如下方式计算:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p10.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p10.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;如果是 3 个 beacon 的话, 那么 &#xA;  &lt;span class=&#34;katex&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mrow&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;H^{-1}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&#xA; 需要通过&lt;strong&gt;Moore-Penrose pseudo inverse&lt;/strong&gt; 的方法来实现:&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L4_p21.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L4_p21.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>L5.集成导航</title>
-      <link>http://localhost:1313/docs/my-blog/navigation/navi_l5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/my-blog/navigation/navi_l5/</guid>
-      <description>&lt;h1 id=&#34;integrated-navigation&#34;&gt;&#xA;  Integrated Navigation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#integrated-navigation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;principles-of-sensor-fusion&#34;&gt;&#xA;  Principles of Sensor Fusion&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#principles-of-sensor-fusion&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;引入了一个小的知识点:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;to fuse the information from two pdfs we can multiply them together&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;the-kalman-filter&#34;&gt;&#xA;  The Kalman Filter&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-kalman-filter&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;卡尔曼滤波&lt;/strong&gt; (Kalman Filter) 的工作步骤:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A Prediction Step and&lt;/li&gt;&#xA;&lt;li&gt;A Measurement Update Step&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;filter-equations&#34;&gt;&#xA;  Filter Equations&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#filter-equations&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L5_p14.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L5_p14.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;div class=&#34;post-img-view&#34;&gt;&#xA;  &lt;a data-fancybox=&#34;gallery&#34; href=&#34;http://localhost:1313/img/navi/L5_p15.png&#34;&gt;&lt;figure&gt;&#xA;          &lt;img src=&#34;http://localhost:1313/img/navi/L5_p15.png&#34; alt=&#34;alt text&#34; /&gt;&#xA;          &lt;figcaption&gt;&lt;/figcaption&gt;&#xA;          &lt;style&gt; &#xA;            .post-img-view{text-align:center} &#xA;          &lt;/style&gt; &#xA;      &lt;/figure&gt;&lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>UoG-ENG4184 导航系统 4 on ZCHENG LI</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/</link><description>Recent content in UoG-ENG4184 导航系统 4 on ZCHENG LI</description><generator>Hugo</generator><language>zh-CN</language><atom:link href="https://zcheng-li.github.io/docs/my-blog/navigation/index.xml" rel="self" type="application/rss+xml"/><item><title>L2.导航数学基础</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l2/</guid><description>&lt;h1 id="the-mathematics-of-navigation">
+ The Mathematics of Navigation
+ &lt;a class="anchor" href="#the-mathematics-of-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="coordinate-systems">
+ Coordinate Systems
+ &lt;a class="anchor" href="#coordinate-systems">#&lt;/a>
+&lt;/h2>
+&lt;p>为了实现 navigation position fix, 我们需要先确定一个&lt;strong>参考系&lt;/strong> (frame-of-reference), 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi mathvariant="script">F&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">\mathscr{F}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+.&lt;/p>
+&lt;p>一个&lt;strong>直角坐标系&lt;/strong> (Cartesian coordinate frame) 包含了三个相互正交 (mutually-orthogonal) 的基向量 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mo stretchy="false">(&lt;/mo>&lt;mi>x&lt;/mi>&lt;mo separator="true">,&lt;/mo>&lt;mi>y&lt;/mi>&lt;mo separator="true">,&lt;/mo>&lt;mi>z&lt;/mi>&lt;mo stretchy="false">)&lt;/mo>&lt;/mrow>&lt;annotation encoding="application/x-tex">(x, y, z)&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+.&lt;/p>
+&lt;p>例如:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L2_p3.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L2_p3.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>这个图中, 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi>p&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">p&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 在坐标系 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;msup>&lt;mi mathvariant="script">F&lt;/mi>&lt;mi mathvariant="script">β&lt;/mi>&lt;/msup>&lt;/mrow>&lt;annotation encoding="application/x-tex">\mathscr{F^{\beta}}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 中, 因此我们可以把其记作 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;munder accentunder="true">&lt;msup>&lt;mi>p&lt;/mi>&lt;mi>β&lt;/mi>&lt;/msup>&lt;mo stretchy="true">‾&lt;/mo>&lt;/munder>&lt;/mrow>&lt;annotation encoding="application/x-tex">\underline{p^{\beta}}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+.&lt;/p>
+&lt;p>其中, 下划线表示其是一个矢量, 上标 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi>β&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">\beta&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 表示其是在 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;msup>&lt;mi mathvariant="script">F&lt;/mi>&lt;mi mathvariant="script">β&lt;/mi>&lt;/msup>&lt;/mrow>&lt;annotation encoding="application/x-tex">\mathscr{F^{\beta}}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 进行的测量.&lt;/p>
+&lt;h2 id="navigation-frames">
+ Navigation Frames
+ &lt;a class="anchor" href="#navigation-frames">#&lt;/a>
+&lt;/h2>
+&lt;p>接下来, 我们需要定义几个常用的参考系用于导航.&lt;/p>
+&lt;h3 id="earth-centred-inertial">
+ Earth Centred Inertial
+ &lt;a class="anchor" href="#earth-centred-inertial">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;strong>地心惯性坐标系&lt;/strong> (Earth-Centered Inertial), 简称 ECI, 常用 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;mi>i&lt;/mi>&lt;/mrow>&lt;annotation encoding="application/x-tex">i&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+表示.&lt;/p>
+&lt;blockquote>
+&lt;p>An inertial coordinate frame is one that does not accelerate or rotate with respect to the rest of the Universe.&lt;/p></description></item><item><title>L3.惯性导航</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l3/</guid><description>&lt;h1 id="inertial-navigation">
+ Inertial Navigation
+ &lt;a class="anchor" href="#inertial-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="mechanisation-of-inertial-navigation-systems">
+ Mechanisation of Inertial Navigation Systems
+ &lt;a class="anchor" href="#mechanisation-of-inertial-navigation-systems">#&lt;/a>
+&lt;/h2>
+&lt;p>惯性导航是一种&lt;strong>航位推测法&lt;/strong> (dead reckoning). 如果我们知道一个物体的加速度, 那么我们就可以通过一次积分获得其速度修正, 两次积分以获得其位置.&lt;/p>
+&lt;p>不过, 正如上一节所看到的, 如果参考系和解析系不是同一个系, 那么就要耗费大量的运算资源去求解.&lt;/p>
+&lt;p>在过去, 由于算力有限, 人们需要使用 &lt;strong>Stabilised Inertial Platform&lt;/strong>.&lt;/p>
+&lt;p>而现在, 由于算力不是大问题了, 人们直接讲传感器固定在对象上, 也就是使用 &lt;strong>Strapdown INS configuration&lt;/strong>.&lt;/p>
+&lt;h3 id="stabilised-inertial-platform">
+ Stabilised Inertial Platform
+ &lt;a class="anchor" href="#stabilised-inertial-platform">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;strong>稳定惯性平台&lt;/strong> (Stabilised Inertial Platform) 大致如下:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L3_p3.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L3_p3.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>里面的陀螺仪 (gyro) 会测量平台转到的角度. 而这些测量的角度又会被当成反馈信号传递给轴上的马达, 来调整姿态.&lt;/p>
+&lt;p>然而, 它有如下缺点:&lt;/p>
+&lt;ul>
+&lt;li>mechanically complex&lt;/li>
+&lt;li>costly to manufacture/maintain&lt;/li>
+&lt;li>larger volume/weight&lt;/li>
+&lt;li>cannot be used directly for airframe stabilisation&lt;/li>
+&lt;/ul>
+&lt;h3 id="strapdown-system">
+ Strapdown System
+ &lt;a class="anchor" href="#strapdown-system">#&lt;/a>
+&lt;/h3>
+&lt;p>因此, 对于新的 INS 系统, 人们通常喜欢使用 &lt;strong>Strapdown Configuration&lt;/strong>.&lt;/p></description></item><item><title>L4.卫星导航</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l4/</guid><description>&lt;h1 id="satellite-navigation">
+ Satellite Navigation
+ &lt;a class="anchor" href="#satellite-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="radio-navigation-and-trilateration">
+ Radio Navigation and Trilateration
+ &lt;a class="anchor" href="#radio-navigation-and-trilateration">#&lt;/a>
+&lt;/h2>
+&lt;p>雷达导航的基础是电磁波在真空中以光速传播. 所以只需要知道光传播的时间, 就可以测算出对应的距离.&lt;/p>
+&lt;p>三个雷达可以确定一个具体的位置, 这就叫三点定位法 (Trilateration)&lt;/p>
+&lt;p>它的计算步骤十分繁琐! 但是适合电脑. 流程如下:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p12.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p12.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>其中, dr 是 true r - predicted r.&lt;/p>
+&lt;p>还有, 里面提到的 H, 是&lt;strong>雅各布矩阵&lt;/strong> (Jacobian Matrix):&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p11.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p11.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>里面的 df / dx 可以用如下方式计算:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p10.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p10.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>如果是 3 个 beacon 的话, 那么 
+ &lt;span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML">&lt;semantics>&lt;mrow>&lt;msup>&lt;mi>H&lt;/mi>&lt;mrow>&lt;mo>−&lt;/mo>&lt;mn>1&lt;/mn>&lt;/mrow>&lt;/msup>&lt;/mrow>&lt;annotation encoding="application/x-tex">H^{-1}&lt;/annotation>&lt;/semantics>&lt;/math>&lt;/span>
+ 需要通过&lt;strong>Moore-Penrose pseudo inverse&lt;/strong> 的方法来实现:&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L4_p21.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L4_p21.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p></description></item><item><title>L5.集成导航</title><link>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/my-blog/navigation/navi_l5/</guid><description>&lt;h1 id="integrated-navigation">
+ Integrated Navigation
+ &lt;a class="anchor" href="#integrated-navigation">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="principles-of-sensor-fusion">
+ Principles of Sensor Fusion
+ &lt;a class="anchor" href="#principles-of-sensor-fusion">#&lt;/a>
+&lt;/h2>
+&lt;p>引入了一个小的知识点:&lt;/p>
+&lt;blockquote>
+&lt;p>to fuse the information from two pdfs we can multiply them together&lt;/p>&lt;/blockquote>
+&lt;h2 id="the-kalman-filter">
+ The Kalman Filter
+ &lt;a class="anchor" href="#the-kalman-filter">#&lt;/a>
+&lt;/h2>
+&lt;p>&lt;strong>卡尔曼滤波&lt;/strong> (Kalman Filter) 的工作步骤:&lt;/p>
+&lt;ul>
+&lt;li>A Prediction Step and&lt;/li>
+&lt;li>A Measurement Update Step&lt;/li>
+&lt;/ul>
+&lt;h3 id="filter-equations">
+ Filter Equations
+ &lt;a class="anchor" href="#filter-equations">#&lt;/a>
+&lt;/h3>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L5_p14.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L5_p14.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;p>
+ &lt;div class="post-img-view">
+ &lt;a data-fancybox="gallery" href="https://zcheng-li.github.io/img/navi/L5_p15.png">&lt;figure>
+ &lt;img src="https://zcheng-li.github.io/img/navi/L5_p15.png" alt="alt text" />
+ &lt;figcaption>&lt;/figcaption>
+ &lt;style> 
+ .post-img-view{text-align:center} 
+ &lt;/style> 
+ &lt;/figure>&lt;/a>
+ &lt;/div>
+&lt;/p>
+&lt;blockquote>
+&lt;p>We use ’−’ to differentiate between ´a priori and ´a posteriori estimates, i.e. estimates from the prediction step (´a priori) and those modified by the measurement step (´a posteriori)&lt;/p></description></item></channel></rss>

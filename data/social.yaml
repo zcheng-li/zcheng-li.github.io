@@ -11,5 +11,5 @@
   url: "mailto:zcheng.li@outlook.com"
   icon: "email.svg"
 - name: CV Website
-  url: "https://zcheng-li.github.io/docs/cv/"
+  url: "/docs/cv/"
   icon: "file-text.svg"

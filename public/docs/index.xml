@@ -1,18 +1,104 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Docs on ZCHENG LI</title>
-    <link>http://localhost:1313/docs/</link>
-    <description>Recent content in Docs on ZCHENG LI</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <atom:link href="http://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CV Website</title>
-      <link>http://localhost:1313/docs/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/cv/</guid>
-      <description>&lt;section class=&#34;cv-codepage&#34;&gt;&#xA;  &lt;header class=&#34;cv-head&#34;&gt;&#xA;    &lt;div class=&#34;cv-window-dots&#34; aria-hidden=&#34;true&#34;&gt;&#xA;      &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;p class=&#34;cv-file&#34;&gt;resume.py&lt;/p&gt;&#xA;  &lt;/header&gt;&#xA;&#xA;  &lt;div class=&#34;cv-grid&#34;&gt;&#xA;    &lt;aside class=&#34;cv-left&#34;&gt;&#xA;      &lt;div class=&#34;cv-photo-wrap&#34;&gt;&#xA;        &lt;img src=&#34;http://localhost:1313/img/cv-avatar.jpg&#34; alt=&#34;Profile photo&#34; class=&#34;cv-photo&#34; /&gt;&#xA;      &lt;/div&gt;&#xA;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;# Contact&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;name&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;Zhicheng Li&#34;&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;location&lt;/span&gt; = [&lt;span class=&#34;str&#34;&gt;&#34;Chengdu, China&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;Glasgow, UK&#34;&lt;/span&gt;]&#xA;&lt;span class=&#34;var&#34;&gt;email&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;zcheng.li@outlook.com&#34;&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;github&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;github.com/zcheng-li&#34;&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;linkedin&lt;/span&gt; = &lt;span class=&#34;str&#34;&gt;&#34;www.linkedin.com/in/zhicheng-li-3547b8322&#34;&lt;/span&gt;&#xA;&#xA;&lt;span class=&#34;comment&#34;&gt;# Languages&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;languages&lt;/span&gt; = {&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Chinese&#34;&lt;/span&gt;: .native,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;English&#34;&lt;/span&gt;: .fluent,&#xA;}&#xA;&#xA;&lt;span class=&#34;comment&#34;&gt;# Programming&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;tech_stack&lt;/span&gt; = [&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Python&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;C&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;C++&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Matlab&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;Swift&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Bash&#34;&lt;/span&gt;&#xA;]&#xA;&#xA;&lt;span class=&#34;comment&#34;&gt;# Platforms&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;platforms&lt;/span&gt; = [&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;macOS&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Windows&#34;&lt;/span&gt;, &#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Linux&#34;&lt;/span&gt;&#xA;]&#xA;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;# Hobbies&lt;/span&gt;&#xA;&lt;span class=&#34;var&#34;&gt;hobbies&lt;/span&gt; = [&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Bouldering&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;Hiking&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;App Development&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;3D Modeling&#34;&lt;/span&gt;,&#xA;    &lt;span class=&#34;str&#34;&gt;&#34;sci-fi&#34;&lt;/span&gt;&#xA;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;    &lt;/aside&gt;&#xA;&#xA;    &lt;main class=&#34;cv-main&#34;&gt;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;kw&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;name&#34;&gt;dataclasses&lt;/span&gt; &lt;span class=&#34;kw&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;name&#34;&gt;dataclass&lt;/span&gt;&#xA;&#xA;&lt;span class=&#34;decor&#34;&gt;@dataclass&lt;/span&gt;&#xA;&lt;span class=&#34;kw&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;name&#34;&gt;Education&lt;/span&gt;:&#xA;    &lt;span class=&#34;var&#34;&gt;university&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;program&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;period&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;location&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;&#xA;    &lt;span class=&#34;var&#34;&gt;notes&lt;/span&gt;: &lt;span class=&#34;name&#34;&gt;list&lt;/span&gt;[&lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;]&#xA;&#xA;&lt;span class=&#34;var&#34;&gt;education&lt;/span&gt; = [&#xA;    &lt;span class=&#34;name&#34;&gt;Education&lt;/span&gt;(&#xA;        &lt;span class=&#34;var&#34;&gt;university&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;University of Electronic Science and Technology of China&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;program&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Bachelor of Electronic Information Engineering&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;period&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;2022-2026&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;location&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Chengdu, China&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;notes&lt;/span&gt;=[&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;GPA: 3.78/4.0&#34;&lt;/span&gt;,&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;Accumulated Grade Average: 87.87/100&#34;&lt;/span&gt;,&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;Rank: 9/241&#34;&lt;/span&gt;,&#xA;        ],&#xA;    ),&#xA;    &lt;span class=&#34;name&#34;&gt;Education&lt;/span&gt;(&#xA;        &lt;span class=&#34;var&#34;&gt;university&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;University of Glasgow (Joint-Degree Program)&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;program&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;period&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;2024-2026&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;location&lt;/span&gt;=&lt;span class=&#34;str&#34;&gt;&#34;Glasgow, UK&#34;&lt;/span&gt;,&#xA;        &lt;span class=&#34;var&#34;&gt;notes&lt;/span&gt;=[&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;GPA: 20.0/22.0&#34;&lt;/span&gt;,&#xA;            &lt;span class=&#34;str&#34;&gt;&#34;Degree: 1:1 (esitimated)&#34;&lt;/span&gt;,&#xA;            ],&#xA;    ),&#xA;]&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;      &lt;pre class=&#34;cv-block&#34;&gt;&lt;code&gt;&lt;span class=&#34;kw&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fn&#34;&gt;awards_and_honors&lt;/span&gt;() -&gt; &lt;span class=&#34;name&#34;&gt;list&lt;/span&gt;[&lt;span class=&#34;name&#34;&gt;tuple&lt;/span&gt;[&lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;, &lt;span class=&#34;name&#34;&gt;str&lt;/span&gt;]]:&#xA;    &lt;span class=&#34;kw&#34;&gt;return&lt;/span&gt; [&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Scholarship for Excellent Student of UESTC&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2023 &amp;amp; 2024&#34;&lt;/span&gt;),&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Excellent Student Club Leader at UESTC&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2024&#34;&lt;/span&gt;),&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Academic Scholarship (Top 10%)&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2023 &amp;amp; 2024&#34;&lt;/span&gt;),&#xA;        (&lt;span class=&#34;str&#34;&gt;&#34;Apple Swift Student Challenge Winner&#34;&lt;/span&gt;, &lt;span class=&#34;str&#34;&gt;&#34;2024&#34;&lt;/span&gt;),&#xA;    ]&lt;/code&gt;&lt;/pre&gt;&#xA;    &lt;/main&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/section&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on ZCHENG LI</title><link>https://zcheng-li.github.io/docs/</link><description>Recent content in Docs on ZCHENG LI</description><generator>Hugo</generator><language>zh-CN</language><atom:link href="https://zcheng-li.github.io/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>CV Website</title><link>https://zcheng-li.github.io/docs/cv/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zcheng-li.github.io/docs/cv/</guid><description>&lt;section class="cv-codepage">
+ &lt;header class="cv-head">
+ &lt;div class="cv-window-dots" aria-hidden="true">
+ &lt;span>&lt;/span>&lt;span>&lt;/span>&lt;span>&lt;/span>
+ &lt;/div>
+ &lt;p class="cv-file">resume.py&lt;/p>
+ &lt;/header>
+
+ &lt;div class="cv-grid">
+ &lt;aside class="cv-left">
+ &lt;div class="cv-photo-wrap">
+ &lt;img src="https://zcheng-li.github.io/img/cv-avatar.jpg" alt="Profile photo" class="cv-photo" />
+ &lt;/div>
+
+ &lt;pre class="cv-block">&lt;code>&lt;span class="comment"># Contact&lt;/span>
+&lt;span class="var">name&lt;/span> = &lt;span class="str">"Zhicheng Li"&lt;/span>
+&lt;span class="var">location&lt;/span> = [&lt;span class="str">"Chengdu, China"&lt;/span>, &lt;span class="str">"Glasgow, UK"&lt;/span>]
+&lt;span class="var">email&lt;/span> = &lt;span class="str">"zcheng.li@outlook.com"&lt;/span>
+&lt;span class="var">github&lt;/span> = &lt;span class="str">"github.com/zcheng-li"&lt;/span>
+&lt;span class="var">linkedin&lt;/span> = &lt;span class="str">"www.linkedin.com/in/zhicheng-li-3547b8322"&lt;/span>
+&lt;span class="var">website&lt;/span> = &lt;span class="str">"https://zcheng-li.github.io"&lt;/span>
+
+
+&lt;span class="comment"># Languages&lt;/span>
+&lt;span class="var">languages&lt;/span> = {
+ &lt;span class="str">"Chinese"&lt;/span>: .native,
+ &lt;span class="str">"English"&lt;/span>: .fluent,
+}
+
+&lt;span class="comment"># Programming&lt;/span>
+&lt;span class="var">tech_stack&lt;/span> = [
+ &lt;span class="str">"Python"&lt;/span>, &lt;span class="str">"C"&lt;/span>, &lt;span class="str">"C++"&lt;/span>, 
+ &lt;span class="str">"Matlab"&lt;/span>, &lt;span class="str">"Swift"&lt;/span>, 
+ &lt;span class="str">"Bash"&lt;/span>
+]
+
+&lt;span class="comment"># Platforms&lt;/span>
+&lt;span class="var">platforms&lt;/span> = [
+ &lt;span class="str">"macOS"&lt;/span>, 
+ &lt;span class="str">"Windows"&lt;/span>, 
+ &lt;span class="str">"Linux"&lt;/span>
+]
+
+&lt;/code>&lt;/pre>
+
+ &lt;pre class="cv-block">&lt;code>&lt;span class="comment"># Hobbies&lt;/span>
+&lt;span class="var">hobbies&lt;/span> = [
+ &lt;span class="str">"Bouldering"&lt;/span>,
+ &lt;span class="str">"Hiking"&lt;/span>,
+ &lt;span class="str">"App Development"&lt;/span>,
+ &lt;span class="str">"3D Modeling"&lt;/span>,
+ &lt;span class="str">"sci-fi"&lt;/span>
+]
+&lt;/code>&lt;/pre>
+
+ &lt;/aside>
+
+ &lt;main class="cv-main">
+ &lt;pre class="cv-block">&lt;code>&lt;span class="kw">from&lt;/span> &lt;span class="name">dataclasses&lt;/span> &lt;span class="kw">import&lt;/span> &lt;span class="name">dataclass&lt;/span>
+
+&lt;span class="decor">@dataclass&lt;/span>
+&lt;span class="kw">class&lt;/span> &lt;span class="name">Education&lt;/span>:
+ &lt;span class="var">university&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">program&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">period&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">location&lt;/span>: &lt;span class="name">str&lt;/span>
+ &lt;span class="var">notes&lt;/span>: &lt;span class="name">list&lt;/span>[&lt;span class="name">str&lt;/span>]
+
+&lt;span class="var">education&lt;/span> = [
+ &lt;span class="name">Education&lt;/span>(
+ &lt;span class="var">university&lt;/span>=&lt;span class="str">"University of Electronic Science and Technology of China"&lt;/span>,
+ &lt;span class="var">program&lt;/span>=&lt;span class="str">"Bachelor of Electronic Information Engineering"&lt;/span>,
+ &lt;span class="var">period&lt;/span>=&lt;span class="str">"2022-2026"&lt;/span>,
+ &lt;span class="var">location&lt;/span>=&lt;span class="str">"Chengdu, China"&lt;/span>,
+ &lt;span class="var">notes&lt;/span>=[
+ &lt;span class="str">"GPA: 3.78/4.0"&lt;/span>,
+ &lt;span class="str">"Accumulated Grade Average: 87.87/100"&lt;/span>,
+ &lt;span class="str">"Rank: 9/241"&lt;/span>,
+ ],
+ ),
+ &lt;span class="name">Education&lt;/span>(
+ &lt;span class="var">university&lt;/span>=&lt;span class="str">"University of Glasgow (Joint-Degree Program)"&lt;/span>,
+ &lt;span class="var">program&lt;/span>=&lt;span class="str">"Bachelor of Electronic and Electricity Engineering (Estimate: 1:1)"&lt;/span>,
+ &lt;span class="var">period&lt;/span>=&lt;span class="str">"2024-2026"&lt;/span>,
+ &lt;span class="var">location&lt;/span>=&lt;span class="str">"Glasgow, UK"&lt;/span>,
+ &lt;span class="var">notes&lt;/span>=[
+ &lt;span class="str">"GPA: 20.0/22.0"&lt;/span>,
+ &lt;span class="str">"Degree: 1:1 (estimated)"&lt;/span>,
+ ],
+ ),
+]&lt;/code>&lt;/pre>
+
+ &lt;pre class="cv-block">&lt;code>&lt;span class="kw">def&lt;/span> &lt;span class="fn">awards_and_honors&lt;/span>() -> &lt;span class="name">list&lt;/span>[&lt;span class="name">tuple&lt;/span>[&lt;span class="name">str&lt;/span>, &lt;span class="name">str&lt;/span>]]:
+ &lt;span class="kw">return&lt;/span> [
+ (&lt;span class="str">"Francis Morrison Award (Top 5)"&lt;/span>, &lt;span class="str">"2025"&lt;/span>),
+ (&lt;span class="str">"Scholarship for Excellent Student of UESTC (1st Tier, Top 5%)"&lt;/span>, &lt;span class="str">"2025"&lt;/span>),
+ (&lt;span class="str">"Scholarship for Excellent Student of UESTC (2nd Tier, Top 10%)"&lt;/span>, &lt;span class="str">"2023 &amp;amp; 2024"&lt;/span>),
+ (&lt;span class="str">"Excellent Student Club Leader at UESTC"&lt;/span>, &lt;span class="str">"2024"&lt;/span>),
+ (&lt;span class="str">"Academic Scholarship (Top 10%)"&lt;/span>, &lt;span class="str">"2023 &amp;amp; 2024 &amp;amp; 2025"&lt;/span>),
+ (&lt;span class="str">"Apple Swift Student Challenge Winner"&lt;/span>, &lt;span class="str">"2024"&lt;/span>),
+ ]&lt;/code>&lt;/pre>
+ &lt;/main>
+ &lt;/div>
+&lt;/section></description></item></channel></rss>
