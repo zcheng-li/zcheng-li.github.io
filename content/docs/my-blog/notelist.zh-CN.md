@@ -56,6 +56,9 @@ bookToc: true
 - [ENG4187-Power Electronic and Drives 4](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4187-PED4)  
   电机与驱动：PM 电机、感应电机、FOC、实验资料与历年题。
 
+- [ENG4118-Robotics](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG4118-Robo)  
+  机器人学：运动学、动力学、路径规划 等。
+
 ## 总目录
 
 - [notes/UoG](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG)
