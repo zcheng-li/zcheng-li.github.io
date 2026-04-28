@@ -12,14 +12,20 @@
  &lt;img src="https://zcheng-li.github.io/img/cv-avatar.jpg" alt="Profile photo" class="cv-photo" />
  &lt;/div>
 
- &lt;pre class="cv-block">&lt;code>&lt;span class="comment"># Contact&lt;/span>
+ &lt;pre class="cv-block">&lt;code>&lt;span class="comment"># About Me&lt;/span>
 &lt;span class="var">name&lt;/span> = &lt;span class="str">"Zhicheng Li"&lt;/span>
-&lt;span class="var">location&lt;/span> = [&lt;span class="str">"Chengdu, China"&lt;/span>, &lt;span class="str">"Glasgow, UK"&lt;/span>]
+&lt;span class="var">preferred_name&lt;/span> = &lt;span class="str">"Ethan"&lt;/span>
+
+&lt;span class="var">location&lt;/span> = [
+&lt;span class="str">"Glasgow, UK"&lt;/span>, 
+&lt;span class="str">"Chengdu, China"&lt;/span>
+]
+
+&lt;span class="comment"># Contact&lt;/span>
 &lt;span class="var">email&lt;/span> = &lt;span class="str">"zcheng.li@outlook.com"&lt;/span>
 &lt;span class="var">github&lt;/span> = &lt;span class="str">"github.com/zcheng-li"&lt;/span>
 &lt;span class="var">linkedin&lt;/span> = &lt;span class="str">"www.linkedin.com/in/zhicheng-li-3547b8322"&lt;/span>
 &lt;span class="var">website&lt;/span> = &lt;span class="str">"https://zcheng-li.github.io"&lt;/span>
-
 
 &lt;span class="comment"># Languages&lt;/span>
 &lt;span class="var">languages&lt;/span> = {

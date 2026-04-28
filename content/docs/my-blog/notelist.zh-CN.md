@@ -19,7 +19,7 @@ bookToc: true
 
 ## 三年级课程
 
-- [ENG3014-Communication System (B1)](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3014-CSys)  
+- [ENG3014-Communication System](https://github.com/zcheng-li/zcheng-li.github.io/tree/main/notes/UoG/ENG3014-CSys)  
   通信系统笔记：信息论、傅里叶、Modem、光纤接入等。
 
   其中最后的大作业可以参考 [动态 QAM 调制的 python 实现](https://zcheng-li.github.io/docs/example/my-blog/qam/)
@@ -66,9 +66,10 @@ bookToc: true
 ## YJZY 👻
 
 {{< details title="查看详情" >}}
-![y3](/img/notelist/grades_y3.png)
 
-![y4](/img/notelist/grades_y4.png)
+![alt text](/img/notelist/grades_y3.png)
 
-> 成绩不代表一切, 我也不想让它代表一切, 但它确实是一个不错的反馈, 让我知道自己在某些方面做得不错, 也让我知道自己在某些方面需要改进.
+![alt text](/img/notelist/grades_y4.png)
+
+> 成绩不代表一切, 我也不想让它代表一切, 但它确实是一个不错的反馈, 让我知道自己在某些方面需要改进, 也让别人相信这些笔记的可信程度.
 {{< /details >}}
